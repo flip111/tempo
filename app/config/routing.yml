@@ -1,0 +1,20 @@
+
+# Internal routing configuration to handle ESI
+#_internal:
+#   resource: "@FrameworkBundle/Resources/config/routing/internal.xml"
+#   prefix:   /_internal
+
+_welcome:
+    pattern:  /
+    defaults: { _controller: TempoMainBundle:Default:index }
+
+
+_tempo_users:
+    resource: "@TempoUserBundle/Resources/config/routing/routing.yml"
+
+_tempo_main:
+    resource: "@TempoMainBundle/Resources/config/routing.yml"
+
+_tempo_projects:
+    resource: "@TempoProjectBundle/Resources/config/routing.yml"
+    

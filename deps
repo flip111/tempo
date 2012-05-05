@@ -1,0 +1,109 @@
+[symfony]
+    git=http://github.com/symfony/symfony.git
+    version=v2.0.13
+
+[twig]
+    git=http://github.com/fabpot/Twig.git
+    version=v1.1.2
+
+[monolog]
+    git=http://github.com/Seldaek/monolog.git
+    version=1.0.2
+
+[doctrine-common]
+    git=http://github.com/doctrine/common.git
+    version=origin/2.1.x
+
+[doctrine-dbal]
+    git=http://github.com/doctrine/dbal.git
+    version=origin/2.1.x
+
+[doctrine]
+    git=http://github.com/doctrine/doctrine2.git
+    version=origin/2.1.x
+
+[DoctrineBundle]
+    git=http://github.com/doctrine/DoctrineBundle.git
+    target=/bundles/Doctrine/Bundle/DoctrineBundle
+
+[swiftmailer]
+    git=http://github.com/swiftmailer/swiftmailer.git
+    version=v4.1.1
+
+[assetic]
+    git=http://github.com/kriswallsmith/assetic.git
+    version=v1.0.2
+
+[twig-extensions]
+    git=http://github.com/fabpot/Twig-extensions.git
+
+[metadata]
+    git=http://github.com/schmittjoh/metadata.git
+    version=origin/1.0.x
+
+[SensioFrameworkExtraBundle]
+    git=http://github.com/sensio/SensioFrameworkExtraBundle.git
+    target=/bundles/Sensio/Bundle/FrameworkExtraBundle
+    version=origin/2.0
+
+[JMSSecurityExtraBundle]
+    git=http://github.com/schmittjoh/JMSSecurityExtraBundle.git
+    target=/bundles/JMS/SecurityExtraBundle
+    version=origin/1.0.x
+
+[SensioDistributionBundle]
+    git=http://github.com/sensio/SensioDistributionBundle.git
+    target=/bundles/Sensio/Bundle/DistributionBundle
+
+[SensioGeneratorBundle]
+    git=http://github.com/sensio/SensioGeneratorBundle.git
+    target=/bundles/Sensio/Bundle/GeneratorBundle
+
+[AsseticBundle]
+    git=http://github.com/symfony/AsseticBundle.git
+    target=/bundles/Symfony/Bundle/AsseticBundle
+    version=v1.0.0
+
+[FOSUserBundle]
+    git=git://github.com/FriendsOfSymfony/FOSUserBundle.git
+    target=/bundles/FOS/UserBundle
+    version=1.2.0
+
+[DoctrineExtension]
+    git=http://github.com/l3pp4rd/DoctrineExtensions.git
+    target=/gedmo-doctrine-extensions
+ 
+[DoctrineExtensionsBundle]
+    git=http://github.com/stof/StofDoctrineExtensionsBundle.git
+    target=/bundles/Stof/DoctrineExtensionsBundle
+
+[KnpMenuBundle]
+    git=http://github.com/knplabs/KnpMenuBundle.git
+    target=/bundles/Knp/Bundle/MenuBundle
+
+[doctrine-fixtures]
+    git=http://github.com/doctrine/data-fixtures.git
+
+[DoctrineFixturesBundle]
+    git=http://github.com/symfony/DoctrineFixturesBundle.git
+    target=/bundles/Symfony/Bundle/DoctrineFixturesBundle
+
+[CKEditorBundle]
+    git=http://github.com/Ikimea/CKEditorBundle.git
+    target=/bundles/Ikimea/CKEditorBundle
+
+[LeekGitDebugBundle]
+    git=git://github.com/leek/GitDebugBundle.git
+    target=bundles/Leek/GitDebugBundle
+
+[EWZSearchBundle]
+    git=http://github.com/excelwebzone/EWZSearchBundle.git
+    target=/bundles/EWZ/Bundle/SearchBundle
+
+[Search]
+    git=http://github.com/excelwebzone/zend-search.git
+    target=/zend-search
+
+[SonataSeoBundle]
+    git=http://github.com/sonata-project/SonataSeoBundle.git
+    target=/bundles/Sonata/SeoBundle

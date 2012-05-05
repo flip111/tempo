@@ -1,0 +1,5 @@
+fos_user:
+    db_driver: orm
+    use_listener: false
+    firewall_name: main
+    user_class: Tempo\UserBundle\Entity\User
