@@ -11,3 +11,8 @@ web/bundles/*
 
 # Configuration files
 app/config/parameters.yml
+build/
+.idea
+.DS_Store
+nbproject/
+
