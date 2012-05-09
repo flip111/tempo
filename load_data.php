@@ -18,8 +18,8 @@ $fs = new \Symfony\Component\Filesystem\Filesystem;
 $output = new \Symfony\Component\Console\Output\ConsoleOutput();
 
 // does the parent directory have a parameters.yml file
-if (is_file(__DIR__.'/../parameters.demo.yml')) {
-    $fs->copy(__DIR__.'/../parameters.demo.yml', __DIR__.'/app/config/parameters.yml', true);
+if (is_file(__DIR__.'/../parameters.yml.dist')) {
+    $fs->copy(__DIR__.'/../parameters.yml.dist', __DIR__.'/app/config/parameters.yml', true);
 }
 
 if (!is_file(__DIR__.'/app/config/parameters.yml')) {
@@ -48,7 +48,6 @@ $output->writeln("<info>Resetting demo</info>");
 
 
 execute_commands(array(
-    'bin/vendors install',
     'app/console cache:warmup --env=dev',
     'app/console cache:create-cache-class --env=dev',
     'app/console doctrine:schema:update --force',

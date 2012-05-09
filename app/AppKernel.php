@@ -13,8 +13,10 @@ class AppKernel extends Kernel {
             new Symfony\Bundle\MonologBundle\MonologBundle(),
             new Symfony\Bundle\SwiftmailerBundle\SwiftmailerBundle(),
             new Symfony\Bundle\AsseticBundle\AsseticBundle(),
-            new Symfony\Bundle\DoctrineBundle\DoctrineBundle(),
+            new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
+            new JMS\AopBundle\JMSAopBundle(),
+            new JMS\DiExtraBundle\JMSDiExtraBundle($this),
             new JMS\SecurityExtraBundle\JMSSecurityExtraBundle(),
         );
 
@@ -29,7 +31,7 @@ class AppKernel extends Kernel {
 
         $bundles[] = new FOS\UserBundle\FOSUserBundle();
 
-        $bundles[] = new \Ikimea\CKeditorBundle\IkimeaCKEditorBundle();
+        //$bundles[] = new Ikimea\CKeditorBundle\IkimeaCKEditorBundle();
         
         $bundles[] = new Sonata\SeoBundle\SonataSeoBundle();
 

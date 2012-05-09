@@ -15,4 +15,4 @@ build/
 .idea
 .DS_Store
 nbproject/
-
+composer.phar
