@@ -20,7 +20,7 @@ before_script:
   # Setup code
   - rm -rf .git && git init && git add --all && git commit --quiet -m "Initial commit (from the Tempo Sandbox)" >> install.log
   - wget http://getcomposer.org/composer.phar
-  - php composer.phar install install >> install.log
+  - php composer.phar install >> install.log
   - git add --all && git commit --quiet -m "add submodules" >> install.log
   - php tests/travis/build_bootstrap.php >> install.log
 
