@@ -33,9 +33,9 @@ assetic:
         # closure:
         #     jar: %kernel.root_dir%/java/compiler.jar
         yui_css:
-             jar: %kernel.root_dir%/java/yuicompressor-2.4.7.jar
+             jar: %kernel.root_dir%/../bin/java/yuicompressor-2.4.7.jar
         yui_js:
-            jar: "%kernel.root_dir%/java/yuicompressor-2.4.7.jar"
+            jar: "%kernel.root_dir%/../bin/java/yuicompressor-2.4.7.jar"
 
 # Doctrine Configuration
 doctrine:
@@ -76,5 +76,18 @@ stof_doctrine_extensions:
           
           
 sonata_seo:
-    default:  sonata.seo.page.default
-    title:    Project Management Software
+  default:  sonata.seo.page.default
+  title:    Project Management Software
+
+
+tempo_project:
+  week:
+    fr :
+      1 : Lundi
+      2 : Mardi
+      3 : Mecredi
+      4 : Jeudi
+      5 : Vendredi
+      6 : Samedi
+      7 : Dimanche
+  
