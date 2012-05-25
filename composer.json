@@ -34,7 +34,10 @@
         "excelwebzone/search-bundle" : "dev-master",
         "leek/git-debug-bundle" :  "*",
         "sonata-project/seo-bundle" : "dev-master",
-        "knplabs/knp-time-bundle" : "dev-master"
+        "knplabs/knp-time-bundle" : "dev-master",
+        "tempo/mainbundle" : "dev-master",
+        "tempo/userbundle" : "dev-master",
+        "tempo/projectbundle" : "dev-master",
     },
     "scripts": {
         "post-install-cmd": [
