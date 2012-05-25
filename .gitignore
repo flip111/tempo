@@ -1,10 +1,12 @@
 # Bootstrap
 app/bootstrap*
+app/DoctrineMigrations/*
 
 # Symfony directories
 vendor/*
 */logs/*
 */cache/*
+*/bin/*
 app/data/*
 web/uploads/*
 web/bundles/*
