@@ -38,7 +38,7 @@ class AppKernel extends Kernel {
         
         $bundles[] = new Sonata\SeoBundle\SonataSeoBundle();
 
-        //CRUM
+        //Tempo
         $bundles[] = new Tempo\MainBundle\TempoMainBundle();
         $bundles[] = new Tempo\UserBundle\TempoUserBundle();
         $bundles[] = new Tempo\ProjectBundle\TempoProjectBundle();

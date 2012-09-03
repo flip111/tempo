@@ -7,15 +7,13 @@ framework:
     #esi:             ~
     translator:      { fallback: %locale% }
     secret:          %secret%
-    charset:         UTF-8
     router:          { resource: "%kernel.root_dir%/config/routing.yml" }
     form:            true
     csrf_protection: true
     validation:      { enable_annotations: true }
-    templating:      { engines: ['twig'] } 
+    templating:      { engines: ['twig'] }
     default_locale: %locale%
-    session:
-        auto_start:     true
+    session:         ~
 
 # Twig Configuration
 twig:
@@ -73,8 +71,8 @@ stof_doctrine_extensions:
           timestampable: true
           translatable: false
           tree: false
-          
-          
+
+
 sonata_seo:
   default:  sonata.seo.page.default
   title:    Project Management Software
@@ -83,11 +81,12 @@ sonata_seo:
 tempo_project:
   week:
     fr :
-      1 : Lundi
-      2 : Mardi
-      3 : Mecredi
-      4 : Jeudi
-      5 : Vendredi
-      6 : Samedi
-      7 : Dimanche
-  
+      - Lundi
+      - Mardi
+      - Mecredi
+      - Jeudi
+      - Vendredi
+      - Samedi
+      - Dimanche
+    en :
+      - Monday
