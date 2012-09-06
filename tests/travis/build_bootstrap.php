@@ -12,13 +12,13 @@
 
 $baseDir = __DIR__ . '/../..';
 
-require_once $baseDir.'/vendor/symfony/src/Symfony/Component/ClassLoader/UniversalClassLoader.php';
+require_once $baseDir.'/vendor/symfony/symfony/src/Symfony/Component/ClassLoader/UniversalClassLoader.php';
 
 use Symfony\Component\ClassLoader\UniversalClassLoader;
 use Symfony\Component\ClassLoader\ClassCollectionLoader;
 
 $loader = new UniversalClassLoader();
-$loader->registerNamespaces(array('Symfony' => $baseDir.'/vendor/symfony/src'));
+$loader->registerNamespaces(array('Symfony' => $baseDir.'/vendor/symfony/symfony/src'));
 $loader->register();
 
 $file = $baseDir.'/app/bootstrap.php.cache';
