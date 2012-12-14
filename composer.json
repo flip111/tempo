@@ -1,43 +1,58 @@
 {
-    "name": "tempo-project/tempo-sandbox",
-    "description": "Tempo - Symfony2 Project Management Software",
     "autoload": {
-        "psr-0": { "": "src/" }
+        "psr-0":         {
+            "": "src/"
+        }
     },
+    "config": {
+        "bin-dir": "bin"
+    },
+    "description": "Tempo - Symfony2 Project Management Software",
+    "extra": {
+        "symfony-app-dir": "app",
+        "symfony-web-dir": "web"
+    },
+    "minimum-stability": "dev",
+    "name": "tempo-project/tempo-sandbox",
+
     "require": {
         "php": ">=5.3.3",
-        "symfony/symfony": "2.1.*",
-        "doctrine/orm": "2.2.0",
+
+        "symfony/symfony": "2.1.*@stable",
         "doctrine/doctrine-bundle": "dev-master",
-        "doctrine/doctrine-fixtures-bundle":   "dev-master",
+        "doctrine/doctrine-fixtures-bundle": "dev-master",
         "doctrine/doctrine-migrations-bundle": "dev-master",
-        "twig/extensions": "dev-master",
-        "symfony/assetic-bundle": "dev-master",
-        "symfony/swiftmailer-bundle": "dev-master",
-        "symfony/monolog-bundle": "dev-master",
-        "sensio/distribution-bundle": "dev-master",
-        "sensio/framework-extra-bundle": "dev-master",
-        "sensio/generator-bundle": "dev-master",
-        "jms/security-extra-bundle": "1.2.*",
-        "jms/di-extra-bundle": "1.1.*",
-        "friendsofsymfony/user-bundle": "dev-master",
+        "doctrine/orm": "2.2.0",
+        "behat/behat": "2.4.*@stable",
+        "behat/mink": "1.4@stable",
+        "behat/mink-selenium-driver": "*",
+        "behat/mink-selenium2-driver": "*",
+        "frequence-web/calendr-bundle": "dev-master",
         "friendsofsymfony/rest-bundle": "dev-master",
-        "stof/doctrine-extensions-bundle":"dev-master",
-        "gedmo/doctrine-extensions":"dev-master",
-        "white-october/pagerfanta-bundle":"dev-master",
-        "sonata-project/seo-bundle":"dev-master",
+        "friendsofsymfony/user-bundle": "dev-master",
+        "gedmo/doctrine-extensions": "dev-master",
+        "ikimea/browser": "dev-master",
+        "ikimea/ckeditor-bundle": "dev-master",
+        "jms/di-extra-bundle": "1.1.*",
+        "jms/security-extra-bundle": "1.2.*",
         "knplabs/knp-menu-bundle": "dev-master",
-        "ikimea/ckeditor-bundle" : "dev-master",
-        "ikimea/browser" : "dev-master",
-        "leek/git-debug-bundle" :  "2.0.x-dev",
-        "sonata-project/seo-bundle" : "dev-master",
-        "knplabs/knp-time-bundle" : "dev-master",
-        "tempo/mainbundle" : "dev-master",
-        "tempo/userbundle" : "dev-master",
-        "tempo/projectbundle" : "dev-master",
-        "friendsofsymfony/rest-bundle" : "dev-master",
-        "yohang/calendr": "dev-master",
-        "frequence-web/calendr-bundle" : "dev-master"
+        "knplabs/knp-time-bundle": "dev-master",
+        "leek/git-debug-bundle": "2.0.x-dev",
+
+        "sensio/distribution-bundle": "2.1.*",
+        "sensio/framework-extra-bundle": "2.1.*",
+        "sensio/generator-bundle": "2.1.*",
+        "sonata-project/seo-bundle": "dev-master",
+        "stof/doctrine-extensions-bundle": "dev-master",
+        "symfony/assetic-bundle": "dev-master",
+        "symfony/monolog-bundle": "dev-master",
+        "symfony/swiftmailer-bundle": "dev-master",
+        "tempo/mainbundle": "dev-master",
+        "tempo/projectbundle": "dev-master",
+        "tempo/userbundle": "dev-master",
+        "twig/extensions": "dev-master",
+        "white-october/pagerfanta-bundle": "dev-master",
+        "yohang/calendr": "dev-master"
     },
     "scripts": {
         "post-install-cmd": [
@@ -52,13 +67,5 @@
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile"
         ]
-    },
-    "config": {
-        "bin-dir": "bin"
-    },
-    "minimum-stability": "dev",
-    "extra": {
-        "symfony-app-dir": "app",
-        "symfony-web-dir": "web"
     }
 }

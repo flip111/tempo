@@ -72,6 +72,19 @@ stof_doctrine_extensions:
           translatable: false
           tree: false
 
+knp_time: ~  # Enable the helper for use in templates
+
+ikimea_ck_editor:
+    lang : fr
+    src : /bundles/ikimeackeditor/js/ckeditor/
+    skin: kama
+    toolbar:
+      - ['Format']
+      - ['Bold','Italic']
+      - ['Outdent','Indent','Blockquote']
+      - ['NumberedList','BulletedList']
+      - ['-','Link','Unlink','Anchor','-','Table']
+      - ['Maximize','Source']
 
 sonata_seo:
   default:  sonata.seo.page.default

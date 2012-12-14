@@ -32,10 +32,11 @@ class AppKernel extends Kernel {
         $bundles[] = new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle();
 
         $bundles[] = new FOS\UserBundle\FOSUserBundle();
-        $bundles[] = new  Knp\Bundle\MenuBundle\KnpMenuBundle();
+        $bundles[] = new Knp\Bundle\MenuBundle\KnpMenuBundle();
+        $bundles[] = new Knp\Bundle\TimeBundle\KnpTimeBundle();
 
         $bundles[] = new Ikimea\CKEditorBundle\IkimeaCKEditorBundle();
-        
+
         $bundles[] = new Sonata\SeoBundle\SonataSeoBundle();
 
         //Tempo
