@@ -10,6 +10,7 @@ vendor/*
 app/data/*
 web/uploads/*
 web/bundles/*
+src/*
 
 # Configuration files
 app/config/parameters.yml
@@ -18,3 +19,5 @@ build/
 .DS_Store
 nbproject/
 composer.phar
+
+bin/behat
