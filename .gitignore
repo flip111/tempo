@@ -22,4 +22,3 @@ composer.phar
 
 bin/behat
 composer.lock
-app/config/parameters.yml.dist
