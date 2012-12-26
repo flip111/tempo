@@ -9,21 +9,21 @@ env:
 before_script:
   - echo "Starting install" > install.log
 
-  # Setup nginx
-  - sudo apt-get -qq install nginx spawn-fcgi supervisor >> install.log
-  - php-cgi -b 127.0.0.1:9350 &
-  - sudo nginx -c tests/travis/nginx.conf -p "$PWD/"
-
   # Setup Database
+  - cp app/config/parameters.yml.dist app/config/parameters.yml
   - sh -c "if [ '$DB' = 'mysql' ]; then mysql -e 'CREATE DATABASE IF NOT EXISTS tempo_demo;'; fi" >> install.log
 
   # Setup code
-  - rm -rf .git && git init && git add --all && git commit --quiet -m "Initial commit (from the Tempo Sandbox)" >> install.log
-    - wget http://getcomposer.org/composer.phar
+
+  - wget http://getcomposer.org/composer.phar
   - php composer.phar install >> install.log
-  - git add --all && git commit --quiet -m "add submodules" >> install.log
-  - php tests/travis/build_bootstrap.php >> install.log
+  - mkdir -p app/cache app/logs
+  - sudo chmod -R 777 app/cache app/logs
+
 
   # Setup fixtures
   - cp tests/travis/parameters.yml app/config/parameters.yml >> install.log
-  - php load_data.php >> install.log
+
+script:
+    - phpunit -c app/
+    - ./bin/behat-ci.sh
