@@ -22,6 +22,7 @@
         "symfony/assetic-bundle": "dev-master",
         "symfony/monolog-bundle": "dev-master",
         "symfony/swiftmailer-bundle": "dev-master",
+        "sensio/generator-bundle": "2.1.*",
 
         "doctrine/doctrine-bundle": "dev-master",
         "doctrine/doctrine-migrations-bundle": "dev-master",
@@ -56,13 +57,12 @@
     },
 
     "require-dev": {
-        "sensio/generator-bundle": "2.1.*",
         "leek/git-debug-bundle": "2.0.x-dev",
         "doctrine/doctrine-fixtures-bundle": "dev-master",
         "phpunit/phpunit": "3.7.*",
         "behat/mink-extension": "*",
-        "behat/mink-goutte-driver": "*",
-        "behat/behat": "2.4.*@stable",
+        "behat/behat": "2.4.*",
+        "behat/symfony2-extension": "*",
         "behat/mink-selenium-driver": "*",
         "behat/mink-selenium2-driver": "*"
     },
