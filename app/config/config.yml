@@ -61,7 +61,7 @@ knp_time: ~  # Enable the helper for use in templates
 
 ikimea_ck_editor:
     lang : fr
-    src : /bundles/ikimeackeditor/js/ckeditor/
+    src : /bundles/tempomain/js/ckeditor
     skin: kama
     toolbar:
       - ['Format']
@@ -72,8 +72,8 @@ ikimea_ck_editor:
       - ['Maximize','Source']
 
 sonata_seo:
-  default:  sonata.seo.page.default
-  title:    Project Management Software
+  page:
+    title:    Project Management Software
 
 
 tempo_project:
