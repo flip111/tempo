@@ -1,6 +1,6 @@
 default:
   extensions:
     Behat\MinkExtension\Extension:
-      base_url: 'http://tempo.demo.ikimea.com/'
+      base_url: 'http://tempo.local/'
       goutte:    ~
       selenium2: ~
