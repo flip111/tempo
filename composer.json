@@ -39,9 +39,6 @@
         "knplabs/knp-time-bundle": "dev-master",
         "sonata-project/seo-bundle": "dev-master",
         "stof/doctrine-extensions-bundle": "dev-master",
-        "tempo/mainbundle": "dev-master",
-        "tempo/projectbundle": "dev-master",
-        "tempo/userbundle": "dev-master",
 
         "white-october/pagerfanta-bundle": "dev-master",
         "yohang/calendr": "dev-master"
@@ -49,6 +46,7 @@
     "require-dev": {
         "behat/behat": ">=2.4.0,<2.5.0-dev",
         "behat/symfony2-extension": "dev-master",
+        "behat/mink-extension": "*",
         "behat/mink-goutte-driver": "dev-master",
         "behat/mink-selenium2-driver": "*",
         "doctrine/doctrine-fixtures-bundle": "dev-master",
