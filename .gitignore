@@ -7,10 +7,13 @@ vendor/*
 */logs/*
 */cache/*
 */bin/*
+app/config/deploy/*
 app/data/*
 web/uploads/*
 web/bundles/*
 src/*
+!app/config/deploy/*.rb.dist
+
 
 # Configuration files
 app/config/parameters.yml
