@@ -30,7 +30,7 @@ class AppKernel extends Kernel {
             $bundles[] = new Elao\WebProfilerExtraBundle\WebProfilerExtraBundle();
 
         }
-
+        $bundles[] = new Liip\ImagineBundle\LiipImagineBundle();
         $bundles[] = new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle();
 
         $bundles[] = new FOS\UserBundle\FOSUserBundle();
