@@ -14,6 +14,7 @@ Installation
 
 ``` bash
 $ git clone https://github.com/tempo-project/tempo-sandbox.git tempo
+$ composer install
 ```
 
 Then configure your project and create database.
