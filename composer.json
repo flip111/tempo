@@ -1,40 +1,41 @@
 {
-    "autoload": {
-        "psr-0":         {
-            "": "src/"
+    "name": "tempo-project/Tempo",
+    "type":        "project",
+    "description": "Symfony2 Project Management Software",
+    "license":     "MIT",
+    "authors": [
+        {
+            "name":     "Mlanawo Mbechezi",
+            "homepage": "http://mlanawo.mbechezi.com"
+        },
+        {
+            "name":     "Tempo project",
+            "homepage": "http://tempo.ikimea.com"
+        },
+        {
+            "name":     "Community contributions",
+            "homepage": "http://github.com/tempo-project/Tempo/contributors"
         }
-    },
-    "config": {
-        "bin-dir": "bin"
-    },
-    "description": "Tempo - Symfony2 Project Management Software",
-    "extra": {
-        "symfony-app-dir": "app",
-        "symfony-web-dir": "web"
-    },
-    "minimum-stability": "dev",
-    "name": "tempo-project/tempo-sandbox",
+    ],
     "require": {
         "php": ">=5.3.3",
-        "symfony/symfony": "2.2.*",
+        "symfony/symfony": "2.3.*",
         "doctrine/orm": ">=2.2.3,<2.4-dev",
         "doctrine/doctrine-bundle": "1.2.*",
         "doctrine/doctrine-migrations-bundle": "dev-master",
-        "symfony/assetic-bundle": "2.1.*",
-        "symfony/monolog-bundle": "2.2.*",
-        "symfony/swiftmailer-bundle": "2.2.*",
-        "sensio/distribution-bundle": "2.2.*",
-        "sensio/framework-extra-bundle": "2.2.*",
-        "sensio/generator-bundle": "2.2.*",
+        "symfony/assetic-bundle": "2.3.*",
+        "symfony/swiftmailer-bundle": "2.3.*",
+        "symfony/monolog-bundle": "2.3.*",
+        "sensio/distribution-bundle": "2.3.*",
+        "sensio/framework-extra-bundle": "2.3.*",
         "twig/extensions": "1.0.*",
+        "knplabs/knp-snappy-bundle": "dev-master",
 
         "frequence-web/calendr-bundle": "dev-master",
         "friendsofsymfony/rest-bundle": "dev-master",
         "friendsofsymfony/user-bundle": "dev-master",
         "ikimea/browser": "dev-master",
         "ikimea/ckeditor-bundle": "dev-master",
-        "jms/security-extra-bundle": "1.4.*",
-        "jms/di-extra-bundle": "1.3.*",
         "knplabs/knp-menu-bundle": "dev-master",
         "knplabs/knp-time-bundle": "dev-master",
         "sonata-project/seo-bundle": "dev-master",
@@ -67,5 +68,18 @@
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile"
         ]
-    }
+    },
+    "autoload": {
+        "psr-0":         {
+            "": "src/"
+        }
+    },
+    "config": {
+        "bin-dir": "bin"
+    },
+    "extra": {
+        "symfony-app-dir": "app",
+        "symfony-web-dir": "web"
+    },
+    "minimum-stability": "dev"
 }
