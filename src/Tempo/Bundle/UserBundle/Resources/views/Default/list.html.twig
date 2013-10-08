@@ -1,0 +1,28 @@
+{% extends "TempoMainBundle::Layout/web.html.twig" %}
+{% block bodyClass %}users list{% endblock %}
+
+{% block content %}
+    <div id="user_list">
+
+    {% for user in users %}
+        <div id="user-{{ user.id }}" class="user-list-info">
+            <p class="avatar">
+                <img src="/bundles/tempomain/images/avatar-defaut.png" />
+            </p>
+            <p class="infos">
+                <a href="{{path('user_profile_show', {'slug':user.usernameCanonical})}}">{{ user.username }} </a>
+                <a class="btn btn-mini" href="{{path('user_profile_edit')}}">edit</a>
+                <br />
+                {{ user.email}}
+            </p>   
+        </div>
+    {% else %}
+        <p>Aucun utilisateur n'a été trouvé.</p>
+    {% endfor %}
+
+    </div>
+{% endblock %}
+
+{% block right %}
+    {% include 'TempoUserBundle::Default/_sidebar-right.html.twig' %}
+{% endblock %}

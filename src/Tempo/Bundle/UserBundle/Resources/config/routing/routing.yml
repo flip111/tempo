@@ -1,0 +1,29 @@
+user_autocomplete:
+    pattern:  /user/autocomplete/{username}
+    requirements: { _format: json }
+    defaults: { _controller: TempoUserBundle:Api:autocomplete, username: all }
+
+user_list:
+    pattern:  /user/list
+    defaults: { _controller: TempoUserBundle:Default:list }
+
+
+#fosUserBundle
+fos_user_security:
+    resource: "@FOSUserBundle/Resources/config/routing/security.xml"
+
+tempo_user_profile:
+    resource: "@TempoUserBundle/Resources/config/routing/profile.yml"
+    prefix: /profile
+
+fos_user_register:
+    resource: "@FOSUserBundle/Resources/config/routing/registration.xml"
+    prefix: /register
+
+fos_user_resetting:
+    resource: "@FOSUserBundle/Resources/config/routing/resetting.xml"
+    prefix: /resetting
+
+fos_user_change_password:
+    resource: "@FOSUserBundle/Resources/config/routing/change_password.xml"
+    prefix: /change-password

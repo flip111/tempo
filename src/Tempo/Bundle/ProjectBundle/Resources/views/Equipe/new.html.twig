@@ -1,0 +1,7 @@
+<form action="{{ path(route_category, { 'slug' : category.slug } ) }}" method="post" {{ form_enctype(form) }} class="clearfix">
+    {{ form_widget(form) }}
+
+    <div class="rest">
+            <input type="submit" class="submit btn" />
+    </div>
+</form>

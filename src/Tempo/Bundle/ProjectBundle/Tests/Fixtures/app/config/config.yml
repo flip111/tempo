@@ -1,0 +1,66 @@
+imports:
+    - { resource: parameters.yml }
+    - { resource: security.yml }
+
+framework:
+    router:          { resource: "%kernel.root_dir%/config/routing.yml" }
+    profiler:        { only_exceptions: false }
+    test:             ~
+    #esi:             ~
+    #translator:      { fallback: %locale% }
+    secret:          d0c2f6bb2c9e532bd95a36fede828c3db0cb04bc
+    form:            true
+    csrf_protection: true
+    validation:      { enable_annotations: true }
+    templating:      { engines: ['twig'] } #assets_version: SomeVersionScheme
+    default_locale:  en
+    session:
+        storage_id: session.storage.filesystem
+
+# Twig Configuration
+twig:
+    debug:            %kernel.debug%
+    strict_variables: %kernel.debug%
+
+# Doctrine Configuration
+doctrine:
+    dbal:
+        driver:   pdo_mysql
+        host:     localhost
+        port:     ~
+        dbname:   tempo
+        user:     root
+        password: azerty123
+        charset:  UTF8
+        path:     %kernel.cache_dir%/roger.db
+
+    orm:
+        auto_generate_proxy_classes: %kernel.debug%
+        auto_mapping: true
+        mappings:
+            StofDoctrineExtensionsBundle: false # The mapping is only needed when using the Translatable or the Loggable behaviors
+
+stof_doctrine_extensions:
+    default_locale: en_US
+    orm:
+        default:
+            timestampable: true
+
+fos_user:
+    db_driver: orm
+    use_listener: false
+    firewall_name: main
+    user_class: Tempo\Bundle\UserBundle\Entity\User
+
+tempo_project:
+  week:
+    fr :
+      - Lundi
+      - Mardi
+      - Mecredi
+      - Jeudi
+      - Vendredi
+      - Samedi
+      - Dimanche
+    en :
+      - Monday

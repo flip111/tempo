@@ -1,0 +1,52 @@
+{% extends "FOSUserBundle::layout.html.twig" %}
+
+{% block content %}
+
+
+<script type="text/javascript">
+
+   window.onload = function(){
+       var element;
+       element = document.getElementById("user");
+       element.setAttribute('style', 'background: url("{{ asset('bundles/tempomain/images/bg_login.jpg') }}"); background-position: left top;');
+   }
+
+</script>
+
+<h1>Tempo </h1>
+
+{% if error %}
+    <div class="form-error">{{ error }}</div>
+{% endif %}
+
+<form action="{{ path("fos_user_security_check") }}" method="post">
+    <div class="widget">
+        <label for="username">{{ 'security.login.username'|trans([], 'FOSUserBundle') }}</label>
+        <input type="text" id="username" name="_username" value="{{ last_username }}" /><br />
+    </div>
+
+    <div class="widget">
+        <label for="password">{{ 'security.login.password'|trans([], 'FOSUserBundle') }}</label>
+        <input type="password" id="password" name="_password" />
+    </div>
+    <div class="widget remember">
+
+        <label for="remember_me">{{ 'security.login.remember_me'|trans([], 'FOSUserBundle') }}</label>
+        <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
+    </div>
+    <div class="widget rest clearfix">
+
+        <p class="send">
+            <a href="{{ path('fos_user_change_password') }}">{{ 'resetting.request.submit'|trans([], 'FOSUserBundle') }}</a>
+        </p>
+        <div class="submit"><input type="image" src="{{ asset('bundles/tempomain/images/button-login.png') }}" alt="Login" name="{{ 'security.login.submit'|trans([], 'FOSUserBundle') }}" /></div>
+
+         <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+
+    </div>
+    <div id="powered" class="clearfix">
+        <p>Powered by <a href="http://www.ikimea.com">Ikimea</a> </p>
+    </div>
+
+</form>
+{% endblock content %}

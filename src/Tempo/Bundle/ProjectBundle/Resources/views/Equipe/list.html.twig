@@ -1,0 +1,5 @@
+<ul class="list">
+    {% for user in users %}
+    <li><a href="{{ path('fos_user_profile_show', { 'id': user.id }) }}"> <img src="/bundles/tempomain/images/avatar-defaut.png" />{{ user.userName }} </a></li>
+    {% endfor %}
+</ul>

@@ -1,0 +1,52 @@
+parameters:
+    tempo_main.settings_manager.class: Tempo\Bundle\MainBundle\Manager\SettingsManager
+    tempo_main.menu_builder.class: Tempo\Bundle\MainBundle\Menu\Builder
+    tempo_main.behavior_manager.class: Tempo\Bundle\MainBundle\Helper\Behavior
+    tempo_main.resource_manager.class: Tempo\Bundle\MainBundle\Resource\ResourceManager
+    form.type.autocomplete.class : Tempo\Bundle\MainBundle\Form\Type\AutocompleteType
+
+services:
+    tempo_main.resource_manager:
+      class: %tempo_main.resource_manager.class%
+
+    tempo_main.behavior:
+      class: %tempo_main.behavior_manager.class%
+      arguments: ["@tempo_main.resource_manager", @router]
+
+    tempo_main.settings_manager:
+      class: %tempo_main.settings_manager.class%
+      arguments: [@doctrine.orm.entity_manager]
+
+
+    twig.extension.MainExtension:
+      class: Tempo\Bundle\MainBundle\Twig\Extension\MainExtension
+      arguments: [@service_container, @time.templating.helper.time]
+      tags:
+        - { name: twig.extension }
+
+    tempo_main.menu_builder:
+      class: %tempo_main.menu_builder.class%
+      arguments: ["@knp_menu.factory", @translator]
+
+
+    tempo_main.menu:
+          class: Knp\Menu\MenuItem # the service definition requires setting the class
+          factory_service: tempo_main.menu_builder
+          factory_method: menu
+          tags:
+            - { name: knp_menu.menu, alias: menu }
+
+    tempo_main.breadcrumb:
+      class: Knp\Menu\MenuItem # the service definition requires setting the class
+      factory_service: tempo_main.menu_builder
+      factory_method: breadcrumb
+      tags:
+        - { name: knp_menu.menu, alias: breadcrumb }
+
+
+#Form
+    form.type.autocomplete:
+      class : %form.type.autocomplete.class%
+      arguments: ["@tempo_main.behavior"]
+      tags:
+        - { name : form.type, alias : autocomplete }

@@ -1,0 +1,41 @@
+client_show:
+    pattern:  /{slug}/show
+    defaults: { _controller: TempoProjectBundle:Client:show }
+    requirements:
+        _method:  GET
+
+client_new:
+    pattern:  /new
+    defaults: { _controller: TempoProjectBundle:Client:new }
+
+client_create:
+     pattern:  /create
+     defaults: { _controller: TempoProjectBundle:Client:create }
+
+client_edit:
+    pattern:  /{slug}/edit
+    defaults: { _controller: TempoProjectBundle:Client:edit }
+    requirements:
+        _method:  GET
+
+client_update:
+     pattern:  /{id}/update
+     defaults: { _controller: TempoProjectBundle:Client:update }
+
+client_delete:
+    pattern:  /{slug}/delete
+    defaults: { _controller: TempoProjectBundle:Client:delete }
+
+client_equipe_add:
+    pattern:  /{slug}/equipe/add
+    defaults: { _controller: TempoProjectBundle:Client:add }
+
+client_equipe_create:
+    pattern:  /{slug}/equipe/create
+    defaults: { _controller: TempoProjectBundle:Equipe:create }
+    requirements:
+        _method:  GET
+
+client_equipe_delete:
+    pattern:  /{slug}/equipe/delete
+    defaults: { _controller: TempoProjectBundle:Equipe:delete }

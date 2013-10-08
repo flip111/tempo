@@ -1,0 +1,37 @@
+{% extends "TempoMainBundle::Layout/web.html.twig" %}
+{% block bodyClass %}client edit{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript" src="{{ asset('bundles/tempoproject/js/client.js')}}"></script>
+{% endblock %}
+
+
+{% block content %}
+<h1 id="page-title">Edit client : {{ client.name  }}</h1>
+
+<form action="{{ path('client_update', { 'id': client.id }) }}" method="post" {{ form_enctype(form) }} class="clearfix">
+    <div class="form-block">
+        {{ form_widget(form) }}
+    </div>
+
+    <div class="rest">
+        <input type="submit" class="submit btn" />
+    </div>
+</form>
+{% endblock %}
+
+{% block right %}
+<div class="add_new_btn">
+    <a data-title="Adding a team member" href="#add_membre" class="btn btn-xs">Add membre<span></span></a>
+</div>
+
+<div id="add_membre" style="display: none;">
+    {% include 'TempoProjectBundle:Equipe:new.html.twig' with {'form': equipeForm, 'category' : client, 'route_category' : 'client_equipe_add' } %}
+</div>
+
+
+<div class="list_membre">
+    {% include 'TempoProjectBundle:Equipe:list.html.twig' with {'users': client.equipe } %}
+</div>
+
+{% endblock %}

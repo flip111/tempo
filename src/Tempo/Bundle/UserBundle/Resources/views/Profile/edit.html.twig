@@ -1,0 +1,43 @@
+{% extends "TempoMainBundle::Layout/web.html.twig" %}
+
+{% block content %}
+
+
+<div class="form-block">
+   <form action="{{ path('user_profile_update') }}" {{ form_enctype(form) }} method="POST" class="user_profile_edit">
+        {{ form_errors(form) }}
+       
+       <fieldset>
+           <div class="formtextField">{{ form_row(form.username) }}</div>
+            <div class="formtextField">{{ form_row(form.email) }}</div>
+       </fieldset>
+
+       <fieldset>
+        <div class="formtextField">{{ form_row(form.first_name) }}</div>
+        <div class="formtextField">{{ form_row(form.last_name) }}</div>
+       </fieldset>
+
+       <fieldset>
+        <div class="formtextField">{{ form_row(form.phone) }}</div>
+        <div class="formtextField">{{ form_row(form.phone_mobile) }}</div>
+       </fieldset>
+
+       <fieldset>
+         <div class="formtextField">{{ form_row(form.job_title) }}</div>
+       </fieldset>
+
+       <div>
+           {{ form_rest(form) }}
+            <input type="submit" value="{{ buttons.edit }}" class="btn"/>
+        </div>
+    </form>
+</div>
+
+{% endblock %}
+
+
+
+{% block right %}
+    <h3>Related Settings</h3>
+    {% include "TempoUserBundle:Default:_sidebar-right.html.twig" %}
+{% endblock %}

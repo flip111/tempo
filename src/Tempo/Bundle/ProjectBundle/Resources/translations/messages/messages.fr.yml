@@ -1,0 +1,11 @@
+projet_label_isactive : Active
+projet_label_client : Client
+projet_label_name : Nom
+projet_label_beginning: Début
+projet_label_ending: Fin
+projet_label_type: Type
+projet_label_avancement: Avancement
+projet_label_code: Code
+projet_label_status: Status
+projet_label_estimated: Budget Estimé
+projet_label_spending: Budget dépenses

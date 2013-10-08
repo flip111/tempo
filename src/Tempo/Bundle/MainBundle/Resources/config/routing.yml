@@ -1,0 +1,7 @@
+settings:
+    pattern: /settings
+    defaults: { _controller: TempoMainBundle:Default:settings }
+
+help:
+    pattern: /help
+    defaults: { _controller: TempoMainBundle:Default:help }

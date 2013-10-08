@@ -1,0 +1,2 @@
+_tempo_projects:
+    resource: "@TempoProjectBundle/Resources/config/routing.yml"

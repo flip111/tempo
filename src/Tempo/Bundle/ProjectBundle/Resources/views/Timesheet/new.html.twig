@@ -1,0 +1,22 @@
+{% extends app.request.isXmlHttpRequest ? 'TempoMainBundle::Layout/ajax.html.twig' : 'TempoMainBundle::Layout/web.html.twig' %}
+
+{% block content %}
+
+<form class="time-form" action="{{ path('timesheet_create') }}" method="post" {{ form_enctype(form) }}>
+    {{ form_row(form.time) }}
+    {{ form_widget(form) }}
+    <p>
+        <button type="submit">Create</button>
+    </p>
+</form>
+{% endblock %}
+
+{% block right %}
+<ul class="record_actions">
+    <li>
+        <a href="{{ path('timesheet') }}">
+            Back to the list
+        </a>
+    </li>
+</ul>
+{% endblock %}

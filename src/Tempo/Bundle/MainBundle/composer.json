@@ -1,0 +1,31 @@
+{
+    "name": "tempo/main-bundle",
+    "type": "symfony-bundle",
+    "description": "Common Tempo - Symfony2 Project Management Software.",
+    "keywords": ["management", "crm", "symfony2", "timesheet"],
+    "homepage": "http://tempo.ikimea.com",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Mlanawo Mbechezi",
+            "email": "mlanawo.mbechezi@ikimea.com",
+            "homepage": "http://www.ikimea.com"
+        },
+        {
+            "name": "Community contributions",
+            "homepage": "https://github.com/tempo-project/TempoMainBundle/contributors"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.2",
+        "symfony/symfony":                 ">=2.1",
+        "tempo/projectbundle": "*"
+    },
+    "require-dev": {
+        "doctrine/orm": "2.*"
+    },
+    "autoload": {
+        "psr-0": { "Tempo\\MainBundle": "" }
+    },
+    "target-dir": "Tempo/MainBundle"
+}

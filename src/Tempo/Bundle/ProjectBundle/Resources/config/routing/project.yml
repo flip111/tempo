@@ -1,0 +1,46 @@
+project_home:
+    pattern:  /
+    defaults: { _controller: TempoProjectBundle:Default:index }
+
+project_client_list:
+    pattern:  /{client}/list
+    defaults: { _controller: TempoProjectBundle:Project:list }
+
+project_show:
+    pattern:  /{slug}/show
+    defaults: { _controller: TempoProjectBundle:Project:show }
+
+project_new:
+    pattern:  /{client}/new
+    defaults: { _controller: TempoProjectBundle:Project:new }
+
+project_create:
+    pattern:  /create
+    defaults: { _controller: TempoProjectBundle:Project:create }
+
+project_edit:
+    pattern:  /{slug}/edit
+    defaults: { _controller: TempoProjectBundle:Project:edit }
+
+project_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "TempoProjectBundle:Project:update" }
+    requirements: { _method: post }
+
+project_delete:
+    pattern:  /{slug}/delete
+    defaults: { _controller: TempoProjectBundle:Project:delete }
+
+project_equipe_add:
+    pattern:  /{slug}/equipe/add
+    defaults: { _controller: TempoProjectBundle:Equipe:add }
+
+project_equipe_create:
+    pattern:  /{slug}/equipe/create
+    defaults: { _controller: TempoProjectBundle:Equipe:create }
+    requirements:
+        _method:  GET
+
+project_equipe_delete:
+    pattern:  /{slug}/equipe/delete
+    defaults: { _controller: TempoProjectBundle:Equipe:delete }

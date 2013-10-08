@@ -1,0 +1,30 @@
+{% extends "TempoMainBundle::Layout/web.html.twig" %}
+{% block bodyClass %}project{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript" src="{{ asset('bundles/tempoproject/js/client.js')}}"></script>
+{% endblock %}
+{% block content %}
+    <div id="choose-client">
+            <p class="first"> {{ 'select_client.first'|trans({},'TempoProject') }} <span> ⟶ </span> </p>
+            <p class="second"> {{ 'select_client.second'|trans({},'TempoProject') }} </p>
+    </div>
+{% endblock %}
+
+{% block right %}
+    <div class="add_new_btn">
+        <a href="{{ path('client_new') }}" class="btn btn-primary" data-type="ajax" data-title="Add new client" data-overlay="false" data-esc-close="true">{{ 'client.add' |trans({},'TempoProject') }}  <span></span></a>
+    </div>
+    <div id="clients">
+        <ul class="list">
+            {% for client in clients %}
+                <li> <span>»</span>
+                    <a href="{{ path('client_show', { 'slug' : client.slug } ) }}"> {{ client.name }} </a>
+                    <a data-any-close="true" data-buttons="[{className:'right modal-close','text':'No, thanks','event':'cancel'},{className:'left','text':'Sure!','event':'confirm'}]" class="modal-overlay close" href="{{ path('client_delete', { 'slug': client.slug }) }}"> x </a>
+                </li>
+            {% else %}
+                <p>{% trans %} Aucun client n'a été trouvé. {% endtrans %}</p>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock %}

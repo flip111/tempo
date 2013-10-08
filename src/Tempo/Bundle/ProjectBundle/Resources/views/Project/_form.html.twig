@@ -1,0 +1,33 @@
+{{ form_errors(form) }}
+
+<fieldset class="fieldset-block float-left">
+    <div class="formtextField">{{ form_row(form.client) }}</div>
+    <div class="formtextField">{{ form_row(form.name) }}</div>
+    <div class="formtextField">{{ form_row(form.code) }}</div>
+
+    <div class="formtextField">{{ form_row(form.beginning, { 'attr': {'class': 'select_replace'} }) }}</div>
+
+    <div class="formtextField">{{ form_row(form.ending) }}</div>
+</fieldset>
+
+<fieldset class="float-left">
+    <div class="formtextField">{{ form_row(form.isActive) }}</div>
+    <div class="formtextField">{{ form_row(form.type) }}</div>
+    <div class="formtextField">{{ form_row(form.status) }}</div>
+    <div class="formtextField">{{ form_row(form.budget_estimated) }}</div>
+    <div class="formtextField">
+
+        {{ form_label(form.avancement) }}
+        {{ form_errors(form.avancement) }}
+        {{ form_widget(form.avancement, { 'attr' :  { 'disabled' : 'disabled', 'style': 'display: none' }}) }}
+
+        <div id="slider" class="slider">
+            <div class="knob"><span id="knob_value">{{ form.avancement.get('value') }}%</span></div>
+        </div>
+
+    </div>
+</fieldset>
+<div class="formtextField clearfix">{{ form_widget(form.description) }}</div>
+<p>
+    {{form_rest(form)}}
+</p>

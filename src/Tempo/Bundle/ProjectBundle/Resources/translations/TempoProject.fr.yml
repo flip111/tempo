@@ -1,0 +1,53 @@
+select_client:
+  first: Sélectionnez le client
+  second: Afficher ses projets
+
+submit: Valider
+
+client:
+  add:  Ajouter un client
+  edit: Modifier un client
+
+project:
+  add: Ajouter un nouveau projet
+  edit: Modifier un projet
+  title_subprojects: Sous project
+  add_membre: Affecter un membre
+  display_projects: Afficher les projets
+
+errors:
+  internal_error: Une erreur interne est survenue
+  format_file: Le format de votre fichier est invalide
+
+msg_success:
+  avatar_deleted: %owner% avatar a été supprimé.
+  avatar_modified: %owner% avatar a été modifié.
+
+menu:
+  profil: Profil
+  avatar: Avatar
+  email: Adresse email
+  password: Mot de passe
+  preferences: Préférences
+  project: Projets
+  users: Utilisateurs
+  home: Accueil
+  timesheet: CRA
+
+avatar:
+  title: Modifier mon avatar
+  title_second: Changez la façon dont les autres utilisateurs vous voient
+  choose_avatar: Choisir un nouvel avatar
+  actual_avatar: Avatar actuel
+  avatar_info: Vous pouvez envoyer une image mesurant jusqu'à <strong>100x100 pixels</strong> aux formats PNG, JPEG ou GIF.%balise3%Si celle-ci est trop grande elle sera automatiquement redimensionnée à la taille maximale autorisée.
+  admin_change: Modifier l'avatar de
+  current_change: Vous êtes entrain de modifier l'avatar de
+
+timesheets:
+  last_week: Semaine précédente
+  next_week: Semaine suivante
+
+buttons:
+  edit: Editer
+  submit: Valider
+  delete: Supprimer

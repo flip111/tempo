@@ -1,0 +1,4 @@
+Tempo\ProjectBundle\Entity\Client:
+    properties:
+        name:
+            - NotBlank: ~

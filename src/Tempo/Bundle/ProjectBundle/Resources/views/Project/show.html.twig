@@ -1,0 +1,85 @@
+{% extends "TempoMainBundle::Layout/web.html.twig" %}
+{% block bodyClass %}project show{% endblock %}
+{% block content %}
+
+    <div class="actions">
+        <a class="btn btn-mini" href="{{ path('project_new', { 'parent' : project.id, 'client': project.client.slug }) }}"> <span class="icon-plus"></span> {{ 'project.title_subprojects'|trans([], 'TempoProject') }}</a>
+        <a class="btn btn-mini" href="{{ path('project_edit', { 'slug': project.slug }) }}"> <span class="icon-edit"></span> Edit</a>
+        <a class="btn btn-mini "> <span class="icon-trash"></span> Remove</a>
+    </div>
+
+    <h1 id="page-title">{{ project.name }}</h1>
+    <div class="mod-head">
+        <h3>Description </h3>
+    </div>
+    <div class="mod-content clearfix">
+
+        <ul class="item-details  float-left">
+            <li>
+                <dl>
+                    <dt>Code:</dt>
+                    <dd>{{ project.code }}</dd>
+                </dl>
+                <dl>
+                    <dt>Created</dt>
+                    <dd>{{ datetime_diff(project.created) }} </dd>
+                </dl>
+                <dl>
+                    <dt>Updated</dt>
+                    <dd>{{ datetime_diff(project.updated) }}</dd>
+                </dl>
+            </li>
+
+        </ul>
+
+        <ul class="item-details  float-right">
+            <li>
+                <dl>
+                    <dt>Client:</dt>
+                    <dd>{{ project.client }}</dd>
+                </dl>
+                <dl>
+                    <dt>Début</dt>
+                    <dd> {{ datetime_diff(project.created, null, false) }} </dd>
+                </dl>
+                <dl>
+                    <dt>Fin</dt>
+                    <dd>{{ datetime_diff(project.updated, null, false) }}</dd>
+                </dl>
+            </li>
+
+        </ul>
+        <blockquote class="description">
+            {{ project.description|raw }}
+        </blockquote>
+    </div>
+
+    <div class="mod-head">
+        <h3> {{ 'project.title_subprojects'|trans([], 'TempoProject') }} </h3>
+    </div>
+
+    <div class="project-children">
+        {% for children in project.children %}
+            <div class="children"><a href="{{ path('project_show', { 'slug' : children.slug } ) }}">{{ children.name }}</a> </div>
+        {% endfor %}
+    </div>
+
+
+{% endblock %}
+{% block right %}
+<ul class="record_actions">
+
+    <div class="add_new_btn">
+        <a data-title="Adding a team member" href="#add_membre" class="btn btn-xs">{{ 'project.add_membre'|trans([], 'TempoProject') }}<span></span></a>
+    </div>
+
+    <div id="add_membre" style="display: none;">
+        {% include 'TempoProjectBundle:Equipe:new.html.twig' with {'form': equipeForm, 'category': project, 'route_category' : 'project_equipe_add' } %}
+    </div>
+
+    <div class="list_membre">
+        {% include 'TempoProjectBundle:Equipe:list.html.twig' with { 'users': project.equipe } %}
+    </div>
+
+</ul>
+{% endblock %}

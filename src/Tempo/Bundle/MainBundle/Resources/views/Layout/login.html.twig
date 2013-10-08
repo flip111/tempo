@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <link rel="stylesheet" href="{{ asset('bundles/tempomain/css/bundles.css') }}" type="text/css" media="all" />
+        <title>{% block title %} Project Management Software {% endblock %}</title>
+        <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
+    </head>
+    <body id="user" class="login">
+        <div id="contenair">
+            {% block content %}
+            {% endblock %}
+        </div>
+    </body>
+</html>

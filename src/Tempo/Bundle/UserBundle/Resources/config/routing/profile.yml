@@ -1,0 +1,15 @@
+user_profile_edit:
+     pattern:  /edit
+     defaults: { _controller: TempoUserBundle:profile:edit }
+
+user_profile_avatar:
+     pattern:  /edit/avatar
+     defaults: { _controller: TempoUserBundle:profile:avatar }
+
+user_profile_update:
+    pattern:  /edit/update
+    defaults: { _controller: TempoUserBundle:profile:update }
+
+user_profile_show:
+    pattern: /{slug}
+    defaults: { _controller: TempoUserBundle:profile:show }

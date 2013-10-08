@@ -1,0 +1,12 @@
+_project:
+  resource: "@TempoProjectBundle/Resources/config/routing/project.yml"
+  prefix:   /project
+
+_client:
+  resource: "@TempoProjectBundle/Resources/config/routing/client.yml"
+  prefix:   /client
+
+
+_timesheet:
+  resource: "@TempoProjectBundle/Resources/config/routing/timesheet.yml"
+  prefix:   /timesheet

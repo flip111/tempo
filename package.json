@@ -1,0 +1,31 @@
+{
+    "name": "speakpose",
+    "version": "1.0.0",
+    "description": "## Overview",
+    "main": "Gruntfile.js",
+    "directories": {
+        "test": "test"
+    },
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "postinstall" : "node_modules/.bin/bower install"
+
+    },
+    "repository": {
+        "type": "git",
+        "url": "git://support.ikime.com/speakpose/speakpose.git"
+    },
+    "author": "Ikimea",
+    "license": "Proprietary",
+    "dependencies": {
+        "bower" : ""
+    },
+    "devDependencies": {
+        "grunt": "~0.4.1",
+        "grunt-contrib-clean": "~0.4.1",
+        "grunt-contrib-concat": "~0.3.0",
+        "grunt-contrib-uglify": "~0.2.2",
+        "grunt-contrib-watch": "~0.4.4",
+        "grunt-backbone-routes": "latest"
+    }
+}

@@ -1,0 +1,519 @@
+/*
+* This file is part of the Tempo-project package http://tempo.ikimea.com/>.
+*
+* (c) Mlanawo Mbechezi  <mlanawo.mbechezi@ikimea.com>
+*
+* For the full copyright and license information, please view the LICENSE
+* file that was distributed with this source code.
+*/
+
+
+
+/* Generale */
+.clearfix { display:block; }
+.clearfix:after { content:"."; height:0; line-height:0; display:block; visibility:hidden; clear:both; }
+
+.line_1, .odd {background-color: white;}
+.line_2, .even {background-color: #F7F7F7;}
+.modal { margin: 0px; }
+input:-webkit-autofill {
+    background: #FAFAFA;
+}
+
+
+#feedback{ position: fixed; left: -3px; top: 270px; z-index: 750; }
+#feedback a { background: url("/bundles/tempomain/images/feedback.png") #313131; width: 42px;  height: 102px; display: inline-block; display: none; }
+
+ul.autocompleter-choices
+{
+    position: absolute;
+    margin:	0;
+    padding: 0;
+    list-style:	none;
+    border:	 1px solid #7c7c7c;
+    border-left-color:	#c3c3c3;
+    border-right-color:	#c3c3c3;
+    border-bottom-color: #ddd;
+    background-color: #fff;
+    text-align: left;
+    font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+    z-index: 50;
+    background-color: #fff;
+}
+
+ul.autocompleter-choices li
+{
+    position: relative;
+    margin:	-2px 0 0 0;
+    padding: 0.2em 1.5em 0.2em 1em;
+    display: block;
+    float:	none !important;
+    cursor:	pointer;
+    font-weight: normal;
+    white-space: nowrap;
+    font-size:	1em;
+    line-height: 1.5em;
+}
+
+ul.autocompleter-choices li.autocompleter-selected
+{
+    background-color: #444;
+    color: #fff;
+}
+
+ul.autocompleter-choices span.autocompleter-queried
+{
+    display: inline;
+    float:	 none;
+    font-weight:bold;
+    margin:	0;
+    padding: 0;
+}
+
+ul.autocompleter-choices li.autocompleter-selected span.autocompleter-queried{
+    color:	#9FCFFF;
+}
+
+
+.records-list thead{
+    border-top: 2px solid #666666;
+    border-bottom: 1px solid #cccccc;
+    background-color: #dddddd;
+    background-color: #6B6B6B;
+    border-bottom: 1px solid #CCCCCC;
+    border-collapse: collapse !important;
+    border-left: 1px solid #CCCCCC;
+    border-right: 1px solid #CCCCCC;
+    color: white !important;
+    font-family: Arial,Helvetica,sans-serif !important;
+    font-weight: bold;
+    width: 100%;
+}
+.table .actions li{ float: left; margin-right: 10px; }
+
+table.table-striped tbody .actions .edit{ text-indent: -9999px; }
+
+.record_actions { list-style-type: none; }
+
+/* Dashboard */
+.dashboard #content{ width: 97%; min-height: 130px; }
+
+
+/* User */
+#user.login{
+    background: #D7D7D7;
+    color: #333;
+    font: 12px Arial,Verdana,sans-serif;
+}
+
+#user.login #contenair{
+    width: 546px;
+    min-height: 380px;
+    margin: 100px auto 0;
+    background: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 1px 1px 15px #888;
+}
+#user.login #contenair .form-error{
+    color: #ffa500;
+    margin: 10px;
+    text-align: center;
+}
+#user.login #contenair h1{
+    color: #000;
+    font-size: 4em;
+    margin-top: 0px;
+    padding-left: 40px;
+    padding-right: 40px;
+    text-shadow: 0 0 1px rgba(0, 0, 0, 0.01);
+}
+#user.login #contenair .widget{
+    margin: 0 auto;
+    padding-bottom: 18px;
+    width: 456px;
+}
+#user.login #contenair .widget.remember{
+    margin-bottom: 0px;
+}
+#user.login #contenair label{
+    margin-bottom: 8px;
+    color: #888;
+    display: block;
+    font-size: 12px;
+}
+#user.login #contenair label#remember_me{
+    display: inline;
+}
+#user.login #contenair input[type="text"], #user.login #contenair input[type="password"]{
+    font-size: 12px;
+    line-height: 20px;
+    margin: 0;
+    padding: 3px;
+    width: 440px;
+    height: 25px;
+    background-color: #FAFAFA;
+    border: 1px solid #EEE;
+
+}
+
+#user.login #contenair .submit{
+    float: right;
+}
+
+#user.login #contenair .submit input[type="submit"]{
+}
+
+#user.login #contenair .send{
+    float: left;
+    padding-top: 8px;
+}
+#user.login #contenair .send a{
+    color: #0066BC;
+    text-decoration: none;
+}
+#user #powered{
+    float: right;
+    margin: 0px;
+    padding: 0px;
+    color: #CCC;
+}
+#user #powered a{
+    color: #CCC;
+}
+#user #powered a:hover{
+    color: #0066BC;
+}
+
+
+/** userBundle */
+#user_list .user-list-info{
+    width: 300px;
+    float: left;
+    margin-right: 20px;
+}
+#user_list .user-list-info .avatar{
+    float: left;
+}
+#user_list .user-list-info .infos{
+    float: right;
+    padding-top: 25px;
+}
+#user_list .user-list-info a{
+    text-decoration: none;
+}
+
+
+#dashbord h3.homeTitle{
+    font-size: 15px;
+    margin-left: 30px;
+}
+
+#sidebar-right .list{
+    margin: 30px 30px;
+
+}
+#sidebar-right .list{ list-style-type: none; }
+#sidebar-right .list li, #settings  li{
+    margin-top: 10px;
+    width: 170px;
+}
+#sidebar-right .list li a.close{
+    float: right;
+    display: none;
+}
+#sidebar-right .list li:hover a.close{
+    display: block;
+}
+
+#choose-client{
+    padding: 20px;
+    background: none repeat scroll 0 0 #F1F5FA;
+    text-align: center;
+}
+
+
+
+/* Settings */
+.records_list{
+    width: 90%;
+}
+.records_list td li {
+    float: left;
+    margin-right: 20px;
+}
+
+/* Project */
+
+.project #sidebar-right .add_new_btn a.btn { width: 125px; }
+
+.form-block  #project_description {
+    height: 280px;
+    width: 100%;
+}
+.fieldset-block{
+    width: 45%;
+}
+
+/* Stories */
+
+ol.stories
+{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.story_id
+{
+    width: 50px;
+    display: block;
+    float: left;
+    opacity: 0.5;
+}
+
+.story_project
+{
+    padding: 1px 5px;
+    border: 2px solid #444;
+    -moz-border-radius: 12px;
+    -webkit-border-radius: 12px;
+    margin-left: 5px;
+    font-size:0.8em;
+}
+
+.story_project a
+{
+    color: #444;
+    text-decoration: none;
+}
+
+.col
+{
+    width: 47.5%;
+}
+
+.col_left
+{
+    float: left;
+}
+
+.col_right
+{
+    float: right;
+}
+
+#scheduling {
+    margin: 0 15px;
+}
+
+#scheduling li.story
+{
+    font-size: 1em;
+}
+
+/*
+    TimeSheet
+*/
+
+#timesheet_week {
+  margin-bottom: 30px;
+}
+#timesheet_week a{
+    text-decoration: none;
+    color: #000;
+}
+
+#craTable {
+    width: 100%;
+    clear: both;
+}
+
+#craTable th {
+    background-color: #40689b;
+    border: medium none;
+    border-right: 1px solid #FFF;
+    color: #FFFFFF;
+    font-weight: bold;
+    height: 15px;
+    padding: 5px;
+    text-align: center;
+    font-size: 12px;
+}
+#craTable th.first{
+    text-align: left;
+}
+
+#craTable tr.t1 {
+    background-color: #EBEBEB;
+}
+
+#craTable tr.t2 {
+    background-color: #FFF;
+}
+
+#craTable tr td {
+    height: 30px;
+    max-height: 30px;
+    padding-left: 12px;
+    padding-top: 4px;
+}
+
+#craTable tr td input {
+    border: 1px solid #CCCCCC;
+    padding: 0px 2px 2px 12px;
+    float: left;
+}
+
+#craTable tr td input.ch_cra {
+    display: none;
+}
+
+#craTable tr td input.cra_load {
+    background-image: url(/bundles/tempoproject/images/timesheet/durationmillis.gif);
+    background-position: 0 0;
+    background-repeat: no-repeat;
+    margin-right: 10px;
+    width: 30px;
+}
+#craTable tr td div.cra_load{
+    margin-top: 4px;
+    display: block;
+    font-size: 10px;
+}
+#craTable tr td input.cra_desc {  width: 45px; display: none; }
+#craTable tr td form { float: left;  margin: 0px;}
+#craTable tr td .cra { float: left; }
+#craTable tr td .show_cra { font-size: 10px; display: block; width: 30px; }
+#craTable tr td div.cra_load span.total{
+    font-size: 8px;
+}
+#craTable tr td div.cra_load span.heures{
+    font-size: 8px;
+}
+#craTable tr td div.cra_load a{
+    color: inherit;
+    text-decoration: none;
+}
+#craTable tr td div.list{
+    display: none;
+    position: relative;
+}
+#craTable tr td table {
+    background-color: #FFFFFF;
+    border: 1px solid #8CAFCA;
+
+    position: absolute;
+    z-index: 1827;
+    min-width: 500px;
+}
+#craTable tr td table tr td {
+    height: 17px;
+    font-size: 9px;
+}
+#craTable tr td table tr td span.carre { margin: auto; display: block; width: 15px; height: 15px; background-color: #0B5794; }
+#craTable tr td table tr td span.carre.yellow { background-color: #F7A922; }
+
+#craTable tr td table tr th a {
+    color: white;
+}
+
+.slider {
+    background: none repeat scroll 0 0 #CCCCCC;
+    height: 24px;
+    width: 173px;
+    background-color:#fff;
+    border:1px solid #d0d0d0;
+    font-size:14px;
+    line-height:normal;
+    color:#606060;
+    resize:none;
+    border-radius:2px;
+    -moz-border-radius:2px;
+    -webkit-border-radius:2px;
+    box-shadow:inset 0 0 2px rgba(0, 0, 0, 0.12);
+    -moz-box-shadow:inset 0 0 2px rgba(0, 0, 0, 0.12);
+    -webkit-box-shadow:inset 0 0 2px rgba(0, 0, 0, 0.12);
+}
+.slider .knob {
+    background: none repeat scroll 0 0 #DDD;
+    height: 24px;
+    width: 24px;
+}
+
+.user.edit.avatar h1 small{ display: block; }
+/* Clients */
+.client-add #client{ width: 350px; float: left; }
+.client-add #client label, .client.edit label { width: 100px; display: block; float: left; padding-top: 2px; font-weight: bold; }
+.client-add #client #client_name{  }
+.client-add .rest{ float: left; width: 60px; }
+.client.show #page-title{ float: left; }
+.client.show #sidebar-right h4{ float: left; padding: 20px 40px; }
+.client.show .infos { clear: both; }
+.client.show .infos li{ display: block; margin-bottom: 10px; }
+.client.show .infos strong{ display: block; }
+.client.show .infos .float-right{ margin-right: 25px; }
+.client.show .infos .float-right span{ margin-right: 25px; }
+.client.show .infos .float-right .nbr-project{ margin-bottom: 10px; }
+.client.show #sidebar-right .list-project{ clear: both;  }
+.client.show #sidebar-right .suite{ font-style: italic;  margin-left: 60px; margin-top: 30px; ; }
+.client.show #sidebar-right .suite a { color: #484848; }
+.client.show .modal-body{ text-align: center; }
+.client.edit form .rest{ margin-top:  25px; }
+.client.edit #sidebar-right .list_membre  li img{ width: 28px; height: 28px; display: inline-block; margin-right: 10px; }
+
+
+/* end Clients */
+
+
+/* Project */
+.show #content #center .actions{ float: right; }
+
+.project #content #center form .formtextField #project_beginning #project_beginning_time,
+.project #content #center form .formtextField #project_ending #project_ending_time{ width: 50px; }
+
+.project #content #center form .formtextField #project_avancement{ display: none;  }
+
+.project.show #content #center .mod-head{  background: url("/bundles/tempomain/images/head_bg.png") repeat-x scroll left center transparent; margin: 0 0 25px 25px; padding: 0; }
+.project.show #content #center h3{ display: inline; font-weight: normal; margin: 0; padding: 0 8px 0 0; color: #292929; font-size: 19px; background-color: #FFF; }
+.project.show #content #center ul.item-details{ display: inline-block; vertical-align: top; width: 45%; list-style-type: none; margin: 0 0 25px 30px; padding: 0; }
+.project.show #content #center ul.item-details dl { display: table;  margin: 0 0 2px;  width: 100%; }
+.project.show #content #center ul.item-details dl dt { color: #666666; display: table-cell; vertical-align: top; width: 16%; font-size: 13px; }
+.project.show #content #center ul.item-details dl dd {   display: table-cell; vertical-align: top; }
+.project.show #content #center .mod-content .description{ margin: 10px; clear: both; }
+.project.show #content #center .project-children { margin-left: 25px; }
+.project.show #content #center .project-children .children{ display: inline-block;
+    background-color: rgba(219,218,206,0.3);
+    height: 123px;
+    margin: 0 12px 20px 0;
+    padding: 0;
+    width: 297px;
+    color: #696969;
+    position: relative;
+    border-bottom: 2px solid #dcdbcf;
+    border-radius: 3px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+}
+.project.show #content #center .project-children .children{
+    height: 72px;
+    padding: 8px 7px 0 20px;
+}
+.project.show #sidebar-right .list_membre li img{ width: 28px; height: 28px; display: inline-block; margin-right: 10px; }
+
+
+.project.edit #content #center form .formtextField input#project_avancement{ display: none; background: none; border: none; border-radius: none; box-shadow: none; border-left: none;  padding: 0; height: 24px;  }
+.project.edit #content #center form .formtextField #slider{ display: block; }
+.project.edit #content #center form .formtextField #slider span{ padding-top: 10px; display: inline-block; font-size: 11px; }
+
+.project .formtextField #slider{ float: left; }
+.project .formtextField input[type="date"]{ width: 200px; }
+
+.timesheet.list #sidebar-right .form-horizontal .control-group { margin-top: 10px;  }
+.timesheet.list #sidebar-right .form-horizontal .control-label { text-align: left; width: 50px; padding-left: 20px;  }
+.timesheet.list #sidebar-right .form-horizontal #select-user { width: 130px;  }
+.timesheet.list #sidebar-right .form-horizontal .btn{ margin-left: 20px; }
+
+/* Help */
+
+.help{ }

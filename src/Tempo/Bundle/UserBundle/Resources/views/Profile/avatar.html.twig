@@ -1,0 +1,62 @@
+{% extends "TempoMainBundle::Layout/web.html.twig" %}
+{% block bodyClass %}user edit avatar{% endblock %}
+
+{% block content %}
+    {% if own %}
+<h1>
+    {{ 'avatar.title'|trans({}, 'TempoProject') }}
+    <small>{{ 'avatar.title_second'|trans({}, 'TempoProject') }}</small>
+</h1>
+{% else %}
+<h1>{{ 'avatar.admin_change'|trans({}, 'TempoProject') }} {{ user.getUsername() }} ?></h1>
+
+<div class="alert alert-error">
+    {{ 'avatar.current_change'|trans({}, 'TempoProject') }}
+    <a href="{{ path('user_profile', { 'id' :  user.id, 'slug' : user.emailCanonical }) }}">{{ user.getUsername() }}</a>.
+</div>
+{% endif %}
+
+<form action="{{ path('user_profile_avatar') }}" method="post" class="form-horizontal" enctype="multipart/form-data">
+    {{ form_errors(form) }}
+
+    <div class="control-group">
+        <label class="control-label">{{ 'avatar.actual_avatar'|trans({}, 'TempoProject') }}</label>
+        <div class="controls">
+            <div class="avatar" style="float: left;">
+                <img src="{{ user.getAvatar() }}" alt="{{ 'avatar.actual_avatar'|trans({}, 'TempoProject') }}" />
+            </div>
+            <div style="margin-left: 110px">
+                <p>
+                    {% if user.hasLocalAvatar() %}
+                    <strong>Cet avatar provient de votre ordinateur.</strong>
+                    {% elseif user.hasGravatar() %}
+                    <strong>Cet avatar provient de <a href="http://fr.gravatar.com">Gravatar</a>.</strong>
+                    <?php else: ?>
+                    <em>Cet avatar est l’image par défaut.</em>
+                    {% endif %}
+                </p>
+                <p>
+                    {{ 'avatar.avatar_info'|trans({'%balise%' : '<strong>', '%balise2%' : '</strong>', '%balise3%' : '<br/>'}, 'TempoProject')|raw }}
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="control-group">
+        <label class="control-label">
+            {{ 'avatar.choose_avatar'|trans({}, 'TempoProject') }}
+        </label>
+        <div class="controls">
+            {{ form_widget(form) }}
+        </div>
+    </div>
+
+    <div class="form-actions">
+        <input type="submit" class="btn btn-primary" name="submit" value="Modifier {% if own == true %}mon{% else %}son{% endif %} avatar" />
+        {% if user.hasLocalAvatar() %}
+        <input type="submit" class="btn" name="delete" value="Supprimer {% if own == true %}mon{% else %}son{% endif %} avatar" />
+        {% endif %}
+    </div>
+</form>
+
+{% endblock %}

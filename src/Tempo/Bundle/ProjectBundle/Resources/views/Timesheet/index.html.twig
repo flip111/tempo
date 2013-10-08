@@ -1,0 +1,110 @@
+{% extends "TempoMainBundle::Layout/web.html.twig" %}
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript" src="{{ asset('bundles/tempoproject/js/timesheet.js')}}"></script>
+{% endblock %}
+
+
+{% block content %}
+    <div id="timesheet_week">
+        <p class="float_left">
+            <a href="#" class="btn">Semaine précédent</a>
+        </p>
+        <p class="float_right">
+            <a href="#" class="btn">Semaine suivante</a>
+        </p>
+        <div class="clearfix"></div>
+    </div>
+
+    <div>
+        <table id="craTable">
+            <colgroup>
+                <col align="left">
+                <col width="11%" id="col1">
+                <col width="11%" id="col2">
+                <col width="11%" id="col3">
+                <col width="11%" id="col4">
+                <col width="11%" id="col5">
+                <col width="11%" id="col6">
+                <col width="11%" id="col7">
+            </colgroup>
+            <thead>
+            <tr>
+                <th class="first">Projets</th>
+                {% for jour in week %}
+                    <th>{{jour }}</th>
+                {% endfor %}
+            </tr>
+            </thead>
+            <tbody>
+            {% for project in projects %}
+                <tr class="{{ cycle(['odd', 'even'], loop.index) }}">
+                    <td>{{project.name}}</td>
+                    {% for day in date %}
+                        <td>
+                            <form action="{{ path('timesheet_postdata') }}" method="post" class="parent-form">
+                                <input type="text" maxlength="2" name="timesheet[time]" data-projectid="{{ project.id }}" rel="form-cra-load-{{ day.format('Y') }}-{{day.format('m')}}-{{day.format('d')}}" class="cra_load" size="2" />
+                                <input type="text" name="timesheet[description]" class="cra_desc" rel="form-cra-load-{{ day.format('Y') }}-{{day.format('m')}}-{{day.format('d')}}" />
+                                <input type="text" name="timesheet[project]" class="cra_desc" value="{{ project.id }}" style="display: none;" />
+                                <input type="text" name="timesheet[date]" class="cra_desc" value="{{ day.format('Y') }}-{{day.format('m')}}-{{day.format('d')}}" style="display: none;" />
+                            </form>
+
+                            {% if project.cras[day.format('j')]['day'] is defined %}
+
+                                <div class="cra craid_{{ day.format('j') }}">
+                                    <a class="show_cra" href="#" rel="list_{{ project.cras[day.format('j')]['day'] }}">
+                                        <span class="total"> total {{ project.cras[day.format('j')]['total'] }}</span><br />
+                                        <span class="heures">  {{ project.cras[day.format('j')]['hours'] }}:00</span>
+                                    </a>
+                                </div>
+
+                                <div id="list_{{project.cras[day.format('j') ]['day'] }}" class="list" style="display: none;">
+                                    <table>
+                                        <thead>
+                                        <tr>
+                                            <th>H.</th>
+                                            <th>Prod</th>
+                                            <th>Action</th>
+                                            <th><a href="#" rel="list_{{project.cras[day.format('j') ]['day'] }}" class="boxclose">X</a></th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        {% for cra in project.cras[day.format('d')]['list'] %}
+                                            <tr class="{{ cycle(['t1', 't2'], loop.index) }}">
+                                                <td><strong>{{ cra.time }}:00</strong></td>
+                                                <td><span class="carre {% if cra.billable == 0 %}yellow{% endif %}"> </span></td>
+                                                <td>{{ cra.description }} </td>
+                                                <td></td>
+                                            </tr>
+                                        {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                            {% else %}
+                                <span class="cra">&nbsp; </span>
+                            {% endif %}
+
+                        </td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
+
+{% block right %}
+    <div id="user_search">
+        <form action="index.html.twig" class="form-horizontal">
+            <label>User</label>
+            <select>
+                {% for user in users %}
+                    <option>{{ user.username }}</option>
+                {% endfor %}
+            </select>
+            <input type="submit" class="btn" />
+        </form>
+    </div>
+{% endblock %}

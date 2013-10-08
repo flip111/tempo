@@ -1,0 +1,64 @@
+{% extends "TempoMainBundle::Layout/web.html.twig" %}
+{% block bodyClass %}client show{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript" src="{{ asset('bundles/tempoproject/js/client.js')}}"></script>
+{% endblock %}
+
+{% block content %}
+
+<h1 id="page-title"> {{ client.name }} </h1>
+
+<div class="actions">
+    <a class="btn btn-mini" href="{{ path('client_edit', { 'slug' : client.slug }) }}"> <span class="icon-edit"></span> Edit</a>
+    <a class="modal-overlay btn btn-mini" data-body="#confirmation-delete-client" data-any-close="true" data-buttons="[{className:'right modal-close','text':'No, thanks','event':'cancel'},{className:'left','text':'Sure!','event':'confirm'}]"  href="{{ path('client_delete', { 'slug': client.slug }) }}"> <span class="icon-trash"></span> Move </a>
+    <span id="confirmation-delete-client" style="display: none;">Êtes vous sur de vouloir supprimer ce client <br/> La suppression entraînera la suppression de tous les projets lier.</span>
+</div>
+
+<div class="infos">
+    <ul class="float-left">
+        <li> <strong>Adresse électronique de contact</strong>
+            {% if client.contact is empty %}
+            non défini
+            {% else %}
+            <a href="mailto:{{ client.contact }}">{{ client.contact }}</a>
+            {% endif %}
+        </li>
+        <li> <strong>Site web</strong>
+        {% if client.website is empty %}
+            non défini
+        {% else %}
+            <a href="{{ client.website }}">{{ client.website }}</a>
+        {% endif %}<li>
+    </ul>
+    <ul class="float-right">
+        <li>
+            <strong class="nbr-project">Nombre de projet</strong>
+            <span class="label label-success">{{ counter.open }} Ouvert</span> <br />
+            <span class="label label-inverse">{{ counter.close }}  Fermer</span>
+        </li>
+
+    </ul>
+</div>
+
+{% endblock %}
+{% block right %}
+    <aside>
+        <h4>Liste projets</h4>
+
+        <div class="add_new_btn">
+            <a href="{{ path('project_new', { 'client' : client.slug }) }}" class="btn"> {{ 'project.add'|trans({},'TempoProject') }} <span></span></a>
+        </div>
+
+        <ul class="list-project list">
+            {% for project in projects %}
+                    <li>
+                        <span>»</span>
+                        <a href="{{ path('project_show', { 'slug' :  project.slug} ) }}">{{ project.name }} </a></li>
+            {% else %}
+                    <p>Aucune projet n'a été trouvée pour ce client.</p>
+            {% endfor %}
+        </ul>
+        <p class="suite"> <a href="{{ path( 'project_client_list', {'client' : client.slug }) }}">» Suite ... </a></p>
+    </aside>
+{% endblock %}
