@@ -1,0 +1,11 @@
+{
+    "name": "tempo",
+    "version": "0.1.0",
+    "dependencies": {
+        "bootstrap": "latest",
+        "jquery": "<2.0.0",
+        "jquery-ui": "latest",
+        "moment": "latest",
+        "modernizr": "latest"
+    }
+}
