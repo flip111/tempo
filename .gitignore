@@ -11,6 +11,7 @@ app/config/deploy/*
 app/data/*
 web/uploads/*
 web/bundles/*
+web/vendor/
 !app/config/deploy/*.rb.dist
 
 # Configuration files

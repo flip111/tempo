@@ -1,7 +1,7 @@
 tempo-sandbox
 =============
 
-Tempo[![Build Status](https://secure.travis-ci.org/tempo-project/tempo-sandbox.png?branch=master)](http://travis-ci.org/tempo-project/tempo-sandbox)
+Tempo[![Build Status](https://secure.travis-ci.org/tempo-project/tempo.png?branch=master)](http://travis-ci.org/tempo-project/tempo)
 
 Tempo - Symfony2 Project Management Software
 

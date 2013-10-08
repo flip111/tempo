@@ -5,6 +5,8 @@
         "bootstrap": "latest",
         "jquery": "<2.0.0",
         "jquery-ui": "latest",
+        "mootools": "latest",
+        "mootools-more": "latest",
         "moment": "latest",
         "modernizr": "latest"
     }
