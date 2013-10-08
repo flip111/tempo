@@ -2,4 +2,4 @@ fos_user:
     db_driver: orm
     use_listener: false
     firewall_name: main
-    user_class: Tempo\UserBundle\Entity\User
+    user_class: Tempo\Bundle\UserBundle\Entity\User

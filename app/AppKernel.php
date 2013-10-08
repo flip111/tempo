@@ -15,21 +15,19 @@ class AppKernel extends Kernel {
             new Symfony\Bundle\AsseticBundle\AsseticBundle(),
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
-            new JMS\AopBundle\JMSAopBundle(),
-            new JMS\DiExtraBundle\JMSDiExtraBundle($this),
-            new JMS\SecurityExtraBundle\JMSSecurityExtraBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
             $bundles[] = new Symfony\Bundle\WebProfilerBundle\WebProfilerBundle();
             $bundles[] = new Sensio\Bundle\DistributionBundle\SensioDistributionBundle();
-            $bundles[] = new Sensio\Bundle\GeneratorBundle\SensioGeneratorBundle();
             $bundles[] = new Leek\GitDebugBundle\LeekGitDebugBundle();
             $bundles[] = new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle();
             $bundles[] = new Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle();
             $bundles[] = new Elao\WebProfilerExtraBundle\WebProfilerExtraBundle();
 
         }
+
+        $bundles[] = new Knp\Bundle\SnappyBundle\KnpSnappyBundle();
         $bundles[] = new Liip\ImagineBundle\LiipImagineBundle();
         $bundles[] = new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle();
 
@@ -42,9 +40,9 @@ class AppKernel extends Kernel {
         $bundles[] = new Sonata\SeoBundle\SonataSeoBundle();
 
         //Tempo
-        $bundles[] = new Tempo\MainBundle\TempoMainBundle();
-        $bundles[] = new Tempo\UserBundle\TempoUserBundle();
-        $bundles[] = new Tempo\ProjectBundle\TempoProjectBundle();
+        $bundles[] = new Tempo\Bundle\MainBundle\TempoMainBundle();
+        $bundles[] = new Tempo\Bundle\UserBundle\TempoUserBundle();
+        $bundles[] = new Tempo\Bundle\ProjectBundle\TempoProjectBundle();
 
         return $bundles;
     }
