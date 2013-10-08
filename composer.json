@@ -9,8 +9,8 @@
             "homepage": "http://mlanawo.mbechezi.com"
         },
         {
-            "name":     "Tempo project",
-            "homepage": "http://tempo.ikimea.com"
+            "name":     "Ikimea",
+            "homepage": "http://ikimea.com"
         },
         {
             "name":     "Community contributions",
@@ -20,7 +20,7 @@
     "require": {
         "php": ">=5.3.3",
         "symfony/symfony": "2.3.*",
-        "doctrine/orm": ">=2.2.3,<2.4-dev",
+        "doctrine/orm": "2.4.*@dev",
         "doctrine/doctrine-bundle": "1.2.*",
         "doctrine/doctrine-migrations-bundle": "dev-master",
         "symfony/assetic-bundle": "2.3.*",
@@ -32,7 +32,7 @@
         "knplabs/knp-snappy-bundle": "dev-master",
 
         "frequence-web/calendr-bundle": "dev-master",
-        "friendsofsymfony/rest-bundle": "dev-master",
+        "friendsofsymfony/rest-bundle": "1.0.*@dev",
         "friendsofsymfony/user-bundle": "dev-master",
         "ikimea/browser": "dev-master",
         "ikimea/ckeditor-bundle": "dev-master",
@@ -46,7 +46,7 @@
         "liip/imagine-bundle": "dev-master"
     },
     "require-dev": {
-        "behat/behat": ">=2.4.0,<2.5.0-dev",
+        "behat/behat": "2.5.*@stable",
         "behat/symfony2-extension": "dev-master",
         "behat/mink-extension": "*",
         "behat/mink-goutte-driver": "dev-master",
