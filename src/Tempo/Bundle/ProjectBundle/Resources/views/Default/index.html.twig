@@ -13,14 +13,14 @@
 
 {% block right %}
     <div class="add_new_btn">
-        <a href="{{ path('client_new') }}" class="btn btn-primary" data-type="ajax" data-title="Add new client" data-overlay="false" data-esc-close="true">{{ 'client.add' |trans({},'TempoProject') }}  <span></span></a>
+        <a href="{{ path('client_new') }}" class="btn btn-primary" role="dialog"  data-toggle="modal data-title="Add new client" >{{ 'client.add' |trans({},'TempoProject') }}</a>
     </div>
     <div id="clients">
         <ul class="list">
             {% for client in clients %}
                 <li> <span>»</span>
                     <a href="{{ path('client_show', { 'slug' : client.slug } ) }}"> {{ client.name }} </a>
-                    <a data-any-close="true" data-buttons="[{className:'right modal-close','text':'No, thanks','event':'cancel'},{className:'left','text':'Sure!','event':'confirm'}]" class="modal-overlay close" href="{{ path('client_delete', { 'slug': client.slug }) }}"> x </a>
+                    <a data-toggle="modal" href="{{ path('client_delete', { 'slug': client.slug }) }}"> x </a>
                 </li>
             {% else %}
                 <p>{% trans %} Aucun client n'a été trouvé. {% endtrans %}</p>

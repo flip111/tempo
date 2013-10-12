@@ -3,9 +3,14 @@
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <link rel="stylesheet" href="{{ asset('vendor/bootstrap/dist/css/bootstrap.min.css') }}" type="text/css" media="all" />
-    <link rel="stylesheet" href="{{ asset('bundles/tempomain/css/application.css') }}" type="text/css" media="all" />
-    <link rel="stylesheet" href="{{ asset('bundles/tempomain/css/bundles.css') }}" type="text/css" media="all" />
+    {% stylesheets
+        'vendor/bootstrap/dist/css/bootstrap.min.css'
+        'bundles/tempomain/css/application.css'
+        'bundles/tempomain/css/bundles.css'
+        filter='?cssrewrite'
+    %}
+    <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
     {% block stylesheets %}{% endblock %}
     <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -44,38 +49,59 @@
                 </a>
             </div>
         </header>
-        <div class="container">
+        <div id="content">
             <div class="row">
-                <div id="content" class="col-md-9">{% for flashMessage in app.session.flashbag.get('notice') %}
+                <div id="child-content" class="col-md-8">
+                    {% for flashMessage in app.session.flashbag.get('notice') %}
                         <div class="alert alert-success">
-                        <button class="close" data-dismiss="alert">×</button>{{ flashMessage }}</div>{% endfor %} {% for flashMessage in
-                    app.session.flashbag.get('error') %}
+                        <button class="close" data-dismiss="alert">×</button>{{ flashMessage }}</div>
+                    {% endfor %}
+                    {% for flashMessage in app.session.flashbag.get('error') %}
                         <div class="alert alert-error">
-                        <button class="close" data-dismiss="alert">×</button>{{ flashMessage }}</div>{% endfor %}
-                    <div id="center">{{ knp_menu_render('breadcrumb') }} {% block content %} tototto {% endblock
-                        %}</div>
-                </div>{% if sidebar is not defined %}
-                <div id="sidebar-right" class="col-md-3">{% block right %} {% endblock %}</div>{% endif %}</div>
+                        <button class="close" data-dismiss="alert">×</button>{{ flashMessage }}</div>
+                    {% endfor %}
+                    {{ knp_menu_render('breadcrumb') }}
+                    {% block content %}  {% endblock %}
+                </div>
+                {% if sidebar is not defined %}
+                <div id="sidebar-right" class="col-md-2">{% block right %} {% endblock %}</div>
+                {% endif %}
+            </div>
         </div>
-        <footer id="footer">© 2012-2013 Tempo Project. All rights reserved.</footer>
-        <div id="dialog"></div>
+        <div id="dialog">
+            <!-- Modal -->
+            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <h4 class="modal-title">Modal title</h4>
+                        </div>
+                        <div class="modal-body">
+                            ...
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Save changes</button>
+                        </div>
+                    </div><!-- /.modal-content -->
+                </div><!-- /.modal-dialog -->
+            </div><!-- /.modal -->
+        </div>
     </div>
     {% block javascripts %}
         {% javascripts
-        'bundles/tempomain/js/mootools/mootools-core-1.4.5.js'
-        'bundles/tempomain/js/mootools/mootools-more-1.4.0.1.js'
-        'bundles/tempomain/js/moo/Element.Data.js'
-        'bundles/tempomain/js/tinycon.min.js'
-        'bundles/tempomain/js/modernizr.custom.js'
-        'bundles/tempomain/js/moo/Modal.js'
-        'bundles/tempomain/js/vendor/jquery-1.9.1.min.js'
-        'bundles/tempomain/js/vendor/bootstrap.min.js'
+        'vendor/jquery/jquery.js'
+        'vendor/jquery-ui/ui/jquery-ui.js'
+        'vendor/bootstrap/dist/js/bootstrap.min.js'
+        'vendor/tinycon/tinycon.min.js'
+        'vendor/moment/moment.js'
+        'vendor/modernizr/modernizr.js'
         'bundles/tempomain/js/app.js'
         'bundles/tempomain/js/behavior.js'
         %}
         <script src="{{ asset_url }}"></script>
         {% endjavascripts %}
-        <script type="text/javascript">jQuery.noConflict();</script>
 
         {% for javascript in behavior.resource.javascripts %}
     {% endfor %} {{ behavior.renderHTML|raw }} {% endblock %}

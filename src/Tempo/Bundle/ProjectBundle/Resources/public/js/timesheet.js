@@ -7,16 +7,10 @@
  * file that was distributed with this source code.
  */
 
-window.addEvent('domready', function() {
+(function($) {
 
-    /*new mForm.Element.Select({
-     original:  'select-user',
-     autoPosition: false
-     // See section options for more info
-     });*/
-
-    $$('.cra_load').addEvent('click', function(e){
-        e.stop();
+    $('.cra_load').click(function(e) {
+        e.preventDefault();
 
         var cra_id = this.getProperty('rel');
         var day_date = cra_id.replace('form-cra-load-', '');
@@ -26,7 +20,7 @@ window.addEvent('domready', function() {
 
     });
 
-    $$('.cra_load').addEvent('keydown', function(event) {
+    $('.cra_load').keydown(function(event) {
         var cra_id = this.getProperty('rel');
 
         if (event.key == 'tab'){
@@ -36,13 +30,7 @@ window.addEvent('domready', function() {
 
     });
 
-    $$('.parent-form').addEvent('submit', function(event) {
-        event.stop();
-        console.log('ddd');
-
-    });
-
-    $$('.cra_desc').addEvent('keydown', function(event) {
+    $('.cra_desc').keydown(function(event) {
         var cra_id = this.getProperty('rel');
         if(event.key == 'enter') {
 
@@ -56,13 +44,15 @@ window.addEvent('domready', function() {
         }
     });
 
-    $$('a.show_cra').addEvent('click', function(e) {
-        $$('.list').hide();
-        $$('#' + this.getProperty('rel')).show();
+    $('a.show_cra').click(function(e) {
+        e.preventDefault();
+        $('.list').hide();
+        $('#' + this.getProperty('rel')).show();
     });
 
 
-    $$('#craTable .boxclose').addEvent('click', function(e){
+    $$('#craTable .boxclose').click(function(e) {
         $(this.getAttribute('rel')).hide();
     });
-});
+
+})(jQuery);

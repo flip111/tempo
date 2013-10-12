@@ -40,7 +40,7 @@ body {
     background-color: #005782;
     background-image: -moz-linear-gradient(center top , #1A719C 0%, #005782 100%);
     height: 40px;
-
+    margin-bottom: 10px;
 }
 #header #logo{
     padding-bottom: 25px;
@@ -216,18 +216,15 @@ body {
     width: 14px;
 
 }
-#content {
-    /*float: left;
-    width: 75.5%;
-    margin-left: 17px;
-    margin-top: 0;*/
+#child-content {
     padding: 6px 10px 10px;
     box-shadow: 0 5px 3px #CCCCCC;
     background: none repeat scroll 0 0 #FFFFFF;
+    margin-right: 10px;
 }
-#content #center{
+#child-content #center{
 }
-#content #center h1#page-title{
+#child-content #center h1#page-title{
     color: #323232;
     font: 300 26px/1.3 Helvetica,Arial,sans-serif;
     margin-bottom: 20px;
