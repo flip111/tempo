@@ -36,19 +36,40 @@ body {
     z-index: 20001;
 }
 
-#header{ background-color: #005782; background-image: -moz-linear-gradient(center top , #1A719C 0%, #005782 100%); }
-#header #logo{ padding-bottom: 25px; padding-left: 10px; padding-top: 10px; text-shadow: 0 1px 0 rgba(0, 0, 0, 0.8); font-size: 24px; }
-#header #logo h1{ padding: 5px 50px; }
-#header #logo h1 a{ font-weight: bold; color: #FFF; text-decoration: none; border-bottom: none; }
+#header{
+    background-color: #005782;
+    background-image: -moz-linear-gradient(center top , #1A719C 0%, #005782 100%);
+    height: 40px;
+
+}
+#header #logo{
+    padding-bottom: 25px;
+    padding-left: 10px;
+    padding-top: 10px;
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.8);
+    font-size: 24px;
+    width: 150px;
+    float: left;
+}
+
+#header #logo a{
+    font-weight: bold;
+    color: #FFF;
+    text-decoration: none;
+    border-bottom: none;
+    font-size: 15px;
+    padding: 5px 50px;
+}
 #header #logo a:hover{ opacity : 0.7; filter : alpha(opacity=5); }
 #header #logo a span{ color: #007cc2; }
-#header #search { float: right; }
 #header #search a{ color: #F8F8F8; text-decoration: none; }
+#header #search label{
+    display: none;
+}
 #header #search{
-    width: 250px;
-    float: right;
-    margin-top: -50px;
+    float: left;
     margin-right: 30px;
+    margin-top: 6px;
 }
 #header #search form #adv_search{
     background: url("/bundles/tempomain/images/advanced_search.png") no-repeat scroll right 50% transparent;
@@ -60,16 +81,23 @@ body {
     padding-top: 10px;
 
 }
-#header #search form .widget{ position: relative; float: right; margin-right: 10px; }
-#header #search form .options{ display: none; }
-#header #search form label{ color: #FFF; font-size: 11px; }
+#header #search form label{
+    color: #FFF;
+    font-size: 11px;
+}
 #header #search form input {
     border: 1px solid #FFF; height: 18px;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 3px;
     height: 28px;
-    margin-top: 1px;
+    float: left;
+    width: 180px;
 }
 #header #search form .submit{
-    background: url("/bundles/tempomain/images/search_icon.png") no-repeat scroll 50% 50% #173455;
+    float: left;
+    background: #173455;
     border: 1px solid #FFF;
     border-radius: 0 3px 3px 0;
     bottom: 0;
@@ -77,56 +105,31 @@ body {
     display: block;
     height: 28px;
     padding: 0;
-    position: absolute;
-    right: 0;
-    top: 24px;
     text-indent: -3000em;
     width: 26px;
-    margin-top: 1px;
+    margin-top: -1px;
+
 }
-#user-barre {
-    background-color: #000000;
-    padding: 0px 100px 0px 20px;
-    clear: both;
-    height: 1.8em;
-}
-#user-barre ul{ float: right; padding-top: 4px; list-style-type: none; }
-#user-barre li{
+#header nav {
     float: left;
-    margin-left: 10px;
-    font-size: 9.6px;
-    color: #fff;
-}
-#user-barre li a{
-    color: #fff;
-    font-size: 9.6px;
-    line-height: 15px;
-    text-decoration: none;
-    font-family: "Lucida Grande",verdana,arial,helvetica,sans-serif;
-}
+    margin-top: 4px;
 
+}
+#header nav#menu a:hover, #header nav#menu ul li.current a {
+    background: linear-gradient(to bottom, rgba(255,255,255,0.23) 0, rgba(255,255,255,0.2) 100%);
+    border-radius: 3px;
+}
+#header #member-menu {
+    float: right;
+    margin-right: 20px;
+    margin-top: 4px;
 
-#user-barre li.first{
-    font-weight: bold;
 }
-#user-barre li.notif{  margin-left: 5px; }
-#user-barre li.notif .notification{
-    left: 1101px;
-    position: absolute;
-    top: 25px;
-    width: 300px;
-    z-index: 9999;
-    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.58);
-    border-radius: 0 0 6px 6px;
-    overflow: hidden;
-    padding: 10px;
-    background: #FFFFFF ;
-    color: #000;
+#header #member-menu a{
+    background: linear-gradient(to bottom, rgba(255,255,255,0.23) 0, rgba(255,255,255,0.2) 100%);
 }
-#user-barre li.notif .notification *{ color: #000; }
-#user-barre li.notif .notification .desc{ text-align: center; }
-#menu ul.right{ float: none; }
-#menu ul{
+#header nav#menu ul.right{ float: none; }
+#header nav#menu ul{
     clear: both;
     color: #FFFFFF;
     height: 28px;
@@ -134,11 +137,12 @@ body {
     margin-bottom: 1px;
     list-style-type: none;
 }
-#menu ul li{
+#header nav#menu ul li{
     float: left;
     margin-top: 2px;
+    margin-right: 2px;
 }
-#menu ul li a{
+#header nav#menu ul li a {
     font-weight: bold;
     color: #FFF;
     font-size: 12px;
@@ -149,20 +153,7 @@ body {
     height: 27px;
 }
 
-#menu ul li a:hover{
-    color: white;
-    background-image:none;
-    _background-image:none;
-    background-position:0 -102px;
-    background-repeat:repeat-x;
-    outline:none;
-    text-decoration:none;
-}
-#menu ul li.current a{
-    background: #FFFFFF;
-    color: #0B5794;
-}
-#menu ul li .notification{
+#header nav#menu ul li .notification {
     background: none repeat scroll 0 0 #FFFFFF;
     border-color: #DFDFDF;
     border-style: solid;

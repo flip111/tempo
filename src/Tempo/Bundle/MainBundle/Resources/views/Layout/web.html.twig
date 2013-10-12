@@ -16,106 +16,69 @@
 </head>
 
 <body class="no-js {{get_browser()}} {% block bodyClass %}{% endblock %}">
-<!--[if IE 6]>
-<div class="ie6-bar">Vous utilisez Internet Explorer 6 ou une version inférieure. Le support
-    de cette version d'Internet Explorer ne sera pas implémenté.
-    <br />Nous vous recommandons vivement d'utiliser <a href="http://www.mozilla-europe.org/fr/products/firefox/">Mozilla Firefox</a>,
-    <a
-            href="http://www.apple.com/safari/">Apple Safari</a>ou <a href="http://www.microsoft.com/france/windows/downloads/ie/getitnow.mspx">Internet Explorer 9</a>.</div>
-<![endif]-->
-<div id="feedback"> <a href="https://github.com/tempo-project/tempo"></a>
-</div>
-<div id="glob">
-    <header id="header">
-        <div id="user-barre">
-            <ul>
-                <li class="user item dropdown first last"> <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+    <!--[if IE 6]>
+    <div class="ie6-bar">Vous utilisez Internet Explorer 6 ou une version inférieure. Le support
+        de cette version d'Internet Explorer ne sera pas implémenté.
+        <br />Nous vous recommandons vivement d'utiliser <a href="http://www.mozilla-europe.org/fr/products/firefox/">Mozilla Firefox</a>,
+        <a href="http://www.apple.com/safari/">Apple Safari</a>ou <a href="http://www.microsoft.com/france/windows/downloads/ie/getitnow.mspx">Internet Explorer 9</a>.</div>
+    <![endif]-->
+    <div id="feedback"> <a href="https://github.com/tempo-project/tempo"></a></div>
+    <div id="glob">
+        <header id="header">
 
-                        {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |
-
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li class="divider"> <span></span>
-                        </li>
-                    </ul>
-                </li>
-                <li class="notif"> <a href="#"> <i class="glyphicon glyphicon-bell icon-white"></i></a>
-                    |
-                    <div
-                            class="notification" style="display: none;">
-                        <h4 class="">Notifications
-
-                            <p class="right">
-
-                                <a href="#" class="configure">View All Notifications</a>
-
-                                · <a href="#" class="configure">Options</a>
-
-                            </p>
-
-                        </h4>
-                        <p class="desc">You do not have any notifications</p>
-                    </div>
-                </li>
-                <li> <a href="/settings">Settings</a> |</li>
-                <li> <a href="{{ path('fos_user_security_logout') }}"> {{ 'layout.logout'|trans([], 'FOSUserBundle') }} | </a>
-                </li>
-                <li> <a href="/help"> Help </a>
-                </li>
-            </ul>
-        </div>
-        <div id="logo">
-            <h1><a href="/"> Tempo </a></h1>
+            <div id="logo">
+                <a href="/"> Tempo </a>
+            </div>
             <div id="search">
-                <form method="get" action="/search/index/"> <a id="adv_search" rel="search" accesskey="4" title="Recherche avancée"
-                                                               href="#">avancée</a>
-                    <div class="options"></div>
-                    <div class="widget">
-                        <label label-default="label-default" for="q"> <a accesskey="4" href="#">{{ 'header.search'|trans({},'messages') }}  </a> :</label>
-                        <input
-                                type="text" size="20" name="q" id="q" class="form-control small" accesskey="f"
-                                />
-                        <input type="submit" class="submit" />
-                    </div>
+                <form method="get" action="/search/index/">
+                    <a id="adv_search" rel="search" accesskey="4" title="Recherche avancée" href="#">avancée</a>
+                    <label label-default="label-default" for="q"> <a accesskey="4" href="#">{{ 'header.search'|trans({},'messages') }}  </a> :</label>
+                    <input  type="text" size="20" name="q" id="q" class="form-control small" accesskey="f" />
+                    <input type="submit" class="submit glyphicon glyphicon-search" />
                 </form>
             </div>
+            <nav id="menu">{{ knp_menu_render('menu') }}</nav>
+            <div id="member-menu">
+                <a href="#">
+                    <img src=" {{ app.user.avatar(30) }}" />
+                </a>
+            </div>
+        </header>
+        <div class="container">
+            <div class="row">
+                <div id="content" class="col-md-9">{% for flashMessage in app.session.flashbag.get('notice') %}
+                        <div class="alert alert-success">
+                        <button class="close" data-dismiss="alert">×</button>{{ flashMessage }}</div>{% endfor %} {% for flashMessage in
+                    app.session.flashbag.get('error') %}
+                        <div class="alert alert-error">
+                        <button class="close" data-dismiss="alert">×</button>{{ flashMessage }}</div>{% endfor %}
+                    <div id="center">{{ knp_menu_render('breadcrumb') }} {% block content %} tototto {% endblock
+                        %}</div>
+                </div>{% if sidebar is not defined %}
+                <div id="sidebar-right" class="col-md-3">{% block right %} {% endblock %}</div>{% endif %}</div>
         </div>
-        <nav id="menu">{{ knp_menu_render('menu') }}</nav>
-    </header>
-    <div class="container">
-        <div class="row">
-            <div id="content" class="col-md-9">{% for flashMessage in app.session.flashbag.get('notice') %}
-                    <div class="alert alert-success">
-                    <button class="close" data-dismiss="alert">×</button>{{ flashMessage }}</div>{% endfor %} {% for flashMessage in
-                app.session.flashbag.get('error') %}
-                    <div class="alert alert-error">
-                    <button class="close" data-dismiss="alert">×</button>{{ flashMessage }}</div>{% endfor %}
-                <div id="center">{{ knp_menu_render('breadcrumb') }} {% block content %} tototto {% endblock
-                    %}</div>
-            </div>{% if sidebar is not defined %}
-            <div id="sidebar-right" class="col-md-3">{% block right %} {% endblock %}</div>{% endif %}</div>
+        <footer id="footer">© 2012-2013 Tempo Project. All rights reserved.</footer>
+        <div id="dialog"></div>
     </div>
-    <footer id="footer">© 2012-2013 Tempo Project. All rights reserved.</footer>
-    <div id="dialog"></div>
-</div>
-{% block javascripts %}
-    {% javascripts
-    'bundles/tempomain/js/mootools/mootools-core-1.4.5.js'
-    'bundles/tempomain/js/mootools/mootools-more-1.4.0.1.js'
-    'bundles/tempomain/js/moo/Element.Data.js'
-    'bundles/tempomain/js/tinycon.min.js'
-    'bundles/tempomain/js/modernizr.custom.js'
-    'bundles/tempomain/js/moo/Modal.js'
-    'bundles/tempomain/js/vendor/jquery-1.9.1.min.js'
-    'bundles/tempomain/js/vendor/bootstrap.min.js'
-    'bundles/tempomain/js/app.js'
-    'bundles/tempomain/js/behavior.js'
-    %}
-    <script src="{{ asset_url }}"></script>
-    {% endjavascripts %}
-    <script type="text/javascript">jQuery.noConflict();</script>
+    {% block javascripts %}
+        {% javascripts
+        'bundles/tempomain/js/mootools/mootools-core-1.4.5.js'
+        'bundles/tempomain/js/mootools/mootools-more-1.4.0.1.js'
+        'bundles/tempomain/js/moo/Element.Data.js'
+        'bundles/tempomain/js/tinycon.min.js'
+        'bundles/tempomain/js/modernizr.custom.js'
+        'bundles/tempomain/js/moo/Modal.js'
+        'bundles/tempomain/js/vendor/jquery-1.9.1.min.js'
+        'bundles/tempomain/js/vendor/bootstrap.min.js'
+        'bundles/tempomain/js/app.js'
+        'bundles/tempomain/js/behavior.js'
+        %}
+        <script src="{{ asset_url }}"></script>
+        {% endjavascripts %}
+        <script type="text/javascript">jQuery.noConflict();</script>
 
-    {% for javascript in behavior.resource.javascripts %}
-{% endfor %} {{ behavior.renderHTML|raw }} {% endblock %}</body>
+        {% for javascript in behavior.resource.javascripts %}
+    {% endfor %} {{ behavior.renderHTML|raw }} {% endblock %}
+</body>
 
 </html>
