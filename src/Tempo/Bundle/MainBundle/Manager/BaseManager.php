@@ -10,7 +10,6 @@
 */
 
 
-
 namespace Tempo\Bundle\MainBundle\Manager;
 
 /**

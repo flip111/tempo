@@ -12,8 +12,8 @@
 
 namespace Tempo\Bundle\MainBundle\Manager;
 
-use Tempo\MainBundle\Manager\BaseManager;
-use Tempo\MainBundle\Entity\Settings;
+use Tempo\Bundle\MainBundle\Manager\BaseManager;
+use Tempo\Bundle\MainBundle\Entity\Settings;
 
 use Doctrine\ORM\EntityManager;
 

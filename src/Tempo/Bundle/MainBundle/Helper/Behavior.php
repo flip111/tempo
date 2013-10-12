@@ -16,6 +16,7 @@ use Tempo\Bundle\MainBundle\Resource\ResourceManager;
 
 /**
  * @author Mbechezi Mlanawo <mlanawo.mbechezi@ikimea.com>
+ * @todo : rewrite for jquery
  */
 
 class Behavior extends Helper

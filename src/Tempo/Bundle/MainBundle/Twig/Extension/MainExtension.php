@@ -12,7 +12,6 @@
 
 namespace Tempo\Bundle\MainBundle\Twig\Extension;
 
-use Symfony\Component\HttpKernel\KernelInterface;
 use Symfony\Bundle\TwigBundle\Loader\FilesystemLoader;
 use Knp\Bundle\TimeBundle\Templating\Helper\TimeHelper;
 

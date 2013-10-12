@@ -14,8 +14,8 @@
 namespace Tempo\Bundle\MainBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Tempo\MainBundle\Entity\Settings;
-use Tempo\MainBundle\Form\SettingsType;
+use Tempo\Bundle\MainBundle\Entity\Settings;
+use Tempo\Bundle\MainBundle\Form\SettingsType;
 
 
 class DefaultController extends Controller

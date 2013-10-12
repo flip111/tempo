@@ -11,7 +11,7 @@
 
 
 
-namespace Tempo\Bundle\MainBundle\Form;
+namespace Tempo\Bundle\MainBundle\Form\Type;
 
 /**
  * @author Mbechezi Mlanawo <mlanawo.mbechezi@ikimea.com>
