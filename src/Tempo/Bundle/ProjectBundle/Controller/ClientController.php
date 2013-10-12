@@ -42,13 +42,11 @@ class ClientController extends Controller
         $breadcrumb->addChild('Client');
         $breadcrumb->addChild($client->getName());
 
-        return $this->render('TempoProjectBundle:Client:show.html.twig',
-              array(
-                  'client' => $client,
-                  'counter' =>  $counter,
-                  'projects' => $client->getProjects()
-              )
-        );
+        return $this->render('TempoProjectBundle:Client:show.html.twig', array(
+            'client' => $client,
+            'counter' => $counter,
+            'projects' => $client->getProjects()
+        ));
 
     }
 
@@ -84,14 +82,11 @@ class ClientController extends Controller
 
         $equipeForm = $this->createForm(new EquipeType());
 
-        return $this->render(
-            'TempoProjectBundle:Client:edit.html.twig',
-            array(
-                'client'     => $client,
-                'form'   => $editForm->createView(),
-                'equipeForm'   => $equipeForm->createView(),
-            )
-        );
+        return $this->render('TempoProjectBundle:Client:edit.html.twig', array(
+            'client' => $client,
+            'form' => $editForm->createView(),
+            'equipeForm' => $equipeForm->createView(),
+        ));
     }
 
     /**
@@ -102,30 +97,31 @@ class ClientController extends Controller
      */
     public function updateAction($id)
     {
-        $manager = $this->container->get('tempo_project.manager.client');
-        $em = $this->container->get('doctrine.orm.entity_manager');
+        $manager = $this->get('tempo_project.manager.client');
+        $request = $this->getRequest();
+
         $client = $manager->find($id);
 
-        $editForm   = $this->createForm(new ClientType(), $client);
+        $editForm = $this->createForm(new ClientType(), $client);
 
-        $request = $this->getRequest();
-        $editForm->submit($request);
+        if ($request->getMethod() == "POST") {
 
-        if ($editForm->isValid()) {
-            $em->persist($client);
-            $em->flush();
+            $editForm->submit($request);
 
-            $this->get('session')->getFlashBag()->set('notice', $this->get('translator')->trans('Le client a bien été mis à jour avec succès !'));
+            if ($editForm->isValid()) {
 
-            return $this->redirect($this->generateUrl('client_show', array('slug' => $client->getSlug()  )));
+                $manager->persistAndFlush($client);
+
+                $this->get('session')->getFlashBag()->set('notice', $this->get('translator')->trans('Le client a bien été mis à jour avec succès !'));
+
+                return $this->redirect($this->generateUrl('client_show', array('slug' => $client->getSlug()  )));
+            }
         }
 
-        return $this->render('TempoProjectBundle:Client:edit.html.twig',
-            array(
-                'client'      => $client,
-                'edit_form'   => $editForm->createView(),
-            )
-        );
+        return $this->render('TempoProjectBundle:Client:edit.html.twig', array(
+            'client' => $client,
+            'edit_form' => $editForm->createView(),
+        ));
     }
 
     /**
@@ -152,7 +148,6 @@ class ClientController extends Controller
                 $this->get('session')->getFlashBag()->set('notice', $this->get('translator')->trans('Client ajouté avec succès !'));
 
                 return $this->redirect($this->generateUrl('project_home'));
-
             }
 
             return array(
@@ -178,6 +173,8 @@ class ClientController extends Controller
             $em->flush();
             $this->get('session')->getFlashBag()->set('notice', $this->get('translator')->trans('Client supprimé avec succès !'));
 
+            return $this->redirect($this->generateUrl('project_home'));
+
         } catch (\Exception $e) {
 
             $this->get('session')->getFlashBag()->set('warning', $this->get('translator')->trans('Impossible de supprimer le client'));
@@ -185,7 +182,6 @@ class ClientController extends Controller
             return $this->redirect($this->generateUrl('client_show', array('slug' => $client->getSlug() )));
         }
 
-        return $this->redirect($this->generateUrl('project_home'));
     }
 
     /**
@@ -195,7 +191,7 @@ class ClientController extends Controller
      */
     private function findClient($slug)
     {
-        $manager = $this->container->get('tempo_project.manager.client');
+        $manager = $this->get('tempo_project.manager.client');
         $client = $manager->findOneBySlug($slug);
 
         if (!$client) {

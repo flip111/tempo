@@ -11,7 +11,7 @@
 
 namespace Tempo\Bundle\ProjectBundle\Tests\Entity;
 
-use Tempo\ProjectBundle\Entity\Client;
+use Tempo\Bundle\ProjectBundle\Entity\Client;
 
 class ClientTest extends \PHPUnit_Framework_TestCase
 {

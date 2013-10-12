@@ -11,7 +11,7 @@
 
 namespace Tempo\Bundle\ProjectBundle\Tests\Entity;
 
-use Tempo\ProjectBundle\Entity\Project as Project;
+use Tempo\Bundle\ProjectBundle\Entity\Project as Project;
 use Gedmo\Sluggable\Util\Urlizer;
 
 class PageTest extends \PHPUnit_Framework_TestCase

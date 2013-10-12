@@ -11,26 +11,39 @@
 
 namespace Tempo\Bundle\ProjectBundle\Tests\Repository;
 
-use Tempo\ProjectBundle\Tests\Repository\Test as TestCase;
-use Tempo\ProjectBundle\Entity\Project;
+use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
-class ProjectTest extends TestCase
+
+class ProjectTest extends WebTestCase
 {
+    protected $entityManager;
+
+    public function setUp()
+    {
+
+        $kernel = static::createKernel();
+        $kernel->boot();
+        $this->entityManager = $kernel->getContainer()
+            ->get('doctrine.orm.entity_manager');
+    }
+
+
+
     public function testGetParent()
     {
-        // Retrieve entity manager
-        $em = $this->getEntityManager();
 
         // Retrieve "android" project
-        $project = $em->getRepository('TempoProjectBundle:Project')->findOneBy(array('slug' => 'android'));
+        $project = $this->entityManager->getRepository('TempoProjectBundle:Project')->findOneBy(array('slug' => 'android'));
+
+        var_dump($project); exit;
 
         // Test aboutPage
-        $this->assertInstanceOf('Tempo\ProjectBundle\Entity\Project', $project);
+        $this->assertInstanceOf('Tempo\Bundle\ProjectBundle\Entity\Project', $project);
         $this->assertEquals('android', $project->getName());
 
         // Retrieve parent page
         $parentProject = $project->getParent();
-        $this->assertInstanceOf('Tempo\ProjectBundle\Entity\Project', $parentProject);
+        $this->assertInstanceOf('Tempo\Bundle\ProjectBundle\Entity\Project', $parentProject);
         $this->assertEquals('google', $parentProject->getName());
     }
 
@@ -39,13 +52,11 @@ class ProjectTest extends TestCase
      */
     public function testGetChildren()
     {
-        // Retrieve entity manager
-        $em = $this->getEntityManager();
 
         // Retrieve "google" project
-        $project = $em->getRepository('TempoProjectBundle:Project')->findOneBy(array('slug' => 'google'));
+        $project = $this->entityManager->getRepository('TempoProjectBundle:Project')->findOneBy(array('slug' => 'google'));
 
-        $this->assertInstanceOf('Tempo\ProjectBundle\Entity\Project', $project);
+        $this->assertInstanceOf('Tempo\Bundle\ProjectBundle\Entity\Project', $project);
         $this->assertEquals('google', $project->getName());
 
         // Retrieve children pages
