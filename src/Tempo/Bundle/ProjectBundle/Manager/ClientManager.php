@@ -31,7 +31,7 @@ class ClientManager extends BaseManager
      * @param $em Doctrine\ORM\EntityManager
      * @param $class
      */
-   public function __construct($event, $em, $class)
+   public function __construct($event, EntityManager $em, $class)
    {
        $this->em = $em;
        $this->class = $class;
@@ -49,6 +49,8 @@ class ClientManager extends BaseManager
        if (!$client) {
            throw new NotFoundHttpException('Unable to find Client entity.');
        }
+
+       return $client;
    }
 
     /**
@@ -99,4 +101,10 @@ class ClientManager extends BaseManager
    {
         return $this->getRepository()->findAll();
    }
+
+    public function persistAndFlush($entity)
+    {
+        $this->em->persist($entity);
+        $this->em->flush();
+    }
 }
