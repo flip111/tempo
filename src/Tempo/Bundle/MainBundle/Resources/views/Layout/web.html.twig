@@ -43,10 +43,16 @@
                 </form>
             </div>
             <nav id="menu">{{ knp_menu_render('menu') }}</nav>
-            <div id="member-menu">
-                <a href="#">
+            <div id="member-menu" class="dropdown">
+                <a href="#" data-toggle="dropdown" class="dropdown-toggle">
                     <img src=" {{ app.user.avatar(30) }}" />
                 </a>
+                <ul class="dropdown-menu">
+                    <li> <a href="/settings">Settings</a> |</li>
+                    <li> <a href="{{ path('fos_user_security_logout') }}"> {{ 'layout.logout'|trans([], 'FOSUserBundle') }} | </a> </li>
+                    <li class="divider"><span></span> </li>
+                    <li> <a href="/help"> Help </a>
+                </ul>
             </div>
         </header>
         <div id="content">
@@ -91,14 +97,14 @@
     </div>
     {% block javascripts %}
         {% javascripts
-        'vendor/jquery/jquery.js'
-        'vendor/jquery-ui/ui/jquery-ui.js'
-        'vendor/bootstrap/dist/js/bootstrap.min.js'
-        'vendor/tinycon/tinycon.min.js'
-        'vendor/moment/moment.js'
-        'vendor/modernizr/modernizr.js'
-        'bundles/tempomain/js/app.js'
-        'bundles/tempomain/js/behavior.js'
+            'vendor/jquery/jquery.js'
+            'vendor/jquery-ui/ui/jquery-ui.js'
+            'vendor/bootstrap/dist/js/bootstrap.min.js'
+            'vendor/tinycon/tinycon.min.js'
+            'vendor/moment/moment.js'
+            'vendor/modernizr/modernizr.js'
+            'bundles/tempomain/js/app.js'
+            'bundles/tempomain/js/behavior.js'
         %}
         <script src="{{ asset_url }}"></script>
         {% endjavascripts %}

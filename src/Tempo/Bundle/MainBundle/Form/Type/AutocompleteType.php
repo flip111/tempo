@@ -16,10 +16,9 @@ namespace Tempo\Bundle\MainBundle\Form\Type;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormViewInterface;
-use Symfony\Component\Form\FormInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-use Tempo\MainBundle\Helper\Behavior;
+use Tempo\Bundle\MainBundle\Helper\Behavior;
 use Symfony\Component\Routing\Router;
 
 

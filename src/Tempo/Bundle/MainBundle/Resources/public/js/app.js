@@ -54,7 +54,7 @@ Tempo.behavior = {
     }
 };
 
-(function($) {
+$(function() {
     Tempo.log = function() {
         var msg = '[Tempo] ' + Array.prototype.join.call(arguments,', ');
         if (window.console && window.console.log) {
@@ -72,4 +72,4 @@ Tempo.behavior = {
         parent.attr('style', 'style:' + parent.is(':hidden') ? 'block' : 'none' );
     });
 
-})(jQuery);
+});

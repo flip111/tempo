@@ -19,10 +19,25 @@
 input:-webkit-autofill {
     background: #FAFAFA;
 }
+#page-title{
+    margin-left: 25px;
+    margin-bottom: 50px;
+    color: #005782;
+}
 
-
-#feedback{ position: fixed; left: -3px; top: 270px; z-index: 750; }
-#feedback a { background: url("/bundles/tempomain/images/feedback.png") #313131; width: 42px;  height: 102px; display: inline-block; display: none; }
+#feedback {
+    position: fixed;
+    left: -3px;
+    top: 270px;
+    z-index: 750;
+}
+#feedback a {
+    background: url("/bundles/tempomain/images/feedback.png") #313131;
+    width: 42px;
+    height: 102px;
+    display: inline-block;
+    display: none;
+}
 
 ul.autocompleter-choices
 {
@@ -447,7 +462,8 @@ ol.stories
 .client-add #client label, .client.edit label { width: 100px; display: block; float: left; padding-top: 2px; font-weight: bold; }
 .client-add #client #client_name{  }
 .client-add .rest{ float: left; width: 60px; }
-.client.show #page-title{ float: left; }
+.client.show #page-title{  }
+.client.show .action{ margin-top: 20px }
 .client.show #sidebar-right h4{ float: left; padding: 20px 40px; }
 .client.show .infos { clear: both; }
 .client.show .infos li{ display: block; margin-bottom: 10px; }
@@ -459,6 +475,7 @@ ol.stories
 .client.show #sidebar-right .suite{ font-style: italic;  margin-left: 60px; margin-top: 30px; ; }
 .client.show #sidebar-right .suite a { color: #484848; }
 .client.show .modal-body{ text-align: center; }
+.client.edit form #client div{ clear: both; }
 .client.edit form .rest{ margin-top:  25px; }
 .client.edit #sidebar-right .list_membre  li img{ width: 28px; height: 28px; display: inline-block; margin-right: 10px; }
 
