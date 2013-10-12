@@ -1,5 +1,5 @@
 {
-    "name": "speakpose",
+    "name": "tempo-project",
     "version": "1.0.0",
     "description": "## Overview",
     "main": "Gruntfile.js",
@@ -8,15 +8,15 @@
     },
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
-        "postinstall" : "node_modules/.bin/bower install"
+        "postinstall" : "node_modules/bower/bin/bower install"
 
     },
     "repository": {
         "type": "git",
-        "url": "git://support.ikime.com/speakpose/speakpose.git"
+        "url": "git@github.com:tempo-project/tempo.git"
     },
     "author": "Ikimea",
-    "license": "Proprietary",
+    "license": "MIT",
     "dependencies": {
         "bower" : ""
     },
@@ -24,8 +24,7 @@
         "grunt": "~0.4.1",
         "grunt-contrib-clean": "~0.4.1",
         "grunt-contrib-concat": "~0.3.0",
-        "grunt-contrib-uglify": "~0.2.2",
-        "grunt-contrib-watch": "~0.4.4",
+        "grunt-contrib-watch": "~0.5.3",
         "grunt-backbone-routes": "latest"
     }
 }

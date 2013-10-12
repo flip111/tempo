@@ -7,7 +7,7 @@ Tempo - Symfony2 Project Management Software
 
 ======
 
-Tempo is **Symfony2 Project Management Software for PHP**, based on the [**Symfony2**](http://symfony.com) framework.
+Tempo is **Symfony2 Project Management Software **, based on the [**Symfony2**](http://symfony.com) framework.
 
 Installation
 ------------
