@@ -15,8 +15,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 use Tempo\Bundle\ProjectBundle\Entity\Project;
-use Tempo\Bundle\ProjectBundle\Form\ProjectType;
-use Tempo\Bundle\ProjectBundle\Form\EquipeType;
+use Tempo\Bundle\ProjectBundle\Form\Type\ProjectType;
+use Tempo\Bundle\ProjectBundle\Form\Type\EquipeType;
 
 /**
  * Project controller.

@@ -35,10 +35,6 @@ class AutocompleteType extends AbstractType
     {
        $this->behaviorManager = $behaviorManager;
 
-       $behaviorManager->getResourceManager()->requireResource('moo/autocomplete/Autocompleter.js');
-       $behaviorManager->getResourceManager()->requireResource('moo/autocomplete/Autocompleter.Local.js');
-       $behaviorManager->getResourceManager()->requireResource('moo/autocomplete/Autocompleter.Request.js');
-       $behaviorManager->getResourceManager()->requireResource('moo/autocomplete/Observer.js');
     }
 
     /**

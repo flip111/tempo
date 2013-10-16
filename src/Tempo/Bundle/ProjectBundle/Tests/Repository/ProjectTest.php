@@ -27,8 +27,6 @@ class ProjectTest extends WebTestCase
             ->get('doctrine.orm.entity_manager');
     }
 
-
-
     public function testGetParent()
     {
 

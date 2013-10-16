@@ -9,7 +9,7 @@
 * file that was distributed with this source code.
 */
 
-namespace Tempo\Bundle\ProjectBundle\Form;
+namespace Tempo\Bundle\ProjectBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -55,7 +55,7 @@ class ProjectType extends AbstractType
     {
         $resolver->setDefaults(array(
             'user_id' => null,
-            'data_class' => 'Tempo\bundle\ProjectBundle\Entity\Project',
+            'data_class' => 'Tempo\Bundle\ProjectBundle\Entity\Project',
         ));
     }
 

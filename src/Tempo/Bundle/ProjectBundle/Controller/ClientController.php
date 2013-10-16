@@ -12,9 +12,9 @@
 namespace Tempo\Bundle\ProjectBundle\Controller;
 
 use Tempo\Bundle\ProjectBundle\Entity\Client;
-use Tempo\Bundle\ProjectBundle\Form\ClientForm;
-use Tempo\Bundle\ProjectBundle\Form\ClientType;
-use Tempo\Bundle\ProjectBundle\Form\EquipeType;
+use Tempo\Bundle\ProjectBundle\Form\Type\ClientForm;
+use Tempo\Bundle\ProjectBundle\Form\Type\ClientType;
+use Tempo\Bundle\ProjectBundle\Form\Type\EquipeType;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -147,7 +147,7 @@ class ClientController extends Controller
 
                 $this->get('session')->getFlashBag()->set('notice', $this->get('translator')->trans('Client ajouté avec succès !'));
 
-                return $this->redirect($this->generateUrl('project_home'));
+                return $this->redirect($this->generateUrl('client_edit', array('slug' => $client->getSlug() )));
             }
 
             return array(

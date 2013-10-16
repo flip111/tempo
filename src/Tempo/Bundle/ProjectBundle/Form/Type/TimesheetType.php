@@ -9,22 +9,25 @@
 * file that was distributed with this source code.
 */
 
-namespace Tempo\Bundle\ProjectBundle\Form;
+namespace Tempo\Bundle\ProjectBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 use Symfony\Component\OptionsResolver\Options;
 
-class ClientForm extends AbstractType
+class TimesheetType extends AbstractType
 {
-
     /**
      * {@inheritdoc}
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-         $builder->add('name');
+        $builder
+            ->add('time')
+            ->add('description')
+            ->add('project')
+        ;
     }
     /**
      * {@inheritdoc}
@@ -32,15 +35,15 @@ class ClientForm extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class'      => 'Tempo\Bundle\ProjectBundle\Entity\Client',
-            'csrf_protection' => false
-        ));
+            'data_class' => 'Tempo\Bundle\ProjectBundle\Entity\Timesheet',
+         ));
     }
+
     /**
      * {@inheritdoc}
      */
     public function getName()
     {
-        return 'client';
+        return 'timesheet';
     }
 }

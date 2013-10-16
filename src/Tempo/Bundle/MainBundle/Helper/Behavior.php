@@ -16,7 +16,6 @@ use Tempo\Bundle\MainBundle\Resource\ResourceManager;
 
 /**
  * @author Mbechezi Mlanawo <mlanawo.mbechezi@ikimea.com>
- * @todo : rewrite for jquery
  */
 
 class Behavior extends Helper
@@ -54,9 +53,7 @@ class Behavior extends Helper
 
     }
     /**
-     * Enregistre un code Javascript à exécuter au chargement de la page, une
-     * fois que l'arbre DOM est prêt.
-     *
+     *  Registers a JavaScript code to execute when loading the page, a * Once the DOM is ready.
      * @param string $call Code à exécuter
      */
     public function onload($call)
@@ -80,14 +77,13 @@ class Behavior extends Helper
 
 
         foreach ($this->onload as $func) {
-            $data[] = 'window.addEvent(\'domready\', '.$func.');';
+            $data[] = '$('.$func.');';
         }
 
 
         if ($data) {
             $data = implode(' ', $data);
-            return '<script type="text/javascript">/*<![CDATA[*/'.
-                $data.'/*]]>*/</script>';
+            return '<script type="text/javascript">/*<![CDATA[*/'. $data.'/*]]>*/</script>';
         }
 
         return '';

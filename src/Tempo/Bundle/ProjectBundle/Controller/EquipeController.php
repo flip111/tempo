@@ -11,7 +11,7 @@
 
 namespace Tempo\Bundle\ProjectBundle\Controller;
 
-use Tempo\ProjectBundle\Form\EquipeType;
+use Tempo\Bundle\ProjectBundle\Form\Type\EquipeType;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -63,10 +63,9 @@ class EquipeController extends Controller
                 return $this->redirect($this->generateUrl($routeSuccess, array('slug' => $category->getSlug()  )));
             }
 
-            return array(
-                'entity' => $category,
-                'form'   => $form->createView()
-            );
         }
+        return $this->redirect($this->generateUrl($routeSuccess, array('slug' => $category->getSlug()  )));
+
+
     }
 }
