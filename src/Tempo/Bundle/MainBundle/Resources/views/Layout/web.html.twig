@@ -5,6 +5,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     {% stylesheets
         'vendor/bootstrap/dist/css/bootstrap.min.css'
+        'bundles/tempomain/css/jquery-ui-1.10.0.custom.css'
         'bundles/tempomain/css/application.css'
         'bundles/tempomain/css/bundles.css'
         filter='css_url_rewrite, ?cssrewrite'
@@ -86,7 +87,6 @@
                         <h4 class="modal-title">Modal title</h4>
                     </div>
                     <div class="modal-body">
-                        ...
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -110,7 +110,10 @@
         {% endjavascripts %}
 
         {% for javascript in behavior.resource.javascripts %}
-    {% endfor %} {{ behavior.renderHTML|raw }} {% endblock %}
+            <script type="text/javascript" src="/bundles/tempomain/js/{{ javascript }}"></script>
+        {% endfor %}
+        {{ behavior.renderHTML|raw }}
+    {% endblock %}
 </body>
 
 </html>

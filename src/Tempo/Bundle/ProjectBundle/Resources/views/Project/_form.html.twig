@@ -22,7 +22,7 @@
         {{ form_widget(form.avancement, { 'attr' :  { 'disabled' : 'disabled', 'style': 'display: none' }}) }}
 
         <div id="slider" class="slider">
-            <div class="knob"><span id="knob_value">{{ form.avancement.get('value') }}%</span></div>
+            <div class="knob"><span id="knob_value">{{ form.avancement.vars.value }}%</span></div>
         </div>
 
     </div>

@@ -25,16 +25,11 @@ class ProfileController extends Controller
     /**
      * @param $slug
      * @return mixed
-     * @throws \Symfony\Component\Security\Core\Exception\AccessDeniedException
      */
     public function editAction()
     {
         $form = $this->createForm(new ProfileType(), $this->getEditableUser());
-        return $this->render(
-            'TempoUserBundle:Profile:edit.html.twig',
-            array('form' => $form->createView())
-        );
-
+        return $this->render( 'TempoUserBundle:Profile:edit.html.twig', array('form' => $form->createView()) );
     }
 
     /**
@@ -108,17 +103,14 @@ class ProfileController extends Controller
 
 
         if ($request->getMethod() == "POST") {
-            $form->bind($request);
+            $form->submit($request);
             if ($form->isValid()) {
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($user);
                 $em->flush();
             }
         }
-        return $this->render(
-            'TempoUserBundle:Profile:edit.html.twig',
-            array('form' => $form->createView())
-        );
+        return $this->render( 'TempoUserBundle:Profile:edit.html.twig',  array('form' => $form->createView()));
 
     }
 

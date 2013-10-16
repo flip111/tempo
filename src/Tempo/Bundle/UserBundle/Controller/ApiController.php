@@ -16,17 +16,19 @@ use Symfony\Component\HttpFoundation\Response;
 
 class ApiController extends Controller
 {
-    public function autocompleteAction($username){
+    public function autocompleteAction($username)
+    {
+        $username = $this->getRequest()->query->get('term', $username);
 
-        $em = $this->container->get('doctrine.orm.entity_manager');
+        $em = $this->getDoctrine()->getManager();
         $users = array();
 
-        $list_user = ($username == 'all' ) ?
-            $em->getRepository('TempoUserBundle:User')->findAll():
+        $list_user = ($username == 'all'  ) ?
+            $em->getRepository('TempoUserBundle:User')->findAll() :
             $em->getRepository('TempoUserBundle:User')->autocomplete($username);
 
         foreach($list_user as $name){
-            $users[] = $name->getUsername();
+            $users[] = $name['username'];
         }
 
         // create a JSON-response with a 200 status code

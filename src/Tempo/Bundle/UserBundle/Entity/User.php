@@ -20,6 +20,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 /**
  * @ORM\Entity
  * @ORM\Table(name="membre")
+ * @ORM\Entity(repositoryClass="Tempo\Bundle\UserBundle\Repository\UserRepository")
  */
 class User extends BaseUser
 {
@@ -78,6 +79,16 @@ class User extends BaseUser
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Alias for parent::getUsernameCanonical()
+     * @param $slug
+     * @return string
+     */
+    public function getSlug()
+    {
+        return $this->getUsernameCanonical();
     }
 
 

@@ -28,7 +28,7 @@ class UserRepository extends EntityRepository
             ->where('u.username LIKE :slug')
             ->setParameter('slug', '%'.$slug. '%')
             ->getQuery()
-            ->getResult(Query::HYDRATE_ARRAY);
+            ->getResult(Query::HYDRATE_OBJECT);
 
     }
 }

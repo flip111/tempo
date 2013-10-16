@@ -42,19 +42,20 @@ input:-webkit-autofill {
 ul.autocompleter-choices
 {
     position: absolute;
-    margin:	0;
-    padding: 0;
-    list-style:	none;
-    border:	 1px solid #7c7c7c;
-    border-left-color:	#c3c3c3;
-    border-right-color:	#c3c3c3;
-    border-bottom-color: #ddd;
-    background-color: #fff;
-    text-align: left;
-    font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
-    z-index: 50;
-    background-color: #fff;
-}
+
+margin:	0;
+padding: 0;
+list-style:	none;
+border:	 1px solid #7c7c7c;
+border-left-color:	#c3c3c3;
+border-right-color:	#c3c3c3;
+border-bottom-color: #ddd;
+background-color: #fff;
+text-align: left;
+font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+z-index: 50;
+background-color: #fff;
+    }
 
 ul.autocompleter-choices li
 {
@@ -88,7 +89,14 @@ ul.autocompleter-choices span.autocompleter-queried
 ul.autocompleter-choices li.autocompleter-selected span.autocompleter-queried{
     color:	#9FCFFF;
 }
+.ui-autocomplete-loading {
+    background: white url('/bundles/tempomain/images/ui-anim_basic_16x16.gif') right center no-repeat;
+}
 
+.ui-autocomplete.ui-front
+{
+    z-index: 1051;
+}
 
 .records-list thead{
     border-top: 2px solid #666666;
@@ -463,7 +471,7 @@ ol.stories
 .client-add #client #client_name{  }
 .client-add .rest{ float: left; width: 60px; }
 .client.show #page-title{  }
-.client.show .action{ margin-top: 20px }
+.client.show .action{ margin-top: 30px }
 .client.show #sidebar-right h4{ float: left; padding: 20px 40px; }
 .client.show .infos { clear: both; }
 .client.show .infos li{ display: block; margin-bottom: 10px; }

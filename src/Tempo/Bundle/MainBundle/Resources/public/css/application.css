@@ -72,7 +72,7 @@ body {
     margin-top: 6px;
 }
 #header #search form #adv_search{
-    background: url("/bundles/tempomain/images/advanced_search.png") no-repeat scroll right 50% transparent;
+    background: url("../images/advanced_search.png") no-repeat scroll right 50% transparent;
     display: none;
     height: 16px;
     text-indent: -3000em;

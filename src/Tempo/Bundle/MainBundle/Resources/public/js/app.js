@@ -72,4 +72,28 @@ $(function() {
         parent.attr('style', 'style:' + parent.is(':hidden') ? 'block' : 'none' );
     });
 
+    $('[data-toggle="modal"]').click(function(e) {
+        e.preventDefault();
+
+        var btn = $(this),
+            url = btn.attr('href'),
+            title = btn.data('title'),
+            data_target = 'modal'+parseInt(Math.random()*1000),
+            modal =  $('#myModal').clone();
+
+        if (url.indexOf('#') == 0) {
+            $(url).show().appendTo(modal.find('.modal-body'));
+        } else {
+            $.get(url, function(data) {
+                modal.find('.modal-body').html(data);
+            }).success(function() {
+                $('input:text:visible:first').focus();
+            });
+        }
+
+        modal.attr('id', data_target);
+        modal.find('.modal-title').html(title);
+        $('#dialog').append(modal);
+        modal.modal();
+    });
 });

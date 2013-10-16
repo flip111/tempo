@@ -1,4 +1,4 @@
-{% extends "TempoMainBundle::Layout/web.html.twig" %}
+s{% extends "TempoMainBundle::Layout/web.html.twig" %}
 {% block bodyClass %}client show{% endblock %}
 {% block javascripts %}
     {{ parent() }}
@@ -10,8 +10,8 @@
 <h1 id="page-title" class="col-md-9"> {{ client.name }} </h1>
 
 <div class="action col-md-2">
-    <a class="btn btn-mini" href="{{ path('client_edit', { 'slug' : client.slug }) }}"> <span class="icon-edit"></span> Edit</a>
-    <a class="modal-overlay btn btn-mini" data-body="#confirmation-delete-client" data-any-close="true" data-buttons="[{className:'right modal-close','text':'No, thanks','event':'cancel'},{className:'left','text':'Sure!','event':'confirm'}]"  href="{{ path('client_delete', { 'slug': client.slug }) }}"> <span class="icon-trash"></span> Move </a>
+    <a class="btn btn-xs btn btn-info" href="{{ path('client_edit', { 'slug' : client.slug }) }}"> <span class="glyphicon glyphicon-edit"></span> Edit</a>
+    <a class="btn btn-xs btn-danger" href="{{ path('client_delete', { 'slug': client.slug }) }}"> <span class="glyphicon glyphicon-trash"></span> Delete</a>
     <span id="confirmation-delete-client" style="display: none;">Êtes vous sur de vouloir supprimer ce client <br/> La suppression entraînera la suppression de tous les projets lier.</span>
 </div>
 
@@ -47,7 +47,7 @@
         <h4>Liste projets</h4>
 
         <div class="add_new_btn">
-            <a href="{{ path('project_new', { 'client' : client.slug }) }}" class="btn"> {{ 'project.add'|trans({},'TempoProject') }} <span></span></a>
+            <a href="{{ path('project_new', { 'client' : client.slug }) }}" class="btn "> {{ 'project.add'|trans({},'TempoProject') }} <span></span></a>
         </div>
 
         <ul class="list-project list">

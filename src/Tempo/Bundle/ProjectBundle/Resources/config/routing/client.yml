@@ -28,7 +28,7 @@ client_delete:
 
 client_equipe_add:
     pattern:  /{slug}/equipe/add
-    defaults: { _controller: TempoProjectBundle:Client:add }
+    defaults: { _controller: TempoProjectBundle:Equipe:add }
 
 client_equipe_create:
     pattern:  /{slug}/equipe/create
