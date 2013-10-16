@@ -7,6 +7,8 @@ submit: Send
 client:
   add:  Add new client
   edit: Edit client
+  list:
+    title: 'Client List'
 
 project:
   add: Add new project

@@ -4,27 +4,14 @@
 <script type="text/javascript" src="{{ asset('bundles/tempoproject/js/client.js')}}"></script>
 {% endblock %}
 
-
+{% set sidebar =  false %}
 {% block content %}
     <form action="{{ path('client_create') }}" method="post" {{ form_enctype(form) }} class="client-add clearfix">
 
         {{ form_widget(form) }}
 
         <div class="rest">
-            <input type="submit" class="submit btn" />
+            <input type="submit" class="submit btn btn-primary" />
         </div>
     </form>
-{% endblock %}
-
-
-
-{% block right %}
-    <div title="Upgrade" class="add_new_btn">
-        <a href="#">Add<span></span></a>
-    </div>
-    <div id="clients">
-        <ul>
-
-        </ul>
-    </div>
 {% endblock %}

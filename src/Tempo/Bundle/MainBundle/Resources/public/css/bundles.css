@@ -499,7 +499,8 @@ ol.stories
 .project.show #content #center ul.item-details dl dd {   display: table-cell; vertical-align: top; }
 .project.show #content #center .mod-content .description{ margin: 10px; clear: both; }
 .project.show #content #center .project-children { margin-left: 25px; }
-.project.show #content #center .project-children .children{ display: inline-block;
+.project.show #content #center .project-children .children {
+    display: inline-block;
     background-color: rgba(219,218,206,0.3);
     height: 123px;
     margin: 0 12px 20px 0;
@@ -525,6 +526,10 @@ ol.stories
 
 .project .formtextField #slider{ float: left; }
 .project .formtextField input[type="date"]{ width: 200px; }
+.project #client .head .btn {
+    margin-top: 5px;
+}
+.project #client .head h4 { margin-left: 10px; }
 
 .timesheet.list #sidebar-right .form-horizontal .control-group { margin-top: 10px;  }
 .timesheet.list #sidebar-right .form-horizontal .control-label { text-align: left; width: 50px; padding-left: 20px;  }

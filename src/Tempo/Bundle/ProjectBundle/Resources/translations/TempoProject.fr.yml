@@ -7,6 +7,8 @@ submit: Valider
 client:
   add:  Ajouter un client
   edit: Modifier un client
+  list:
+    title: 'Liste des clients'
 
 project:
   add: Ajouter un nouveau projet
