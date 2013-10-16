@@ -61,17 +61,16 @@ stof_doctrine_extensions:
 
 knp_time: ~  # Enable the helper for use in templates
 
-ikimea_ck_editor:
-    lang : fr
-    src : /bundles/tempomain/js/ckeditor
-    skin: kama
-    toolbar:
-      - ['Format']
-      - ['Bold','Italic']
-      - ['Outdent','Indent','Blockquote']
-      - ['NumberedList','BulletedList']
-      - ['-','Link','Unlink','Anchor','-','Table']
-      - ['Maximize','Source']
+ivory_ck_editor:
+  configs:
+    default:
+      toolbar:
+        - ['Format']
+        - ['Bold','Italic']
+        - ['Outdent','Indent','Blockquote']
+        - ['NumberedList','BulletedList']
+        - ['-','Link','Unlink','Anchor','-','Table']
+        - ['Maximize','Source']
 
 sonata_seo:
   page:
@@ -101,3 +100,7 @@ knp_snappy:
         enabled:    true
         binary:     /usr/bin/wkhtmltoimage
         options:    []
+
+fkr_css_url_rewrite:
+    rewrite_only_if_file_exists: true
+    clear_urls: true
