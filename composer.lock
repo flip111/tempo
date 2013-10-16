@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "716451a697414b903286275ccdcbdbc4",
+    "hash": "72ddef9c2cd0f3c6e8197616278d32cc",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -358,12 +358,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/DoctrineBundle.git",
-                "reference": "a41322d452354ee1e01b1e0f25c4f2ae3ca77ed3"
+                "reference": "ef6c4381a1d182f78b83bc3890cfab0fa08a89f9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/DoctrineBundle/zipball/a41322d452354ee1e01b1e0f25c4f2ae3ca77ed3",
-                "reference": "a41322d452354ee1e01b1e0f25c4f2ae3ca77ed3",
+                "url": "https://api.github.com/repos/doctrine/DoctrineBundle/zipball/ef6c4381a1d182f78b83bc3890cfab0fa08a89f9",
+                "reference": "ef6c4381a1d182f78b83bc3890cfab0fa08a89f9",
                 "shasum": ""
             },
             "require": {
@@ -419,7 +419,7 @@
                 "orm",
                 "persistence"
             ],
-            "time": "2013-09-18 11:44:15"
+            "time": "2013-10-12 16:02:36"
         },
         {
             "name": "doctrine/doctrine-migrations-bundle",
@@ -730,6 +730,109 @@
             "time": "2013-09-26 21:24:14"
         },
         {
+            "name": "egeloen/ckeditor-bundle",
+            "version": "dev-master",
+            "target-dir": "Ivory/CKEditorBundle",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/egeloen/IvoryCKEditorBundle.git",
+                "reference": "f8cb2dc814d3f2cacaba153ba5da940e5964d839"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/egeloen/IvoryCKEditorBundle/zipball/f8cb2dc814d3f2cacaba153ba5da940e5964d839",
+                "reference": "f8cb2dc814d3f2cacaba153ba5da940e5964d839",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0",
+                "symfony/form": ">=2.1",
+                "symfony/framework-bundle": ">=2.1"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "3.7.*",
+                "twig/twig": "1.*"
+            },
+            "suggest": {
+                "helios-ag/fm-elfinder-bundle": "Allows to use the elfinder as CKEditor file manager",
+                "twig/twig": "Allows to use Ivory CKEditor twig templates"
+            },
+            "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.1-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Ivory\\CKEditorBundle": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Eric GELOEN",
+                    "email": "geloen.eric@gmail.com"
+                }
+            ],
+            "description": "Provides a CKEditor integration for your Symfony2 Project.",
+            "keywords": [
+                "CKEditor"
+            ],
+            "time": "2013-10-09 16:54:18"
+        },
+        {
+            "name": "fkr/cssurlrewrite-bundle",
+            "version": "1.0.x-dev",
+            "target-dir": "Fkr/CssURLRewriteBundle",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/fkrauthan/FkrCssURLRewriteBundle.git",
+                "reference": "9070725fa4b9e815426b063121fecda88b580c9a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/fkrauthan/FkrCssURLRewriteBundle/zipball/9070725fa4b9e815426b063121fecda88b580c9a",
+                "reference": "9070725fa4b9e815426b063121fecda88b580c9a",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.2",
+                "symfony/assetic-bundle": "*"
+            },
+            "type": "symfony-bundle",
+            "autoload": {
+                "psr-0": {
+                    "Fkr\\CssURLRewriteBundle": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Florian Krauthan",
+                    "email": "fkrauthan@gmx.net"
+                }
+            ],
+            "description": "A small assetic filter for symfony to fix all url paths at css documents to correct urls",
+            "homepage": "https://github.com/fkrauthan/FkrCssURLRewriteBundle",
+            "keywords": [
+                "Symfony Bundle",
+                "asset",
+                "assetic",
+                "css",
+                "css url",
+                "cssrewrite",
+                "rewrite"
+            ],
+            "time": "2013-08-27 14:17:45"
+        },
+        {
             "name": "frequence-web/calendr-bundle",
             "version": "dev-master",
             "target-dir": "FrequenceWeb/Bundle/CalendRBundle",
@@ -771,74 +874,22 @@
             "time": "2013-02-03 17:15:03"
         },
         {
-            "name": "friendsofsymfony/rest",
-            "version": "0.8.0",
-            "target-dir": "FOS/Rest",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/FriendsOfSymfony/FOSRest.git",
-                "reference": "9a84df8220553e2ae3163b8325a3c4c2e9792426"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSRest/zipball/9a84df8220553e2ae3163b8325a3c4c2e9792426",
-                "reference": "9a84df8220553e2ae3163b8325a3c4c2e9792426",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.2",
-                "symfony/http-foundation": "~2.0"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "0.8.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-0": {
-                    "FOS\\Rest": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Lukas Kahwe Smith",
-                    "email": "smith@pooteeweet.org"
-                },
-                {
-                    "name": "FriendsOfSymfony Community",
-                    "homepage": "https://github.com/FriendsOfSymfony/FOSRest/contributors"
-                }
-            ],
-            "description": "This library provides various tools to develop RESTful API's",
-            "homepage": "http://friendsofsymfony.github.com",
-            "keywords": [
-                "rest"
-            ],
-            "time": "2013-03-02 20:35:05"
-        },
-        {
             "name": "friendsofsymfony/rest-bundle",
             "version": "dev-master",
             "target-dir": "FOS/RestBundle",
             "source": {
                 "type": "git",
                 "url": "https://github.com/FriendsOfSymfony/FOSRestBundle.git",
-                "reference": "2240da74617e16904aac6d56b99bd3b190bae74d"
+                "reference": "d5af3a9c45a9c425661d30fcdea73468bda2ce3c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSRestBundle/zipball/2240da74617e16904aac6d56b99bd3b190bae74d",
-                "reference": "2240da74617e16904aac6d56b99bd3b190bae74d",
+                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSRestBundle/zipball/d5af3a9c45a9c425661d30fcdea73468bda2ce3c",
+                "reference": "d5af3a9c45a9c425661d30fcdea73468bda2ce3c",
                 "shasum": ""
             },
             "require": {
                 "doctrine/inflector": "1.0.*",
-                "friendsofsymfony/rest": ">=0.7.0,<0.9.0-dev",
                 "php": ">=5.3.2",
                 "symfony/framework-bundle": "~2.1",
                 "willdurand/negotiation": "1.0.*"
@@ -859,7 +910,7 @@
             "suggest": {
                 "jms/serializer-bundle": "Add support for advanced serialization capabilities, recommended, requires 0.12.*",
                 "sensio/framework-extra-bundle": "Add support for route annotations and the view response listener",
-                "symfony/serializer": "Add support for basic serialization capabilities, requires >=2.0,<2.3-dev"
+                "symfony/serializer": "Add support for basic serialization capabilities and xml decoding, requires ~2.1"
             },
             "type": "symfony-bundle",
             "extra": {
@@ -896,7 +947,7 @@
             "keywords": [
                 "rest"
             ],
-            "time": "2013-10-06 06:20:25"
+            "time": "2013-10-16 10:11:34"
         },
         {
             "name": "friendsofsymfony/user-bundle",
@@ -905,12 +956,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/FriendsOfSymfony/FOSUserBundle.git",
-                "reference": "5e236332c3934fbc16b79eff3cf6ee9ee21b7519"
+                "reference": "f9ea1de0698e3055c9916e88c19f42e28844ef61"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSUserBundle/zipball/5e236332c3934fbc16b79eff3cf6ee9ee21b7519",
-                "reference": "5e236332c3934fbc16b79eff3cf6ee9ee21b7519",
+                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSUserBundle/zipball/f9ea1de0698e3055c9916e88c19f42e28844ef61",
+                "reference": "f9ea1de0698e3055c9916e88c19f42e28844ef61",
                 "shasum": ""
             },
             "require": {
@@ -965,7 +1016,7 @@
             "keywords": [
                 "User management"
             ],
-            "time": "2013-10-02 23:38:05"
+            "time": "2013-10-09 22:58:46"
         },
         {
             "name": "gedmo/doctrine-extensions",
@@ -973,12 +1024,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/l3pp4rd/DoctrineExtensions.git",
-                "reference": "52de3fd8102984610cee062a5c86629ae2c0596e"
+                "reference": "67615ac3fa45369e25806ac1932235b3a09e3f35"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/l3pp4rd/DoctrineExtensions/zipball/52de3fd8102984610cee062a5c86629ae2c0596e",
-                "reference": "52de3fd8102984610cee062a5c86629ae2c0596e",
+                "url": "https://api.github.com/repos/l3pp4rd/DoctrineExtensions/zipball/67615ac3fa45369e25806ac1932235b3a09e3f35",
+                "reference": "67615ac3fa45369e25806ac1932235b3a09e3f35",
                 "shasum": ""
             },
             "require": {
@@ -1045,7 +1096,7 @@
                 "tree",
                 "uploadable"
             ],
-            "time": "2013-10-06 10:12:00"
+            "time": "2013-10-10 07:21:45"
         },
         {
             "name": "ikimea/browser",
@@ -1095,58 +1146,6 @@
                 "browser"
             ],
             "time": "2013-09-02 21:50:20"
-        },
-        {
-            "name": "ikimea/ckeditor-bundle",
-            "version": "dev-master",
-            "target-dir": "Ikimea/CKEditorBundle",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Ikimea/CKEditorBundle.git",
-                "reference": "b6b4ee728a5367dc7fce8ea62b2135168b3931bb"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Ikimea/CKEditorBundle/zipball/b6b4ee728a5367dc7fce8ea62b2135168b3931bb",
-                "reference": "b6b4ee728a5367dc7fce8ea62b2135168b3931bb",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.3"
-            },
-            "require-dev": {
-                "symfony/browser-kit": "2.1.x-dev",
-                "symfony/dom-crawler": "2.1.x-dev",
-                "symfony/finder": "2.2.x-dev",
-                "symfony/form": "2.1.x-dev",
-                "symfony/framework-bundle": "2.1.x-dev",
-                "twig/extensions": "1.0.x-dev"
-            },
-            "type": "symfony-bundle",
-            "autoload": {
-                "psr-0": {
-                    "Ikimea\\CKEditorBundle": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Mbechezi Mlanawo",
-                    "email": "mlanawo.mbechezi@ikimea.com",
-                    "homepage": "http://www.ikimea.com"
-                }
-            ],
-            "description": "Integrate CKEditor with Symfony2 ",
-            "homepage": "https://github.com/Ikimea/CKEditorBundle",
-            "keywords": [
-                "CKEditor",
-                "bundle",
-                "components"
-            ],
-            "time": "2013-04-24 19:12:41"
         },
         {
             "name": "imagine/imagine",
@@ -1663,12 +1662,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Seldaek/monolog.git",
-                "reference": "b5fa119527f25b787fbb20e75593e0671b0ea079"
+                "reference": "8e5a671eef6e1096d764e6f3524e6f732afa53b4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/b5fa119527f25b787fbb20e75593e0671b0ea079",
-                "reference": "b5fa119527f25b787fbb20e75593e0671b0ea079",
+                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/8e5a671eef6e1096d764e6f3524e6f732afa53b4",
+                "reference": "8e5a671eef6e1096d764e6f3524e6f732afa53b4",
                 "shasum": ""
             },
             "require": {
@@ -1718,7 +1717,7 @@
                 "logging",
                 "psr-3"
             ],
-            "time": "2013-10-03 15:23:01"
+            "time": "2013-10-11 16:18:40"
         },
         {
             "name": "pagerfanta/pagerfanta",
@@ -1726,12 +1725,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/whiteoctober/Pagerfanta.git",
-                "reference": "9568187b789a39a3933c71e4e28b60fc2c26b70d"
+                "reference": "aec47bbf8a018e1b371ef58562cd02920e9ce149"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/whiteoctober/Pagerfanta/zipball/9568187b789a39a3933c71e4e28b60fc2c26b70d",
-                "reference": "9568187b789a39a3933c71e4e28b60fc2c26b70d",
+                "url": "https://api.github.com/repos/whiteoctober/Pagerfanta/zipball/aec47bbf8a018e1b371ef58562cd02920e9ce149",
+                "reference": "aec47bbf8a018e1b371ef58562cd02920e9ce149",
                 "shasum": ""
             },
             "require": {
@@ -1780,7 +1779,7 @@
                 "paginator",
                 "paging"
             ],
-            "time": "2013-09-23 08:06:55"
+            "time": "2013-10-11 14:31:41"
         },
         {
             "name": "psr/log",
@@ -1974,12 +1973,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sonata-project/SonataSeoBundle.git",
-                "reference": "1e02de74d815b396492574b47510b8fb422ac635"
+                "reference": "26fbaf03853d6a48fa666d8531feb0012c9bdc04"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataSeoBundle/zipball/1e02de74d815b396492574b47510b8fb422ac635",
-                "reference": "1e02de74d815b396492574b47510b8fb422ac635",
+                "url": "https://api.github.com/repos/sonata-project/SonataSeoBundle/zipball/26fbaf03853d6a48fa666d8531feb0012c9bdc04",
+                "reference": "26fbaf03853d6a48fa666d8531feb0012c9bdc04",
                 "shasum": ""
             },
             "require": {
@@ -2019,7 +2018,7 @@
                 "seo",
                 "sonata"
             ],
-            "time": "2013-10-03 16:32:24"
+            "time": "2013-10-15 11:39:46"
         },
         {
             "name": "stof/doctrine-extensions-bundle",
@@ -2028,12 +2027,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/stof/StofDoctrineExtensionsBundle.git",
-                "reference": "6e8dc798687963ffc4e4e0dfa687b361699855a9"
+                "reference": "9da4489322c5442ff021c4cd3f28dd79b2a8df07"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/stof/StofDoctrineExtensionsBundle/zipball/6e8dc798687963ffc4e4e0dfa687b361699855a9",
-                "reference": "6e8dc798687963ffc4e4e0dfa687b361699855a9",
+                "url": "https://api.github.com/repos/stof/StofDoctrineExtensionsBundle/zipball/9da4489322c5442ff021c4cd3f28dd79b2a8df07",
+                "reference": "9da4489322c5442ff021c4cd3f28dd79b2a8df07",
                 "shasum": ""
             },
             "require": {
@@ -2081,7 +2080,7 @@
                 "translatable",
                 "tree"
             ],
-            "time": "2013-09-16 09:35:16"
+            "time": "2013-10-13 16:27:31"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -2362,12 +2361,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/symfony.git",
-                "reference": "8840591b25e38b636b3fbc20df0e419bb1949a6e"
+                "reference": "9ed5608abe03c130bd9878314a044d4c933bd0da"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/symfony/zipball/8840591b25e38b636b3fbc20df0e419bb1949a6e",
-                "reference": "8840591b25e38b636b3fbc20df0e419bb1949a6e",
+                "url": "https://api.github.com/repos/symfony/symfony/zipball/9ed5608abe03c130bd9878314a044d4c933bd0da",
+                "reference": "9ed5608abe03c130bd9878314a044d4c933bd0da",
                 "shasum": ""
             },
             "require": {
@@ -2462,7 +2461,7 @@
             "keywords": [
                 "framework"
             ],
-            "time": "2013-10-01 17:10:09"
+            "time": "2013-10-15 16:56:08"
         },
         {
             "name": "twig/extensions",
@@ -2517,12 +2516,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/fabpot/Twig.git",
-                "reference": "09c386b3359cc22b4112197c2d8c6d6f7a49c918"
+                "reference": "ba486a3bfd437af485aec36d4342d4ddb6e5883b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/fabpot/Twig/zipball/09c386b3359cc22b4112197c2d8c6d6f7a49c918",
-                "reference": "09c386b3359cc22b4112197c2d8c6d6f7a49c918",
+                "url": "https://api.github.com/repos/fabpot/Twig/zipball/ba486a3bfd437af485aec36d4342d4ddb6e5883b",
+                "reference": "ba486a3bfd437af485aec36d4342d4ddb6e5883b",
                 "shasum": ""
             },
             "require": {
@@ -2558,7 +2557,7 @@
             "keywords": [
                 "templating"
             ],
-            "time": "2013-10-07 10:00:50"
+            "time": "2013-10-15 19:39:15"
         },
         {
             "name": "white-october/pagerfanta-bundle",
@@ -2665,16 +2664,17 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/yohang/CalendR.git",
-                "reference": "ce229c1b48cebc820d34a7ef4011e86b24888599"
+                "reference": "c19d325d333f35724b7015244af4abb153cf6828"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yohang/CalendR/zipball/ce229c1b48cebc820d34a7ef4011e86b24888599",
-                "reference": "ce229c1b48cebc820d34a7ef4011e86b24888599",
+                "url": "https://api.github.com/repos/yohang/CalendR/zipball/c19d325d333f35724b7015244af4abb153cf6828",
+                "reference": "c19d325d333f35724b7015244af4abb153cf6828",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.3.0"
+                "php": ">=5.3.0",
+                "symfony/options-resolver": ">=2.1,<3.0"
             },
             "require-dev": {
                 "doctrine/cache": "~1.1",
@@ -2688,7 +2688,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.0.x-dev"
+                    "dev-master": "1.1.x-dev"
                 }
             },
             "autoload": {
@@ -2714,7 +2714,7 @@
                 "date",
                 "events"
             ],
-            "time": "2013-09-13 15:14:48"
+            "time": "2013-10-12 08:07:08"
         }
     ],
     "packages-dev": [
@@ -3176,12 +3176,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/data-fixtures.git",
-                "reference": "b1e7d5a991ca891cd66c143a618f5ce1e679ba9f"
+                "reference": "8ffac1c63f34124f693b93889fa32f4036eb241b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/data-fixtures/zipball/b1e7d5a991ca891cd66c143a618f5ce1e679ba9f",
-                "reference": "b1e7d5a991ca891cd66c143a618f5ce1e679ba9f",
+                "url": "https://api.github.com/repos/doctrine/data-fixtures/zipball/8ffac1c63f34124f693b93889fa32f4036eb241b",
+                "reference": "8ffac1c63f34124f693b93889fa32f4036eb241b",
                 "shasum": ""
             },
             "require": {
@@ -3223,7 +3223,7 @@
             "keywords": [
                 "database"
             ],
-            "time": "2013-09-16 23:31:59"
+            "time": "2013-10-10 22:08:39"
         },
         {
             "name": "doctrine/doctrine-fixtures-bundle",
@@ -3598,12 +3598,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/instaclick/php-webdriver.git",
-                "reference": "47a6019553a7a5b42d35493276ffc2c9252c53d5"
+                "reference": "786ba0dc9c594fb0b9b8171db852b2224b23811e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/instaclick/php-webdriver/zipball/47a6019553a7a5b42d35493276ffc2c9252c53d5",
-                "reference": "47a6019553a7a5b42d35493276ffc2c9252c53d5",
+                "url": "https://api.github.com/repos/instaclick/php-webdriver/zipball/786ba0dc9c594fb0b9b8171db852b2224b23811e",
+                "reference": "786ba0dc9c594fb0b9b8171db852b2224b23811e",
                 "shasum": ""
             },
             "require": {
@@ -3648,7 +3648,7 @@
                 "webdriver",
                 "webtest"
             ],
-            "time": "2013-10-04 15:03:51"
+            "time": "2013-10-15 14:53:05"
         },
         {
             "name": "leek/git-debug-bundle",
@@ -3708,13 +3708,12 @@
         "friendsofsymfony/rest-bundle": 20,
         "friendsofsymfony/user-bundle": 20,
         "ikimea/browser": 20,
-        "ikimea/ckeditor-bundle": 20,
         "knplabs/knp-menu-bundle": 20,
         "knplabs/knp-time-bundle": 20,
         "sonata-project/seo-bundle": 20,
         "stof/doctrine-extensions-bundle": 20,
         "white-october/pagerfanta-bundle": 20,
-        "yohang/calendr": 20,
+        "fkr/cssurlrewrite-bundle": 20,
         "liip/imagine-bundle": 20,
         "behat/behat": 0,
         "behat/symfony2-extension": 20,

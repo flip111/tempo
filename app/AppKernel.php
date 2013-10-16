@@ -35,7 +35,7 @@ class AppKernel extends Kernel {
         $bundles[] = new Knp\Bundle\MenuBundle\KnpMenuBundle();
         $bundles[] = new Knp\Bundle\TimeBundle\KnpTimeBundle();
 
-        $bundles[] = new Ikimea\CKEditorBundle\IkimeaCKEditorBundle();
+        $bundles[] = new Ivory\CKEditorBundle\IvoryCKEditorBundle();
 
         $bundles[] = new Sonata\SeoBundle\SonataSeoBundle();
 
@@ -43,6 +43,9 @@ class AppKernel extends Kernel {
         $bundles[] = new Tempo\Bundle\MainBundle\TempoMainBundle();
         $bundles[] = new Tempo\Bundle\UserBundle\TempoUserBundle();
         $bundles[] = new Tempo\Bundle\ProjectBundle\TempoProjectBundle();
+
+        $bundles[] = new Fkr\CssURLRewriteBundle\FkrCssURLRewriteBundle();
+
 
         return $bundles;
     }

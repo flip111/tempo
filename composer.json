@@ -35,14 +35,14 @@
         "friendsofsymfony/rest-bundle": "1.0.*@dev",
         "friendsofsymfony/user-bundle": "dev-master",
         "ikimea/browser": "dev-master",
-        "ikimea/ckeditor-bundle": "dev-master",
+        "egeloen/ckeditor-bundle": "2.*",
         "knplabs/knp-menu-bundle": "dev-master",
         "knplabs/knp-time-bundle": "dev-master",
         "sonata-project/seo-bundle": "dev-master",
         "stof/doctrine-extensions-bundle": "dev-master",
 
         "white-october/pagerfanta-bundle": "dev-master",
-        "yohang/calendr": "dev-master",
+        "fkr/cssurlrewrite-bundle": "1.0.*@dev",
         "liip/imagine-bundle": "dev-master"
     },
     "require-dev": {
