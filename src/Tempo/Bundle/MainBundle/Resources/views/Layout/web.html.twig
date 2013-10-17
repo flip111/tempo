@@ -58,7 +58,7 @@
         </header>
         <div id="content">
             <div class="row">
-                <div id="child-content" class="col-md-8">
+                <div id="child-content" class="col-md-{% if sidebar is defined %}8{% else %}10{% endif %}">
                     {% for flashMessage in app.session.flashbag.get('notice') %}
                         <div class="alert alert-success">
                         <button class="close" data-dismiss="alert">×</button>{{ flashMessage }}</div>
@@ -70,7 +70,7 @@
                     {{ knp_menu_render('breadcrumb') }}
                     {% block content %}  {% endblock %}
                 </div>
-                {% if sidebar is not defined %}
+                {% if sidebar is defined %}
                 <div id="sidebar-right" class="col-md-2">{% block right %} {% endblock %}</div>
                 {% endif %}
             </div>

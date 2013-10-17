@@ -1,20 +1,22 @@
 {% extends "TempoMainBundle::Layout/web.html.twig" %}
 {% block bodyClass %}project show{% endblock %}
+{% set sidebar = true %}
 {% block content %}
 
-    <div class="actions">
-        <a class="btn btn-mini" href="{{ path('project_new', { 'parent' : project.id, 'client': project.client.slug }) }}"> <span class="icon-plus"></span> {{ 'project.title_subprojects'|trans([], 'TempoProject') }}</a>
-        <a class="btn btn-mini" href="{{ path('project_edit', { 'slug': project.slug }) }}"> <span class="icon-edit"></span> Edit</a>
-        <a class="btn btn-mini "> <span class="icon-trash"></span> Remove</a>
+    <h1 id="page-title" class="col-md-6">{{ project.name }}</h1>
+
+    <div class="actions col-md-3">
+        <a class="btn btn-xs btn-primary" href="{{ path('project_new', { 'parent' : project.id, 'client': project.client.slug }) }}"> <span class="glyphicon glyphicon-plus"></span> {{ 'project.title_subprojects'|trans([], 'TempoProject') }}</a>
+        <a class="btn btn-xs btn-info " href="{{ path('project_edit', { 'slug': project.slug }) }}"> <span class="glyphicon glyphicon-edit"></span> Edit</a>
+        <a class="btn btn-xs btn-danger "> <span class="glyphicon glyphicon-trash"></span> Delete</a>
     </div>
 
-    <h1 id="page-title">{{ project.name }}</h1>
     <div class="mod-head">
         <h3>Description </h3>
     </div>
     <div class="mod-content clearfix">
 
-        <ul class="item-details  float-left">
+        <ul class="item-details col-md-6">
             <li>
                 <dl>
                     <dt>Code:</dt>
@@ -31,8 +33,7 @@
             </li>
 
         </ul>
-
-        <ul class="item-details  float-right">
+        <ul class="item-details col-md-6">
             <li>
                 <dl>
                     <dt>Client:</dt>
@@ -69,9 +70,9 @@
 {% block right %}
 <ul class="record_actions">
 
-    <div class="add_new_btn">
-        <a data-title="Adding a team member" href="#add_membre" class="btn btn-xs">{{ 'project.add_membre'|trans([], 'TempoProject') }}<span></span></a>
-    </div>
+    <h4>{{ 'client.team'|trans({},'TempoProject') }} </h4>
+
+    <a data-toggle="modal" data-target="#" data-title="Adding a team member" href="#add_membre" class="float-right btn btn-xs btn-info"> <span class="glyphicon glyphicon-plus"></span> {{ 'project.add_membre'|trans([], 'TempoProject') }}</a>
 
     <div id="add_membre" style="display: none;">
         {% include 'TempoProjectBundle:Equipe:new.html.twig' with {'form': equipeForm, 'category': project, 'route_category' : 'project_equipe_add' } %}

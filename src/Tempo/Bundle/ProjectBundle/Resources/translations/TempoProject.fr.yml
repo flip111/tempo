@@ -17,6 +17,16 @@ project:
   title_subprojects: Sous project
   add_membre: Affecter un membre
   display_projects: Afficher les projets
+  form:
+    label_name: Nom
+    label_isactive: Actif
+    label_beginning: Commence
+    label_ending: Fini
+    label_type: Type
+    label_avancement: Avancement
+    label_code: Code
+    label_status: Status
+    label_estimated: Budget estimé
 
 errors:
   internal_error: Une erreur interne est survenue

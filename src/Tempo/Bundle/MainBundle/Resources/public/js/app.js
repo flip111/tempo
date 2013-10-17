@@ -65,6 +65,8 @@ $(function() {
     };
 
     $('body').removeClass('no-js').addClass('js');
+    $( ".datepicker" ).datepicker();
+
 
     $('#user-barre li.notif').click(function(event){
         event.preventDefault();

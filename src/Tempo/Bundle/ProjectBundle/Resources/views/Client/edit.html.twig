@@ -1,5 +1,6 @@
 {% extends "TempoMainBundle::Layout/web.html.twig" %}
 {% block bodyClass %}client edit{% endblock %}
+{% set sidebar =  false %}
 {% block javascripts %}
     {{ parent() }}
     <script type="text/javascript" src="{{ asset('bundles/tempoproject/js/client.js')}}"></script>

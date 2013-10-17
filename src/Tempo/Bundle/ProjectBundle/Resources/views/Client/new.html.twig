@@ -4,7 +4,6 @@
 <script type="text/javascript" src="{{ asset('bundles/tempoproject/js/client.js')}}"></script>
 {% endblock %}
 
-{% set sidebar =  false %}
 {% block content %}
     <form action="{{ path('client_create') }}" method="post" {{ form_enctype(form) }} class="client-add clearfix">
 

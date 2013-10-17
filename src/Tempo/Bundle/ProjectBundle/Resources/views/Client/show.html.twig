@@ -1,5 +1,6 @@
-s{% extends "TempoMainBundle::Layout/web.html.twig" %}
+{% extends "TempoMainBundle::Layout/web.html.twig" %}
 {% block bodyClass %}client show{% endblock %}
+{% set sidebar = true %}
 {% block javascripts %}
     {{ parent() }}
     <script type="text/javascript" src="{{ asset('bundles/tempoproject/js/client.js')}}"></script>
@@ -47,7 +48,7 @@ s{% extends "TempoMainBundle::Layout/web.html.twig" %}
         <h4>Liste projets</h4>
 
         <div class="add_new_btn">
-            <a href="{{ path('project_new', { 'client' : client.slug }) }}" class="btn "> {{ 'project.add'|trans({},'TempoProject') }} <span></span></a>
+            <a href="{{ path('project_new', { 'client' : client.slug }) }}" class="btn btn-xs btn-primary "><span class="glyphicon glyphicon-plus"></span> {{ 'project.add'|trans({},'TempoProject') }} </a>
         </div>
 
         <ul class="list-project list">

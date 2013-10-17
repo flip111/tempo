@@ -29,8 +29,6 @@ class DefaultController extends Controller
         $manager = $this->container->get('tempo_project.manager.client');
         $clients = $manager->findAllByUser($this->getUser()->getId());
 
-        return $this->render('TempoProjectBundle:Default:index.html.twig',
-            array('clients' => $clients)
-        );
+        return $this->render('TempoProjectBundle:Default:index.html.twig', array('clients' => $clients) );
     }
 }

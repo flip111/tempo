@@ -219,8 +219,8 @@ table.table-striped tbody .actions .edit{ text-indent: -9999px; }
     float: left;
 }
 #user_list .user-list-info .infos{
-    float: right;
-    padding-top: 25px;
+    float: left;
+    padding-left: 20px;
 }
 #user_list .user-list-info a{
     text-decoration: none;
@@ -233,7 +233,7 @@ table.table-striped tbody .actions .edit{ text-indent: -9999px; }
 }
 
 #sidebar-right .list{
-    margin: 30px 30px;
+    margin: 30px 0px;
 
 }
 #sidebar-right .list{ list-style-type: none; }
@@ -492,22 +492,22 @@ ol.stories
 
 
 /* Project */
-.show #content #center .actions{ float: right; }
+.show #content  .actions{ float: right; margin-top: 30px;}
 
-.project #content #center form .formtextField #project_beginning #project_beginning_time,
-.project #content #center form .formtextField #project_ending #project_ending_time{ width: 50px; }
+.project #content form .formtextField #project_beginning #project_beginning_time,
+.project #content form .formtextField #project_ending #project_ending_time{ width: 50px; }
 
-.project #content #center form .formtextField #project_avancement{ display: none;  }
+.project #content form .formtextField #project_avancement{ display: none;  }
 
-.project.show #content #center .mod-head{  background: url("/bundles/tempomain/images/head_bg.png") repeat-x scroll left center transparent; margin: 0 0 25px 25px; padding: 0; }
-.project.show #content #center h3{ display: inline; font-weight: normal; margin: 0; padding: 0 8px 0 0; color: #292929; font-size: 19px; background-color: #FFF; }
-.project.show #content #center ul.item-details{ display: inline-block; vertical-align: top; width: 45%; list-style-type: none; margin: 0 0 25px 30px; padding: 0; }
-.project.show #content #center ul.item-details dl { display: table;  margin: 0 0 2px;  width: 100%; }
-.project.show #content #center ul.item-details dl dt { color: #666666; display: table-cell; vertical-align: top; width: 16%; font-size: 13px; }
-.project.show #content #center ul.item-details dl dd {   display: table-cell; vertical-align: top; }
-.project.show #content #center .mod-content .description{ margin: 10px; clear: both; }
-.project.show #content #center .project-children { margin-left: 25px; }
-.project.show #content #center .project-children .children {
+.project.show #content  .mod-head{  clear: both; background: url("/bundles/tempomain/images/head_bg.png") repeat-x scroll left center transparent; margin: 0 80px 25px 25px; padding: 0; }
+.project.show #content h3{ display: inline; font-weight: normal; margin: 0; padding: 0 8px 0 0; color: #292929; font-size: 19px; background-color: #FFF; }
+.project.show #content ul.item-details{ display: inline-block; vertical-align: top; width: 45%; list-style-type: none; margin: 0 0 25px 30px; padding: 0; }
+.project.show #content ul.item-details dl { display: table;  margin: 0 0 2px;  width: 100%; }
+.project.show #content ul.item-details dl dt { color: #666666; display: table-cell; vertical-align: top; width: 16%; font-size: 13px; }
+.project.show #content ul.item-details dl dd {   display: table-cell; vertical-align: top; }
+.project.show #content .mod-content .description{ margin: 10px; clear: both; }
+.project.show #content .project-children { margin-left: 25px; }
+.project.show #content .project-children .children {
     display: inline-block;
     background-color: rgba(219,218,206,0.3);
     height: 123px;
@@ -521,17 +521,39 @@ ol.stories
     -moz-border-radius: 3px;
     -webkit-border-radius: 3px;
 }
-.project.show #content #center .project-children .children{
+.project.show #content .project-children .children{
     height: 72px;
     padding: 8px 7px 0 20px;
 }
 .project.show #sidebar-right .list_membre li img{ width: 28px; height: 28px; display: inline-block; margin-right: 10px; }
-
+.project.show #equipe div label {
+    margin-right: 30px;
+}
+.project.show #equipe {
+    float: left;
+    margin-top: 2px;
+}
+.project.show #add_membre .rest {
+    float: left;
+    margin-left: 20px;
+}
+.project.show .action { margin-bottom: 16px; }
 
 .project.edit #content #center form .formtextField input#project_avancement{ display: none; background: none; border: none; border-radius: none; box-shadow: none; border-left: none;  padding: 0; height: 24px;  }
-.project.edit #content #center form .formtextField #slider{ display: block; }
+.project.edit #content form .formtextField #slider #knob_value{ margin-top: 1px; }
+.project.edit #content form .formtextField #slider .ui-slider-handle {
+    background: none repeat scroll 0 0 #DDD;
+    margin-top: 3px;
+    height: 24px;
+    width: 24px;
+}
 .project.edit #content #center form .formtextField #slider span{ padding-top: 10px; display: inline-block; font-size: 11px; }
-
+.project.edit #content .actions {
+    margin-top: 35px;
+}
+.project.edit #content #project_form {
+    clear: both;
+}
 .project .formtextField #slider{ float: left; }
 .project .formtextField input[type="date"]{ width: 200px; }
 .project #client .head .btn {

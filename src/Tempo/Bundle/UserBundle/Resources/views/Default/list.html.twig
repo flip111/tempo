@@ -7,11 +7,11 @@
     {% for user in users %}
         <div id="user-{{ user.id }}" class="user-list-info">
             <p class="avatar">
-                <img src="/bundles/tempomain/images/avatar-defaut.png" />
+                <img src="{{ user.avatar(68) }}" />
             </p>
             <p class="infos">
-                <a href="{{path('user_profile_show', {'slug':user.usernameCanonical})}}">{{ user.username }} </a>
-                <a class="btn btn-mini" href="{{path('user_profile_edit')}}">edit</a>
+                <a class="btn btn-xs btn-info" href="{{path('user_profile_edit')}}">edit</a> <br />
+                <a href="{{ path('user_profile_show', {'slug':user.usernameCanonical }) }}">{{ user.username }} </a>
                 <br />
                 {{ user.email}}
             </p>   

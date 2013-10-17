@@ -7,7 +7,7 @@ submit: Send
 client:
   add:  Add new client
   edit: Edit client
-  team: Equipe
+  team: Team
   list:
     title: 'Client List'
 
@@ -17,6 +17,17 @@ project:
   title_subprojects: Sub project
   add_membre: Assignment
   display_projects: Display projects
+  form:
+    label.client: Client
+    label.name: Name
+    label.isactive: Active
+    label.beginning: Beginning
+    label.ending: Ending
+    label.type: Type
+    label.avancement: Avancement
+    label.code: Code
+    label.status: Status
+    label.estimated: budget estimated
 
 errors:
   internal_error: Internal error

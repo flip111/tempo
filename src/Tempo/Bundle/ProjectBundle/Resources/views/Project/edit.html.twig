@@ -1,40 +1,31 @@
 {% extends "TempoMainBundle::Layout/web.html.twig" %}
 {% block bodyClass %}project edit{% endblock %}
-{% block stylesheets %}
-    {{ parent() }}
-    <link rel="stylesheet" type="text/css" href="/bundles/tempomain/css/moo/mForm/mForm.css" />
-    <link rel="stylesheet" type="text/css" href="/bundles/tempomain/css/moo/mForm/mFormElement-Select.css" />
-    <link rel="stylesheet" type="text/css" href="/bundles/tempomain/css/moo/moodatepicker.css" />
-{% endblock %}
-
 {% block javascripts %}
     {{ parent() }}
-    <script type="text/javascript" src="{{ asset('bundles/tempomain/js/moo/mForm/mForm.Core.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('bundles/tempomain/js/moo/mForm/mForm.Element.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('bundles/tempomain/js/moo/mForm/mForm.Element.Select.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('bundles/tempomain/js/moo/mForm/mForm.Submit.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('bundles/tempomain/js/moo/Element.Date.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('bundles/tempomain/js/moo/MooDatePicker.js') }}"></script>
-
     <script type="text/javascript" src="{{ asset('bundles/tempoproject/js/project.js') }}"></script>
 {% endblock %}
 
+{% trans_default_domain 'TempoProjectBundle' %}
+
+
 {% block content %}
-<h1 id="page-title">Project "{{ project.name }}" edit</h1>
-<div class="form-block">
-    <form id="project_form" name="project_form" class="project_form" action="{{ path('project_update', { 'id': project.id }) }}" method="post" {{ form_enctype(form) }}>
-        {% include 'TempoProjectBundle::Project/_form.html.twig' with { 'form' : form } %}
-        <button type="submit">Edit</button>
-    </form>
-</div>
-{% endblock %}
-{% block right %}
-<ul class="record_actions">
+<h1 id="page-title" class="col-md-6">{{ project.name }}</h1>
+  <ul class="record_actions actions col-md-3">
+    <li>
+        <a href="#"></a>
+    </li>
     <li>
         <form action="{{ path('project_delete', { 'slug': project.slug }) }}" method="post">
-            {{ form_widget(delete_form) }}
-            <button class="btn" type="submit">Delete</button>
+                {{ form_widget(delete_form) }}
+                <button class="btn btn-xs btn-danger" type="submit">Delete</button>
         </form>
     </li>
-</ul>
+ </ul>
+ <form id="project_form" name="project_form" class="project_form" action="{{ path('project_update', { 'id': project.id }) }}" method="post" {{ form_enctype(form) }}>
+        {% include 'TempoProjectBundle::Project/_form.html.twig' with { 'form' : form } %}
+        <button type="submit" class="btn btn-primary">Edit</button>
+ </form>
+{% endblock %}
+{% block right %}
+
 {% endblock %}

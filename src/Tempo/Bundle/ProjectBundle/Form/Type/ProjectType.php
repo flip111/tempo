@@ -27,24 +27,47 @@ class ProjectType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-                ->add('name', null, array('label' => 'projet_label_name' ))
-                ->add('description', 'ckeditor')
-                ->add('isActive', null, array('label' => 'projet_label_isactive'))
-                ->add('beginning', 'date', array('label' => 'projet_label_beginning', 'widget' => 'single_text'))
-                ->add('ending', 'date', array('label' => 'projet_label_ending','widget' => 'single_text'))
-                ->add('type', 'choice', array('label' => 'projet_label_type', 'choices' => Project::$types) )
-                ->add('avancement', null, array('label' => 'projet_label_avancement' ))
-                ->add('code', null, array('label' => 'projet_label_code'))
-                ->add('status', 'choice', array('label' => 'projet_label_status', 'choices' => Project::renderStatus()) )
-                ->add('budget_estimated', null, array('label' => 'projet_label_estimated'))
-                ->add('client', null, array(
-                    'label' => 'projet_label_client',
-                        'class' => 'TempoProjectBundle:Client',
-                        'query_builder' => function(ClientRepository $er) {
-                            return $er->findClientByUser(1);
-                        }
-                    )
-                )
+            ->add('name', 'text', array(
+                'label' => 'project.form.label.name',
+            ))
+            ->add('description', 'ckeditor', array(
+                'required' => false,
+                'label'    => 'project.form.label.isactive'
+            ))
+            ->add('isActive', null, array(
+                'label' => 'project.form.label.isactive'
+            ))
+            ->add('beginning', 'date', array(
+                'label' => 'project.form.label.beginning',
+                'widget' => 'single_text'
+            ))
+            ->add('ending', 'date', array(
+                'label' => 'project.form.label.ending',
+                'widget' => 'single_text'
+            ))
+            ->add('type', 'choice', array(
+                'label' => 'project.form.label.type', 'choices' => Project::$types
+            ))
+            ->add('avancement', null, array(
+                'label' => 'project.form.label.avancement'
+            ))
+            ->add('code', null, array(
+                'label' => 'project.form.label.code'
+            ))
+            ->add('status', 'choice', array(
+                'label' => 'project.form.label.status',
+                'choices' => Project::renderStatus()
+            ))
+            ->add('budget_estimated', null, array(
+                'label' => 'project.form.label.estimated'
+            ))
+            ->add('client', null, array(
+                'label' => 'project.form.label.client',
+                'class' => 'TempoProjectBundle:Client',
+                'query_builder' => function(ClientRepository $er) {
+                    return $er->findClientByUser(1);
+                }
+            ))
         ;
     }
 
@@ -56,6 +79,7 @@ class ProjectType extends AbstractType
         $resolver->setDefaults(array(
             'user_id' => null,
             'data_class' => 'Tempo\Bundle\ProjectBundle\Entity\Project',
+            'translation_domain' => 'TempoProject'
         ));
     }
 

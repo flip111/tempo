@@ -22,13 +22,11 @@
 {% block content %}
 <h1 id="page-title">Project creation</h1>
     <form id="project_form" name="project_form" action="{{ path('project_create') }}{% if form.vars.value.parent.id is defined %}?parent={{ form.vars.value.parent.id }}{% endif %}" method="post" {{ form_enctype(form) }}>
-        <div class="form-block">
 
         {% include 'TempoProjectBundle::Project/_form.html.twig' with { 'form' : form } %}
 
-        </div>
         <div class="form-actions">
-            <button type="submit">Create</button>
+            <button type="submit" class="btn btn-primary">Create</button>
             <button type="reset">Reset</button>
         </div>
     </form>

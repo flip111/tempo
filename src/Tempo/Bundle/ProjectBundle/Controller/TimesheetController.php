@@ -14,7 +14,7 @@ namespace Tempo\Bundle\ProjectBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use Tempo\Bundle\ProjectBundle\Entity\Timesheet;
-use Tempo\Bundle\ProjectBundle\Form\TimesheetType;
+use Tempo\Bundle\ProjectBundle\Form\Type\TimesheetType;
 
 use Symfony\Component\HttpFoundation\Request;
 use Locale;
@@ -30,9 +30,9 @@ class TimesheetController extends Controller
      * Lists all Timesheet entities.
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
-     public function indexAction()
-     {
-        $locale =  $this->container->getParameter('locale');
+    public function indexAction()
+    {
+        $locale = $this->container->getParameter('locale');
         $user = $this->getUser();
         $weekLang = $this->container->getParameter('tempo_project.week');
         $data = $this->container->get('tempo_project.manager.timesheet')->getAllCra($weekLang[$locale], $user->getId());
@@ -41,16 +41,13 @@ class TimesheetController extends Controller
         $form = $this->createForm(new TimesheetType());
         $userList = $this->getDoctrine()->getRepository('TempoUserBundle:User')->findAll();
 
-        return $this->render(
-            'TempoProjectBundle:Timesheet:index.html.twig',
-            array(
-                'date' => $data['date'],
-                'week' => $data['week'],
-                'projects' => $data['projects'],
-                'form'   => $form->createView(),
-                'users'   => $userList
-            )
-        );
+        return $this->render('TempoProjectBundle:Timesheet:index.html.twig', array(
+            'date' => $data['date'],
+            'week' => $data['week'],
+            'projects' => $data['projects'],
+            'form' => $form->createView(),
+            'users' => $userList
+        ));
     }
 
     /**
@@ -158,7 +155,7 @@ class TimesheetController extends Controller
 
         $request = $this->getRequest();
 
-        $editForm->bind($request);
+        $editForm->submit($request);
 
         if ($editForm->isValid()) {
             $em->persist($entity);
@@ -203,7 +200,7 @@ class TimesheetController extends Controller
         $form = $this->createDeleteForm($id);
         $request = $this->getRequest();
 
-        $form->bind($request);
+        $form->submit($request);
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();

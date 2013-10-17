@@ -1,33 +1,70 @@
+{% trans_default_domain 'TempoProjectBundle' %}
 {{ form_errors(form) }}
-
-<fieldset class="fieldset-block float-left">
-    <div class="formtextField">{{ form_row(form.client) }}</div>
-    <div class="formtextField">{{ form_row(form.name) }}</div>
-    <div class="formtextField">{{ form_row(form.code) }}</div>
-
-    <div class="formtextField">{{ form_row(form.beginning, { 'attr': {'class': 'select_replace'} }) }}</div>
-
-    <div class="formtextField">{{ form_row(form.ending) }}</div>
-</fieldset>
-
-<fieldset class="float-left">
-    <div class="formtextField">{{ form_row(form.isActive) }}</div>
-    <div class="formtextField">{{ form_row(form.type) }}</div>
-    <div class="formtextField">{{ form_row(form.status) }}</div>
-    <div class="formtextField">{{ form_row(form.budget_estimated) }}</div>
-    <div class="formtextField">
-
-        {{ form_label(form.avancement) }}
-        {{ form_errors(form.avancement) }}
-        {{ form_widget(form.avancement, { 'attr' :  { 'disabled' : 'disabled', 'style': 'display: none' }}) }}
-
-        <div id="slider" class="slider">
-            <div class="knob"><span id="knob_value">{{ form.avancement.vars.value }}%</span></div>
+<div class="form-block clearfix">
+    <fieldset class="fieldset-block col-md-6">
+        <div class="formtextField">
+            {{ form_label(form.client) }}
+            {{ form_errors(form.client) }}
+            {{ form_widget(form.client, { 'attr': {'class': 'form-control'} }) }}
+        </div>
+        <div class="formtextField">
+            {{ form_label(form.name) }}
+            {{ form_errors(form.name) }}
+            {{ form_widget(form.name, { 'attr': {'class': 'form-control'} }) }}
+        </div>
+        <div class="formtextField">
+            {{ form_label(form.code) }}
+            {{ form_errors(form.code) }}
+            {{ form_widget(form.code, { 'attr': {'class': 'form-control'} }) }}
         </div>
 
+        <div class="formtextField">
+            {{ form_row(form.beginning, { 'attr': {'class': 'form-control datepicker'} }) }}
+        </div>
+
+        <div class="formtextField">
+            {{ form_label(form.ending) }}
+            {{ form_errors(form.ending) }}
+            {{ form_widget(form.ending, { 'attr': {'class': 'form-control datepicker'} }) }}
+        </div>
+    </fieldset>
+
+    <fieldset class="float-left col-md-6">
+        <div class="formtextField">
+            {{ form_row(form.isActive) }}
+        </div>
+        <div class="formtextField">
+            {{ form_row(form.type) }}
+        </div>
+        <div class="formtextField">
+            {{ form_row(form.status) }}
+        </div>
+        <div class="formtextField">
+            {{ form_label(form.budget_estimated) }}
+            {{ form_errors(form.budget_estimated) }}
+            {{ form_widget(form.budget_estimated, { 'attr': {'class': 'form-control'} }) }}
+        </div>
+        <div class="formtextField">
+
+            {{ form_label(form.avancement) }}
+            {{ form_errors(form.avancement) }}
+            {{ form_widget(form.avancement, { 'attr' :  { 'disabled' : 'disabled', 'style': 'display: none' }}) }}
+
+            <div id="slider" class="slider form-control">
+                <span id="knob_value">{{ form.avancement.vars.value }}%</span>
+            </div>
+
+        </div>
+    </fieldset>
+</div>
+
+<div class="form-block clearfix">
+
+    <div class="formtextField clearfix">
+        {{ form_errors(form.description) }}
+        {{ form_widget(form.description, { 'attr': {'class': 'form-control'} }) }}
     </div>
-</fieldset>
-<div class="formtextField clearfix">{{ form_widget(form.description) }}</div>
-<p>
+</div>
+<p class="float-right">
     {{form_rest(form)}}
 </p>
