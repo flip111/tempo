@@ -33,8 +33,6 @@ class ProjectTest extends WebTestCase
         // Retrieve "android" project
         $project = $this->entityManager->getRepository('TempoProjectBundle:Project')->findOneBy(array('slug' => 'android'));
 
-        var_dump($project); exit;
-
         // Test aboutPage
         $this->assertInstanceOf('Tempo\Bundle\ProjectBundle\Entity\Project', $project);
         $this->assertEquals('android', $project->getName());
