@@ -16,7 +16,7 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 use Tempo\Bundle\ProjectBundle\Entity\Project;
 use Tempo\Bundle\ProjectBundle\Form\Type\ProjectType;
-use Tempo\Bundle\ProjectBundle\Form\Type\EquipeType;
+use Tempo\Bundle\ProjectBundle\Form\Type\TeamType;
 
 /**
  * Project controller.
@@ -24,6 +24,22 @@ use Tempo\Bundle\ProjectBundle\Form\Type\EquipeType;
  */
 class ProjectController extends Controller
 {
+    /**
+     * @todo generate automatique Breadcrumb
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function dashboardAction()
+    {
+
+        /* set breadcrumb */
+        $breadcrumb  = $this->get('tempo_main.breadcrumb');
+        $breadcrumb->addChild('Project');
+
+        $manager = $this->container->get('tempo_project.manager.client');
+        $clients = $manager->findAllByUser($this->getUser()->getId());
+
+        return $this->render('TempoProjectBundle:Project:dashboard.html.twig', array('clients' => $clients) );
+    }
 
     /**
      * Lists all client projects.
@@ -59,11 +75,10 @@ class ProjectController extends Controller
         $project  = $this->getProject($slug);
         $csrfToken = $this->get('form.csrf_provider')->generateCsrfToken('delete-project');
 
-        $equipeForm = $this->createForm(new EquipeType());
-        $deleteForm = $this->createDeleteForm($project->getId());
+        $teamForm = $this->createForm(new TeamType());
 
         return $this->render('TempoProjectBundle:Project:show.html.twig', array(
-            'equipeForm'      => $equipeForm->createView(),
+            'teamForm'      => $teamForm->createView(),
             'project'      => $project,
             'csrfToken'      => $csrfToken,
         ));
@@ -93,10 +108,10 @@ class ProjectController extends Controller
     public function createAction()
     {
         $project  = new Project();
-        $project->addEquipe($this->getUser());
+        $project->addTeam($this->getUser());
         $this->getParent($project);
 
-        $form   = $this->createForm(new ProjectType(), $project, array('user_id' => $this->getUser()->getId() ));
+        $form  = $this->createForm(new ProjectType(), $project, array('user_id' => $this->getUser()->getId() ));
         $form->submit( $this->getRequest());
 
         if ($form->isValid()) {

@@ -154,13 +154,13 @@ interface ClientInterface
      * @abstract
      * @return Doctrine_Collection
      */
-    public function getEquipe();
+    public function getTeam();
 
     /**
      * @abstract
      * @param $membre
      * @return mixed
      */
-    public function addEquipe($user);
+    public function addTeam($user, array $acl = array());
 
 }

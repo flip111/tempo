@@ -46,7 +46,7 @@ abstract class Client implements ClientInterface
     /**
      * @var integer
      */
-    protected $equipe;
+    protected $team;
 
     /**
      * @var string
@@ -76,7 +76,7 @@ abstract class Client implements ClientInterface
     public function __construct()
     {
         $this->projects = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->equipe = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->team = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -275,17 +275,17 @@ abstract class Client implements ClientInterface
     /**
      * {@inheritdoc}
      */
-    public function addEquipe($user)
+    public function addTeam($user, array $acl = array())
     {
-        $this->equipe[] = $user;
+        $this->team[] = $user;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function getEquipe()
+    public function getTeam()
     {
-        return $this->equipe;
+        return $this->team;
     }
 
 }

@@ -18,7 +18,7 @@ class ClientRepository extends EntityRepository
     public function findClientByUser($user)
     {
         $query = $this->createQueryBuilder('p');
-        $query->leftJoin('p.equipe', 'pu');
+        $query->leftJoin('p.team', 'pu');
 
         if (null !== $user) {
             $query->where('pu.id  = ?1');

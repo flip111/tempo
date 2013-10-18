@@ -203,14 +203,14 @@ interface ProjectInterface
      * @abstract
      * @return mixed
      */
-    public function getEquipe();
+    public function getTeam();
 
     /**
      * @abstract
      * @param  \Tempo\Bundle\UserBundle\Entity\User $membre
      * @return mixed
      */
-    public function addEquipe( $user);
+    public function addTeam( $user);
 
     /**
      * Add children

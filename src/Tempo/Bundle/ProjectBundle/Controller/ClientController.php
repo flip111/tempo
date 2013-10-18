@@ -13,7 +13,7 @@ namespace Tempo\Bundle\ProjectBundle\Controller;
 
 use Tempo\Bundle\ProjectBundle\Entity\Client;
 use Tempo\Bundle\ProjectBundle\Form\Type\ClientType;
-use Tempo\Bundle\ProjectBundle\Form\Type\EquipeType;
+use Tempo\Bundle\ProjectBundle\Form\Type\TeamType;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -82,12 +82,12 @@ class ClientController extends Controller
 
         $editForm = $this->createForm(new ClientType(), $client);
 
-        $equipeForm = $this->createForm(new EquipeType());
+        $teamForm = $this->createForm(new TeamType());
 
         return $this->render('TempoProjectBundle:Client:edit.html.twig', array(
             'client' => $client,
             'form' => $editForm->createView(),
-            'equipeForm' => $equipeForm->createView(),
+            'teamForm' => $teamForm->createView(),
         ));
     }
 
@@ -132,12 +132,13 @@ class ClientController extends Controller
      */
     public function createAction()
     {
-        $client = new Client();
-        $form = $this->createForm(new ClientForm(), $client);
-        $client->addEquipe($this->getUser());
-        $form->setData($client);
-
         $request = $this->getRequest();
+
+        $client = new Client();
+        $client->addTeam($this->getUser());
+
+        $form = $this->createForm(new ClientForm(), $client);
+        $form->setData($client);
 
         if ($request->getMethod() == 'POST') {
             $form->submit($request);
@@ -194,19 +195,21 @@ class ClientController extends Controller
     }
 
     /**
+     * return Tempo\Bundle\ProjectBundle\Manager\Project
+     * @return mixed
+     */
+    private function getManager()
+    {
+        return $this->get('tempo_project.manager.client');
+    }
+
+    /**
      * @param $slug
      * @return mixed
      * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
      */
     private function findClient($slug)
     {
-        $manager = $this->get('tempo_project.manager.client');
-        $client = $manager->findOneBySlug($slug);
-
-        if (!$client) {
-            throw new NotFoundHttpException(sprintf("client with slug '%s' could not be found.", $slug));
-        }
-
-        return $client;
+        return $this->getManager()->findOneBySlug($slug);
     }
 }

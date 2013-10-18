@@ -11,7 +11,7 @@
 
 namespace Tempo\Bundle\ProjectBundle\Controller;
 
-use Tempo\Bundle\ProjectBundle\Form\Type\EquipeType;
+use Tempo\Bundle\ProjectBundle\Form\Type\TeamType;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -20,7 +20,7 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
  * @author Mlanawo Mbechezi <mlanawo.mbechezi@ikimea.com>
  */
 
-class EquipeController extends Controller
+class TeamController extends Controller
 {
     /**
      * @param $slug
@@ -30,7 +30,7 @@ class EquipeController extends Controller
     {
         $em = $this->container->get('doctrine.orm.entity_manager');
 
-        if ($this->getRequest()->get('_route') == 'project_equipe_add') {
+        if ($this->getRequest()->get('_route') == 'project_team_add') {
 
             $category = $this->getDoctrine()->getRepository('TempoProjectBundle:Project')->findOneBySlug($slug);
             $routeSuccess = 'project_show';
@@ -40,10 +40,9 @@ class EquipeController extends Controller
             $manager = $this->container->get('tempo_project.manager.client');
             $category = $manager->findOneBySlug($slug);
             $routeSuccess = 'client_edit';
-
         }
 
-        $form = $this->createForm(new EquipeType());
+        $form = $this->createForm(new TeamType());
 
         $request = $this->getRequest();
 
@@ -54,7 +53,7 @@ class EquipeController extends Controller
                 $formData = $form->getData();
                 $findUser = $this->getDoctrine()->getRepository('TempoUserBundle:User')->findOneBy(array('username' => $formData['username']));
 
-                $category->addEquipe($findUser);
+                $category->addTeam($findUser);
                 $em->persist($category);
                 $em->flush();
 

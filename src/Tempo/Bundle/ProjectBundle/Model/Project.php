@@ -64,7 +64,7 @@ class Project implements ProjectInterface
     /**
      * @var string
      */
-    protected $equipe;
+    protected $team;
 
     /**
      * @var Collection
@@ -497,17 +497,17 @@ class Project implements ProjectInterface
     /**
      * {@inheritdoc}
      */
-    public function addEquipe($user)
+    public function addTeam($user)
     {
-        $this->equipe[] = $user;
+        $this->team[] = $user;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function getEquipe()
+    public function getTeam()
     {
-        return $this->equipe;
+        return $this->team;
     }
 
     /**

@@ -19,7 +19,7 @@ class ProjectRepository extends EntityRepository
     public function findProjectByUser($user)
     {
         $query = $this->createQueryBuilder('p');
-        $query->leftJoin('p.equipe', 'pu');
+        $query->leftJoin('p.team', 'pu');
 
         if (null !== $user) {
             $query->where('pu.id  = ?1');
@@ -49,7 +49,7 @@ class ProjectRepository extends EntityRepository
     public function findAllTimeSheet($user, $weekbegin, $weekend)
     {
         $query = $this->createQueryBuilder('p');
-        $query->leftJoin('p.equipe', 'pu');
+        $query->leftJoin('p.team', 'pu');
         $query->leftJoin('p.timesheets', 't');
 
         /*

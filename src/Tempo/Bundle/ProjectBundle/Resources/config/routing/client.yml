@@ -26,16 +26,16 @@ client_delete:
     pattern:  /{slug}/delete
     defaults: { _controller: TempoProjectBundle:Client:delete }
 
-client_equipe_add:
-    pattern:  /{slug}/equipe/add
-    defaults: { _controller: TempoProjectBundle:Equipe:add }
+client_team_add:
+    pattern:  /{slug}/team/add
+    defaults: { _controller: TempoProjectBundle:Team:add }
 
-client_equipe_create:
-    pattern:  /{slug}/equipe/create
-    defaults: { _controller: TempoProjectBundle:Equipe:create }
+client_team_create:
+    pattern:  /{slug}/team/create
+    defaults: { _controller: TempoProjectBundle:Team:create }
     requirements:
         _method:  GET
 
-client_equipe_delete:
-    pattern:  /{slug}/equipe/delete
-    defaults: { _controller: TempoProjectBundle:Equipe:delete }
+client_team_delete:
+    pattern:  /{slug}/team/delete
+    defaults: { _controller: TempoProjectBundle:Team:delete }

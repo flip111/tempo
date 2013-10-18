@@ -8,15 +8,16 @@
 
 {% block content %}
 
-<h1 id="page-title" class="col-md-9"> {{ client.name }} </h1>
+    <h1 id="page-title" class="col-md-8"> {{ client.name }} </h1>
 
-<div class="action col-md-2">
+<div class="action col-md-3">
+    <a href="{{ path('project_new', { 'client' : client.slug }) }}" class="btn btn-xs btn-primary"><span class="glyphicon glyphicon-plus"></span> {{ 'project.add'|trans({},'TempoProject') }} </a>
     <a class="btn btn-xs btn btn-info" href="{{ path('client_edit', { 'slug' : client.slug }) }}"> <span class="glyphicon glyphicon-edit"></span> Edit</a>
     <a class="btn btn-xs btn-danger" role="dialog" data-toggle="modal" data-target="#" data-title="Delete project" href="#delete-organization" data-redirect="{{ path('client_delete', { 'slug': client.slug, 'token' : csrfToken }) }}"> <span class="glyphicon glyphicon-trash"></span> Delete</a>
     <span id="confirmation-delete-client" style="display: none;">Êtes vous sur de vouloir supprimer ce client <br/> La suppression entraînera la suppression de sesprojets.</span>
 </div>
 
-<div class="infos">
+<div class="infos clearfix">
     <ul class="col-md-6">
         <li> <strong>Adresse électronique de contact</strong>
             {% if client.contact is empty %}
@@ -38,31 +39,37 @@
             <span class="label label-success">{{ counter.open }} Ouvert</span> <br />
             <span class="label label-inverse">{{ counter.close }}  Fermer</span>
         </li>
-
     </ul>
+
+
+</div>
+<div id="organization-list-project">
+    <h3><div class="inner">Project List</div></h3>
+
+    <ul class="list-project">
+    {% for project in projects %}
+        <li>
+            <img src="{{ icon('/bundles/tempomain/images/default-icon-project.png', 38 ) }}" />
+            <a href="{{ path('project_show', { 'slug' :  project.slug } ) }}">{{ project.name }} </a>
+        </li>
+    {% else %}
+        <p>Aucun projet n'a été trouvée pour ce client.</p>
+    {% endfor %}
+    </ul>
+
 </div>
 
-<div id="delete-organization">
+<div id="delete-organization" style="display: none">
     {{ 'organization.msg_delete'|trans([], 'TempoProject') }}
 </div>
 
 {% endblock %}
 {% block right %}
     <aside>
-        <h4>Liste projets</h4>
+        <h4>Team</h4>
 
-        <a href="{{ path('project_new', { 'client' : client.slug }) }}" class="btn btn-xs btn-primary float-right"><span class="glyphicon glyphicon-plus"></span> {{ 'project.add'|trans({},'TempoProject') }} </a>
-
-        <ul class="list-project list">
-            {% for project in projects %}
-            <li>
-                <span>»</span>
-                <a href="{{ path('project_show', { 'slug' :  project.slug } ) }}">{{ project.name }} </a>
-            </li>
-            {% else %}
-                    <p>Aucun projet n'a été trouvée pour ce client.</p>
-            {% endfor %}
-        </ul>
-        <p class="suite"> <a href="{{ path( 'project_client_list', {'client' : client.slug }) }}">» Suite ... </a></p>
+        <div class="list_membre">
+            {% include 'TempoProjectBundle:Team:list.html.twig' with { 'users': client.team } %}
+        </div>
     </aside>
 {% endblock %}

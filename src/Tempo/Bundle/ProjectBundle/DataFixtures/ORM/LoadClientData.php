@@ -32,7 +32,7 @@ class LoadClientData extends AbstractFixture implements FixtureInterface
             $client->setName($name);
             $client->setContact('contact@toto.com');
             $client->getWebSite('http://toto.com');
-            $client->addEquipe($this->getReference('admin'));
+            $client->addTeam($this->getReference('admin'));
 
             $manager->persist($client);
             $manager->flush();

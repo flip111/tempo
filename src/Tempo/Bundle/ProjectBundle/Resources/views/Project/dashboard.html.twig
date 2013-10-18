@@ -16,13 +16,12 @@
     <div id="clients">
         <div class="head clearfix">
             <h4 >{{ 'client.list.title'|trans({},'TempoProject') }}</h4>
-            <a href="{{ path('client_new') }}"  class="float-right btn btn-primary btn-xs" data-target="#" data-toggle="modal" data-title="Add new client" >{{ 'client.add' |trans({},'TempoProject') }}</a>
+            <a href="{{ path('client_new') }}" class="float-right btn btn-primary btn-xs" data-target="#" data-toggle="modal" data-title="Add new client" >{{ 'client.add' |trans({},'TempoProject') }}</a>
         </div>
         <ul class="list clear">
             {% for client in clients %}
-                <li> <span>»</span>
+                <li> <span class="glyphicon glyphicon-forward"></span>
                     <a href="{{ path('client_show', { 'slug' : client.slug } ) }}"> {{ client.name }} </a>
-                    <a data-toggle="modal" href="{{ path('client_delete', { 'slug': client.slug }) }}"> x </a>
                 </li>
             {% else %}
                 <p>{% trans %} Aucun client n'a été trouvé. {% endtrans %}</p>

@@ -46,7 +46,7 @@
 
         <many-to-one field="client" inversed-by="projects" target-entity="Client" />
         <one-to-many field="timesheets" target-entity="Timesheet" mapped-by="project" />
-        <many-to-many field="equipe" inversed-by="client" target-entity="Tempo\Bundle\UserBundle\Entity\User" />
+        <many-to-many field="team" inversed-by="client" target-entity="Tempo\Bundle\UserBundle\Entity\User" />
 
     </entity>
 

@@ -79,11 +79,11 @@
     <a data-toggle="modal" data-target="#" data-title="Adding a team member" href="#add_membre" class="float-right btn btn-xs btn-info"> <span class="glyphicon glyphicon-plus"></span> {{ 'project.add_membre'|trans([], 'TempoProject') }}</a>
 
     <div id="add_membre" style="display: none;">
-        {% include 'TempoProjectBundle:Equipe:new.html.twig' with {'form': equipeForm, 'category': project, 'route_category' : 'project_equipe_add' } %}
+        {% include 'TempoProjectBundle:Team:new.html.twig' with {'form': teamForm, 'category': project, 'route_category' : 'project_team_add' } %}
     </div>
 
     <div class="list_membre">
-        {% include 'TempoProjectBundle:Equipe:list.html.twig' with { 'users': project.equipe } %}
+        {% include 'TempoProjectBundle:Team:list.html.twig' with { 'users': project.team } %}
     </div>
 
 </ul>
