@@ -24,9 +24,14 @@ class ClientType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-         $builder->add('name');
-         $builder->add('website');
-         $builder->add('contact', 'email');
+
+        $builder->add('name');
+
+        if(false === $options['is_new']) {
+            $builder->add('website');
+            $builder->add('contact', 'email');
+        }
+
     }
 
     /**
@@ -36,7 +41,8 @@ class ClientType extends AbstractType
     {
         $resolver->setDefaults(array(
             'data_class'      => 'Tempo\Bundle\ProjectBundle\Entity\Client',
-            'csrf_protection' => false
+            'csrf_protection' => false,
+            'is_new' => false
         ));
     }
 

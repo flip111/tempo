@@ -12,7 +12,6 @@
 namespace Tempo\Bundle\ProjectBundle\Controller;
 
 use Tempo\Bundle\ProjectBundle\Entity\Client;
-use Tempo\Bundle\ProjectBundle\Form\Type\ClientForm;
 use Tempo\Bundle\ProjectBundle\Form\Type\ClientType;
 use Tempo\Bundle\ProjectBundle\Form\Type\EquipeType;
 
@@ -57,7 +56,7 @@ class ClientController extends Controller
     public function newAction()
     {
 
-        $form = $this->createForm(new ClientForm(), new Client());
+        $form = $this->createForm(new ClientType(), new Client(), array('is_new' => true));
 
         return $this->render('TempoProjectBundle:Client:new.html.twig', array(
             'form' => $form->createView(),
