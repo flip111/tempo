@@ -20,6 +20,7 @@ interface ProjectInterface
 
     /**
      * Put this method in if your slug should be "editable"
+     * @param string $slug
      */
     public function setSlug($slug);
 
@@ -29,8 +30,8 @@ interface ProjectInterface
     public function getId();
 
     /**
- * @param string $name
- */
+     * @param string $name
+    */
     public function setName($name);
 
     /**
@@ -48,49 +49,49 @@ interface ProjectInterface
     /**
      * Set created
      *
-     * @param datetime $created
+     * @param \DateTime $created
      */
     public function setCreated($created);
 
     /**
      * Get created
      *
-     * @return datetime
+     * @return \DateTime
      */
     public function getCreated();
 
     /**
      * Set updated
      *
-     * @param datetime $updated
+     * @param \DateTime $updated
      */
     public function setUpdated($updated);
 
     /**
      * Get updated
      *
-     * @return datetime
+     * @return \DateTime
      */
     public function getUpdated();
 
     /**
      * Get client
      *
-     * @return Tempo\ProjectBundle\Entity\Client
+     * @return Tempo\Bundle\ProjectBundle\Entity\Client
      */
     public function getClient();
 
     /**
      * Set description
      *
-     * @param text $description
+     * @param string $description
      */
     public function setDescription($description);
 
     /**
      * Get description
      *
-     * @return text
+     * @return string
      */
     public function getDescription();
 
@@ -111,26 +112,26 @@ interface ProjectInterface
     /**
      * Set beginning
      *
-     * @param datetime $beginning
+     * @param \DateTime $beginning
      */
     public function setBeginning($beginning);
 
     /**
      * Get beginning
      *
-     * @return datetime
+     * @return \DateTime
      */
     public function getBeginning();
 
     /**
      * Set ending
      *
-     * @param datetime $ending
+     * @param \DateTime $ending
      */
     public function setEnding($ending);
 
     /**
-     * @return datetime
+     * @return \DateTime
      */
     public function getEnding();
 
@@ -228,7 +229,7 @@ interface ProjectInterface
     /**
      * Set parent
      *
-     * @param PageInterface $parent
+     * @param ProjectInterface $parent
      */
     public function setParent(ProjectInterface $parent = null);
 
@@ -237,7 +238,7 @@ interface ProjectInterface
      *
      * @param integer $level default -1
      *
-     * @return PageInterface $parent
+     * @return ProjectInterface $parent
      */
     public function getParent($level = -1);
 
