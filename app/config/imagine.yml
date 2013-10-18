@@ -1,0 +1,7 @@
+liip_imagine:
+    data_root: %kernel.root_dir%/web/uploads/
+    filter_sets:
+        project_thumb:
+            quality: 75
+            filters:
+                thumbnail: { size: [36, 36], mode: outbound }

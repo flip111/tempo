@@ -18,9 +18,9 @@ services:
       arguments: [@doctrine.orm.entity_manager]
 
 
-    twig.extension.MainExtension:
+    tempo_main.twig.extension:
       class: Tempo\Bundle\MainBundle\Twig\Extension\MainExtension
-      arguments: [@service_container, @time.templating.helper.time]
+      arguments: [@service_container, @time.templating.helper.time, @tempo_core.imagine_cache.manager]
       tags:
         - { name: twig.extension }
 
@@ -28,13 +28,12 @@ services:
       class: %tempo_main.menu_builder.class%
       arguments: ["@knp_menu.factory", @translator]
 
-
     tempo_main.menu:
-          class: Knp\Menu\MenuItem # the service definition requires setting the class
-          factory_service: tempo_main.menu_builder
-          factory_method: menu
-          tags:
-            - { name: knp_menu.menu, alias: menu }
+      class: Knp\Menu\MenuItem # the service definition requires setting the class
+      factory_service: tempo_main.menu_builder
+      factory_method: menu
+      tags:
+        - { name: knp_menu.menu, alias: menu }
 
     tempo_main.breadcrumb:
       class: Knp\Menu\MenuItem # the service definition requires setting the class
@@ -42,7 +41,6 @@ services:
       factory_method: breadcrumb
       tags:
         - { name: knp_menu.menu, alias: breadcrumb }
-
 
 #Form
     form.type.autocomplete:

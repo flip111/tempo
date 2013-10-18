@@ -4,6 +4,10 @@
 #   resource: "@FrameworkBundle/Resources/config/routing/internal.xml"
 #   prefix:   /_internal
 
+_imagine:
+    resource: .
+    type:     imagine
+
 _welcome:
     pattern:  /
     defaults: { _controller: TempoMainBundle:Default:index }

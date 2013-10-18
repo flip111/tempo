@@ -12,8 +12,8 @@
 
 namespace Tempo\Bundle\MainBundle\Twig\Extension;
 
-use Symfony\Bundle\TwigBundle\Loader\FilesystemLoader;
 use Knp\Bundle\TimeBundle\Templating\Helper\TimeHelper;
+use Tempo\Bundle\CoreBundle\Imagine\Cache\CacheManager;
 
 use Ikimea\Browser\Browser;
 
@@ -26,10 +26,12 @@ class MainExtension extends \Twig_Extension
     /**
      * @param $container
      */
-    public function __construct($container, TimeHelper $helper)
+    public function __construct($container, TimeHelper $helper, CacheManager $cacheManager)
     {
         $this->container = $container;
         $this->helper = $helper;
+        $this->cacheManager = $cacheManager;
+
     }
 
     /**
@@ -39,7 +41,6 @@ class MainExtension extends \Twig_Extension
         return array(
             'size' => new \Twig_Filter_Method($this, 'size'),
             'datetime_diff' => new \Twig_Filter_Method($this, 'dateTimeDiff'),
-
         );
     }
 
@@ -54,6 +55,7 @@ class MainExtension extends \Twig_Extension
             )),
             'get_browser' => new \Twig_Function_Method($this, 'getBrowser'),
             'behavior' => new \Twig_Function_Method($this, 'getBehavior'),
+            'icon' => new \Twig_Function_Method($this, 'getIcon'),
         );
     }
 
@@ -75,6 +77,16 @@ class MainExtension extends \Twig_Extension
            return $this->container->get('request')->getLocale() == 'fr' ? $since->format('d/m/Y '.$seconde) : $since->format('Y-m-d '.$seconde) ;
         }
         return $this->helper->diff($since, $to);
+    }
+
+    public function getIcon($path, $size = null)
+    {
+        if (null == $size) {
+            return $path;
+        }
+
+        return $this->cacheManager->getBrowserPath($path, $size);
+
     }
 
     /**
