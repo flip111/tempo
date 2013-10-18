@@ -11,12 +11,24 @@ client:
   list:
     title: 'Liste des clients'
 
+organization:
+  add:  Ajouter un client
+  edit: Modifier un client
+  team: Team
+  list:
+    title: 'Liste des clients'
+  msg_delete: Une fois que vous supprimez une organisation, il n'y a pas de retour en arrière. Il sera supprimé pour toujours.
+  title_delete: Supprimer projet
+
+
 project:
   add: Ajouter un nouveau projet
   edit: Modifier un projet
   title_subprojects: Sous project
   add_membre: Affecter un membre
   display_projects: Afficher les projets
+  msg_delete: Une fois que vous supprimez un project, il n'y a pas de retour en arrière. Il sera supprimé pour toujours.
+
   form:
     label_name: Nom
     label_isactive: Actif

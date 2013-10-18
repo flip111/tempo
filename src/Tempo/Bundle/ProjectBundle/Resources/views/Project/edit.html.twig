@@ -10,21 +10,11 @@
 
 {% block content %}
 <h1 id="page-title" class="col-md-6">{{ project.name }}</h1>
-  <ul class="record_actions actions col-md-3">
-    <li>
-        <a href="#"></a>
-    </li>
-    <li>
-        <form action="{{ path('project_delete', { 'slug': project.slug }) }}" method="post">
-                {{ form_widget(delete_form) }}
-                <button class="btn btn-xs btn-danger" type="submit">Delete</button>
-        </form>
-    </li>
- </ul>
- <form id="project_form" name="project_form" class="project_form" action="{{ path('project_update', { 'id': project.id }) }}" method="post" {{ form_enctype(form) }}>
-        {% include 'TempoProjectBundle::Project/_form.html.twig' with { 'form' : form } %}
-        <button type="submit" class="btn btn-primary">Edit</button>
- </form>
+
+<form id="project_form" name="project_form" class="project_form" action="{{ path('project_update', { 'id': project.id }) }}" method="post" {{ form_enctype(form) }}>
+    {% include 'TempoProjectBundle::Project/_form.html.twig' with { 'form' : form } %}
+    <button type="submit" class="btn btn-primary">Edit</button>
+</form>
 {% endblock %}
 {% block right %}
 

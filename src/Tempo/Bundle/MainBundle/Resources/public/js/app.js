@@ -73,8 +73,14 @@ $(function() {
         var btn = $(this),
             url = btn.attr('href'),
             title = btn.data('title'),
+            role = btn.attr('role'),
+            redirect = btn.data('redirect'),
             data_target = 'modal'+parseInt(Math.random()*1000),
             modal =  $('#myModal').clone();
+
+        if(role != 'dialog') {
+            modal.find('.modal-footer button.confirm').remove();
+        }
 
         if (url.indexOf('#') == 0) {
             $(url).show().appendTo(modal.find('.modal-body'));
@@ -90,5 +96,10 @@ $(function() {
         modal.find('.modal-title').html(title);
         $('#dialog').append(modal);
         modal.modal();
+
+        modal.find('button.confirm').on('click', function(e) {
+            e.preventDefault();
+            window.location.href = redirect;
+        });
     });
 });

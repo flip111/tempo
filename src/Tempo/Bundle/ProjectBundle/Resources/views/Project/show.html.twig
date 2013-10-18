@@ -8,7 +8,7 @@
     <div class="actions col-md-3">
         <a class="btn btn-xs btn-primary" href="{{ path('project_new', { 'parent' : project.id, 'client': project.client.slug }) }}"> <span class="glyphicon glyphicon-plus"></span> {{ 'project.title_subprojects'|trans([], 'TempoProject') }}</a>
         <a class="btn btn-xs btn-info " href="{{ path('project_edit', { 'slug': project.slug }) }}"> <span class="glyphicon glyphicon-edit"></span> Edit</a>
-        <a class="btn btn-xs btn-danger "> <span class="glyphicon glyphicon-trash"></span> Delete</a>
+        <a class="btn btn-xs btn-danger" data-toggle="modal" data-target="#" data-title="Delete project" href="#delete_project"> <span class="glyphicon glyphicon-trash"></span> Delete</a>
     </div>
 
     <div class="mod-head">
@@ -65,6 +65,10 @@
         {% endfor %}
     </div>
 
+
+    <div id="delete_project" style="display: none">
+        {{ 'project.msg_delete'|trans([], 'TempoProject') }}
+    </div>
 
 {% endblock %}
 {% block right %}

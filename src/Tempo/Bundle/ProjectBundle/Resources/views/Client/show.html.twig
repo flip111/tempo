@@ -12,8 +12,8 @@
 
 <div class="action col-md-2">
     <a class="btn btn-xs btn btn-info" href="{{ path('client_edit', { 'slug' : client.slug }) }}"> <span class="glyphicon glyphicon-edit"></span> Edit</a>
-    <a class="btn btn-xs btn-danger" href="{{ path('client_delete', { 'slug': client.slug }) }}"> <span class="glyphicon glyphicon-trash"></span> Delete</a>
-    <span id="confirmation-delete-client" style="display: none;">Êtes vous sur de vouloir supprimer ce client <br/> La suppression entraînera la suppression de tous les projets lier.</span>
+    <a class="btn btn-xs btn-danger" role="dialog" data-toggle="modal" data-target="#" data-title="Delete project" href="#delete-organization" data-redirect="{{ path('client_delete', { 'slug': client.slug, 'token' : csrfToken }) }}"> <span class="glyphicon glyphicon-trash"></span> Delete</a>
+    <span id="confirmation-delete-client" style="display: none;">Êtes vous sur de vouloir supprimer ce client <br/> La suppression entraînera la suppression de sesprojets.</span>
 </div>
 
 <div class="infos">
@@ -40,6 +40,10 @@
         </li>
 
     </ul>
+</div>
+
+<div id="delete-organization">
+    {{ 'organization.msg_delete'|trans([], 'TempoProject') }}
 </div>
 
 {% endblock %}

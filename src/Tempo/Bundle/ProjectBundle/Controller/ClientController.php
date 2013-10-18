@@ -19,6 +19,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 
 /**
  * @author Mlanawo Mbechezi <mlanawo.mbechezi@ikimea.com>
@@ -34,6 +35,8 @@ class ClientController extends Controller
     public function showAction($slug)
     {
         $client = $this->findClient($slug);
+        $csrfToken = $this->get('form.csrf_provider')->generateCsrfToken('delete-organization');
+
         $manager = $this->container->get('tempo_project.manager.client');
         $counter = $manager->getStatusProjects($client->getId());
 
@@ -44,7 +47,8 @@ class ClientController extends Controller
         return $this->render('TempoProjectBundle:Client:show.html.twig', array(
             'client' => $client,
             'counter' => $counter,
-            'projects' => $client->getProjects()
+            'projects' => $client->getProjects(),
+            'csrfToken' => $csrfToken
         ));
 
     }
@@ -55,7 +59,6 @@ class ClientController extends Controller
      */
     public function newAction()
     {
-
         $form = $this->createForm(new ClientType(), new Client(), array('is_new' => true));
 
         return $this->render('TempoProjectBundle:Client:new.html.twig', array(
@@ -164,8 +167,15 @@ class ClientController extends Controller
      */
     public function deleteAction($slug)
     {
+        $request = $this->getRequest();
         $em = $this->getDoctrine()->getManager();
         $client = $this->findClient($slug);
+
+        //check CSRF token
+        if (false === $this->get('form.csrf_provider')->isCsrfTokenValid('delete-organization', $request->get('token'))) {
+            throw new AccessDeniedHttpException('Invalid CSRF token.');
+        }
+
         try {
 
             $em->remove($client);
@@ -176,7 +186,7 @@ class ClientController extends Controller
 
         } catch (\Exception $e) {
 
-            $this->get('session')->getFlashBag()->set('warning', $this->get('translator')->trans('Impossible de supprimer le client'));
+            $this->get('session')->getFlashBag()->set('error', $this->get('translator')->trans('Impossible de supprimer le client'));
 
             return $this->redirect($this->generateUrl('client_show', array('slug' => $client->getSlug() )));
         }

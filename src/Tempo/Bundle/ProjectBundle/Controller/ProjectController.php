@@ -30,20 +30,18 @@ class ProjectController extends Controller
      * @param $client
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
-    public function listAction($client)
+    public function listAction($slug)
     {
-        $em = $this->getDoctrine()->getManager();
-        $slug = $client;
-
         //find info client
-        $client = $em->getRepository('TempoProjectBundle:Client')->findOneBySlug($slug);
+        $manageClient = $this->get('tempo_project.manager.client');
+        $client = $manageClient->findOneBySlug($slug);
 
         if (!$client) {
             throw new NotFoundHttpException(sprintf("client with slug '%s' could not be found.", $client));
         }
 
         $projects = $client->getProjects();   //List Project
-        $clients = $em->getRepository('TempoProjectBundle:Client')->findAll();  // List Client
+        $clients = $manageClient->findAll();  // List Client
 
         return $this->render('TempoProjectBundle:Project:list.html.twig', array(
             'client' => $client,
@@ -58,12 +56,8 @@ class ProjectController extends Controller
      */
     public function showAction($slug)
     {
-        $project = $this->getDoctrine()->getManager()
-            ->getRepository('TempoProjectBundle:Project')->findOneBySlug($slug);
-
-        if (!$project) {
-            throw $this->createNotFoundException('Unable to find Project entity.');
-        }
+        $project  = $this->getProject($slug);
+        $csrfToken = $this->get('form.csrf_provider')->generateCsrfToken('delete-project');
 
         $equipeForm = $this->createForm(new EquipeType());
         $deleteForm = $this->createDeleteForm($project->getId());
@@ -71,7 +65,7 @@ class ProjectController extends Controller
         return $this->render('TempoProjectBundle:Project:show.html.twig', array(
             'equipeForm'      => $equipeForm->createView(),
             'project'      => $project,
-            'delete_form' => $deleteForm->createView()
+            'csrfToken'      => $csrfToken,
         ));
     }
 
@@ -82,7 +76,6 @@ class ProjectController extends Controller
     public function newAction()
     {
         $project = new Project();
-
         $this->getParent($project);
 
         $form   = $this->createForm(new ProjectType(), $project, array('user_id' => $this->getUser()->getId() ));
@@ -100,19 +93,14 @@ class ProjectController extends Controller
     public function createAction()
     {
         $project  = new Project();
-
+        $project->addEquipe($this->getUser());
         $this->getParent($project);
 
-        $project->addEquipe($this->getUser());
-        $request = $this->getRequest();
         $form   = $this->createForm(new ProjectType(), $project, array('user_id' => $this->getUser()->getId() ));
-        $form->submit($request);
+        $form->submit( $this->getRequest());
 
         if ($form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($project);
-            $em->flush();
-
+            $this->getManager()->persistAndFlush($project);
             return $this->redirect($this->generateUrl('project_show', array('slug' => $project->getSlug() )));
 
         }
@@ -130,21 +118,12 @@ class ProjectController extends Controller
      */
     public function editAction($slug)
     {
-        $em = $this->getDoctrine()->getManager();
-
-        $project = $em->getRepository('TempoProjectBundle:Project')->findOneBySlug($slug);
-
-        if (!$project) {
-            throw $this->createNotFoundException('Unable to find Project entity.');
-        }
-
+        $project = $this->getProject($slug);
         $editForm = $this->createForm(new ProjectType(), $project);
-        $deleteForm = $this->createDeleteForm($project->getId());
 
         return $this->render('TempoProjectBundle:Project:edit.html.twig', array(
             'project'      => $project,
             'form'   => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
         ));
     }
 
@@ -153,34 +132,22 @@ class ProjectController extends Controller
      * @param $id
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
-    public function updateAction($id)
+    public function updateAction($slug)
     {
-        $em = $this->getDoctrine()->getManager();
+        $project = $this->getProject($slug);
+        $editForm   = $this->createForm(new ProjectType(), $project);
 
-        $entity = $em->getRepository('TempoProjectBundle:Project')->find($id);
-
-        if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Project entity.');
-        }
-
-        $editForm   = $this->createForm(new ProjectType(), $entity);
-        $deleteForm = $this->createDeleteForm($id);
-
-        $request = $this->getRequest();
-
-        $editForm->submit($request);
+        $editForm->submit($this->getRequest());
 
         if ($editForm->isValid()) {
-            $em->persist($entity);
-            $em->flush();
 
-            return $this->redirect($this->generateUrl('project_edit', array('slug' => $entity->getSlug()  )));
+            $this->getManager()->persistAndFlush($project);
+            return $this->redirect($this->generateUrl('project_edit', array('slug' => $project->getSlug() )));
         }
 
         return $this->render('TempoProjectBundle:Project:edit.html.twig', array(
-            'project'      => $entity,
-            'edit_form'   => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
+            'project'     =>  $project,
+            'edit_form'   =>  $editForm->createView(),
         ));
     }
 
@@ -190,40 +157,44 @@ class ProjectController extends Controller
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
      * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
      */
-    public function deleteAction($id)
+    public function deleteAction($slug)
     {
-        $form = $this->createDeleteForm($id);
-        $request = $this->getRequest();
-
-        $form->submit($request);
-
-        if ($form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $entity = $em->getRepository('TempoProjectBundle:Project')->find($id);
-            $em->getRepository('TempoProjectBundle:Project')->findBy(array('name' => 'slug'));
-
-            if (!$entity) {
-                throw $this->createNotFoundException('Unable to find Project entity.');
-            }
-
-            $em->remove($entity);
-            $em->flush();
+        //check CSRF token
+        if (false === $this->get('form.csrf_provider')->isCsrfTokenValid('delete-organization', $this->getRequest()->get('token'))) {
+            throw new AccessDeniedHttpException('Invalid CSRF token.');
         }
+
+        $project = $this->getProject($slug);
+        $this->getManager()->removeAndFlush($project);
 
         return $this->redirect($this->generateUrl('project_home'));
     }
 
     /**
-     * @param $id
-     * @return \Symfony\Component\Form\Form
+     * return Tempo\Bundle\ProjectBundle\Manager\Project
+     * @return mixed
      */
-    private function createDeleteForm($id)
+    private function getManager()
     {
-        return $this->createFormBuilder(array('id' => $id))
-            ->add('id', 'hidden')
-            ->getForm()
-        ;
+        return $this->get('tempo_project.manager.project');
     }
+
+    /**
+     * @param $slug
+     * @return mixed
+     * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
+     */
+    public function getProject($primaryKey)
+    {
+        if (is_string($primaryKey)) {
+            $project =  $this->getManager()->findOneBySlug($primaryKey);
+        } else {
+            $project =  $this->getManager()->find($primaryKey);
+        }
+
+        return $project;
+    }
+
 
     /**
      * @param  \Tempo\Bundle\ProjectBundle\Entity\Project $project
@@ -231,11 +202,10 @@ class ProjectController extends Controller
      */
     protected function getParent(Project $project)
     {
-        $em = $this->getDoctrine()->getManager();
         $parent = $this->getRequest()->query->get('parent');
 
         if (!empty($parent)) {
-            $parent = $em->getRepository('TempoProjectBundle:Project')->find($parent);
+            $parent = $this->getProject(intval($parent));
             if ($parent) {
                 $project->setParent($parent);
             }

@@ -12,7 +12,7 @@
 namespace Tempo\Bundle\ProjectBundle\Manager;
 
 use Tempo\Bundle\MainBundle\Manager\BaseManager;
-use Tempo\Bundle\ProjectBundle\Entity\Client;
+use Tempo\Bundle\ProjectBundle\Entity\Project;
 
 use Doctrine\ORM\EntityManager;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
@@ -21,7 +21,7 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
  * @author Mbechezi Mlanawo <mlanawo.mbechezi@ikimea.com>
  */
 
-class ClientManager extends BaseManager
+class ProjectManager extends BaseManager
 {
    protected $em;
    private $class;
@@ -44,10 +44,10 @@ class ClientManager extends BaseManager
      */
    public function find($id)
    {
-       $client =  $this->getRepository()->find($id);
+       $project =  $this->getRepository()->find($id);
 
-       if (!$client) {
-           throw new NotFoundHttpException('Unable to find Client entity.');
+       if (!$project) {
+           throw new NotFoundHttpException('Requested Project does not exist.');
        }
 
        return $client;
@@ -72,21 +72,6 @@ class ClientManager extends BaseManager
    }
 
     /**
-     * return list projects client
-     * @param $id
-     * @return array
-     */
-   public function getStatusProjects($id)
-   {
-       $counter = $this->getRepository()->countProject($id);
-
-       return array(
-           'close' => $counter['prj_close'],
-           'open'  => $counter['prj_open']
-       );
-   }
-
-    /**
      * @param $user
      */
     public function findAllByUser($user)
@@ -101,5 +86,6 @@ class ClientManager extends BaseManager
    {
         return $this->getRepository()->findAll();
    }
+
 
 }

@@ -22,12 +22,22 @@ abstract class BaseManager
 
 
     /**
-     * peristid and flush
+     * persist and flush
      * @param $entity
      */
-    protected function persistAndFlush($entity)
+    public function persistAndFlush($entity)
     {
         $this->em->persist($entity);
+        $this->em->flush();
+    }
+
+    /**
+     * remove and flush
+     * @param $entity
+     */
+    public function removeAndFlush($entity)
+    {
+        $this->em->remove($entity);
         $this->em->flush();
     }
 
@@ -38,14 +48,4 @@ abstract class BaseManager
     {
         return $this->repository;
     }
-
-    /**
-     * @param $user
-     */
-    public function findAllByUser($user)
-    {
-
-    }
-
-
 }
