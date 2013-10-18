@@ -40,19 +40,30 @@
                     <a id="adv_search" rel="search" accesskey="4" title="Recherche avancée" href="#">avancée</a>
                     <label label-default="label-default" for="q"> <a accesskey="4" href="#">{{ 'header.search'|trans({},'messages') }}  </a> :</label>
                     <input  type="text" size="20" name="q" id="q" class="form-control small" accesskey="f" />
-                    <input type="submit" class="submit glyphicon glyphicon-search" />
+                    <button type="submit" class="submit">
+                        <span class="glyphicon glyphicon-search"></span>
+                    </button>
                 </form>
             </div>
             <nav id="menu">{{ knp_menu_render('menu') }}</nav>
             <div id="member-menu" class="dropdown">
-                <a href="#" data-toggle="dropdown" class="dropdown-toggle">
-                    <img src=" {{ app.user.avatar(30) }}" />
-                </a>
-                <ul class="dropdown-menu">
-                    <li> <a href="/settings">Settings</a> |</li>
-                    <li> <a href="{{ path('fos_user_security_logout') }}"> {{ 'layout.logout'|trans([], 'FOSUserBundle') }} | </a> </li>
-                    <li class="divider"><span></span> </li>
-                    <li> <a href="/help"> Help </a>
+                <ul>
+                    <li class="notification dropdown togglable dropdown-notifications">
+                        <a href="#"><span class="glyphicon glyphicon-bell"></span></a>
+                        <div class="notifications dropdown-menu">
+                        </div>
+                    </li>
+                    <li class="user">
+                        <a href="#" data-toggle="dropdown" class="dropdown-toggle">
+                            <img src=" {{ app.user.avatar(30) }}" alt="Avatar" />
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li> <a href="{{ path('user_profile_setting') }}">Settings</a> </li>
+                            <li> <a href="{{ path('fos_user_security_logout') }}"> {{ 'layout.logout'|trans([], 'FOSUserBundle') }} </a> </li>
+                            <li role="presentation" class="divider"></li>
+                            <li> <a href="/help"> Help </a></li>
+                        </ul>
+                    </li>
                 </ul>
             </div>
         </header>

@@ -65,14 +65,7 @@ $(function() {
     };
 
     $('body').removeClass('no-js').addClass('js');
-    $( ".datepicker" ).datepicker();
-
-
-    $('#user-barre li.notif').click(function(event){
-        event.preventDefault();
-        var parent = $(this).find('.notification');
-        parent.attr('style', 'style:' + parent.is(':hidden') ? 'block' : 'none' );
-    });
+    $('.datepicker').datepicker();
 
     $('[data-toggle="modal"]').click(function(e) {
         e.preventDefault();

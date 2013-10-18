@@ -85,7 +85,7 @@ body {
     color: #FFF;
     font-size: 11px;
 }
-#header #search form input {
+#header #search form input[type="text"] {
     border: 1px solid #FFF; height: 18px;
     border-top-left-radius: 3px;
     border-top-right-radius: 0;
@@ -95,7 +95,7 @@ body {
     float: left;
     width: 180px;
 }
-#header #search form .submit{
+#header #search form .submit {
     float: left;
     background: #173455;
     border: 1px solid #FFF;
@@ -105,10 +105,10 @@ body {
     display: block;
     height: 28px;
     padding: 0;
-    text-indent: -3000em;
     width: 26px;
-    margin-top: -1px;
-
+}
+#header #search form .submit span {
+    color: #FFF;
 }
 #header nav {
     float: left;
@@ -121,12 +121,26 @@ body {
 }
 #header #member-menu {
     float: right;
-    margin-right: 20px;
+    margin-right: 50px;
     margin-top: 4px;
 
 }
-#header #member-menu a{
+#header #member-menu ul li.notification, #header #member-menu ul li.user  {
+    float: left;
+}
+#header #member-menu ul li.notification {
+    padding-top: 5px;
+    margin-right: 20px;
+}
+#header #member-menu ul li.notification a {
+    color: #FFF;
+    font-size: 20px;
+}
+#header #member-menu .user a{
     background: linear-gradient(to bottom, rgba(255,255,255,0.23) 0, rgba(255,255,255,0.2) 100%);
+}
+#header #member-menu .dropdown-menu>li>a:hover, #header #member-menu .dropdown-menu>li>a:focus {
+    color: #000000;
 }
 #header nav#menu ul.right{ float: none; }
 #header nav#menu ul{
