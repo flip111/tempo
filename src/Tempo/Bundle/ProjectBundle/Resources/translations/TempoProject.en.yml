@@ -27,7 +27,7 @@ project:
     label.avancement: Avancement
     label.code: Code
     label.status: Status
-    label.estimated: budget estimated
+    label.estimated: Budget estimated
 
 errors:
   internal_error: Internal error

@@ -1,22 +1,9 @@
 {% extends "TempoMainBundle::Layout/web.html.twig" %}
 {% block bodyClass %}project new{% endblock %}
 
-
-{% block stylesheets %}
-    {{ parent() }}
-    <link rel="stylesheet" type="text/css" href="/bundles/tempomain/css/moo/mForm/mForm.css" />
-    <link rel="stylesheet" type="text/css" href="/bundles/tempomain/css/moo/mForm/mFormElement-Select.css" />
-    <link rel="stylesheet" type="text/css" href="/bundles/tempomain/css/moo/moodatepicker.css" />
-{% endblock %}
 {% block javascripts %}
   {{ parent() }}
-     <script type="text/javascript" src="{{ asset('bundles/tempomain/js/moo/mForm/mForm.Core.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('bundles/tempomain/js/moo/mForm/mForm.Element.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('bundles/tempomain/js/moo/mForm/mForm.Element.Select.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('bundles/tempomain/js/moo/mForm/mForm.Submit.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('bundles/tempomain/js/moo/Element.Date.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('bundles/tempomain/js/moo/MooDatePicker.js') }}"></script>
-     <script type="text/javascript" src="{{ asset('bundles/tempoproject/js/project.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('bundles/tempoproject/js/project.js') }}"></script>
 {% endblock %}
 
 {% block content %}

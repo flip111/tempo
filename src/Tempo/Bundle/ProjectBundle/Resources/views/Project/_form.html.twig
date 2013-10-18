@@ -51,7 +51,9 @@
             {{ form_widget(form.avancement, { 'attr' :  { 'disabled' : 'disabled', 'style': 'display: none' }}) }}
 
             <div id="slider" class="slider form-control">
-                <span id="knob_value">{{ form.avancement.vars.value }}%</span>
+                <a class="ui-slider-handle ui-state-default ui-corner-all" href="#">
+                    <span id="knob_value">{{ form.avancement.vars.value }}%</span>
+                </a>
             </div>
 
         </div>

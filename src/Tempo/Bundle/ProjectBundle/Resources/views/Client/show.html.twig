@@ -47,7 +47,7 @@
     <aside>
         <h4>Liste projets</h4>
 
-        <a href="{{ path('project_new', { 'client' : client.slug }) }}" class="btn btn-xs btn-primary "><span class="glyphicon glyphicon-plus"></span> {{ 'project.add'|trans({},'TempoProject') }} </a>
+        <a href="{{ path('project_new', { 'client' : client.slug }) }}" class="btn btn-xs btn-primary float-right"><span class="glyphicon glyphicon-plus"></span> {{ 'project.add'|trans({},'TempoProject') }} </a>
 
         <ul class="list-project list">
             {% for project in projects %}
