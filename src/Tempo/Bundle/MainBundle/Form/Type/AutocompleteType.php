@@ -29,12 +29,11 @@ class AutocompleteType extends AbstractType
 
     /**
      * load script js for autocompletion
-     * @param \Tempo\\Bundle\MainBundle\Helper\Behavior $behaviorManager
+     * @param \Tempo\Bundle\MainBundle\Helper\Behavior $behaviorManager
      */
     public function __construct(Behavior $behaviorManager)
     {
        $this->behaviorManager = $behaviorManager;
-
     }
 
     /**

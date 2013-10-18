@@ -24,7 +24,6 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class User extends BaseUser
 {
-
     /**
      * @ORM\Id
      * @ORM\Column(type="integer")
@@ -33,19 +32,19 @@ class User extends BaseUser
     protected $id;
 
     /**
-     * @ORM\Column(type="string",length=255, nullable=true)
+     * @ORM\Column(name="first_name", type="string",length=255, nullable=true)
      */
-    protected $first_name;
+    protected $firstName;
 
     /**
-     * @ORM\Column(type="string",length=255, nullable=true)
+     * @ORM\Column(name="last_name", type="string",length=255, nullable=true)
      */
-    protected $last_name;
+    protected $lastName;
 
     /**
-     * @ORM\Column(type="string",length=255, nullable=true)
+     * @ORM\Column(name="job_title", type="string",length=255, nullable=true)
      */
-    protected $job_title;
+    protected $jobTitle;
 
     /**
      * @ORM\Column(type="string",length=255, nullable=true)
@@ -53,9 +52,9 @@ class User extends BaseUser
     protected $phone;
 
     /**
-     * @ORM\Column(type="string",length=255, nullable=true)
+     * @ORM\Column(name="phone_mobile", type="string",length=255, nullable=true)
      */
-    protected $phone_mobile;
+    protected $phoneMobile;
 
     /**
      * @ORM\Column(type="string", nullable=true)
@@ -64,7 +63,6 @@ class User extends BaseUser
 
 
     protected $client;
-
 
     public function __construct()
     {
@@ -91,7 +89,6 @@ class User extends BaseUser
         return $this->getUsernameCanonical();
     }
 
-
     /**
      * Set first_name
      *
@@ -99,7 +96,7 @@ class User extends BaseUser
      */
     public function setFirstName($firstName)
     {
-        $this->first_name = $firstName;
+        $this->firstName = $firstName;
     }
 
     /**
@@ -109,7 +106,7 @@ class User extends BaseUser
      */
     public function getFirstName()
     {
-        return $this->first_name;
+        return $this->firstName;
     }
 
     /**
@@ -119,7 +116,7 @@ class User extends BaseUser
      */
     public function setLastName($lastName)
     {
-        $this->last_name = $lastName;
+        $this->lastName = $lastName;
     }
 
     /**
@@ -129,7 +126,7 @@ class User extends BaseUser
      */
     public function getLastName()
     {
-        return $this->last_name;
+        return $this->lastName;
     }
 
     /**
@@ -139,7 +136,7 @@ class User extends BaseUser
      */
     public function setJobTitle($jobTitle)
     {
-        $this->job_title = $jobTitle;
+        $this->jobTitle = $jobTitle;
     }
 
     /**
@@ -149,7 +146,7 @@ class User extends BaseUser
      */
     public function getJobTitle()
     {
-        return $this->job_title;
+        return $this->jobTitle;
     }
 
     /**
@@ -179,7 +176,7 @@ class User extends BaseUser
      */
     public function setPhoneMobile($phoneMobile)
     {
-        $this->phone_mobile = $phoneMobile;
+        $this->phoneMobile = $phoneMobile;
     }
 
     /**
@@ -189,7 +186,7 @@ class User extends BaseUser
      */
     public function getPhoneMobile()
     {
-        return $this->phone_mobile;
+        return $this->phoneMobile;
     }
 
     public function hasAvatar()
