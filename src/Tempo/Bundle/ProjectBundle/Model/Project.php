@@ -129,6 +129,7 @@ class Project implements ProjectInterface
     public function __construct()
     {
         $this->isActive = true;
+        $this->avancement = 0;
         $this->timesheets = new ArrayCollection();
         $this->children = new ArrayCollection();
         $this->parents = new ArrayCollection();
