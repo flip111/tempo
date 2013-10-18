@@ -471,7 +471,7 @@ ol.stories
 .client-add .rest{ float: left; width: 60px; }
 .client.show #page-title{  }
 .client.show .action{ margin-top: 30px }
-.client.show #sidebar-right h4{ float: left; padding: 20px 40px; }
+.client.show #sidebar-right h4{ padding: 20px 40px; }
 .client.show .infos { clear: both; }
 .client.show .infos li{ display: block; margin-bottom: 10px; }
 .client.show .infos strong{ display: block; }
@@ -482,7 +482,7 @@ ol.stories
 .client.show #sidebar-right .suite{ font-style: italic;  margin-left: 60px; margin-top: 30px; ; }
 .client.show #sidebar-right .suite a { color: #484848; }
 .client.show #organization-list-project h3 {
-    margin: 35px 0 60px 0;
+    margin: 35px 50px 60px 50px;
     height: 0;
     text-align: center;
     font-size: 20px;

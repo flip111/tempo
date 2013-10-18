@@ -44,13 +44,15 @@ class ClientController extends Controller
         $breadcrumb->addChild('Client');
         $breadcrumb->addChild($client->getName());
 
+        $teamForm = $this->createForm(new TeamType());
+
         return $this->render('TempoProjectBundle:Client:show.html.twig', array(
             'client' => $client,
             'counter' => $counter,
             'projects' => $client->getProjects(),
+            'teamForm' => $teamForm,
             'csrfToken' => $csrfToken
         ));
-
     }
 
     /**

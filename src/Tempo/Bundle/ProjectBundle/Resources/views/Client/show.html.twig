@@ -65,11 +65,5 @@
 
 {% endblock %}
 {% block right %}
-    <aside>
-        <h4>Team</h4>
-
-        <div class="list_membre">
-            {% include 'TempoProjectBundle:Team:list.html.twig' with { 'users': client.team } %}
-        </div>
-    </aside>
+    {%  include 'TempoProjectBundle::Client/_sidebar.html.twig' with { 'teamForm': teamForm, 'client': client } %}
 {% endblock %}
