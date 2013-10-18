@@ -199,14 +199,6 @@ body {
     height: 18px;
 }
 
-#sidebar-right .add_new_btn{
-
-}
-#sidebar-right .add_new_btn a{
-    margin-left: 20px;
-    margin-top: 10px;
-}
-
 #child-content {
     padding: 6px 10px 10px;
     box-shadow: 0 5px 3px #CCCCCC;
@@ -285,7 +277,7 @@ body {
     width: 200px;
     height: 20px;
 }
-.form-block input[type="text"]{
+.form-block input[type="text"], .form-block input[type="email"]{
     width: 200px;
 }
 
