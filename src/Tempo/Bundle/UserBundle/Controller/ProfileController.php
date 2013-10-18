@@ -124,4 +124,9 @@ class ProfileController extends Controller
 
         return $this->render('TempoUserBundle:Profile:show.html.twig', array('profile' => $profile));
     }
+
+    public function settingAction()
+    {
+        return new Response();
+    }
 }

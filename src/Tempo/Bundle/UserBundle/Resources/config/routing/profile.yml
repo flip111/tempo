@@ -10,6 +10,10 @@ user_profile_update:
     pattern:  /edit/update
     defaults: { _controller: TempoUserBundle:profile:update }
 
+user_profile_setting:
+    pattern: /edit/setting
+    defaults: { _controller: TempoUserBundle:profile:setting }
+
 user_profile_show:
     pattern: /{slug}
     defaults: { _controller: TempoUserBundle:profile:show }
