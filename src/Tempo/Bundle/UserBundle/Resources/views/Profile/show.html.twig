@@ -1,5 +1,15 @@
 {% extends "TempoMainBundle::Layout/web.html.twig" %}
 
 {% block content %}
-
+    <div class="col-md-3">
+       <img src="{{ profile.avatar(220) }}" />
+        <h1>{{ profile.firstName}}  {{ profile.lastName }}
+            <small>{{ profile.username }}</small>
+        </h1>
+    </div>
+    <div class="col-md-8">
+        <ul class="nav nav-tabs">
+            <li  class="active" data-toggle="tab"><a>Activity</a></li>
+        </ul>
+    </div>
 {% endblock %}

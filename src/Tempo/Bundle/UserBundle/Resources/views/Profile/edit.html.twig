@@ -2,6 +2,8 @@
 
 {% block content %}
 
+<h1 class="col-md-4">Edit profile</h1>
+{% include "TempoUserBundle:Profile:_tabs.html.twig" %}
 
 <div class="form-block">
    <form action="{{ path('user_profile_update') }}" {{ form_enctype(form) }} method="POST" class="user_profile_edit">
@@ -28,7 +30,7 @@
 
        <div>
            {{ form_rest(form) }}
-            <input type="submit" value="{{ buttons.edit }}" class="btn"/>
+            <input type="submit" class="btn btn-primary" />
         </div>
     </form>
 </div>

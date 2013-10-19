@@ -1,5 +1,10 @@
 {% extends "TempoMainBundle::Layout/web.html.twig" %}
 
 {% block content %}
+    <h1 class="title">Setting</h1>
 
+
+    {{ form_widget(form) }}
+
+    <input type="submit" class="btn btn-primary">
 {% endblock %}

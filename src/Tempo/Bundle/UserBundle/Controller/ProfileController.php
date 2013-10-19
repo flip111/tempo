@@ -16,8 +16,12 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RedirectResponse;
-use Tempo\Bundle\UserBundle\Form\ProfileType;
-use Tempo\Bundle\UserBundle\Form\AvatarType;
+
+use Tempo\Bundle\UserBundle\Form\Type\SettingsType;
+use Tempo\Bundle\UserBundle\Form\Type\ProfileType;
+use Tempo\Bundle\UserBundle\Form\Type\AvatarType;
+use Tempo\Bundle\UserBundle\Form\Type\PasswordType;
+
 use Tempo\Bundle\UserBundle\Form\Handler\AvatarHandler;
 
 class ProfileController extends Controller
@@ -37,7 +41,7 @@ class ProfileController extends Controller
      * @param null $id
      * @return mixed
      */
-    public function avatarAction($id = null)
+    public function pictureAction($id = null)
     {
         $request = $this->getRequest();
         $user = $this->getEditableUser($id);
@@ -48,6 +52,7 @@ class ProfileController extends Controller
         $handler = new AvatarHandler($request, $form, $this->getDoctrine(), $this->get('liip_imagine'));
         $handler->setPath($this->get('kernel')->getRootDir().'/../web/');
 
+        //@todo : Urgent refactor
         if (($retval = $handler->process($user)) !== false) {
             if (AvatarHandler::INTERNAL_ERROR === $retval) {
 
@@ -90,11 +95,6 @@ class ProfileController extends Controller
         ));
     }
 
-    public function getEditableUser()
-    {
-        return $this->getUser();
-    }
-
     public function updateAction()
     {
         $user = $this->getEditableUser();
@@ -114,6 +114,11 @@ class ProfileController extends Controller
 
     }
 
+    /**
+     * @param $slug
+     * @return Response
+     * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
+     */
     public function showAction($slug)
     {
         $profile = $this->getDoctrine()->getRepository('TempoUserBundle:User')->findOneBy(array('usernameCanonical' => $slug));
@@ -125,8 +130,34 @@ class ProfileController extends Controller
         return $this->render('TempoUserBundle:Profile:show.html.twig', array('profile' => $profile));
     }
 
+    /***
+     * @return Response
+     */
+    public function passwordAction()
+    {
+        $profile = $this->getEditableUser();
+
+        $form = $this->createForm(new PasswordType(), $profile);
+        return $this->render('TempoUserBundle:Profile:password.html.twig', array(
+            'profile' => $profile,
+            'form' => $form->createView()
+        ));
+    }
+
+
     public function settingAction()
     {
-        return new Response();
+        $profile = $this->getEditableUser();
+
+        $form = $this->createForm(new SettingsType());
+        return $this->render('TempoUserBundle:Profile:settings.html.twig', array(
+            'profile' => $profile,
+            'form' => $form->createView()
+        ));
+    }
+
+    public function getEditableUser()
+    {
+        return $this->getUser();
     }
 }

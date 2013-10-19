@@ -10,7 +10,7 @@
 */
 
 
-namespace Tempo\Bundle\UserBundle\Form;
+namespace Tempo\Bundle\UserBundle\Form\Type;
 
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormViewInterface;

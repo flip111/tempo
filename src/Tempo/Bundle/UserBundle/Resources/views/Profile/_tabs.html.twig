@@ -1,0 +1,24 @@
+<div>
+    <ul class="nav nav-tabs">
+        <li class="active">
+            <a href="{{ path('user_profile_edit') }}">
+                {{ 'tabs_profile.profil'|trans({}, 'TempoUser') }}
+            </a>
+        </li>
+        <li>
+            <a href="{{ path('user_profile_picture') }}">
+                {{ 'tabs_profile.avatar'|trans({}, 'TempoUser') }}
+            </a>
+        </li>
+        <li>
+            <a href="{{ path('user_profile_password') }}">
+                {{ 'tabs_profile.password'|trans({}, 'TempoUser') }}
+            </a>
+        </li>
+        <li>
+            <a href="{{ path('user_profile_setting') }}">
+                {{ 'tabs_profile.preferences'|trans({}, 'TempoUser') }}
+            </a>
+        </li>
+    </ul>
+</div>
