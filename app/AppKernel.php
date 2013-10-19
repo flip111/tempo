@@ -34,6 +34,7 @@ class AppKernel extends Kernel {
             new Tempo\Bundle\ProjectBundle\TempoProjectBundle(),
 
             new Fkr\CssURLRewriteBundle\FkrCssURLRewriteBundle(),
+            new Tempo\Bundle\ActivityBundle\TempoActivityBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
