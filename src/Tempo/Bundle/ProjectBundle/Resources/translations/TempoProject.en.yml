@@ -6,11 +6,11 @@ organization:
   select_second: Display Projects
   not_found_orga: No organization has been found
   not_found_project: No projects found for this organization
-  add:  Add new client
-  edit: Edit client
+  add:  Add new organization
+  edit: Edit organization
   team: Team
   list:
-    title: 'Client List'
+    title: 'Organization List'
   msg_delete: Once you delete an organization, there is no going back. It will be deleted forever. Please be certain.
   title_delete: Delete project
   email_contact: E-mail contact
@@ -31,7 +31,7 @@ project:
   close: Close
 
   form:
-    label.client: Client
+    label.organization: Organization
     label.name: Name
     label.isactive: Active
     label.beginning: Beginning

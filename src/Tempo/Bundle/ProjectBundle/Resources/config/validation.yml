@@ -1,4 +1,4 @@
-Tempo\ProjectBundle\Entity\Client:
+Tempo\ProjectBundle\Entity\Organization:
     properties:
         name:
             - NotBlank: ~

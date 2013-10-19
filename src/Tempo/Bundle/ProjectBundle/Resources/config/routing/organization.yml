@@ -1,0 +1,41 @@
+organization_show:
+    pattern:  /{slug}/show
+    defaults: { _controller: TempoProjectBundle:Organization:show }
+    requirements:
+        _method:  GET
+
+organization_new:
+    pattern:  /new
+    defaults: { _controller: TempoProjectBundle:Organization:new }
+
+organization_create:
+     pattern:  /create
+     defaults: { _controller: TempoProjectBundle:Organization:create }
+
+organization_edit:
+    pattern:  /{slug}/edit
+    defaults: { _controller: TempoProjectBundle:Organization:edit }
+    requirements:
+        _method:  GET
+
+organization_update:
+     pattern:  /{id}/update
+     defaults: { _controller: TempoProjectBundle:Organization:update }
+
+organization_delete:
+    pattern:  /{slug}/delete
+    defaults: { _controller: TempoProjectBundle:Organization:delete }
+
+organization_team_add:
+    pattern:  /{slug}/team/add
+    defaults: { _controller: TempoProjectBundle:Team:add }
+
+organization_team_create:
+    pattern:  /{slug}/team/create
+    defaults: { _controller: TempoProjectBundle:Team:create }
+    requirements:
+        _method:  GET
+
+organization_team_delete:
+    pattern:  /{slug}/team/delete
+    defaults: { _controller: TempoProjectBundle:Team:delete }

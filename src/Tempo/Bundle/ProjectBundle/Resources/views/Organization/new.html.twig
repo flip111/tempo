@@ -1,11 +1,11 @@
 {% extends app.request.isXmlHttpRequest ? "TempoMainBundle::Layout/ajax.html.twig" : "TempoMainBundle::Layout/web.html.twig" %}
 {% block javascripts %}
 {{ parent() }}
-<script type="text/javascript" src="{{ asset('bundles/tempoproject/js/client.js')}}"></script>
+<script type="text/javascript" src="{{ asset('bundles/tempoproject/js/organization.js')}}"></script>
 {% endblock %}
 
 {% block content %}
-    <form action="{{ path('client_create') }}" method="post" {{ form_enctype(form) }} class="client-add clearfix">
+    <form action="{{ path('organization_create') }}" method="post" {{ form_enctype(form) }} class="organization-add clearfix">
 
         {{ form_widget(form) }}
 

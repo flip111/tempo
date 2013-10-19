@@ -11,8 +11,8 @@
 
 namespace Tempo\Bundle\ProjectBundle\Controller;
 
-use Tempo\Bundle\ProjectBundle\Entity\Client;
-use Tempo\Bundle\ProjectBundle\Form\Type\ClientType;
+use Tempo\Bundle\ProjectBundle\Entity\Organization;
+use Tempo\Bundle\ProjectBundle\Form\Type\OrganizationType;
 use Tempo\Bundle\ProjectBundle\Form\Type\TeamType;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -25,7 +25,7 @@ use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
  * @author Mlanawo Mbechezi <mlanawo.mbechezi@ikimea.com>
  */
 
-class ClientController extends Controller
+class OrganizationController extends Controller
 {
     /**
      * @param $slug
@@ -34,36 +34,36 @@ class ClientController extends Controller
      */
     public function showAction($slug)
     {
-        $client = $this->findClient($slug);
+        $organization = $this->findOrganization($slug);
         $csrfToken = $this->get('form.csrf_provider')->generateCsrfToken('delete-organization');
 
-        $manager = $this->container->get('tempo_project.manager.client');
-        $counter = $manager->getStatusProjects($client->getId());
+        $manager = $this->container->get('tempo_project.manager.organization');
+        $counter = $manager->getStatusProjects($organization->getId());
 
         $breadcrumb = $this->get('tempo_main.breadcrumb');
-        $breadcrumb->addChild('Client');
-        $breadcrumb->addChild($client->getName());
+        $breadcrumb->addChild('Organization');
+        $breadcrumb->addChild($organization->getName());
 
         $teamForm = $this->createForm(new TeamType());
 
-        return $this->render('TempoProjectBundle:Client:show.html.twig', array(
-            'client' => $client,
+        return $this->render('TempoProjectBundle:Organization:show.html.twig', array(
+            'organization' => $organization,
             'counter' => $counter,
-            'projects' => $client->getProjects(),
+            'projects' => $organization->getProjects(),
             'teamForm' => $teamForm,
             'csrfToken' => $csrfToken
         ));
     }
 
     /**
-     * Create new client
+     * Create new organization
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function newAction()
     {
-        $form = $this->createForm(new ClientType(), new Client(), array('is_new' => true));
+        $form = $this->createForm(new OrganizationType(), new Organization(), array('is_new' => true));
 
-        return $this->render('TempoProjectBundle:Client:new.html.twig', array(
+        return $this->render('TempoProjectBundle:Organization:new.html.twig', array(
             'form' => $form->createView(),
         ));
     }
@@ -75,38 +75,38 @@ class ClientController extends Controller
      */
     public function editAction($slug)
     {
-        $client = $this->findClient($slug);
+        $organization = $this->findOrganization($slug);
 
         $breadcrumb = $this->get('tempo_main.breadcrumb');
-        $breadcrumb->addChild('Client');
-        $breadcrumb->addChild($client->getName());
-        $breadcrumb->addChild('Editer le client');
+        $breadcrumb->addChild('Organization');
+        $breadcrumb->addChild($organization->getName());
+        $breadcrumb->addChild('Editer le organization');
 
-        $editForm = $this->createForm(new ClientType(), $client);
+        $editForm = $this->createForm(new OrganizationType(), $organization);
 
         $teamForm = $this->createForm(new TeamType());
 
-        return $this->render('TempoProjectBundle:Client:edit.html.twig', array(
-            'client' => $client,
+        return $this->render('TempoProjectBundle:Organization:edit.html.twig', array(
+            'organization' => $organization,
             'form' => $editForm->createView(),
             'teamForm' => $teamForm->createView(),
         ));
     }
 
     /**
-     * Edits an existing Client entity.
+     * Edits an existing Organization entity.
      * @param $id
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
      */
     public function updateAction($id)
     {
-        $manager = $this->get('tempo_project.manager.client');
+        $manager = $this->get('tempo_project.manager.organization');
         $request = $this->getRequest();
 
-        $client = $manager->find($id);
+        $organization = $manager->find($id);
 
-        $editForm = $this->createForm(new ClientType(), $client);
+        $editForm = $this->createForm(new OrganizationType(), $organization);
 
         if ($request->getMethod() == "POST") {
 
@@ -114,56 +114,56 @@ class ClientController extends Controller
 
             if ($editForm->isValid()) {
 
-                $manager->persistAndFlush($client);
+                $manager->persistAndFlush($organization);
 
-                $this->get('session')->getFlashBag()->set('notice', $this->get('translator')->trans('Le client a bien été mis à jour avec succès !'));
+                $this->get('session')->getFlashBag()->set('notice', $this->get('translator')->trans('Le organization a bien été mis à jour avec succès !'));
 
-                return $this->redirect($this->generateUrl('client_show', array('slug' => $client->getSlug()  )));
+                return $this->redirect($this->generateUrl('organization_show', array('slug' => $organization->getSlug()  )));
             }
         }
 
-        return $this->render('TempoProjectBundle:Client:edit.html.twig', array(
-            'client' => $client,
+        return $this->render('TempoProjectBundle:Organization:edit.html.twig', array(
+            'organization' => $organization,
             'edit_form' => $editForm->createView(),
         ));
     }
 
     /**
-     * Create a client
+     * Create a organization
      * @return array
      */
     public function createAction()
     {
         $request = $this->getRequest();
 
-        $client = new Client();
-        $client->addTeam($this->getUser());
+        $organization = new Organization();
+        $organization->addTeam($this->getUser());
 
-        $form = $this->createForm(new ClientForm(), $client);
-        $form->setData($client);
+        $form = $this->createForm(new OrganizationForm(), $organization);
+        $form->setData($organization);
 
         if ($request->getMethod() == 'POST') {
             $form->submit($request);
 
             if ($form->isValid()) {
                 $em = $this->container->get('doctrine.orm.entity_manager');
-                $em->persist($client);
+                $em->persist($organization);
                 $em->flush();
 
-                $this->get('session')->getFlashBag()->set('notice', $this->get('translator')->trans('Client ajouté avec succès !'));
+                $this->get('session')->getFlashBag()->set('notice', $this->get('translator')->trans('Organization ajouté avec succès !'));
 
-                return $this->redirect($this->generateUrl('client_edit', array('slug' => $client->getSlug() )));
+                return $this->redirect($this->generateUrl('organization_edit', array('slug' => $organization->getSlug() )));
             }
 
             return array(
-                'entity' => $client,
+                'entity' => $organization,
                 'form'   => $form->createView()
             );
         }
     }
 
     /**
-     * Delete a client
+     * Delete a organization
      * @param $slug
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
      * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
@@ -172,7 +172,7 @@ class ClientController extends Controller
     {
         $request = $this->getRequest();
         $em = $this->getDoctrine()->getManager();
-        $client = $this->findClient($slug);
+        $organization = $this->findOrganization($slug);
 
         //check CSRF token
         if (false === $this->get('form.csrf_provider')->isCsrfTokenValid('delete-organization', $request->get('token'))) {
@@ -181,17 +181,17 @@ class ClientController extends Controller
 
         try {
 
-            $em->remove($client);
+            $em->remove($organization);
             $em->flush();
-            $this->get('session')->getFlashBag()->set('notice', $this->get('translator')->trans('Client supprimé avec succès !'));
+            $this->get('session')->getFlashBag()->set('notice', $this->get('translator')->trans('Organization supprimé avec succès !'));
 
             return $this->redirect($this->generateUrl('project_home'));
 
         } catch (\Exception $e) {
 
-            $this->get('session')->getFlashBag()->set('error', $this->get('translator')->trans('Impossible de supprimer le client'));
+            $this->get('session')->getFlashBag()->set('error', $this->get('translator')->trans('Impossible de supprimer le organization'));
 
-            return $this->redirect($this->generateUrl('client_show', array('slug' => $client->getSlug() )));
+            return $this->redirect($this->generateUrl('organization_show', array('slug' => $organization->getSlug() )));
         }
 
     }
@@ -202,7 +202,7 @@ class ClientController extends Controller
      */
     private function getManager()
     {
-        return $this->get('tempo_project.manager.client');
+        return $this->get('tempo_project.manager.organization');
     }
 
     /**
@@ -210,7 +210,7 @@ class ClientController extends Controller
      * @return mixed
      * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
      */
-    private function findClient($slug)
+    private function findOrganization($slug)
     {
         return $this->getManager()->findOneBySlug($slug);
     }

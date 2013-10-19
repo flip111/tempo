@@ -248,7 +248,7 @@ table.table-striped tbody .actions .edit{ text-indent: -9999px; }
     display: block;
 }
 
-#choose-client{
+#choose-organization{
     padding: 20px;
     background: none repeat scroll 0 0 #F1F5FA;
     text-align: center;
@@ -464,24 +464,24 @@ ol.stories
 }
 
 .user.edit.avatar h1 small{ display: block; }
-/* Clients */
-.client-add #client{ width: 350px; float: left; }
-.client-add #client label, .client.edit label { width: 100px; display: block; float: left; padding-top: 2px; font-weight: bold; }
-.client-add #client #client_name{  }
-.client-add .rest{ float: left; width: 60px; }
-.client.show #page-title{  }
-.client.show .action{ margin-top: 30px }
-.client.show #sidebar-right h4{ padding: 20px 40px; }
-.client.show .infos { clear: both; }
-.client.show .infos li{ display: block; margin-bottom: 10px; }
-.client.show .infos strong{ display: block; }
-.client.show .infos .float-right{ margin-right: 25px; }
-.client.show .infos .float-right span{ margin-right: 25px; }
-.client.show .infos .float-right .nbr-project{ margin-bottom: 10px; }
-.client.show #sidebar-right .list-project{ clear: both;  }
-.client.show #sidebar-right .suite{ font-style: italic;  margin-left: 60px; margin-top: 30px; ; }
-.client.show #sidebar-right .suite a { color: #484848; }
-.client.show #organization-list-project h3 {
+/* Organizations */
+.organization-add #organization{ width: 350px; float: left; }
+.organization-add #organization label, .organization.edit label { width: 100px; display: block; float: left; padding-top: 2px; font-weight: bold; }
+.organization-add #organization #organization_name{  }
+.organization-add .rest{ float: left; width: 60px; }
+.organization.show #page-title{  }
+.organization.show .action{ margin-top: 30px }
+.organization.show #sidebar-right h4{ padding: 20px 40px; }
+.organization.show .infos { clear: both; }
+.organization.show .infos li{ display: block; margin-bottom: 10px; }
+.organization.show .infos strong{ display: block; }
+.organization.show .infos .float-right{ margin-right: 25px; }
+.organization.show .infos .float-right span{ margin-right: 25px; }
+.organization.show .infos .float-right .nbr-project{ margin-bottom: 10px; }
+.organization.show #sidebar-right .list-project{ clear: both;  }
+.organization.show #sidebar-right .suite{ font-style: italic;  margin-left: 60px; margin-top: 30px; ; }
+.organization.show #sidebar-right .suite a { color: #484848; }
+.organization.show #organization-list-project h3 {
     margin: 35px 50px 60px 50px;
     height: 0;
     text-align: center;
@@ -489,14 +489,14 @@ ol.stories
     font-weight: normal;
     border-bottom: 1px solid #ddd;
 }
-.client.show #organization-list-project h3 .inner {
+.organization.show #organization-list-project h3 .inner {
     display: inline-block;
     position: relative;
     top: -10px;
     padding: 0 5px;
     background: #fff;
 }
-.client.show #organization-list-project ul li {
+.organization.show #organization-list-project ul li {
     float: left;
     width: 300px;
     list-style: none;
@@ -504,13 +504,13 @@ ol.stories
     padding: 45px;
 }
 
-.client.show .modal-body{ text-align: center; }
-.client.edit form #client div{ clear: both; }
-.client.edit form .rest{ margin-top:  25px; }
-.client.edit #sidebar-right .list_membre  li img{ width: 28px; height: 28px; display: inline-block; margin-right: 10px; }
+.organization.show .modal-body{ text-align: center; }
+.organization.edit form #organization div{ clear: both; }
+.organization.edit form .rest{ margin-top:  25px; }
+.organization.edit #sidebar-right .list_membre  li img{ width: 28px; height: 28px; display: inline-block; margin-right: 10px; }
 
 
-/* end Clients */
+/* end Organizations */
 
 
 /* Project */
@@ -582,10 +582,10 @@ ol.stories
 }
 .project .formtextField #slider{ float: left; }
 .project .formtextField input[type="date"]{ width: 200px; }
-.project #client .head .btn {
+.project #organization .head .btn {
     margin-top: 5px;
 }
-.project #client .head h4 { margin-left: 10px; }
+.project #organization .head h4 { margin-left: 10px; }
 
 .timesheet.list #sidebar-right .form-horizontal .control-group { margin-top: 10px;  }
 .timesheet.list #sidebar-right .form-horizontal .control-label { text-align: left; width: 50px; padding-left: 20px;  }

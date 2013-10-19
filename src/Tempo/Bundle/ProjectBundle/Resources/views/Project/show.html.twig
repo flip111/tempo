@@ -6,7 +6,7 @@
     <h1 id="page-title" class="col-md-6">{{ project.name }}</h1>
 
     <div class="actions col-md-3">
-        <a class="btn btn-xs btn-primary" href="{{ path('project_new', { 'parent' : project.id, 'client': project.client.slug }) }}"> <span class="glyphicon glyphicon-plus"></span> {{ 'project.title_subprojects'|trans([], 'TempoProject') }}</a>
+        <a class="btn btn-xs btn-primary" href="{{ path('project_new', { 'parent' : project.id, 'organization': project.organization.slug }) }}"> <span class="glyphicon glyphicon-plus"></span> {{ 'project.title_subprojects'|trans([], 'TempoProject') }}</a>
         <a class="btn btn-xs btn-info " href="{{ path('project_edit', { 'slug': project.slug }) }}"> <span class="glyphicon glyphicon-edit"></span> Edit</a>
         <a class="btn btn-xs btn-danger" data-toggle="modal" data-target="#" data-title="Delete project" href="#delete_project"> <span class="glyphicon glyphicon-trash"></span> Delete</a>
     </div>
@@ -36,8 +36,8 @@
         <ul class="item-details col-md-6">
             <li>
                 <dl>
-                    <dt>Client:</dt>
-                    <dd>{{ project.client }}</dd>
+                    <dt>Organization:</dt>
+                    <dd>{{ project.organization }}</dd>
                 </dl>
                 <dl>
                     <dt>Début</dt>
@@ -74,7 +74,7 @@
 {% block right %}
 <ul class="record_actions">
 
-    <h4>{{ 'client.team'|trans({},'TempoProject') }} </h4>
+    <h4>{{ 'organization.team'|trans({},'TempoProject') }} </h4>
 
     <a data-toggle="modal" data-target="#" data-title="Adding a team member" href="#add_membre" class="float-right btn btn-xs btn-info"> <span class="glyphicon glyphicon-plus"></span> {{ 'project.add_membre'|trans([], 'TempoProject') }}</a>
 

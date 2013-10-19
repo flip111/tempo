@@ -35,33 +35,33 @@ class ProjectController extends Controller
         $breadcrumb  = $this->get('tempo_main.breadcrumb');
         $breadcrumb->addChild('Project');
 
-        $manager = $this->container->get('tempo_project.manager.client');
-        $clients = $manager->findAllByUser($this->getUser()->getId());
+        $manager = $this->container->get('tempo_project.manager.organization');
+        $organizations = $manager->findAllByUser($this->getUser()->getId());
 
-        return $this->render('TempoProjectBundle:Project:dashboard.html.twig', array('clients' => $clients) );
+        return $this->render('TempoProjectBundle:Project:dashboard.html.twig', array('organizations' => $organizations) );
     }
 
     /**
-     * Lists all client projects.
-     * @param $client
+     * Lists all organization projects.
+     * @param $organization
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
     public function listAction($slug)
     {
-        //find info client
-        $manageClient = $this->get('tempo_project.manager.client');
-        $client = $manageClient->findOneBySlug($slug);
+        //find info organization
+        $manageOrganization = $this->get('tempo_project.manager.organization');
+        $organization = $manageOrganization->findOneBySlug($slug);
 
-        if (!$client) {
-            throw new NotFoundHttpException(sprintf("client with slug '%s' could not be found.", $client));
+        if (!$organization) {
+            throw new NotFoundHttpException(sprintf("organization with slug '%s' could not be found.", $organization));
         }
 
-        $projects = $client->getProjects();   //List Project
-        $clients = $manageClient->findAll();  // List Client
+        $projects = $organization->getProjects();   //List Project
+        $organizations = $manageOrganization->findAll();  // List Organization
 
         return $this->render('TempoProjectBundle:Project:list.html.twig', array(
-            'client' => $client,
-            'clients' => $clients,
+            'organization' => $organization,
+            'organizations' => $organizations,
             'projects' => $projects
         ));
     }

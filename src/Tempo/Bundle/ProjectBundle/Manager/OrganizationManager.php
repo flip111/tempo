@@ -12,7 +12,7 @@
 namespace Tempo\Bundle\ProjectBundle\Manager;
 
 use Tempo\Bundle\MainBundle\Manager\BaseManager;
-use Tempo\Bundle\ProjectBundle\Entity\Client;
+use Tempo\Bundle\ProjectBundle\Entity\Organization;
 
 use Doctrine\ORM\EntityManager;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
@@ -21,7 +21,7 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
  * @author Mbechezi Mlanawo <mlanawo.mbechezi@ikimea.com>
  */
 
-class ClientManager extends BaseManager
+class OrganizationManager extends BaseManager
 {
    protected $em;
    private $class;
@@ -44,13 +44,13 @@ class ClientManager extends BaseManager
      */
    public function find($id)
    {
-       $client =  $this->getRepository()->find($id);
+       $organization =  $this->getRepository()->find($id);
 
-       if (!$client) {
-           throw new NotFoundHttpException('Unable to find Client entity.');
+       if (!$organization) {
+           throw new NotFoundHttpException('Unable to find Organization entity.');
        }
 
-       return $client;
+       return $organization;
    }
 
     /**
@@ -72,7 +72,7 @@ class ClientManager extends BaseManager
    }
 
     /**
-     * return list projects client
+     * return list projects organization
      * @param $id
      * @return array
      */

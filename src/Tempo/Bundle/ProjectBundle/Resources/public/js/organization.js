@@ -8,11 +8,11 @@
 */
 
 (function($) {
-    $('.client-add').click('submit', function(e){
+    $('.organization-add').click('submit', function(e){
         e.preventDefault();
     });
 
-    $('.btn.add-client').click('click', function(e){
+    $('.btn.add-organization').click('click', function(e){
         e.preventDefault();
     });
 

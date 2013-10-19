@@ -37,9 +37,9 @@ class TeamController extends Controller
 
         } else {
 
-            $manager = $this->container->get('tempo_project.manager.client');
+            $manager = $this->container->get('tempo_project.manager.organization');
             $category = $manager->findOneBySlug($slug);
-            $routeSuccess = 'client_edit';
+            $routeSuccess = 'organization_edit';
         }
 
         $form = $this->createForm(new TeamType());

@@ -15,9 +15,9 @@ use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\DataFixtures\AbstractFixture;
 use Doctrine\Common\Persistence\ObjectManager;
 
-use Tempo\Bundle\ProjectBundle\Entity\Client;
+use Tempo\Bundle\ProjectBundle\Entity\Organization;
 
-class LoadClientData extends AbstractFixture implements FixtureInterface
+class LoadOrganizationData extends AbstractFixture implements FixtureInterface
 {
 
     /**
@@ -28,16 +28,16 @@ class LoadClientData extends AbstractFixture implements FixtureInterface
         for ($i = 1; $i <= 10; $i++) {
             $name = str_shuffle('Le Lorem');
 
-            $client = new Client();
-            $client->setName($name);
-            $client->setContact('contact@toto.com');
-            $client->getWebSite('http://toto.com');
-            $client->addTeam($this->getReference('admin'));
+            $organization = new Organization();
+            $organization->setName($name);
+            $organization->setContact('contact@toto.com');
+            $organization->getWebSite('http://toto.com');
+            $organization->addTeam($this->getReference('admin'));
 
-            $manager->persist($client);
+            $manager->persist($organization);
             $manager->flush();
 
-            $this->addReference('client'.$i, $client);
+            $this->addReference('organization'.$i, $organization);
         }
     }
 

@@ -15,7 +15,7 @@ namespace Tempo\Bundle\ProjectBundle\Model;
  * @author Mbechezi Mlanawo <mlanawo.mbechezi@ikimea.com>
  */
 
-interface ClientInterface
+interface OrganizationInterface
 {
 
     /**
@@ -74,7 +74,7 @@ interface ClientInterface
     /**
      * Get projects
      *
-     * @return \Tempo\ProjectBundle\Entity\Project
+     * @return \Tempo\Bundle\ProjectBundle\Entity\Project
      */
     public function getProjects();
 
@@ -139,7 +139,7 @@ interface ClientInterface
     /**
      * Add projects
      *
-     * @param \Tempo\ProjectBundle\Entity\Project $project
+     * @param \Tempo\Bundle\ProjectBundle\Entity\Project $project
      */
     public function addProject($project);
 

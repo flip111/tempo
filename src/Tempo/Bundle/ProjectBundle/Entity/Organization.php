@@ -15,9 +15,9 @@ namespace Tempo\Bundle\ProjectBundle\Entity;
  * @author Mbechezi Mlanawo <mlanawo.mbechezi@ikimea.com>
  */
 
-use Tempo\Bundle\ProjectBundle\Model\Client as BaseClient;
+use Tempo\Bundle\ProjectBundle\Model\Organization as BaseOrganization;
 
-class Client extends BaseClient
+class Organization extends BaseOrganization
 {
     public function __construct()
     {

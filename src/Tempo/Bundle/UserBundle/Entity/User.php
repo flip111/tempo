@@ -62,7 +62,7 @@ class User extends BaseUser
     protected $avatar;
 
 
-    protected $client;
+    protected $organization;
 
     public function __construct()
     {

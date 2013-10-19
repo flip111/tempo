@@ -15,7 +15,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 use Symfony\Component\OptionsResolver\Options;
-use Tempo\Bundle\ProjectBundle\Repository\ClientRepository;
+use Tempo\Bundle\ProjectBundle\Repository\OrganizationRepository;
 use Tempo\Bundle\ProjectBundle\Entity\Project;
 
 class ProjectType extends AbstractType
@@ -61,11 +61,11 @@ class ProjectType extends AbstractType
             ->add('budget_estimated', null, array(
                 'label' => 'project.form.label.estimated'
             ))
-            ->add('client', null, array(
-                'label' => 'project.form.label.client',
-                'class' => 'TempoProjectBundle:Client',
-                'query_builder' => function(ClientRepository $er) {
-                    return $er->findClientByUser(1);
+            ->add('organization', null, array(
+                'label' => 'project.form.label.organization',
+                'class' => 'TempoProjectBundle:Organization',
+                'query_builder' => function(OrganizationRepository $er) {
+                    return $er->findOrganizationByUser(1);
                 }
             ))
         ;

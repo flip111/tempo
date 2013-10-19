@@ -54,7 +54,7 @@
 {% block right %}
 <ul class="record_actions">
     <li>
-        <a class="btn" href="{{ path('project_new', { 'client' : client.slug } ) }}">
+        <a class="btn" href="{{ path('project_new', { 'organization' : organization.slug } ) }}">
             {{ 'project.add'|trans([], 'project') }}
         </a>
     </li>

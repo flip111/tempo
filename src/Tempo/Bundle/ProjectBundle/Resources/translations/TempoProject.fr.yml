@@ -1,25 +1,25 @@
-select_client:
-  first: Sélectionnez le client
+select_organization:
+  first: Sélectionnez le organization
   second: Afficher ses projets
 
 submit: Valider
 
-client:
-  add:  Ajouter un client
-  edit: Modifier un client
+organization:
+  add:  Ajouter un organization
+  edit: Modifier un organization
   team: Team
   list:
-    title: 'Liste des clients'
+    title: 'Liste des organizations'
 
 organization:
   select_first: Selectionner une organisation
   select_second: pour afficher ses projets
-  not_found: Aucun client n'a été trouvé
-  add:  Ajouter un client
-  edit: Modifier un client
+  not_found: Aucune organization n'a été trouvé
+  add:  Ajouter une organization
+  edit: Modifier une organization
   team: Team
   list:
-    title: 'Liste des clients'
+    title: 'Liste des organizations'
   msg_delete: Une fois que vous supprimez une organisation, il n'y a pas de retour en arrière. Il sera supprimé pour toujours.
   title_delete: Supprimer projet
   email_contact : Adresse électronique de contact

@@ -76,7 +76,7 @@ interface TimesheetInterface
     public function getBillable();
 
     /**
-     * @return Tempo\ProjectBundle\Entity\Projet
+     * @return Tempo\Bundle\ProjectBundle\Entity\Projet
      */
     public function getProject();
 

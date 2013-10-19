@@ -11,37 +11,37 @@
 
 namespace Tempo\Bundle\ProjectBundle\Tests\Entity;
 
-use Tempo\Bundle\ProjectBundle\Entity\Client;
+use Tempo\Bundle\ProjectBundle\Entity\Organization;
 
-class ClientTest extends \PHPUnit_Framework_TestCase
+class OrganizationTest extends \PHPUnit_Framework_TestCase
 {
 
     public function testInfo()
     {
-        $client = new Client();
+        $organization = new Organization();
 
-        $client->setName('Ikimea');
-        $this->assertEquals('Ikimea', $client->getName());
+        $organization->setName('Ikimea');
+        $this->assertEquals('Ikimea', $organization->getName());
 
-        $client->setCreated(new \DateTime('2011-01-01 12:00:00'));
-        $this->assertEquals( '2011-01-01 12:00:00', $client->getCreated()->format('Y-m-d H:i:s'));
+        $organization->setCreated(new \DateTime('2011-01-01 12:00:00'));
+        $this->assertEquals( '2011-01-01 12:00:00', $organization->getCreated()->format('Y-m-d H:i:s'));
 
-        $client->setEnabled(true);
-        $this->assertEquals(true, $client->isEnabled());
+        $organization->setEnabled(true);
+        $this->assertEquals(true, $organization->isEnabled());
 
     }
 
     public function testEmail()
     {
-        $client = new Client();
-        $client->setContact('test@tempo-project.com');
-        $this->assertEquals('test@tempo-project.com', filter_var($client->getContact(), FILTER_VALIDATE_EMAIL));
+        $organization = new Organization();
+        $organization->setContact('test@tempo-project.com');
+        $this->assertEquals('test@tempo-project.com', filter_var($organization->getContact(), FILTER_VALIDATE_EMAIL));
     }
     public function testFixUrl()
     {
-        $client = new Client();
-        $client->setWebSite('http://example.com');
-        $this->assertEquals('http://example.com', $client->getWebSite());
+        $organization = new Organization();
+        $organization->setWebSite('http://example.com');
+        $this->assertEquals('http://example.com', $organization->getWebSite());
 
     }
 }

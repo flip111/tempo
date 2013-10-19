@@ -185,7 +185,7 @@ abstract class Timesheet implements TimesheetInterface
     /**
      * Set project
      *
-     * @param Tempo\Bundle\ProjectBundle\Entity\Projet $project
+     * @param Tempo\Bundle\ProjectBundle\Entity\Project $project
      */
     public function setProject(\Tempo\Bundle\ProjectBundle\Entity\Project $project)
     {
@@ -195,7 +195,7 @@ abstract class Timesheet implements TimesheetInterface
     /**
      * Get project
      *
-     * @return Tempo\Bundle\ProjectBundle\Entity\Project
+     * @return \Tempo\Bundle\ProjectBundle\Entity\Project
      */
     public function getProject()
     {

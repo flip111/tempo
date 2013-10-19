@@ -44,9 +44,9 @@
         <one-to-many field="children" target-entity="Project" mapped-by="parent" />
         <many-to-one field="parent" target-entity="Project" inversed-by="children" orphan-removal="true" />
 
-        <many-to-one field="client" inversed-by="projects" target-entity="Client" />
+        <many-to-one field="organization" inversed-by="projects" target-entity="Organization" />
         <one-to-many field="timesheets" target-entity="Timesheet" mapped-by="project" />
-        <many-to-many field="team" inversed-by="client" target-entity="Tempo\Bundle\UserBundle\Entity\User" />
+        <many-to-many field="team" inversed-by="organization" target-entity="Tempo\Bundle\UserBundle\Entity\User" />
 
     </entity>
 

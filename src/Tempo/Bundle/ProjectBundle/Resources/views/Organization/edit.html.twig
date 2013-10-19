@@ -1,16 +1,16 @@
 {% extends "TempoMainBundle::Layout/web.html.twig" %}
-{% block bodyClass %}client edit{% endblock %}
+{% block bodyClass %}organization edit{% endblock %}
 {% set sidebar =  false %}
 {% block javascripts %}
     {{ parent() }}
-    <script type="text/javascript" src="{{ asset('bundles/tempoproject/js/client.js')}}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/tempoproject/js/organization.js')}}"></script>
 {% endblock %}
 
 
 {% block content %}
-<h1 id="page-title">Edit client : {{ client.name  }}</h1>
+<h1 id="page-title">Edit organization : {{ organization.name  }}</h1>
 
-<form action="{{ path('client_update', { 'id': client.id }) }}" method="post" {{ form_enctype(form) }} class="clearfix">
+<form action="{{ path('organization_update', { 'id': organization.id }) }}" method="post" {{ form_enctype(form) }} class="clearfix">
     <div class="form-block">
 
         {{ form_label(form.name) }}
@@ -36,5 +36,5 @@
 {% endblock %}
 
 {% block right %}
-    {%  include 'TempoProjectBundle::Client/_sidebar.html.twig' with { 'teamForm': teamForm, 'client': client } %}
+    {%  include 'TempoProjectBundle::Organization/_sidebar.html.twig' with { 'teamForm': teamForm, 'organization': organization } %}
 {% endblock %}

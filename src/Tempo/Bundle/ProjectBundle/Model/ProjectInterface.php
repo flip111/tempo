@@ -75,11 +75,11 @@ interface ProjectInterface
     public function getUpdated();
 
     /**
-     * Get client
+     * Get organization
      *
-     * @return Tempo\Bundle\ProjectBundle\Entity\Client
+     * @return Tempo\Bundle\ProjectBundle\Entity\Organization
      */
-    public function getClient();
+    public function getOrganization();
 
     /**
      * Set description

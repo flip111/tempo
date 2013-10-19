@@ -13,9 +13,9 @@ namespace Tempo\Bundle\ProjectBundle\Repository;
 
 use Doctrine\ORM\EntityRepository;
 
-class ClientRepository extends EntityRepository
+class OrganizationRepository extends EntityRepository
 {
-    public function findClientByUser($user)
+    public function findOrganizationByUser($user)
     {
         $query = $this->createQueryBuilder('p');
         $query->leftJoin('p.team', 'pu');
@@ -34,7 +34,7 @@ class ClientRepository extends EntityRepository
      */
     public function findAllByUser($user)
     {
-        $query = $this->findClientByUser($user);
+        $query = $this->findOrganizationByUser($user);
 
         return $query->getQuery()->getResult();
     }
@@ -47,8 +47,8 @@ class ClientRepository extends EntityRepository
     {
         $stmt = $this->getEntityManager()
         ->getConnection()
-        ->prepare('SELECT (SELECT COUNT(p1.id) FROM project p1 WHERE p1.client_id = :client AND is_active = 1) as prj_close, (SELECT COUNT(id) FROM project p2 WHERE p2.client_id = :client AND is_active = 0) as prj_open');
-        $stmt->bindParam('client', $id, \PDO::PARAM_INT);
+        ->prepare('SELECT (SELECT COUNT(p1.id) FROM project p1 WHERE p1.organization_id = :organization AND is_active = 1) as prj_close, (SELECT COUNT(id) FROM project p2 WHERE p2.organization_id = :organization AND is_active = 0) as prj_open');
+        $stmt->bindParam('organization', $id, \PDO::PARAM_INT);
         $stmt->execute();
         $counter =  $stmt->fetchAll(\PDO::FETCH_ASSOC);
 

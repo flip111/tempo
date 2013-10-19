@@ -2,8 +2,8 @@ project_home:
     pattern:  /
     defaults: { _controller: TempoProjectBundle:Project:dashboard }
 
-project_client_list:
-    pattern:  /{client}/list
+project_organization_list:
+    pattern:  /{organization}/list
     defaults: { _controller: TempoProjectBundle:Project:list }
 
 project_show:
@@ -11,7 +11,7 @@ project_show:
     defaults: { _controller: TempoProjectBundle:Project:show }
 
 project_new:
-    pattern:  /{client}/new
+    pattern:  /{organization}/new
     defaults: { _controller: TempoProjectBundle:Project:new }
 
 project_create:

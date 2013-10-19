@@ -3,9 +3,9 @@
 
 
 <div class="list_membre">
-    {% include 'TempoProjectBundle:Team:list.html.twig' with {'users': client.team } %}
+    {% include 'TempoProjectBundle:Team:list.html.twig' with {'users': organization.team } %}
 </div>
 
 <div id="add_membre" style="display: none;">
-    {% include 'TempoProjectBundle:Team:new.html.twig' with {'form': teamForm, 'category' : client, 'route_category' : 'client_team_add' } %}
+    {% include 'TempoProjectBundle:Team:new.html.twig' with {'form': teamForm, 'category' : organization, 'route_category' : 'organization_team_add' } %}
 </div>

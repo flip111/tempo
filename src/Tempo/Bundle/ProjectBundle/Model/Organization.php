@@ -16,7 +16,7 @@ use DateTime;
 * @author Mbechezi Mlanawo <mlanawo.mbechezi@ikimea.com>
 */
 
-abstract class Client implements ClientInterface
+abstract class Organization implements OrganizationInterface
 {
     /**
      * @var integer $id

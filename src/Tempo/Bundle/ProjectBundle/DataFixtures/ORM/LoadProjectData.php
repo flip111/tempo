@@ -36,7 +36,7 @@ class LoadProjectData extends AbstractFixture implements FixtureInterface
             $project->setCode($code );
             $project->setSlug(str_replace(' ', '-', $name));
             $project->setDescription('Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression.');
-            $project->setClient( $this->getReference('client'.$i));
+            $project->setOrganization( $this->getReference('organization'.$i));
             $project->setStatus( rand(1, 3) );
             $project->setAvancement($chiffre[0]);
             $project->setCreated(new \DateTime());

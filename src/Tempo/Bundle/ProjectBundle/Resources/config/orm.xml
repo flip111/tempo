@@ -14,12 +14,12 @@
 
     <parameters>
         <parameter key="tempo_project.model_manager_name">null</parameter>
-        <parameter key="tempo_project.model.client.class">Tempo\Bundle\ProjectBundle\Entity\Client</parameter>
+        <parameter key="tempo_project.model.organization.class">Tempo\Bundle\ProjectBundle\Entity\Organization</parameter>
         <parameter key="tempo_project.model.project.class">Tempo\Bundle\ProjectBundle\Entity\Project</parameter>
         <parameter key="tempo_project.model.timesheet.class">Tempo\Bundle\ProjectBundle\Entity\Timesheet</parameter>
         <parameter key="tempo_project.model.timesheet.class">Tempo\Bundle\ProjectBundle\Entity\Timesheet</parameter>
 
-        <parameter key="tempo_project.manager.client.default.class">Tempo\Bundle\ProjectBundle\Manager\ClientManager</parameter>
+        <parameter key="tempo_project.manager.organization.default.class">Tempo\Bundle\ProjectBundle\Manager\OrganizationManager</parameter>
         <parameter key="tempo_project.manager.project.default.class">Tempo\Bundle\ProjectBundle\Manager\ProjectManager</parameter>
         <parameter key="tempo_project.manager.timesheet.default.class">Tempo\Bundle\ProjectBundle\Manager\TimesheetManager</parameter>
     </parameters>
@@ -33,10 +33,10 @@
             <argument>%tempo_project.model.timesheet.class%</argument>
         </service>
 
-        <service id="tempo_project.manager.client" class="%tempo_project.manager.client.default.class%">
+        <service id="tempo_project.manager.organization" class="%tempo_project.manager.organization.default.class%">
             <argument type="service" id="event_dispatcher" />
             <argument type="service" id="tempo_project.entity_manager" />
-            <argument>%tempo_project.model.client.class%</argument>
+            <argument>%tempo_project.model.organization.class%</argument>
         </service>
 
         <service id="tempo_project.manager.project" class="%tempo_project.manager.project.default.class%">

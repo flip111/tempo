@@ -1,35 +1,35 @@
 {% extends "TempoMainBundle::Layout/web.html.twig" %}
-{% block bodyClass %}client show{% endblock %}
+{% block bodyClass %}organization show{% endblock %}
 {% set sidebar = true %}
 {% block javascripts %}
     {{ parent() }}
-    <script type="text/javascript" src="{{ asset('bundles/tempoproject/js/client.js')}}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/tempoproject/js/organization.js')}}"></script>
 {% endblock %}
 
 {% block content %}
 
-    <h1 id="page-title" class="col-md-7"> {{ client.name }} </h1>
+    <h1 id="page-title" class="col-md-7"> {{ organization.name }} </h1>
 
 <div class="action col-md-4">
-    <a href="{{ path('project_new', { 'client' : client.slug }) }}" class="btn btn-xs btn-primary"><span class="glyphicon glyphicon-plus"></span> {{ 'project.add'|trans({},'TempoProject') }} </a>
-    <a class="btn btn-xs btn btn-info" href="{{ path('client_edit', { 'slug' : client.slug }) }}"> <span class="glyphicon glyphicon-edit"></span> Edit</a>
-    <a class="btn btn-xs btn-danger" role="dialog" data-toggle="modal" data-target="#" data-title="Delete project" href="#delete-organization" data-redirect="{{ path('client_delete', { 'slug': client.slug, 'token' : csrfToken }) }}"> <span class="glyphicon glyphicon-trash"></span> Delete</a>
+    <a href="{{ path('project_new', { 'organization' : organization.slug }) }}" class="btn btn-xs btn-primary"><span class="glyphicon glyphicon-plus"></span> {{ 'project.add'|trans({},'TempoProject') }} </a>
+    <a class="btn btn-xs btn btn-info" href="{{ path('organization_edit', { 'slug' : organization.slug }) }}"> <span class="glyphicon glyphicon-edit"></span> Edit</a>
+    <a class="btn btn-xs btn-danger" role="dialog" data-toggle="modal" data-target="#" data-title="Delete project" href="#delete-organization" data-redirect="{{ path('organization_delete', { 'slug': organization.slug, 'token' : csrfToken }) }}"> <span class="glyphicon glyphicon-trash"></span> Delete</a>
 </div>
 
 <div class="infos clearfix">
     <ul class="col-md-6">
         <li> <strong>{{ 'organization.email_contact'|trans({},'TempoProject') }}</strong>
-            {% if client.contact is empty %}
+            {% if organization.contact is empty %}
                 {{ 'undefined_info'|trans({},'TempoProject') }}
             {% else %}
-            <a href="mailto:{{ client.contact }}">{{ client.contact }}</a>
+            <a href="mailto:{{ organization.contact }}">{{ organization.contact }}</a>
             {% endif %}
         </li>
         <li> <strong>{{ 'organization.web_site'|trans({},'TempoProject') }}</strong>
-        {% if client.website is empty %}
+        {% if organization.website is empty %}
             {{ 'undefined_info'|trans({},'TempoProject') }}
         {% else %}
-            <a href="{{ client.website }}">{{ client.website }}</a>
+            <a href="{{ organization.website }}">{{ organization.website }}</a>
         {% endif %}<li>
     </ul>
     <ul class="col-md-6">
@@ -68,5 +68,5 @@
 
 {% endblock %}
 {% block right %}
-    {%  include 'TempoProjectBundle::Client/_sidebar.html.twig' with { 'teamForm': teamForm, 'client': client } %}
+    {%  include 'TempoProjectBundle::Organization/_sidebar.html.twig' with { 'teamForm': teamForm, 'organization': organization } %}
 {% endblock %}

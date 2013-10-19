@@ -16,7 +16,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 use Symfony\Component\OptionsResolver\Options;
 
-class ClientType extends AbstractType
+class OrganizationType extends AbstractType
 {
 
     /**
@@ -40,7 +40,7 @@ class ClientType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class'      => 'Tempo\Bundle\ProjectBundle\Entity\Client',
+            'data_class'      => 'Tempo\Bundle\ProjectBundle\Entity\Organization',
             'csrf_protection' => false,
             'is_new' => false
         ));
@@ -51,6 +51,6 @@ class ClientType extends AbstractType
      */
     public function getName()
     {
-        return 'client';
+        return 'organization';
     }
 }

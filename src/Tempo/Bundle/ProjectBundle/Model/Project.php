@@ -54,7 +54,7 @@ class Project implements ProjectInterface
     /**
      * @var string
      */
-    protected $client;
+    protected $organization;
 
     /**
      * @var integer
@@ -228,23 +228,23 @@ class Project implements ProjectInterface
     }
 
     /**
-     * Set client
+     * Set organization
      *
-     * @param Tempo\ProjectBundle\Entity\Client $client
+     * @param Tempo\Bundle\ProjectBundle\Entity\Organization $organization
      */
-    public function setClient(\Tempo\Bundle\ProjectBundle\Entity\Client $client)
+    public function setOrganization(\Tempo\Bundle\ProjectBundle\Entity\Organization $organization)
     {
-        $this->client = $client;
+        $this->organization = $organization;
     }
 
     /**
-     * Get client
+     * Get organization
      *
-     * @return Tempo\ProjectBundle\Entity\Client
+     * @return Tempo\Bundle\ProjectBundle\Entity\Organization
      */
-    public function getClient()
+    public function getOrganization()
     {
-        return $this->client;
+        return $this->organization;
     }
 
     /**
