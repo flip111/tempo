@@ -8,43 +8,46 @@
 
 {% block content %}
 
-    <h1 id="page-title" class="col-md-8"> {{ client.name }} </h1>
+    <h1 id="page-title" class="col-md-7"> {{ client.name }} </h1>
 
-<div class="action col-md-3">
+<div class="action col-md-4">
     <a href="{{ path('project_new', { 'client' : client.slug }) }}" class="btn btn-xs btn-primary"><span class="glyphicon glyphicon-plus"></span> {{ 'project.add'|trans({},'TempoProject') }} </a>
     <a class="btn btn-xs btn btn-info" href="{{ path('client_edit', { 'slug' : client.slug }) }}"> <span class="glyphicon glyphicon-edit"></span> Edit</a>
     <a class="btn btn-xs btn-danger" role="dialog" data-toggle="modal" data-target="#" data-title="Delete project" href="#delete-organization" data-redirect="{{ path('client_delete', { 'slug': client.slug, 'token' : csrfToken }) }}"> <span class="glyphicon glyphicon-trash"></span> Delete</a>
-    <span id="confirmation-delete-client" style="display: none;">Êtes vous sur de vouloir supprimer ce client <br/> La suppression entraînera la suppression de sesprojets.</span>
 </div>
 
 <div class="infos clearfix">
     <ul class="col-md-6">
-        <li> <strong>Adresse électronique de contact</strong>
+        <li> <strong>{{ 'organization.email_contact'|trans({},'TempoProject') }}</strong>
             {% if client.contact is empty %}
-            non défini
+                {{ 'undefined_info'|trans({},'TempoProject') }}
             {% else %}
             <a href="mailto:{{ client.contact }}">{{ client.contact }}</a>
             {% endif %}
         </li>
-        <li> <strong>Site web</strong>
+        <li> <strong>{{ 'organization.web_site'|trans({},'TempoProject') }}</strong>
         {% if client.website is empty %}
-            non défini
+            {{ 'undefined_info'|trans({},'TempoProject') }}
         {% else %}
             <a href="{{ client.website }}">{{ client.website }}</a>
         {% endif %}<li>
     </ul>
     <ul class="col-md-6">
         <li>
-            <strong class="nbr-project">Nombre de projets</strong>
-            <span class="label label-success">{{ counter.open }} Ouvert</span> <br />
-            <span class="label label-inverse">{{ counter.close }}  Fermer</span>
+            <strong class="nbr-project">{{ 'project.nbr_project' |trans({},'TempoProject') }}</strong>
+            <div style="height: 30px; margin-top: 10px">
+                <span class="label label-success">{{ counter.open }} {{ 'project.open'|trans({},'TempoProject') }} </span> <br />
+            </div>
+            <div style="height: 30px;">
+                <span class="label label-default">{{ counter.close }} {{ 'project.close'|trans({},'TempoProject') }}   </span>
+            </div>
         </li>
     </ul>
 
 
 </div>
 <div id="organization-list-project">
-    <h3><div class="inner">Project List</div></h3>
+    <h3><div class="inner">{{ 'project.label_list'|trans({},'TempoProject') }}</div></h3>
 
     <ul class="list-project">
     {% for project in projects %}
@@ -53,7 +56,7 @@
             <a href="{{ path('project_show', { 'slug' :  project.slug } ) }}">{{ project.name }} </a>
         </li>
     {% else %}
-        <p>Aucun projet n'a été trouvée pour ce client.</p>
+        <p>{{ 'organization.not_found_project'|trans({},'TempoProject') }} }}.</p>
     {% endfor %}
     </ul>
 

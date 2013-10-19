@@ -7,16 +7,16 @@
 {% endblock %}
 {% block content %}
     <div id="choose-client">
-            <p class="first"> {{ 'select_client.first'|trans({},'TempoProject') }} <span> ⟶ </span> </p>
-            <p class="second"> {{ 'select_client.second'|trans({},'TempoProject') }} </p>
+        <p class="first"> {{ 'organization.select_first'|trans({},'TempoProject') }} <span> ⟶ </span> </p>
+        <p class="second"> {{ 'organization.select_second'|trans({},'TempoProject') }} </p>
     </div>
 {% endblock %}
 
 {% block right %}
     <div id="clients">
         <div class="head clearfix">
-            <h4 >{{ 'client.list.title'|trans({},'TempoProject') }}</h4>
-            <a href="{{ path('client_new') }}" class="float-right btn btn-primary btn-xs" data-target="#" data-toggle="modal" data-title="Add new client" >{{ 'client.add' |trans({},'TempoProject') }}</a>
+            <h4 >{{ 'organization.list.title'|trans({},'TempoProject') }}</h4>
+            <a href="{{ path('client_new') }}" class="float-right btn btn-primary btn-xs" data-target="#" data-toggle="modal" data-title="{{ 'organization.add' |trans({},'TempoProject') }}" >{{ 'organization.add' |trans({},'TempoProject') }}</a>
         </div>
         <ul class="list clear">
             {% for client in clients %}
@@ -24,7 +24,7 @@
                     <a href="{{ path('client_show', { 'slug' : client.slug } ) }}"> {{ client.name }} </a>
                 </li>
             {% else %}
-                <p>{% trans %} Aucun client n'a été trouvé. {% endtrans %}</p>
+                <p>{{ 'organization.not_found_orga'|trans({},'TempoProject') }}.</p>
             {% endfor %}
         </ul>
     </div>

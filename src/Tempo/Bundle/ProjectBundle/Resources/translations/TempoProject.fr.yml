@@ -12,6 +12,9 @@ client:
     title: 'Liste des clients'
 
 organization:
+  select_first: Selectionner une organisation
+  select_second: pour afficher ses projets
+  not_found: Aucun client n'a été trouvé
   add:  Ajouter un client
   edit: Modifier un client
   team: Team
@@ -19,15 +22,22 @@ organization:
     title: 'Liste des clients'
   msg_delete: Une fois que vous supprimez une organisation, il n'y a pas de retour en arrière. Il sera supprimé pour toujours.
   title_delete: Supprimer projet
+  email_contact : Adresse électronique de contact
+  web_site: Site web
+  undefined_info: non défini
 
 
 project:
+  label_list: Liste des projets
   add: Ajouter un nouveau projet
   edit: Modifier un projet
   title_subprojects: Sous project
   add_membre: Affecter un membre
   display_projects: Afficher les projets
   msg_delete: Une fois que vous supprimez un project, il n'y a pas de retour en arrière. Il sera supprimé pour toujours.
+  nbr_project: Nombre de projets
+  open: Ouvert
+  close: Fermé
 
   form:
     label_name: Nom
@@ -39,34 +49,6 @@ project:
     label_code: Code
     label_status: Status
     label_estimated: Budget estimé
-
-errors:
-  internal_error: Une erreur interne est survenue
-  format_file: Le format de votre fichier est invalide
-
-msg_success:
-  avatar_deleted: %owner% avatar a été supprimé.
-  avatar_modified: %owner% avatar a été modifié.
-
-menu:
-  profil: Profil
-  avatar: Avatar
-  email: Adresse email
-  password: Mot de passe
-  preferences: Préférences
-  project: Projets
-  users: Utilisateurs
-  home: Accueil
-  timesheet: CRA
-
-avatar:
-  title: Modifier mon avatar
-  title_second: Changez la façon dont les autres utilisateurs vous voient
-  choose_avatar: Choisir un nouvel avatar
-  actual_avatar: Avatar actuel
-  avatar_info: Vous pouvez envoyer une image mesurant jusqu'à <strong>100x100 pixels</strong> aux formats PNG, JPEG ou GIF.%balise3%Si celle-ci est trop grande elle sera automatiquement redimensionnée à la taille maximale autorisée.
-  admin_change: Modifier l'avatar de
-  current_change: Vous êtes entrain de modifier l'avatar de
 
 timesheets:
   last_week: Semaine précédente

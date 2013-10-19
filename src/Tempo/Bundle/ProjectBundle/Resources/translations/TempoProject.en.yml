@@ -1,18 +1,11 @@
-select_client:
-  first: Select the client
-  second: Display Projects
 
 submit: Send
 
-#@toto rename client -> organization
-client:
-  add:  Add new client
-  edit: Edit client
-  team: Team
-  list:
-    title: 'Client List'
-
 organization:
+  select_first: Select the organization
+  select_second: Display Projects
+  not_found_orga: No organization has been found
+  not_found_project: No projects found for this organization
   add:  Add new client
   edit: Edit client
   team: Team
@@ -20,14 +13,22 @@ organization:
     title: 'Client List'
   msg_delete: Once you delete an organization, there is no going back. It will be deleted forever. Please be certain.
   title_delete: Delete project
+  email_contact: E-mail contact
+  web_site: Web site
+  undefined_info: undefined
+
 
 project:
+  label_list: Projects List
   add: Add new project
   edit: Edit project
   title_subprojects: Sub project
   add_membre: Assignment
   display_projects: Display projects
   msg_delete: Once you delete an organization, there is no going back. It will be deleted forever. Please be certain.
+  nbr_project: Number of projects
+  open: Open
+  close: Close
 
   form:
     label.client: Client
@@ -40,34 +41,6 @@ project:
     label.code: Code
     label.status: Status
     label.estimated: Budget estimated
-
-errors:
-  internal_error: Internal error
-  format_file: Invalid format type
-
-msg_success:
-  avatar_deleted: %owner% avatar has been deleted.
-  avatar_modified: %owner% avatar has been modified.
-
-menu:
-  profil: Profile
-  avatar: Profile picture
-  email: Email address
-  password: Password
-  preferences: Settings
-  project: Projects
-  users: Users
-  home: Home
-  timesheet: Timesheets
-
-avatar:
-  title: Change my profile picture
-  title_second: Change the way you are seen by the others
-  choose_avatar: Choose a new picture
-  actual_avatar: Current profile picture
-  avatar_info: You can use a picture of %balise%100x100 pixels%balise2%. If your picture it is too large, it will be automatically resized.%balise3% Following formats are supported : PNG, JPEG ou GIF.
-  admin_change: Change the profile picture of
-  current_change: Your are modifying the picture of
 
 timesheets:
   last_week: Last week

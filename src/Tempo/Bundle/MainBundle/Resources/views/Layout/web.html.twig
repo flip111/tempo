@@ -38,7 +38,7 @@
             <div id="search">
                 <form method="get" action="/search/index/">
                     <a id="adv_search" rel="search" accesskey="4" title="Recherche avancée" href="#">avancée</a>
-                    <label label-default="label-default" for="q"> <a accesskey="4" href="#">{{ 'header.search'|trans({},'messages') }}  </a> :</label>
+                    <label label-default="label-default" for="q"> <a accesskey="4" href="#">{{ 'header.search'|trans({},'TempoMain') }}  </a> :</label>
                     <input  type="text" size="20" name="q" id="q" class="form-control small" accesskey="f" />
                     <button type="submit" class="submit">
                         <span class="glyphicon glyphicon-search"></span>
@@ -58,7 +58,8 @@
                             <img src=" {{ app.user.avatar(30) }}" alt="Avatar" />
                         </a>
                         <ul class="dropdown-menu">
-                            <li> <a href="{{ path('user_profile_setting') }}">Settings</a> </li>
+                            <li> <a href="{{ path('user_profile_edit') }}">{{ 'Profile'|trans({},'TempoMain') }}</a> </li>
+                            <li> <a href="{{ path('user_profile_setting') }}">{{ 'Settings'|trans({},'TempoMain') }}</a> </li>
                             <li> <a href="{{ path('fos_user_security_logout') }}"> {{ 'layout.logout'|trans([], 'FOSUserBundle') }} </a> </li>
                             <li role="presentation" class="divider"></li>
                             <li> <a href="/help"> Help </a></li>

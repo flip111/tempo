@@ -41,9 +41,9 @@ class Builder extends ContainerAware
         $menu = $this->factory->createItem('root');
         $menu->setChildrenAttribute('class', 'right');
 
-        $projects_trans = $this->translator->trans('menu.project', array(), 'TempoProject');
-        $users_trans = $this->translator->trans('menu.users', array(), 'TempoProject');
-        $timesheet_trans = $this->translator->trans('menu.timesheet', array(), 'TempoProject');
+        $projects_trans = $this->translator->trans('menu.project', array(), 'TempoMain');
+        $users_trans = $this->translator->trans('menu.users', array(), 'TempoMain');
+        $timesheet_trans = $this->translator->trans('menu.timesheet', array(), 'TempoMain');
         $menu->addChild($projects_trans, array('route' => 'project_home'));
         $menu->addChild($timesheet_trans, array('route' => 'timesheet'));
         $menu->addChild($users_trans, array('route' => 'user_list'));
@@ -61,7 +61,7 @@ class Builder extends ContainerAware
         $menu->setChildrenAttribute('id', 'breadcrumb');
         $menu->setChildrenAttribute('class', 'clearfix');
 
-        $home_trans = $this->translator->trans('menu.home', array(), 'TempoProject');
+        $home_trans = $this->translator->trans('menu.home', array(), 'TempoMain');
         $menu->addChild($home_trans, array('route' => '_welcome'));
         
         return $menu;
