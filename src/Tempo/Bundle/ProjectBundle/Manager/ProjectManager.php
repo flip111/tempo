@@ -50,7 +50,7 @@ class ProjectManager extends BaseManager
            throw new NotFoundHttpException('Requested Project does not exist.');
        }
 
-       return $organization;
+       return $project;
    }
 
     /**
