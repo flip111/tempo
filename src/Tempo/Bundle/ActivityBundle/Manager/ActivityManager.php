@@ -4,6 +4,7 @@ namespace Tempo\Bundle\ActivityBundle\Manager;
 
 use Doctrine\ORM\EntityManager;
 use Symfony\Component\DependencyInjection\ContainerAware;
+use Symfony\Component\HttpFoundation\Request;
 use Tempo\Bundle\ActivityBundle\Entity\Activity;
 
 class ActivityManager extends ContainerAware
@@ -18,17 +19,17 @@ class ActivityManager extends ContainerAware
         $this->em = $em;
     }
 
-    public function add($providerName, $data)
+    public function add($providerName, Request $request)
     {
         $provider = $this->getProvider($providerName);
-        $activity = $provider->parse($data);
+        $activity = $provider->parse($request);
         $this->em->persist($activity);
         $this->em->flush();
     }
 
     protected function getProvider($providerName)
     {
-        $serviceName = sprintf('tempo.activity_provider.%s', $providerName);
+        $serviceName = sprintf('tempo.activity.provider.%s', $providerName);
 
         if (!$this->container->has($serviceName)) {
             throw new \Exception(sprintf('Provider "%s" does not exists', $providerName));

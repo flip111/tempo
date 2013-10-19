@@ -2,13 +2,14 @@
 
 namespace Tempo\Bundle\ActivityBundle\Providers;
 
+use Symfony\Component\HttpFoundation\Request;
 use Tempo\Bundle\ActivityBundle\Entity\Activity;
 
 interface ProviderInterface
 {
     /**
-     * @param $data
-     * @return Activity
+     * @param Request $request
+     * @return mixed
      */
-    public function parse($data);
+    public function parse(Request $request);
 }
