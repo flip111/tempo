@@ -15,38 +15,38 @@ class AppKernel extends Kernel {
             new Symfony\Bundle\AsseticBundle\AsseticBundle(),
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
+            new Knp\Bundle\SnappyBundle\KnpSnappyBundle(),
+            new Liip\ImagineBundle\LiipImagineBundle(),
+            new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
+
+            new FOS\UserBundle\FOSUserBundle(),
+            new Knp\Bundle\MenuBundle\KnpMenuBundle(),
+            new Knp\Bundle\TimeBundle\KnpTimeBundle(),
+
+            new Ivory\CKEditorBundle\IvoryCKEditorBundle(),
+
+            new Sonata\SeoBundle\SonataSeoBundle(),
+
+            //Tempo
+            new Tempo\Bundle\CoreBundle\TempoCoreBundle(),
+            new Tempo\Bundle\MainBundle\TempoMainBundle(),
+            new Tempo\Bundle\UserBundle\TempoUserBundle(),
+            new Tempo\Bundle\ProjectBundle\TempoProjectBundle(),
+
+            new Fkr\CssURLRewriteBundle\FkrCssURLRewriteBundle(),
+            new Tempo\Bundle\ActivityBundle\TempoActivityBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
             $bundles[] = new Symfony\Bundle\WebProfilerBundle\WebProfilerBundle();
             $bundles[] = new Sensio\Bundle\DistributionBundle\SensioDistributionBundle();
+            $bundles[] = new Sensio\Bundle\GeneratorBundle\SensioGeneratorBundle();
             $bundles[] = new Leek\GitDebugBundle\LeekGitDebugBundle();
             $bundles[] = new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle();
             $bundles[] = new Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle();
             $bundles[] = new Elao\WebProfilerExtraBundle\WebProfilerExtraBundle();
 
         }
-
-        $bundles[] = new Knp\Bundle\SnappyBundle\KnpSnappyBundle();
-        $bundles[] = new Liip\ImagineBundle\LiipImagineBundle();
-        $bundles[] = new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle();
-
-        $bundles[] = new FOS\UserBundle\FOSUserBundle();
-        $bundles[] = new Knp\Bundle\MenuBundle\KnpMenuBundle();
-        $bundles[] = new Knp\Bundle\TimeBundle\KnpTimeBundle();
-
-        $bundles[] = new Ivory\CKEditorBundle\IvoryCKEditorBundle();
-
-        $bundles[] = new Sonata\SeoBundle\SonataSeoBundle();
-
-        //Tempo
-        $bundles[] = new Tempo\Bundle\CoreBundle\TempoCoreBundle();
-        $bundles[] = new Tempo\Bundle\MainBundle\TempoMainBundle();
-        $bundles[] = new Tempo\Bundle\UserBundle\TempoUserBundle();
-        $bundles[] = new Tempo\Bundle\ProjectBundle\TempoProjectBundle();
-
-        $bundles[] = new Fkr\CssURLRewriteBundle\FkrCssURLRewriteBundle();
-
 
         return $bundles;
     }
