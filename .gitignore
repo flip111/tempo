@@ -13,6 +13,9 @@ web/uploads/*
 web/bundles/*
 web/vendor/
 !app/config/deploy/*.rb.dist
+web/css/
+web/js/
+web/upload/
 
 # Configuration files
 app/config/parameters.yml
@@ -21,3 +24,4 @@ build/
 .DS_Store
 nbproject/
 composer.phar
+bin/
