@@ -1,0 +1,6 @@
+parameters:
+    tempo.activity.provider.github.class: Tempo\Bundle\ActivityBundle\Providers\GithubProvider
+
+services:
+    tempo.activity.provider.github:
+        class: "%tempo.activity.provider.github.class%"
