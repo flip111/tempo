@@ -11,7 +11,7 @@
 
 namespace Tempo\Bundle\ProjectBundle\Manager;
 
-use Tempo\Bundle\MainBundle\Manager\BaseManager;
+use Tempo\Bundle\CoreBundle\Manager\BaseManager;
 use Tempo\Bundle\ProjectBundle\Entity\Project;
 
 use Doctrine\ORM\EntityManager;
@@ -23,21 +23,6 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class ProjectManager extends BaseManager
 {
-   protected $em;
-   private $class;
-
-    /**
-     * @param $event
-     * @param $em Doctrine\ORM\EntityManager
-     * @param $class
-     */
-   public function __construct($event, EntityManager $em, $class)
-   {
-       $this->em = $em;
-       $this->class = $class;
-       $this->repository = $this->em->getRepository($this->class);
-   }
-
     /**
      * @param $id
      * @return mixed
@@ -51,15 +36,6 @@ class ProjectManager extends BaseManager
        }
 
        return $project;
-   }
-
-    /**
-     * @param $slug
-     * @return mixed
-     */
-   public function findOneBySlug($slug)
-   {
-       return $this->getRepository()->findOneBySlug($slug);
    }
 
     /**
@@ -78,14 +54,4 @@ class ProjectManager extends BaseManager
     {
         return $this->getRepository()->findAllByUser($user);
     }
-
-    /**
-     * @return mixed
-     */
-   public function findAll()
-   {
-        return $this->getRepository()->findAll();
-   }
-
-
 }

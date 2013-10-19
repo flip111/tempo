@@ -10,7 +10,9 @@
 */
 
 
-namespace Tempo\Bundle\MainBundle\Manager;
+namespace Tempo\Bundle\CoreBundle\Manager;
+
+use Doctrine\ORM\EntityManager;
 
 /**
  * @author Mbechezi Mlanawo <mlanawo.mbechezi@ikimea.com>
@@ -19,7 +21,37 @@ namespace Tempo\Bundle\MainBundle\Manager;
 abstract class BaseManager
 {
     protected $repository;
+    protected $em;
+    protected $class;
 
+    /**
+     * @param $event
+     * @param EntityManager $em
+     * @param $class
+     */
+    public function __construct($event, EntityManager $em, $class)
+    {
+        $this->em = $em;
+        $this->class = $class;
+        $this->repository = $this->em->getRepository($this->class);
+    }
+
+    /**
+     * @param $slug
+     * @return mixed
+     */
+    public function findOneBySlug($slug)
+    {
+        return $this->getRepository()->findOneBySlug($slug);
+    }
+
+    /**
+     * @return mixed
+     */
+    public function findAll()
+    {
+        return $this->getRepository()->findAll();
+    }
 
     /**
      * persist and flush

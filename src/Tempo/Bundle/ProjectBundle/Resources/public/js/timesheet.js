@@ -7,34 +7,34 @@
  * file that was distributed with this source code.
  */
 
-(function($) {
+$(function() {
 
     $('.cra_load').click(function(e) {
         e.preventDefault();
 
-        var cra_id = this.getProperty('rel');
+        var cra_id = $(this).attr('rel');
         var day_date = cra_id.replace('form-cra-load-', '');
         var init_date = new Date();
 
-        var projectId = this.data('projectid');
+        var projectId = $(this).data('projectid');
 
     });
 
     $('.cra_load').keydown(function(event) {
-        var cra_id = this.getProperty('rel');
+        var cra_id = $(this).attr('rel');
 
-        if (event.key == 'tab'){
-            this.getParent().getElement('.cra_desc').setStyle('display', 'block');
+        if (event.key == 'tab') {
+            $(this).getParent().find('.cra_desc').css('display', 'block');
             event.stop();
         }
 
     });
 
     $('.cra_desc').keydown(function(event) {
-        var cra_id = this.getProperty('rel');
+        var cra_id = $(this).attr('rel');
         if(event.key == 'enter') {
 
-            var form  = this.getParent();
+            var form  = $(this).getParent();
             var formRequest = new Form.Request(form, $('craDesc'), {
                 onSuccess: function(result) {
                     window.location.reload()
@@ -47,12 +47,12 @@
     $('a.show_cra').click(function(e) {
         e.preventDefault();
         $('.list').hide();
-        $('#' + this.getProperty('rel')).show();
+        $('#' + $(this).attr('rel')).show();
     });
 
 
-    $$('#craTable .boxclose').click(function(e) {
-        $(this.getAttribute('rel')).hide();
+    $('#craTable .boxclose').click(function(e) {
+        $('#' + $(this).attr('rel')).hide();
     });
 
-})(jQuery);
+});

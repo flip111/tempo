@@ -11,11 +11,9 @@
 
 namespace Tempo\Bundle\ProjectBundle\Manager;
 
-use Tempo\Bundle\MainBundle\Manager\BaseManager;
+use Tempo\Bundle\CoreBundle\Manager\BaseManager;
 use Tempo\Bundle\MainBundle\Entity\Timesheet;
 use Tempo\Bundle\MainBundle\Calendar\Week;
-
-use Doctrine\ORM\EntityManager;
 
 /**
  * @author Mbechezi Mlanawo <mlanawo.mbechezi@ikimea.com>
@@ -23,20 +21,6 @@ use Doctrine\ORM\EntityManager;
 
 class TimesheetManager extends BaseManager
 {
-    protected $em;
-    protected $class;
-
-    /**
-     * @param $event
-     * @param EntityManager $em
-     * @param $class
-     */
-    public function __construct($event, EntityManager $em, $class)
-    {
-        $this->em = $em;
-        $this->class = $class;
-        $this->repository = $this->em->getRepository($this->class);
-    }
 
     /**
      * @param $week_lang
