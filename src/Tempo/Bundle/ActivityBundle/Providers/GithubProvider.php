@@ -11,6 +11,7 @@ class GithubProvider implements ProviderInterface
      */
     public function parse(Request $request)
     {
+        
         file_put_contents('/tmp/json.json', json_encode($request->getContent()));
         throw new \Exception('Not implemented yet');
     }
