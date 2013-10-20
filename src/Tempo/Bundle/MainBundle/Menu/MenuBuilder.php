@@ -13,12 +13,10 @@
 namespace Tempo\Bundle\MainBundle\Menu;
 
 use Knp\Menu\FactoryInterface;
-use Symfony\Component\DependencyInjection\ContainerAware;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Translation\Translator;
 
 
-class Builder extends ContainerAware
+class MenuBuilder
 {
     private $factory;
     private $translator;
@@ -36,7 +34,7 @@ class Builder extends ContainerAware
      * Generate Menu
      * @return \Knp\Menu\ItemInterface
      */
-    public function menu()
+    public function mainMenu()
     {
         $menu = $this->factory->createItem('root');
         $menu->setChildrenAttribute('class', 'right');

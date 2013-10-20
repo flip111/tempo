@@ -45,7 +45,7 @@
                     </button>
                 </form>
             </div>
-            <nav id="menu">{{ knp_menu_render('menu') }}</nav>
+            <nav id="menu">{{ knp_menu_render('main') }}</nav>
             <div id="member-menu" class="dropdown">
                 <ul>
                     <li class="notification dropdown togglable dropdown-notifications">
@@ -59,7 +59,7 @@
                         </a>
                         <ul class="dropdown-menu">
                             <li> <a href="{{ path('user_profile_edit') }}">{{ 'Profile'|trans({},'TempoMain') }}</a> </li>
-                            <li> <a href="{{ path('user_profile_setting') }}">{{ 'Settings'|trans({},'TempoMain') }}</a> </li>
+                            <li> <a href="{{ path('user_profile_settings') }}">{{ 'Settings'|trans({},'TempoMain') }}</a> </li>
                             <li> <a href="{{ path('fos_user_security_logout') }}"> {{ 'layout.logout'|trans([], 'FOSUserBundle') }} </a> </li>
                             <li role="presentation" class="divider"></li>
                             <li> <a href="/help"> Help </a></li>
@@ -83,7 +83,7 @@
                     {% block content %}  {% endblock %}
                 </div>
                 {% if sidebar is defined %}
-                <div id="sidebar-right" class="col-md-2">{% block right %} {% endblock %}</div>
+                <div id="sidebar" class="col-md-2">{% block right %} {% endblock %}</div>
                 {% endif %}
             </div>
         </div>

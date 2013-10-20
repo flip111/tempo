@@ -10,6 +10,7 @@
 
 
 /* Generale */
+.clearbox { clear: both; }
 .clearfix { display:block; }
 .clearfix:after { content:"."; height:0; line-height:0; display:block; visibility:hidden; clear:both; }
 
@@ -20,8 +21,7 @@ input:-webkit-autofill {
     background: #FAFAFA;
 }
 #page-title{
-    margin-left: 25px;
-    margin-bottom: 50px;
+    margin: 0px 25px 50px 0px;
     color: #005782;
 }
 
@@ -231,20 +231,20 @@ table.table-striped tbody .actions .edit{ text-indent: -9999px; }
     margin-left: 30px;
 }
 
-#sidebar-right .list{
+#sidebar .list{
     margin: 30px 0px;
 
 }
-#sidebar-right .list{ list-style-type: none; }
-#sidebar-right .list li, #settings  li{
+#sidebar .list{ list-style-type: none; }
+#sidebar .list li, #settings  li{
     margin-top: 10px;
     width: 170px;
 }
-#sidebar-right .list li a.close{
+#sidebar .list li a.close{
     float: right;
     display: none;
 }
-#sidebar-right .list li:hover a.close{
+#sidebar .list li:hover a.close{
     display: block;
 }
 
@@ -471,16 +471,16 @@ ol.stories
 .organization-add .rest{ float: left; width: 60px; }
 .organization.show #page-title{  }
 .organization.show .action{ margin-top: 30px }
-.organization.show #sidebar-right h4{ padding: 20px 40px; }
+.organization.show #sidebar h4{ padding: 20px 40px; }
 .organization.show .infos { clear: both; }
 .organization.show .infos li{ display: block; margin-bottom: 10px; }
 .organization.show .infos strong{ display: block; }
 .organization.show .infos .float-right{ margin-right: 25px; }
 .organization.show .infos .float-right span{ margin-right: 25px; }
 .organization.show .infos .float-right .nbr-project{ margin-bottom: 10px; }
-.organization.show #sidebar-right .list-project{ clear: both;  }
-.organization.show #sidebar-right .suite{ font-style: italic;  margin-left: 60px; margin-top: 30px; ; }
-.organization.show #sidebar-right .suite a { color: #484848; }
+.organization.show #sidebar .list-project{ clear: both;  }
+.organization.show #sidebar .suite{ font-style: italic;  margin-left: 60px; margin-top: 30px; ; }
+.organization.show #sidebar .suite a { color: #484848; }
 .organization.show #organization-list-project h3 {
     margin: 35px 50px 60px 50px;
     height: 0;
@@ -507,7 +507,7 @@ ol.stories
 .organization.show .modal-body{ text-align: center; }
 .organization.edit form #organization div{ clear: both; }
 .organization.edit form .rest{ margin-top:  25px; }
-.organization.edit #sidebar-right .list_membre  li img{ width: 28px; height: 28px; display: inline-block; margin-right: 10px; }
+.organization.edit #sidebar .list_membre  li img{ width: 28px; height: 28px; display: inline-block; margin-right: 10px; }
 
 
 /* end Organizations */
@@ -551,7 +551,7 @@ ol.stories
     height: 72px;
     padding: 8px 7px 0 20px;
 }
-.project.show #sidebar-right .list_membre li img{ width: 28px; height: 28px; display: inline-block; margin-right: 10px; }
+.project.show #sidebar .list_membre li img{ width: 28px; height: 28px; display: inline-block; margin-right: 10px; }
 .project.show #team div label {
     margin-right: 30px;
 }
@@ -587,10 +587,10 @@ ol.stories
 }
 .project #organization .head h4 { margin-left: 10px; }
 
-.timesheet.list #sidebar-right .form-horizontal .control-group { margin-top: 10px;  }
-.timesheet.list #sidebar-right .form-horizontal .control-label { text-align: left; width: 50px; padding-left: 20px;  }
-.timesheet.list #sidebar-right .form-horizontal #select-user { width: 130px;  }
-.timesheet.list #sidebar-right .form-horizontal .btn{ margin-left: 20px; }
+.timesheet.list #sidebar .form-horizontal .control-group { margin-top: 10px;  }
+.timesheet.list #sidebar .form-horizontal .control-label { text-align: left; width: 50px; padding-left: 20px;  }
+.timesheet.list #sidebar .form-horizontal #select-user { width: 130px;  }
+.timesheet.list #sidebar .form-horizontal .btn{ margin-left: 20px; }
 
 /* Help */
 

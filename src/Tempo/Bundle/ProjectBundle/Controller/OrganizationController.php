@@ -139,7 +139,7 @@ class OrganizationController extends Controller
         $organization = new Organization();
         $organization->addTeam($this->getUser());
 
-        $form = $this->createForm(new OrganizationForm(), $organization);
+        $form = $this->createForm(new OrganizationType(), $organization);
         $form->setData($organization);
 
         if ($request->getMethod() == 'POST') {
@@ -154,11 +154,6 @@ class OrganizationController extends Controller
 
                 return $this->redirect($this->generateUrl('organization_edit', array('slug' => $organization->getSlug() )));
             }
-
-            return array(
-                'entity' => $organization,
-                'form'   => $form->createView()
-            );
         }
     }
 
@@ -189,7 +184,7 @@ class OrganizationController extends Controller
 
         } catch (\Exception $e) {
 
-            $this->get('session')->getFlashBag()->set('error', $this->get('translator')->trans('Impossible de supprimer le organization'));
+            $this->get('session')->getFlashBag()->set('error', $this->get('translator')->trans('Impossible de supprimer l\'organization'));
 
             return $this->redirect($this->generateUrl('organization_show', array('slug' => $organization->getSlug() )));
         }

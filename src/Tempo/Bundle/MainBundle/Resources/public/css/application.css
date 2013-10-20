@@ -197,7 +197,7 @@ body {
 }
 #breadcrumb a:hover{ color: #0088CC;}
 
-#sidebar-right{
+#sidebar{
     min-height: 400px;
     background: #FFF;
     border-color: #D5D5D5;
@@ -205,7 +205,7 @@ body {
     border-width: 0 0 1px;
     box-shadow: 0 1px 0 #FFFFFF inset, 0 1px 5px rgba(0, 0, 0, 0.1);
 }
-#sidebar-right h3{
+#sidebar h3{
     border-bottom: 1px solid #E4E4E4;
     color: #333333;
     font-size: 12px;
@@ -291,8 +291,8 @@ body {
     width: 200px;
     height: 20px;
 }
-.form-block input[type="text"], .form-block input[type="email"]{
-    width: 200px;
+.form-block input[type="text"], .form-block input[type="email"], .form-block input[type="password"] {
+    width: 250px;
 }
 
 .form-block .boxreplace{
