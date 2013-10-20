@@ -15,7 +15,6 @@ web/vendor/
 !app/config/deploy/*.rb.dist
 web/css/
 web/js/
-web/upload/
 
 # Configuration files
 app/config/parameters.yml
