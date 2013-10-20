@@ -16,13 +16,25 @@ before_script:
   - sh -c "if [ '$DB' = 'mysql' ]; then mysql -e 'CREATE DATABASE IF NOT EXISTS tempo_demo;'; fi" >> install.log
 
   # Setup code
-
+  - echo '' > ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/xdebug.ini
+  - ulimit -n 10000
+  - sudo apt-get update
+  - sudo apt-get install -y --force-yes apache2 libapache2-mod-php5 php5-mysql php5-curl wkhtmltopdf
+  - sudo sed -i -e "s,/var/www,$(pwd)/web,g" /etc/apache2/sites-available/default
+  - export MINK_EXTENSION_PARAMS='base_url=http://localhost:8000/app_test.php'
+  - sudo /etc/init.d/apache2 restart
+  - composer self-update
   - composer self-update
   - composer install --dev --prefer-source --no-interaction
   - app/console doctrine:database:create --env=test > /dev/null
   - app/console doctrine:schema:create --env=test > /dev/null
   - mkdir -p app/cache app/logs
   - sudo chmod -R 777 app/cache app/logs
+  - sh -e /etc/init.d/xvfb start
+  - export DISPLAY=:99
+  - wget http://selenium.googlecode.com/files/selenium-server-standalone-2.35.0.jar
+  - java -jar selenium-server-standalone-2.35.0.jar > /dev/null &
+  - sleep 5
 
 
 script:
