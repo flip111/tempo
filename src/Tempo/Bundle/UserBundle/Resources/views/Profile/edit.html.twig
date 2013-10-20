@@ -2,38 +2,38 @@
 
 {% block content %}
 
-<h1 class="col-md-4">Edit profile</h1>
+<h1 id="page-title" class="col-md-3">Edit profile</h1>
 {% include "TempoUserBundle:Profile:_tabs.html.twig" %}
 
-<div class="form-block">
+
    <form action="{{ path('user_profile_update') }}" {{ form_enctype(form) }} method="POST" class="user_profile_edit">
-        {{ form_errors(form) }}
-       
-       <fieldset>
-           <div class="formtextField">{{ form_row(form.username) }}</div>
-            <div class="formtextField">{{ form_row(form.email) }}</div>
-       </fieldset>
 
-       <fieldset>
-        <div class="formtextField">{{ form_row(form.first_name) }}</div>
-        <div class="formtextField">{{ form_row(form.last_name) }}</div>
-       </fieldset>
+       <div class="form-block clearbox">
+           <fieldset>
+               <div class="formtextField">{{ form_row(form.username) }}</div>
+                <div class="formtextField">{{ form_row(form.email) }}</div>
+           </fieldset>
 
-       <fieldset>
-        <div class="formtextField">{{ form_row(form.phone) }}</div>
-        <div class="formtextField">{{ form_row(form.phone_mobile) }}</div>
-       </fieldset>
+           <fieldset>
+            <div class="formtextField">{{ form_row(form.firstName) }}</div>
+            <div class="formtextField">{{ form_row(form.lastName) }}</div>
+           </fieldset>
 
-       <fieldset>
-         <div class="formtextField">{{ form_row(form.job_title) }}</div>
-       </fieldset>
+           <fieldset>
+            <div class="formtextField">{{ form_row(form.phone) }}</div>
+            <div class="formtextField">{{ form_row(form.phoneMobile) }}</div>
+           </fieldset>
 
-       <div>
+           <fieldset>
+             <div class="formtextField">{{ form_row(form.jobTitle) }}</div>
+           </fieldset>
+       </div>
+       <div class="form-actions">
            {{ form_rest(form) }}
             <input type="submit" class="btn btn-primary" />
         </div>
     </form>
-</div>
+
 
 {% endblock %}
 

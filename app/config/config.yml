@@ -77,7 +77,6 @@ sonata_seo:
   page:
     title:    Project Management Software
 
-
 tempo_project:
   week:
     fr :
@@ -101,6 +100,12 @@ knp_snappy:
         enabled:    true
         binary:     /usr/bin/wkhtmltoimage
         options:    []
+
+mopa_bootstrap:
+    form:
+        show_legend: false # default is true
+        show_child_legend: false # default is true
+        error_type: block # or inline which is default
 
 fkr_css_url_rewrite:
     rewrite_only_if_file_exists: true

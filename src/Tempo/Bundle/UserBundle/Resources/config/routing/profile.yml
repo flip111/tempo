@@ -1,23 +1,25 @@
 user_profile_edit:
-     pattern:  /edit
-     defaults: { _controller: TempoUserBundle:Profile:edit }
+   pattern:  /edit
+   defaults: { _controller: TempoUserBundle:Profile:edit }
 
 user_profile_picture:
-     pattern:  /edit/picture
-     defaults: { _controller: TempoUserBundle:Profile:picture }
+   pattern:  /edit/picture
+   defaults: { _controller: TempoUserBundle:Profile:picture }
 
 user_profile_password:
-     pattern:  /edit/password
-     defaults: { _controller: TempoUserBundle:Profile:password }
+  pattern:  /edit/password
+  defaults: { _controller: FOSUserBundle:ChangePassword:changePassword }
+  requirements:
+    _method:  GET|POST
 
 user_profile_update:
-    pattern:  /edit/update
-    defaults: { _controller: TempoUserBundle:Profile:update }
+   pattern:  /edit/update
+   defaults: { _controller: TempoUserBundle:Profile:update }
 
-user_profile_setting:
-    pattern: /edit/setting
-    defaults: { _controller: TempoUserBundle:Profile:setting }
+user_profile_settings:
+   pattern: /edit/settings
+   defaults: { _controller: TempoUserBundle:Profile:setting }
 
 user_profile_show:
-    pattern: /{slug}
-    defaults: { _controller: TempoUserBundle:Profile:show }
+   pattern: /{slug}
+   defaults: { _controller: TempoUserBundle:Profile:show }

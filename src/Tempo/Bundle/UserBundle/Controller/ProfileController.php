@@ -130,20 +130,6 @@ class ProfileController extends Controller
         return $this->render('TempoUserBundle:Profile:show.html.twig', array('profile' => $profile));
     }
 
-    /***
-     * @return Response
-     */
-    public function passwordAction()
-    {
-        $profile = $this->getEditableUser();
-
-        $form = $this->createForm(new PasswordType(), $profile);
-        return $this->render('TempoUserBundle:Profile:password.html.twig', array(
-            'profile' => $profile,
-            'form' => $form->createView()
-        ));
-    }
-
 
     public function settingAction()
     {

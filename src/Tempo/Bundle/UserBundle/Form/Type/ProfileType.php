@@ -23,11 +23,11 @@ class ProfileType extends AbstractType
         $builder
             ->add('username')
             ->add('email')
-            ->add('first_name')
-            ->add('last_name')
-            ->add('job_title')
+            ->add('firstName')
+            ->add('lastName')
+            ->add('jobTitle')
             ->add('phone')
-            ->add('phone_mobile')
+            ->add('phoneMobile')
         ;
     }
 
