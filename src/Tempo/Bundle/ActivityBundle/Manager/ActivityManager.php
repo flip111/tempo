@@ -22,9 +22,12 @@ class ActivityManager extends ContainerAware
     public function add($providerName, Request $request)
     {
         $provider = $this->getProvider($providerName);
-        $activity = $provider->parse($request);
-        $this->em->persist($activity);
-        $this->em->flush();
+        $activities = $provider->parse($request);
+
+        foreach ($activities as $activity) {
+            $this->em->persist($activity);
+            $this->em->flush();
+        }
     }
 
     protected function getProvider($providerName)

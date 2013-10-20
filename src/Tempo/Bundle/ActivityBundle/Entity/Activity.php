@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Activity
  *
- * @ORM\Table()
+ * @ORM\Table(name="activity")
  * @ORM\Entity(repositoryClass="Tempo\Bundle\ActivityBundle\Entity\ActivityRepository")
  */
 class Activity
@@ -15,7 +15,7 @@ class Activity
     /**
      * @var integer
      *
-     * @ORM\Column(name="id", type="integer")
+     * @ORM\Column(type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
@@ -24,24 +24,23 @@ class Activity
     /**
      * @var string
      *
-     * @ORM\Column(name="type", type="string", length=255)
+     * @ORM\Column(type="string", length=255)
      */
-    private $type;
+    private $provider;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="message", type="string", length=255)
+     * @ORM\Column(type="string", length=255)
      */
     private $message;
 
     /**
      * @var array
      *
-     * @ORM\Column(name="parameters", type="array")
+     * @ORM\Column(type="array")
      */
     private $parameters;
-
 
     /**
      * Get id
@@ -54,26 +53,26 @@ class Activity
     }
 
     /**
-     * Set type
+     * Set provider
      *
-     * @param string $type
+     * @param string $provider
      * @return Activity
      */
-    public function setType($type)
+    public function setProvider($provider)
     {
-        $this->type = $type;
+        $this->provider = $provider;
 
         return $this;
     }
 
     /**
-     * Get type
+     * Get provider
      *
      * @return string 
      */
-    public function getType()
+    public function getProvider()
     {
-        return $this->type;
+        return $this->provider;
     }
 
     /**
