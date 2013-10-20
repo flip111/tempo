@@ -1,6 +1,5 @@
 # Bootstrap
 app/bootstrap*
-app/DoctrineMigrations/*
 
 # Symfony directories
 vendor/*
@@ -13,6 +12,7 @@ web/uploads/*
 web/bundles/*
 web/vendor/
 !app/config/deploy/*.rb.dist
+behat.yml
 web/css/
 web/js/
 

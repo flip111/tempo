@@ -1,6 +1,6 @@
 default:
   extensions:
     Behat\MinkExtension\Extension:
-     browser_name: firefox
+      browser_name: firefox
       goutte:    ~
       selenium2: ~
