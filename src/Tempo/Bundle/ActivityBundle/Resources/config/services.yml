@@ -1,5 +1,5 @@
 parameters:
-    tempo.activity.manager.class: Tempo\Bundle\ActivityBundle\Entity\Activity
+    tempo.activity.manager.class: Tempo\Bundle\ActivityBundle\Manager\ActivityManager
 
 services:
     tempo.activity.manager:

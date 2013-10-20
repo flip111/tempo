@@ -1,0 +1,6 @@
+tempo_activity_provider_ws:
+    pattern: /ws/activity/provider/{providerName}
+    defaults:
+        _controller: TempoActivityBundle:Activity:provider
+    requirements:
+        _method: POST
