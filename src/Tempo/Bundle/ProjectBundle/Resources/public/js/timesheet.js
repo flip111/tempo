@@ -9,7 +9,7 @@
 
 $(function() {
 
-    $('.cra_load').click(function(e) {
+    $('.cra_load').on('click', function(e) {
         e.preventDefault();
 
         var cra_id = $(this).attr('rel');
@@ -20,38 +20,40 @@ $(function() {
 
     });
 
-    $('.cra_load').keydown(function(event) {
-        var cra_id = $(this).attr('rel');
+    $('.cra_load').on('keydown', function(event) {
+        if (event.which == 9) {
+            event.preventDefault();
 
-        if (event.key == 'tab') {
-            $(this).getParent().find('.cra_desc').css('display', 'block');
-            event.stop();
+            var cra_id = $(this).attr('rel');
+            $(this).parent().find('.cra_desc').css('display', 'block');
         }
-
     });
 
-    $('.cra_desc').keydown(function(event) {
-        var cra_id = $(this).attr('rel');
-        if(event.key == 'enter') {
 
-            var form  = $(this).getParent();
-            var formRequest = new Form.Request(form, $('craDesc'), {
-                onSuccess: function(result) {
-                    window.location.reload()
+    $('.cra_desc').on('keydown', function(event) {
+        if (event.which == 13) {
+            event.preventDefault();
+            var form = $(this).parent('form');
+            $.ajax({
+                type: form.attr('method'),
+                url: form.attr('action'),
+                data: form.serialize(),
+                success: function (data) {
+                    window.location.reload();
                 }
-            }).send();
+            });
 
         }
     });
 
-    $('a.show_cra').click(function(e) {
+    $('a.show_cra').on('click', function(e) {
         e.preventDefault();
         $('.list').hide();
         $('#' + $(this).attr('rel')).show();
     });
 
 
-    $('#craTable .boxclose').click(function(e) {
+    $('#craTable .boxclose').on('click', function(e) {
         $('#' + $(this).attr('rel')).hide();
     });
 
