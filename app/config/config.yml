@@ -106,6 +106,7 @@ mopa_bootstrap:
         show_legend: false # default is true
         show_child_legend: false # default is true
         error_type: block # or inline which is default
+        render_optional_text: false
 
 fkr_css_url_rewrite:
     rewrite_only_if_file_exists: true

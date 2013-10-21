@@ -6,6 +6,10 @@ framework:
     session:
         storage_id: session.storage.filesystem
 
+doctrine:
+    dbal:
+        dbname:   %database_name%_test
+
 web_profiler:
     toolbar: false
     intercept_redirects: false
