@@ -13,6 +13,7 @@
 namespace Tempo\Bundle\CoreBundle\Manager;
 
 use Doctrine\ORM\EntityManager;
+use Symfony\Component\EventDispatcher\ContainerAwareEventDispatcher;
 
 /**
  * @author Mbechezi Mlanawo <mlanawo.mbechezi@ikimea.com>
@@ -29,11 +30,28 @@ abstract class BaseManager
      * @param EntityManager $em
      * @param $class
      */
-    public function __construct($event, EntityManager $em, $class)
+    public function __construct(ContainerAwareEventDispatcher $event, EntityManager $em, $class)
     {
         $this->em = $em;
         $this->class = $class;
         $this->repository = $this->em->getRepository($this->class);
+    }
+
+    /**
+     * @param $id
+     * @return mixed
+     */
+    public function find($id)
+    {
+
+       $entity =  $this->getRepository()->find($id);
+
+       if (!$entity) {
+           throw new NotFoundHttpException(sprintf('Unable to find %d entity.', $this->class));
+       }
+
+       return $entity;
+
     }
 
     /**
@@ -51,6 +69,14 @@ abstract class BaseManager
     public function findAll()
     {
         return $this->getRepository()->findAll();
+    }
+
+    /**
+     * @param $user
+     */
+    public function findAllByUser($user)
+    {
+        return $this->getRepository()->findAllByUser($user);
     }
 
     /**

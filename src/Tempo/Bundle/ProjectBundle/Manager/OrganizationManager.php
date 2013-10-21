@@ -12,10 +12,6 @@
 namespace Tempo\Bundle\ProjectBundle\Manager;
 
 use Tempo\Bundle\CoreBundle\Manager\BaseManager;
-use Tempo\Bundle\ProjectBundle\Entity\Organization;
-
-use Doctrine\ORM\EntityManager;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
  * @author Mbechezi Mlanawo <mlanawo.mbechezi@ikimea.com>
@@ -23,30 +19,6 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class OrganizationManager extends BaseManager
 {
-
-    /**
-     * @param $id
-     * @return mixed
-     */
-   public function find($id)
-   {
-       $organization =  $this->getRepository()->find($id);
-
-       if (!$organization) {
-           throw new NotFoundHttpException('Unable to find Organization entity.');
-       }
-
-       return $organization;
-   }
-
-    /**
-     * @param $username
-     * @return string
-     */
-   public function findOneByUsername($username)
-   {
-       return $this->getRepository()->findOneByUsername($username);
-   }
 
     /**
      * return list projects organization
@@ -62,12 +34,4 @@ class OrganizationManager extends BaseManager
            'open'  => $counter['prj_open']
        );
    }
-
-    /**
-     * @param $user
-     */
-    public function findAllByUser($user)
-    {
-        return $this->getRepository()->findAllByUser($user);
-    }
 }
