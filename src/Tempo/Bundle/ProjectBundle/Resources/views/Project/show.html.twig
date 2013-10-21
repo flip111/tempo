@@ -72,7 +72,6 @@
 
 {% endblock %}
 {% block right %}
-<ul class="record_actions">
 
     <h4>{{ 'organization.team'|trans({},'TempoProject') }} </h4>
 
@@ -86,5 +85,5 @@
         {% include 'TempoProjectBundle:Team:list.html.twig' with { 'users': project.team } %}
     </div>
 
-</ul>
+
 {% endblock %}

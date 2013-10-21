@@ -280,25 +280,14 @@ body {
     display: block;
     float: left;
 }
-
-.form-block div.select.select_focus {
-	border-color:#8ccfff;
-	box-shadow:0 0 5px #8ccfff, inset 0 0 2px rgba(0, 0, 0, 0.12);
-	-moz-box-shadow:0 0 5px #8ccfff, inset 0 0 2px rgba(0, 0, 0, 0.12);
-	-webkit-box-shadow:0 0 5px #8ccfff, inset 0 0 2px rgba(0, 0, 0, 0.12);
+.form-block .form-group {
+    clear: both;
 }
+
 .form-block select{
     width: 200px;
     height: 20px;
 }
 .form-block input[type="text"], .form-block input[type="email"], .form-block input[type="password"] {
     width: 250px;
-}
-
-.form-block .boxreplace{
-    left: 100px !important;
-}
-
-.form-block form .formtextField .picto-datepicker{
-    padding-top: 5px;
 }

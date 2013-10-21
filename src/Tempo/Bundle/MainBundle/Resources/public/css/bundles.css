@@ -463,7 +463,27 @@ ol.stories
     width: 24px;
 }
 
-.user.edit.avatar h1 small{ display: block; }
+.user.edit.avatar h1 small {
+    display: block;
+}
+.organization #sidebar h4, .project #sidebar h4 {
+    margin-top: 35px;
+    margin-bottom: 35px;
+    text-align: center;
+}
+.organization #sidebar a.btn, .project #sidebar a.btn{
+    margin-bottom: 5px;
+    display: block;
+}
+.organization.show #sidebar .list_membre, .project #sidebar .list_membre {
+    clear: both;
+}
+.organization.show #sidebar .list_membre ul li a span, .project #sidebar .list_membre ul li a span {
+    display: inline-block;
+    margin-left: 5px;
+}
+
+
 /* Organizations */
 .organization-add #organization{ width: 350px; float: left; }
 .organization-add #organization label, .organization.edit label { width: 100px; display: block; float: left; padding-top: 2px; font-weight: bold; }
@@ -471,7 +491,6 @@ ol.stories
 .organization-add .rest{ float: left; width: 60px; }
 .organization.show #page-title{  }
 .organization.show .action{ margin-top: 30px }
-.organization.show #sidebar h4{ padding: 20px 40px; }
 .organization.show .infos { clear: both; }
 .organization.show .infos li{ display: block; margin-bottom: 10px; }
 .organization.show .infos strong{ display: block; }
