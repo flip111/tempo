@@ -13,7 +13,6 @@ namespace Tempo\Bundle\UserBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\Form\FormViewInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 

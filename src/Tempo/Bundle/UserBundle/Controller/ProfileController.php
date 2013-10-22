@@ -20,7 +20,6 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 use Tempo\Bundle\UserBundle\Form\Type\SettingsType;
 use Tempo\Bundle\UserBundle\Form\Type\ProfileType;
 use Tempo\Bundle\UserBundle\Form\Type\AvatarType;
-use Tempo\Bundle\UserBundle\Form\Type\PasswordType;
 
 use Tempo\Bundle\UserBundle\Form\Handler\AvatarHandler;
 

@@ -1,4 +1,4 @@
-@backend
+@account
 Feature: Check login
 
   Scenario: Check login page when not connected

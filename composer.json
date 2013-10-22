@@ -1,5 +1,5 @@
 {
-    "name": "tempo-project/Tempo",
+    "name": "tempo-project/tempo",
     "type":        "project",
     "description": "Symfony2 Project Management Software",
     "license":     "MIT",
