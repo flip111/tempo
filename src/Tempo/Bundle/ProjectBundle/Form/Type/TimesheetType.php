@@ -26,7 +26,6 @@ class TimesheetType extends AbstractType
         $builder
             ->add('time')
             ->add('description')
-            ->add('project')
         ;
     }
     /**

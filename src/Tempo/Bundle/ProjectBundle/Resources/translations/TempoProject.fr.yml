@@ -51,6 +51,7 @@ project:
     label_estimated: Budget estimé
 
 timesheets:
+  page_title: Gestion du temps
   last_week: Semaine précédente
   next_week: Semaine suivante
 

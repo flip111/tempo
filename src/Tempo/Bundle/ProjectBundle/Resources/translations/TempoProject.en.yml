@@ -43,6 +43,7 @@ project:
     label.estimated: Budget estimated
 
 timesheets:
+  page_title: Timesheet
   last_week: Last week
   next_week: Next week
 

@@ -123,10 +123,15 @@ class ProfileController extends Controller
         $profile = $this->getDoctrine()->getRepository('TempoUserBundle:User')->findOneBy(array('usernameCanonical' => $slug));
 
         if(!$profile) {
-            throw $this->createNotFoundException('Unable to find User entity.');
+            throw $this->createNotFoundException('Unable to find User.');
         }
 
-        return $this->render('TempoUserBundle:Profile:show.html.twig', array('profile' => $profile));
+        $organizations = $this->get('tempo_project.manager.organization')->findAllByUser($profile->getId());
+
+        return $this->render('TempoUserBundle:Profile:show.html.twig', array(
+            'profile' => $profile,
+            'organizations' => $organizations
+        ));
     }
 
 

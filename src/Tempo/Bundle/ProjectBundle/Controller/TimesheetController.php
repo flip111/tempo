@@ -17,6 +17,7 @@ use Tempo\Bundle\ProjectBundle\Entity\Timesheet;
 use Tempo\Bundle\ProjectBundle\Form\Type\TimesheetType;
 
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Locale;
 
 /**
@@ -94,8 +95,8 @@ class TimesheetController extends Controller
         $entity->setProjectId($postTimesheet['project_id']);
         $entity->setUser($this->getUser());
 
-        $form    = $this->createForm(new TimesheetType(), $entity);
-        $form->bind($request);
+        $form = $this->createForm(new TimesheetType(), $entity);
+        $form->submit($request);
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
@@ -111,19 +112,13 @@ class TimesheetController extends Controller
     }
 
     /**
-     * Displays a form to edit an existing Timesheet entity.
+     * Displays a form to edit an existing Timesheet.
      *
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
     public function editAction($id)
     {
-        $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('TempoProjectBundle:Timesheet')->find($id);
-
-        if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Timesheet entity.');
-        }
+        $entity = $this->getManager()->find($id);
 
         $editForm = $this->createForm(new TimesheetType(), $entity);
         $deleteForm = $this->createDeleteForm($id);
@@ -142,52 +137,38 @@ class TimesheetController extends Controller
      */
     public function updateAction($id)
     {
-        $em = $this->getDoctrine()->getManager();
-
-        $entity = $em->getRepository('TempoProjectBundle:Timesheet')->find($id);
-
-        if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Timesheet entity.');
-        }
+        $entity = $this->getManager()->find($id);
 
         $editForm   = $this->createForm(new TimesheetType(), $entity);
-        $deleteForm = $this->createDeleteForm($id);
-
         $request = $this->getRequest();
 
         $editForm->submit($request);
 
         if ($editForm->isValid()) {
-            $em->persist($entity);
-            $em->flush();
-
-            return $this->redirect($this->generateUrl('timesheet_edit', array('id' => $id)));
+            $this->getManager()->persistAndFlush($entity);
+            return $this->redirect($this->generateUrl('timesheet'));
         }
 
         return $this->render('TempoProjectBundle:Timesheet:edit.html.twig', array(
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
         ));
     }
 
     public function postDataAction()
     {
-        $post = $this->getRequest()->request->all();
-        $post = $post['timesheet'];
+        $post = $this->getRequest()->request->all()['timesheet'];
 
         $time = new Timesheet();
         $time->setTime($post['time']);
         $time->setPeriod(new \Datetime($post['date']));
-        $time->setDate(new \Datetime());
-        $time->setProject($this->getDoctrine()->getRepository('TempoProjectBundle:Project')->find($post['project']));
+        $time->setProject($this->geManager()->find($post['project']));
         $time->setDescription($post['description']);
         $time->setUser($this->getUser());
 
-        $this->getDoctrine()->getManager()->persist($time);
-        $this->getDoctrine()->getManager()->flush();
+        $this->getManager()->persistAndFlush($time);
 
-        return new \Symfony\Component\HttpFoundation\Response('done');
+        return new Response('done');
     }
 
         /**
@@ -203,19 +184,18 @@ class TimesheetController extends Controller
         $form->submit($request);
 
         if ($form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $entity = $em->getRepository('TempoProjectBundle:Timesheet')->find($id);
-
-            if (!$entity) {
-                throw $this->createNotFoundException('Unable to find Timesheet entity.');
-            }
-
-            $em->remove($entity);
-            $em->flush();
+            $entity = $this->getManager()->find($id);
+            $this->getManager()->removeAndFlush($entity);
         }
 
         return $this->redirect($this->generateUrl('timesheet'));
     }
+
+    public function getManager()
+    {
+        return $this->get('tempo_project.manager.timesheet');
+    }
+
 
     /**
      * @param $id

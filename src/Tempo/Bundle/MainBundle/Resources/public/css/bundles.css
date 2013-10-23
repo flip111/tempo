@@ -266,6 +266,16 @@ table.table-striped tbody .actions .edit {
     text-decoration: none;
 }
 
+.user.show .card-orgs ul {
+   padding: 0;
+}
+.user.show .card-orgs ul li {
+    list-style: none;
+    float: left;
+    padding-left: 10px;
+
+}
+
 #dashbord h3.homeTitle {
     font-size: 15px;
     margin-left: 30px;
@@ -274,24 +284,6 @@ table.table-striped tbody .actions .edit {
 #sidebar .list {
     margin: 30px 0px;
 
-}
-
-#sidebar .list {
-    list-style-type: none;
-}
-
-#sidebar .list li, #settings li {
-    margin-top: 10px;
-    width: 170px;
-}
-
-#sidebar .list li a.close {
-    float: right;
-    display: none;
-}
-
-#sidebar .list li:hover a.close {
-    display: block;
 }
 
 #choose-organization {
