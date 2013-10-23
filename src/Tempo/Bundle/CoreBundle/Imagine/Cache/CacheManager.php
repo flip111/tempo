@@ -15,57 +15,87 @@ use Imagine\Image\ImagineInterface;
 use Imagine\Filter\Basic\Resize;
 use Imagine\Image\Box;
 
+use Symfony\Component\Filesystem\Filesystem;
+
 class CacheManager
 {
 
     /**
      * @var string
      */
-    private $webPath;
+    private $cachePath;
+    /**
+     * @var
+     */
     private $driver;
 
+    /**
+     * @param ImagineInterface $driver
+     */
     public function __construct(ImagineInterface $driver)
     {
         $this->driver = $driver;
     }
 
     /**
-     * @param $webPath
+     * @param $cachePath
      */
-    public function setBasePath($webPath)
+    public function setBasePath($cachePath)
     {
-        $this->webPath = $webPath;
+        if (!is_dir($cachePathTemp = $cachePath. 'media/cache')) {
+            (new Filesystem())->mkdir($cachePathTemp);
+        }
+        $this->cachePath = $cachePath;
     }
 
-    public function getBrowserPath($path,$size)
+    /**
+     * @param $path
+     * @param $sizes
+     * @return mixed
+     */
+    public function getBrowserPath($path,$sizes)
     {
-        $file =  $this->getResolver($path);
+        if(!is_array($sizes)) {
+            $sizes = array($sizes, $sizes);
+        }
 
-        $imagePath  =  explode('web', $this->generateImage($file, array($size, $size)));
+        $path =  $this->getResolver($path);
+        $newImage = $this->cachePath.'media/cache/'.md5(pathinfo($path, PATHINFO_BASENAME)).'.'.pathinfo($path, PATHINFO_EXTENSION);
+
+        if(!is_file($newImage)) {
+           $this->generateImage($path,$newImage, $sizes);
+        }
+
+        $imagePath = explode('web', $newImage);
         return $imagePath[1];
     }
 
-
+    /**
+     * @param $path
+     * @return string
+     */
     protected function getResolver($path)
     {
         $path = ltrim($path, '/');
 
         if (substr($path, 0, 7) == 'bundles') {
-            $path = $this->webPath .'../'.$path;
+            $path = $this->cachePath .'../'.$path;
         }
 
         return $path;
     }
 
-    protected function generateImage($path, $sizes)
+    /**
+     * Generate Thumbnail
+     * @param $imageOriginal
+     * @param $newImage
+     * @param $sizes
+     */
+    protected function generateImage($imageOriginal, $newImage, $sizes)
     {
-        $imageOriginal = $this->webPath.'media/cache/'.md5(pathinfo($path, PATHINFO_BASENAME)).'.'.pathinfo($path, PATHINFO_EXTENSION);
         $filter = new Resize(new Box($sizes[0], $sizes[1]));
-
         $filter
-            ->apply($this->driver->open($path))
-            ->save($imageOriginal, array('quality' => 70));
-
-        return $imageOriginal;
+            ->apply($this->driver->open($imageOriginal))
+            ->save($newImage, array('quality' => 70));
     }
 }
