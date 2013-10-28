@@ -45,6 +45,7 @@ class LoadOrganizationData extends AbstractFixture implements FixtureInterface
             $manager->flush();
 
             $this->addReference('organization'.$i, $organization);
+            $i++;
         }
     }
 

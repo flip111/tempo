@@ -12,8 +12,8 @@
 namespace Tempo\Bundle\ProjectBundle\DataFixtures\ORM;
 
 use Doctrine\Common\DataFixtures\FixtureInterface;
-use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\Common\DataFixtures\AbstractFixture;
+use Doctrine\Common\Persistence\ObjectManager;
 use Tempo\Bundle\ProjectBundle\Entity\Timesheet;
 use Tempo\Bundle\ProjectBundle\Entity\Project;
 use DateTime;
@@ -26,7 +26,7 @@ class LoadTimesheetData extends AbstractFixture implements FixtureInterface
      */
     public function load(ObjectManager $manager)
     {
-        $userList = array('admin', 'test');
+        $userList = array('admin', 'john.doe');
         $jour = date("w");
         for ($i = 1; $i <= 5; $i++) {
 
