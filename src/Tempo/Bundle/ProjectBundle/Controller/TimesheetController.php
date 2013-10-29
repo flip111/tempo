@@ -13,6 +13,8 @@ namespace Tempo\Bundle\ProjectBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
+use \DateTime;
+use CalendR\Period\Week;
 use Tempo\Bundle\ProjectBundle\Entity\Timesheet;
 use Tempo\Bundle\ProjectBundle\Form\Type\TimesheetType;
 
@@ -33,21 +35,37 @@ class TimesheetController extends Controller
      */
     public function indexAction()
     {
+
         $locale = $this->container->getParameter('locale');
-        $user = $this->getUser();
         $weekLang = $this->container->getParameter('tempo_project.week');
-        $data = $this->container->get('tempo_project.manager.timesheet')->getAllCra($weekLang[$locale], $user->getId());
-        $timesheet = new Timesheet();
-        $timesheet->setUser($user->getId());
-        $form = $this->createForm(new TimesheetType());
+        $currentYear = $this->getRequest()->query->get('year', date('Y'));
+        $currentWeek = $this->getRequest()->query->get('week', date('W'));
+
+        $weekPagination = array(
+            'next' => date("W", strtotime("+1 week")),
+            'current' => $currentWeek ,
+            'prev' => date("W", strtotime("-1 week")),
+            'year' => $currentYear
+        );
+
+        $currentWeek = new DateTime();
+        $currentWeek->setISOdate($currentYear, $weekPagination['current']);
+        $factoryWeek = new Week($currentWeek);
+
+
+        $data = $this->getManager()->getAllCra(
+            $factoryWeek,
+            $weekLang[$locale],
+            $this->getUser()->getId()
+        );
         $userList = $this->getDoctrine()->getRepository('TempoUserBundle:User')->findAll();
 
         return $this->render('TempoProjectBundle:Timesheet:index.html.twig', array(
             'date' => $data['date'],
             'week' => $data['week'],
             'projects' => $data['projects'],
-            'form' => $form->createView(),
-            'users' => $userList
+            'users' => $userList,
+            'weekPagination' => $weekPagination
         ));
     }
 
@@ -191,7 +209,7 @@ class TimesheetController extends Controller
         return $this->redirect($this->generateUrl('timesheet'));
     }
 
-    public function getManager()
+    private function getManager()
     {
         return $this->get('tempo_project.manager.timesheet');
     }

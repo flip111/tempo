@@ -89,6 +89,12 @@ tempo_project:
       - Dimanche
     en :
       - Monday
+      - Tuesday
+      - Wednesday
+      - Thursday
+      - Friday
+      - Saturday
+      - Sunday
 
 
 knp_snappy:

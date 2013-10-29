@@ -25,6 +25,7 @@ class LoadProjectData extends AbstractFixture implements FixtureInterface
      */
     public function load(ObjectManager $manager)
     {
+        $userList = array('admin', 'john.doe');
         for ($i = 1; $i <= 5; $i++) {
             $name = str_shuffle('Le Lorem Ipsum');
 
@@ -44,6 +45,8 @@ class LoadProjectData extends AbstractFixture implements FixtureInterface
             $project->setIsActive(true);
             $project->setBeginning(new \DateTime());
             $project->setEnding(new \DateTime());
+            $project->addTeam($this->getReference($userList[array_rand($userList, 1)]));
+
 
             $manager->persist($project);
             $manager->flush();

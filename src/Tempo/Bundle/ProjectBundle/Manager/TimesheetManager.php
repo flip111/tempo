@@ -13,7 +13,7 @@ namespace Tempo\Bundle\ProjectBundle\Manager;
 
 use Tempo\Bundle\CoreBundle\Manager\BaseManager;
 use Tempo\Bundle\MainBundle\Entity\Timesheet;
-use Tempo\Bundle\MainBundle\Calendar\Week;
+use \DateTime;
 
 /**
  * @author Mbechezi Mlanawo <mlanawo.mbechezi@ikimea.com>
@@ -23,16 +23,14 @@ class TimesheetManager extends BaseManager
 {
 
     /**
-     * @param $week_lang
-     * @param $user_id
      * @param  null  $weekbegin
+     * @param $weekLang
+     * @param $userId
      * @param  null  $weekend
      * @return array
      */
-    public function getAllCra($weekLang, $user_id, $weekbegin = null, $weekend = null)
-    {
-        $yearOrStart = new \DateTime(sprintf('%s-W%s', date('Y'), str_pad(date('W'), 2, '0', STR_PAD_LEFT)));
-        $factory = new Week($yearOrStart);
+     public function getAllCra($curentWeek, $weekLang, $userId)
+     {
 
         $data = array(
             'date' => array(),
@@ -42,7 +40,7 @@ class TimesheetManager extends BaseManager
 
         //date of the week
         $i = 1;
-        foreach ($factory as $day) {
+        foreach ($curentWeek as $day) {
             $data['date'][$i] = $day;
             $i++;
         }
@@ -53,15 +51,25 @@ class TimesheetManager extends BaseManager
            $data['week'][$key] = $week . ' ' . $data['date'][$key]->format('d');
         }
 
-        $projectsList = $this->em->getRepository('TempoProjectBundle:Project')->findAllTimeSheet($user_id, $weekbegin, $weekend);
-        foreach ($projectsList as $project) {
 
+        $projectsList = $this->em->getRepository('TempoProjectBundle:Project')->findAllByUser($userId);
+        $projectsTracList = $this->em->getRepository('TempoProjectBundle:Project')->findAllTimeSheet(
+            $userId, $curentWeek->getBegin(), $curentWeek->getEnd()
+        );
+
+        foreach($projectsList as $project) {
             $projectName = $project->getName();
 
             $data['projects'][$projectName]['id'] = $project->getId();
             $data['projects'][$projectName]['name'] = $project->getName();
+            $data['projects'][$projectName]['slug'] = $project->getSlug();
             $data['projects'][$projectName]['cras'][] = array();
-            unset($data['projects'][$projectName]['cras'][0]); // @TODO fix bug indexe 0
+        }
+
+
+         foreach ($projectsTracList as $project) {
+
+            $projectName = $project->getName();
 
             foreach ($project->getTimesheets() as $timesheet) {
 
@@ -83,7 +91,8 @@ class TimesheetManager extends BaseManager
                 $data['projects'][$projectName]['cras'][$dateFormat]['total']++;
             }
 
-        }
+             unset($data['projects'][$projectName]['cras'][0]);     // @TODO fix bug indexe 0
+         }
 
         return $data;
     }

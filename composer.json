@@ -38,6 +38,7 @@
         "friendsofsymfony/rest-bundle": "1.0.*@dev",
         "friendsofsymfony/user-bundle": "dev-master",
         "ikimea/browser": "dev-master",
+        "yohang/calendr": "1.*",
         "egeloen/ckeditor-bundle": "2.*",
         "knplabs/knp-menu-bundle": "dev-master",
         "knplabs/knp-time-bundle": "dev-master",
@@ -56,8 +57,8 @@
         "behat/mink-goutte-driver": "dev-master",
         "behat/mink-selenium2-driver": "*",
         "doctrine/doctrine-fixtures-bundle": "dev-master",
-        "elao/web-profiler-extra-bundle": "dev-master",
-        "leek/git-debug-bundle": "2.0.x-dev"
+        "willdurand/faker-bundle": "dev-master",
+        "elao/web-profiler-extra-bundle": "dev-master"
     },
     "scripts": {
         "post-install-cmd": [

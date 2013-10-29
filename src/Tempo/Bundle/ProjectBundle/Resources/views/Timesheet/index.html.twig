@@ -7,10 +7,10 @@
 {% block content %}
     <div id="timesheet_week">
         <p class="float_left">
-            <a href="#" class="btn">{{ 'timesheets.last_week'|trans({}, 'TempoProject') }}</a>
+            <a href="?week={{ weekPagination.prev }}&year={{ weekPagination.year  }}" class="btn">{{ 'timesheets.last_week'|trans({}, 'TempoProject') }}</a>
         </p>
         <p class="float_right">
-            <a href="#" class="btn">{{ 'timesheets.next_week'|trans({}, 'TempoProject') }}</a>
+            <a href="?week={{ weekPagination.next }}&year={{ weekPagination.year  }}" class="btn">{{ 'timesheets.next_week'|trans({}, 'TempoProject') }}</a>
         </p>
         <div class="clearfix"></div>
     </div>
@@ -40,7 +40,7 @@
             <tbody>
             {% for project in projects %}
                 <tr class="{{ cycle(['odd', 'even'], loop.index) }}">
-                    <td>{{project.name}}</td>
+                    <td><a href="{{ path('project_show', {'slug': project.slug }) }}">{{ project.name }}</a></td>
                     {% for day in date %}
                         <td>
                             <form action="{{ path('timesheet_postdata') }}" method="post" class="parent-form" id="parent-form{{ loop.index }}">

@@ -283,7 +283,7 @@ table.table-striped tbody .actions .edit {
 
 #sidebar .list {
     margin: 30px 0px;
-
+    list-style: none;
 }
 
 #choose-organization {
@@ -483,6 +483,10 @@ table.table-striped tbody .actions .edit {
 
 .organization.show #sidebar .list_membre, .project #sidebar .list_membre {
     clear: both;
+}
+
+.organization.show #sidebar .list_membre li, .project #sidebar .list_membre li {
+    padding-bottom: 10px;
 }
 
 .organization.show #sidebar .list_membre ul li a span, .project #sidebar .list_membre ul li a span {
