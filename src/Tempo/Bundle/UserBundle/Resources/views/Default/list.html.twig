@@ -2,6 +2,7 @@
 {% block bodyClass %}users list{% endblock %}
 
 {% block content %}
+    <h1>List Users</h1>
     <div id="user_list">
 
     {% for user in users %}
@@ -10,14 +11,15 @@
                 <img src="{{ user.avatar(68) }}" />
             </p>
             <p class="infos">
+                {% if is_granted('ROLE_ADMIN') %}
                 <a class="btn btn-xs btn-info" href="{{path('user_profile_edit')}}">edit</a> <br />
+                {% endif %}
                 <a href="{{ path('user_profile_show', {'slug':user.usernameCanonical }) }}">{{ user.username }} </a>
                 <br />
                 {{ user.email}}
             </p>   
         </div>
-    {% else %}
-        <p>Aucun utilisateur n'a été trouvé.</p>
+
     {% endfor %}
 
     </div>

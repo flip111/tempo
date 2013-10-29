@@ -16,7 +16,9 @@
     <div id="organizations">
         <div class="head clearfix">
             <h4 >{{ 'organization.list.title'|trans({},'TempoProject') }}</h4>
+            {% if is_granted('ROLE_ADMIN') %}
             <a href="{{ path('organization_new') }}" class="float-right btn btn-primary btn-xs" data-target="#" data-toggle="modal" data-title="{{ 'organization.add' |trans({},'TempoProject') }}" >{{ 'organization.add' |trans({},'TempoProject') }}</a>
+            {% endif %}
         </div>
         <ul class="list clear">
             {% for organization in organizations %}
