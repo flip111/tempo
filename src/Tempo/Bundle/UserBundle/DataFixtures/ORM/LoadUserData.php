@@ -65,7 +65,7 @@ class LoadUserData extends AbstractFixture implements FixtureInterface, Containe
         foreach ($users as $username => $name) {
 
             $account = $userManager->createUser();
-            $fullName = explide(' ', $name);
+            $fullName = explode(' ', $name);
 
             if ($username == 'admin') {
                 $account->addRole(User::ROLE_SUPER_ADMIN);
@@ -76,8 +76,7 @@ class LoadUserData extends AbstractFixture implements FixtureInterface, Containe
             $account->setEmailCanonical($username. '@test.com');
             $account->setLastName($fullName[1]);
             $account->setFirstName($fullName[0]);
-            $account->setPlainPassword('admin');
-            $account->setPassword('admin');
+            $account->setPlainPassword($username);
             $account->addRole(User::ROLE_DEFAULT);
             $account->setEnabled(true);
 

@@ -10,13 +10,28 @@ security:
     firewalls:
         main:
             pattern: ^/
+            switch_user: false
+            context:     user
+            pattern:     /.*
             form_login:
                 provider: fos_userbundle
-                csrf_provider: form.csrf_provider
-                always_use_default_target_path: true
+                login_path: /login
+                check_path: /login_check
+                failure_path: /login
                 default_target_path: /
-            logout:       true
+                use_forward:  false
+                use_referer: false
+            remember_me:
+                key: %secret%
+                name: APP_REMEMBER_ME
+                lifetime: 31536000
+                always_remember_me: true
+                remember_me_parameter: _remember_me
+            logout: true
             anonymous:    true
+        dev:
+            pattern:  ^/(_(profiler|wdt)|css|images|js)/
+            security: false
         login:
            pattern:  ^/login$
            security: false

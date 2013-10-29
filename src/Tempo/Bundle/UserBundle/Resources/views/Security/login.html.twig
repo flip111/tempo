@@ -39,7 +39,7 @@
         <p class="send">
             <a href="{{ path('fos_user_change_password') }}">{{ 'resetting.request.submit'|trans([], 'FOSUserBundle') }}</a>
         </p>
-        <div class="submit"><input type="image" src="{{ asset('bundles/tempomain/images/button-login.png') }}" alt="Login" name="{{ 'security.login.submit'|trans([], 'FOSUserBundle') }}" /></div>
+        <div class="submit"><input id="login" type="image" src="{{ asset('bundles/tempomain/images/button-login.png') }}" alt="Login" name="{{ 'security.login.submit'|trans([], 'FOSUserBundle') }}" /></div>
 
          <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
 
