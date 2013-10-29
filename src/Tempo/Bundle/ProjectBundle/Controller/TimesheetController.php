@@ -175,7 +175,8 @@ class TimesheetController extends Controller
 
     public function postDataAction()
     {
-        $post = $this->getRequest()->request->all()['timesheet'];
+        $post = $this->getRequest()->request->all();
+        $post = $post['timesheet'];
 
         $time = new Timesheet();
         $time->setTime($post['time']);

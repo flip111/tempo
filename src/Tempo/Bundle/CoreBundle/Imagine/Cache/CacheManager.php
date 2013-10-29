@@ -43,7 +43,8 @@ class CacheManager
     public function setBasePath($cachePath)
     {
         if (!is_dir($cachePathTemp = $cachePath. 'media/cache')) {
-            (new Filesystem())->mkdir($cachePathTemp);
+            $filesystem = new Filesystem();
+            $filesystem->mkdir($cachePathTemp);
         }
         $this->cachePath = $cachePath;
     }

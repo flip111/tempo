@@ -66,7 +66,7 @@ class FeatureContext extends RawMinkContext implements KernelAwareInterface
     public function iAmOnRoute($route)
     {
         $route = $this->kernel->getContainer()->get('router')->generate($route, array(), false);
-        $this->getSession()->visit($route);
+        $this->getSession()->visit($this->getMinkParameter('base_url').$route);
     }
 
 }
