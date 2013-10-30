@@ -81,7 +81,9 @@
                             {% endfor %}
                         {% endfor %}
                     {% endblock %}
-                    {{ knp_menu_render('breadcrumb') }}
+                    {% block breadcrumb %}
+                        {{ knp_menu_render('breadcrumb') }}
+                    {% endblock breadcrumb %}
                     {% block content %}  {% endblock %}
                 </div>
                 {% if sidebar is defined %}
