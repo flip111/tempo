@@ -25,6 +25,10 @@ organization:
   email_contact : Adresse électronique de contact
   web_site: Site web
   undefined_info: non défini
+  success_create: Organization ajouté avec succès
+  success_modify: Organization modifié avec succès
+  success_delete: Organisation supprimé avec succès
+  failed_delete: Impossible de supprimer l'organization
 
 
 project:
@@ -54,6 +58,9 @@ timesheets:
   page_title: Gestion du temps
   last_week: Semaine précédente
   next_week: Semaine suivante
+
+team:
+ success_add: L'utilisateur a bien été ajouté à l'équipe
 
 buttons:
   edit: Editer

@@ -108,18 +108,11 @@ class OrganizationController extends Controller
 
         $editForm = $this->createForm(new OrganizationType(), $organization);
 
-        if ($request->getMethod() == "POST") {
+        if ($request->isMethod('POST') && $editForm->submit($request)->isValid()) {
+            $manager->persistAndFlush($organization);
+            $request->getSession()->getFlashBag()->set('notice', $this->getTranslator()->trans('organization.success_deleted', array(), 'TempoProject'));
 
-            $editForm->submit($request);
-
-            if ($editForm->isValid()) {
-
-                $manager->persistAndFlush($organization);
-
-                $this->get('session')->getFlashBag()->set('notice', $this->get('translator')->trans('Le organization a bien été mis à jour avec succès !'));
-
-                return $this->redirect($this->generateUrl('organization_show', array('slug' => $organization->getSlug()  )));
-            }
+            return $this->redirect($this->generateUrl('organization_show', array('slug' => $organization->getSlug())));
         }
 
         return $this->render('TempoProjectBundle:Organization:edit.html.twig', array(
@@ -140,20 +133,13 @@ class OrganizationController extends Controller
         $organization->addTeam($this->getUser());
 
         $form = $this->createForm(new OrganizationType(), $organization);
-        $form->setData($organization);
 
-        if ($request->getMethod() == 'POST') {
-            $form->submit($request);
+        if ($request->isMethod('POST') && $form->submit($request)->isValid()) {
 
-            if ($form->isValid()) {
-                $em = $this->container->get('doctrine.orm.entity_manager');
-                $em->persist($organization);
-                $em->flush();
+            $this->getManager()->persistAndFlush($organization);
+            $this->get('session')->getFlashBag()->set('notice', $this->getTranslator()->trans('organization.success_create', array(), 'TempoProject'));
 
-                $this->get('session')->getFlashBag()->set('notice', $this->get('translator')->trans('Organization ajouté avec succès !'));
-
-                return $this->redirect($this->generateUrl('organization_edit', array('slug' => $organization->getSlug() )));
-            }
+            return $this->redirect($this->generateUrl('organization_edit', array('slug' => $organization->getSlug())));
         }
     }
 
@@ -166,7 +152,7 @@ class OrganizationController extends Controller
     public function deleteAction($slug)
     {
         $request = $this->getRequest();
-        $em = $this->getDoctrine()->getManager();
+
         $organization = $this->findOrganization($slug);
 
         //check CSRF token
@@ -176,15 +162,13 @@ class OrganizationController extends Controller
 
         try {
 
-            $em->remove($organization);
-            $em->flush();
-            $this->get('session')->getFlashBag()->set('notice', $this->get('translator')->trans('Organization supprimé avec succès !'));
+            $this->getManager()->removeAndFlush($organization);
+            $request->getSession()->getFlashBag()->set('success', $this->getTranslator()->trans('organization.success_delete', array(), 'TempoProject'));
 
             return $this->redirect($this->generateUrl('project_home'));
 
-        } catch (\Exception $e) {
-
-            $this->get('session')->getFlashBag()->set('error', $this->get('translator')->trans('Impossible de supprimer l\'organization'));
+        } catch (\InvalidArgumentException $e) {
+            $request->getSession()->getFlashBag()->set('error', $this->getTranslator()->trans('organization.failed_delete', array(), 'TempoProject'));
 
             return $this->redirect($this->generateUrl('organization_show', array('slug' => $organization->getSlug() )));
         }
@@ -192,7 +176,7 @@ class OrganizationController extends Controller
     }
 
     /**
-     * return Tempo\Bundle\ProjectBundle\Manager\Project
+     * return Tempo\Bundle\ProjectBundle\Manager\OrganizationManager
      * @return mixed
      */
     private function getManager()
@@ -208,5 +192,15 @@ class OrganizationController extends Controller
     private function findOrganization($slug)
     {
         return $this->getManager()->findOneBySlug($slug);
+    }
+
+    /**
+     * Get translator.
+     *
+     * @return TranslatorInterface
+     */
+    protected function getTranslator()
+    {
+        return $this->get('translator');
     }
 }

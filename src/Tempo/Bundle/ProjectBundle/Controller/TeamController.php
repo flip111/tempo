@@ -28,9 +28,9 @@ class TeamController extends Controller
      */
     public function addAction($slug)
     {
-        $em = $this->container->get('doctrine.orm.entity_manager');
+        $request = $this->getRequest();
 
-        if ($this->getRequest()->get('_route') == 'project_team_add') {
+        if ($request->get('_route') == 'project_team_add') {
 
             $category = $this->getDoctrine()->getRepository('TempoProjectBundle:Project')->findOneBySlug($slug);
             $routeSuccess = 'project_show';
@@ -44,27 +44,39 @@ class TeamController extends Controller
 
         $form = $this->createForm(new TeamType());
 
-        $request = $this->getRequest();
 
-        if ($request->getMethod() == 'POST') {
-            $form->submit($request);
+        if ($request->isMethod('POST') && $form->submit($request)->isValid()) {
+            $formData = $form->getData();
+            $findUser = $this->getDoctrine()->getRepository('TempoUserBundle:User')->findOneBy(array('username' => $formData['username']));
 
-            if ($form->isValid()) {
-                $formData = $form->getData();
-                $findUser = $this->getDoctrine()->getRepository('TempoUserBundle:User')->findOneBy(array('username' => $formData['username']));
+            $category->addTeam($findUser);
+            $this->getManage()->persistAndFlush($category);
 
-                $category->addTeam($findUser);
-                $em->persist($category);
-                $em->flush();
+            $request->getSession()->getFlashBag()->set('notice', $this->getTranslator()->trans('team.success_add'));
 
-                $this->get('session')->getFlashBag()->set('notice', $this->get('translator')->trans('L\'utilisateur a bien été ajouté à l\'équipe !'));
-
-                return $this->redirect($this->generateUrl($routeSuccess, array('slug' => $category->getSlug()  )));
-            }
+            return $this->redirect($this->generateUrl($routeSuccess, array('slug' => $category->getSlug())));
 
         }
-        return $this->redirect($this->generateUrl($routeSuccess, array('slug' => $category->getSlug()  )));
 
+            return $this->redirect($this->generateUrl($routeSuccess, array('slug' => $category->getSlug()  )));
+    }
 
+    /**
+     * return Tempo\Bundle\ProjectBundle\Manager\TeamManager
+     * @return mixed
+     */
+    protected function getManager()
+    {
+        return $this->get('tempo_project.manager.team');
+    }
+
+    /**
+     * Get translator.
+     *
+     * @return TranslatorInterface
+     */
+    protected function getTranslator()
+    {
+           return $this->get('translator');
     }
 }

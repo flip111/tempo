@@ -28,7 +28,6 @@ use Locale;
  */
 class TimesheetController extends Controller
 {
-
     /**
      * Lists all Timesheet entities.
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
@@ -156,13 +155,11 @@ class TimesheetController extends Controller
     public function updateAction($id)
     {
         $entity = $this->getManager()->find($id);
-
-        $editForm   = $this->createForm(new TimesheetType(), $entity);
         $request = $this->getRequest();
 
-        $editForm->submit($request);
+        $editForm   = $this->createForm(new TimesheetType(), $entity);
 
-        if ($editForm->isValid()) {
+        if ($request->isMethod('POST') && $editForm->submit($request)->isValid()) {
             $this->getManager()->persistAndFlush($entity);
             return $this->redirect($this->generateUrl('timesheet'));
         }
@@ -200,9 +197,7 @@ class TimesheetController extends Controller
         $form = $this->createDeleteForm($id);
         $request = $this->getRequest();
 
-        $form->submit($request);
-
-        if ($form->isValid()) {
+        if ($form->submit($request)->isValid()) {
             $entity = $this->getManager()->find($id);
             $this->getManager()->removeAndFlush($entity);
         }
