@@ -25,3 +25,6 @@ avatar:
   current_gravart: Cet avatar provient de Gravatar.
   current_default: Cet avatar est l’image par défaut.
   submit: Modifier l'avatar
+  success_delete: L'avatar a bien été supprimé.
+  success_edit: Your avatar has been changed.
+  failed_internal_error: Une erreur interne est survenue, veuillez réessayer.

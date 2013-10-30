@@ -24,3 +24,7 @@ avatar:
   current_gravart: This avatar from Gravatar.
   current_default: This avatar is the default image.
   submit: Edit Avatar
+  success_delete: The avatar has been deleted.
+  success_edit: Votre avatar a bien été modifié.
+  failed_internal_error: An internal error occurred, please try again.
+  failed_valid_file: Uploaded file is not a valid

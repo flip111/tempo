@@ -17,6 +17,7 @@ use Symfony\Component\Form\Form;
 use Imagine\Image\Box;
 use Imagine\Image\ImagineInterface;
 use Tempo\Bundle\UserBundle\Entity\User;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 
 /**
@@ -35,7 +36,7 @@ class AvatarHandler
 
     /**
      *
-     * @param Request $this->request
+     * @param Request
      */
     public function __construct($request, Form $form, $em, ImagineInterface $imagine)
     {
@@ -123,8 +124,8 @@ class AvatarHandler
             //We end by changing the user to tie its new avatar.
             $user->setAvatar($path[1]);
 
-            $this->em->getManager()->persist($user);
-            $this->em->getManager()->flush();
+            $this->em->persist($user);
+            $this->em->flush();
 
             return self::AVATAR_CHANGED;
         }

@@ -1,5 +1,12 @@
 {% extends "TempoMainBundle::Layout/web.html.twig" %}
 {% block bodyClass %}user edit avatar{% endblock %}
+{% block breadcrumb %}
+    <ol id="breadcrumb" class="clearfix">
+        <li class="first"> <a href="{{ path('project_home') }}">Accueil</a> </li>
+        <li class="first last"> <a href="{{ path('user_profile_edit') }}">Profile</a> </li>
+        <li class="first last"> Avatar </li>
+    </ol>
+{% endblock breadcrumb %}
 
 {% block content %}
 {% if own %}
