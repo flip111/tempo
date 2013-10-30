@@ -16,6 +16,7 @@
         <parameter key="tempo_project.model.organization.class">Tempo\Bundle\ProjectBundle\Entity\Organization</parameter>
         <parameter key="tempo_project.model.project.class">Tempo\Bundle\ProjectBundle\Entity\Project</parameter>
         <parameter key="tempo_project.model.timesheet.class">Tempo\Bundle\ProjectBundle\Entity\Timesheet</parameter>
+        <parameter key="tempo_project.model.team.class">Tempo\Bundle\ProjectBundle\Model\Timesheet</parameter>
 
         <parameter key="tempo_project.manager.organization.default.class">Tempo\Bundle\ProjectBundle\Manager\OrganizationManager</parameter>
         <parameter key="tempo_project.manager.project.default.class">Tempo\Bundle\ProjectBundle\Manager\ProjectManager</parameter>
