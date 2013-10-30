@@ -47,6 +47,11 @@ class User extends BaseUser
     protected $gender;
 
     /**
+     * @ORM\Column(name="company", type="string",length=255, nullable=true)
+     */
+    protected $company;
+
+    /**
      * @ORM\Column(name="job_title", type="string",length=255, nullable=true)
      */
     protected $jobTitle;
@@ -97,10 +102,28 @@ class User extends BaseUser
     /**
      * @return mixed
      */
+    public function getCompany()
+    {
+        return $this->company;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function setCompany($company)
+    {
+        $this->company = $company;
+    }
+
+    /**
+     * @return mixed
+     */
     public function getOrganizations()
     {
         return $this->organization;
     }
+
+
 
     /**
      * Set first_name

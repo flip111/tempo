@@ -24,6 +24,7 @@ class ProfileType extends AbstractType
             ->add('email')
             ->add('firstName')
             ->add('lastName')
+            ->add('company')
             ->add('jobTitle')
             ->add('phone')
             ->add('phoneMobile')
