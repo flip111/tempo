@@ -28,6 +28,9 @@ class LoadUserData extends AbstractFixture implements FixtureInterface, Containe
 
     private $container;
 
+    /**
+     * {@inheritdoc}
+     */
     public function setContainer(ContainerInterface $container = null)
     {
         $this->container = $container;
@@ -38,41 +41,49 @@ class LoadUserData extends AbstractFixture implements FixtureInterface, Containe
      */
     public function load(ObjectManager $manager)
     {
-
         $userManager = $this->container->get('fos_user.user_manager');
+        $users = array(
 
+            'admin'           => 'Ad Min',
+            'john.doe'        => 'John Doe',
+            'brian.lester'    => 'Brian Lester',
+            'jack.gill'       => 'Jack Gill',
+            'olivia.pace'     => 'Olivia Pace',
+            'nola weaver'     => 'Nola Weaver',
+            'oren tyler'      => 'Oren Tyler',
+            'warren.spencer'  => 'Warren Spencer',
+            'jacob.gallegos'  => 'Jacob Gallegos',
+            'jordan.saunders' => 'Jordan Saunders',
+            'xavier.stein'    => 'Xavier Stein',
+            'beck.nash'       => 'Beck Nash',
+            'ann.perry'       => 'Ann Perry',
+            'chase.hoffman'   => 'Chase Hoffman',
+            'gregory.joyner'  => 'Gregory Joyner',
+            'dexter.schwartz' => 'Dexter Schwartz'
+        );
 
-        $admin = $userManager->createUser();
-        $admin->setUsername('admin');
-        $admin->setUsernameCanonical('admin');
-        $admin->setEmail('admin@admin.com');
-        $admin->setEmailCanonical('admin@admin.com');
-        $admin->setLastName('test');
-        $admin->setFirstName('test');
-        $admin->setPlainPassword('admin');
-        $admin->setPassword('admin');
-        $admin->addRole(User::ROLE_DEFAULT);
-        $admin->addRole(User::ROLE_SUPER_ADMIN);
-        $admin->setEnabled(true);
+        foreach ($users as $username => $name) {
 
-        $userManager->updateUser($admin, true);
+            $account = $userManager->createUser();
+            $fullName = explode(' ', $name);
 
-        $this->addReference('admin', $admin);
+            if ($username == 'admin') {
+                $account->addRole(User::ROLE_SUPER_ADMIN);
+            }
+            $account->setUsername($username);
+            $account->setUsernameCanonical($username);
+            $account->setEmail($username. '@test.com');
+            $account->setEmailCanonical($username. '@test.com');
+            $account->setLastName($fullName[1]);
+            $account->setFirstName($fullName[0]);
+            $account->setPlainPassword($username);
+            $account->addRole(User::ROLE_DEFAULT);
+            $account->setEnabled(true);
 
-        $user = $userManager->createUser();
-        $user->setUsername('test');
-        $user->setUsernameCanonical('test');
-        $user->setLastName('test');
-        $user->setFirstName('test');
-        $user->setEmail('test@test.com');
-        $user->setEmailCanonical('test@test.com');
-        $user->setPlainPassword('test');
-        $user->setPassword('test');
-        $user->addRole(User::ROLE_DEFAULT);
-        $user->setEnabled(true);
-        $this->addReference('test', $admin);
+            $userManager->updateUser($account, true);
 
-        $userManager->updateUser($user, true);
+            $this->addReference($username, $account);
+        }
     }
 
     /**

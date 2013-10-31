@@ -8,24 +8,12 @@
 
 
 {% block content %}
-<h1 id="page-title">Edit organization : {{ organization.name  }}</h1>
+<h1 id="page-title">{{ organization.name  }}</h1>
 
 <form action="{{ path('organization_update', { 'id': organization.id }) }}" method="post" {{ form_enctype(form) }} class="clearfix">
-    <div class="form-block">
+    <div class="form-block clearfix">
 
-        {{ form_label(form.name) }}
-        {{ form_errors(form.name) }}
-        {{ form_widget(form.name, { 'attr': {'class': 'form-control'} }) }}
-
-
-        {{ form_label(form.website) }}
-        {{ form_errors(form.website) }}
-        {{ form_widget(form.website, { 'attr': {'class': 'form-control'} }) }}
-
-        {{ form_label(form.contact) }}
-        {{ form_errors(form.contact) }}
-        {{ form_widget(form.contact, { 'attr': {'class': 'form-control'} }) }}
-
+        {{ form_widget(form) }}
     </div>
 
     <div class="rest">

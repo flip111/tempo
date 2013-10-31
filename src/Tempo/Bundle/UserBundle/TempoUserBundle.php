@@ -16,7 +16,9 @@ use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 class TempoUserBundle extends Bundle
 {
-
+    /**
+     * {@inheritdoc}
+     */
     public function getParent()
     {
         return 'FOSUserBundle';

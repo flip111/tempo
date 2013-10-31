@@ -52,6 +52,13 @@ class ProjectRepository extends EntityRepository
         $query->leftJoin('p.team', 'pu');
         $query->leftJoin('p.timesheets', 't');
 
+        $query->where('t.period BETWEEN :begin AND :end');
+        $query->AndWhere('pu = :user');
+        $query->setParameter('begin', $weekbegin);
+        $query->setParameter('end', $weekend);
+        $query->setParameter('user', $user);
+
+
         /*
             SELECT p.id, p.name, p.slug, t.id, t.time, t.billable, t.created, t.description FROM project p
             LEFT JOIN project_user pu ON pu.project_id = p.id

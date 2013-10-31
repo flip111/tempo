@@ -20,14 +20,14 @@
     <ul class="col-md-6">
         <li> <strong>{{ 'organization.email_contact'|trans({},'TempoProject') }}</strong>
             {% if organization.contact is empty %}
-                {{ 'undefined_info'|trans({},'TempoProject') }}
+                {{ 'organization.undefined_info'|trans({},'TempoProject') }}
             {% else %}
             <a href="mailto:{{ organization.contact }}">{{ organization.contact }}</a>
             {% endif %}
         </li>
         <li> <strong>{{ 'organization.web_site'|trans({},'TempoProject') }}</strong>
         {% if organization.website is empty %}
-            {{ 'undefined_info'|trans({},'TempoProject') }}
+            {{ 'organization.undefined_info'|trans({},'TempoProject') }}
         {% else %}
             <a href="{{ organization.website }}">{{ organization.website }}</a>
         {% endif %}<li>
@@ -56,7 +56,7 @@
             <a href="{{ path('project_show', { 'slug' :  project.slug } ) }}">{{ project.name }} </a>
         </li>
     {% else %}
-        <p>{{ 'organization.not_found_project'|trans({},'TempoProject') }} }}.</p>
+        <p>{{ 'organization.not_found_project'|trans({},'TempoProject') }}.</p>
     {% endfor %}
     </ul>
 

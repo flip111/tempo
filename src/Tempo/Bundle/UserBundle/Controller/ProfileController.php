@@ -19,10 +19,6 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 
 use Tempo\Bundle\UserBundle\Form\Type\SettingsType;
 use Tempo\Bundle\UserBundle\Form\Type\ProfileType;
-use Tempo\Bundle\UserBundle\Form\Type\AvatarType;
-use Tempo\Bundle\UserBundle\Form\Type\PasswordType;
-
-use Tempo\Bundle\UserBundle\Form\Handler\AvatarHandler;
 
 class ProfileController extends Controller
 {
@@ -47,45 +43,21 @@ class ProfileController extends Controller
         $user = $this->getEditableUser($id);
         $own = $user->getId() == $this->getUser()->getId();
 
-        $form = $this->createForm(new AvatarType());
-
-        $handler = new AvatarHandler($request, $form, $this->getDoctrine(), $this->get('liip_imagine'));
-        $handler->setPath($this->get('kernel')->getRootDir().'/../web/');
+        $form = $this->get('tempo_user.profile.form.avatar.factory');
+        $handler = $this->get('tempo_user.profile.handler.avatar');
 
         //@todo : Urgent refactor
         if (($retval = $handler->process($user)) !== false) {
-            if (AvatarHandler::INTERNAL_ERROR === $retval) {
 
-                $this->get('session')->getFlashBag()->add('error', 'Une erreur interne est survenue, veuillez réessayer.');
-                return new  RedirectResponse($this->generateUrl('user_profile_avatar', array('id' => $own ? null : $user->getId())));
-            } elseif (AvatarHandler::WRONG_FORMAT === $retval) {
-
-                $this->get('session')->getFlashBag()->add('error', 'Le format de votre fichier est invalide.');
-                return new  RedirectResponse($this->generateUrl('user_profile_avatar', array('id' => $own ? null : $user->getId())));
-            } elseif (AvatarHandler::AVATAR_DELETED === $retval) {
-                if ($own) {
-                    $this->get('session')->getFlashBag()->add('notice', 'Votre avatar a bien été supprimé.');
-                    return new  RedirectResponse($this->generateUrl('user_profile_avatar'));
-                }
-
-                $this->get('session')->getFlashBag()->add('notice', 'L\'avatar a bien été supprimé.');
-                return new  RedirectResponse($this->generateUrl('user_profile_avatar', array(
-                    'id' => $user->getId(),
-                    'slug' => $user->getSlug(),
-                )));
+            if ($handler::INTERNAL_ERROR === $retval) {
+                $this->get('session')->getFlashBag()->add('error', $this->translate('avatar.failed_internal_error'));
+            } elseif ($handler::WRONG_FORMAT === $retval) {
+                $request->getSession()->getFlashBag()->add('error', $this->translate('avatar.failed_valid_file'));
+            } elseif ($handler::AVATAR_DELETED === $retval) {
+                $this->get('session')->getFlashBag()->add('notice', $this->translate('avatar.success_delete'));
+            } else {
+                $request->getSession()->getFlashBag()->add('notice', $this->translate('avatar.success_edit'));
             }
-
-            if ($own) {
-                $this->get('session')->getFlashBag()->add('notice', 'Votre avatar a bien été modifié.');
-                return new  RedirectResponse($this->generateUrl('user_profile_avatar'));
-            }
-
-            $this->get('session')->getFlashBag()->add('notice', 'L\'avatar a bien été modifié');
-            return new  RedirectResponse($this->generateUrl('user_profile_avatar', array(
-                'id' => $user->getId(),
-                'slug' => $user->getSlug(),
-            )));
-
         }
 
         return $this->render('TempoUserBundle:Profile:avatar.html.twig', array(
@@ -97,18 +69,15 @@ class ProfileController extends Controller
 
     public function updateAction()
     {
-        $user = $this->getEditableUser();
-        $form = $this->createForm(new ProfileType(), $user);
         $request = $this->getRequest();
 
+        $user = $this->getEditableUser();
+        $form = $this->createForm(new ProfileType(), $user);
 
-        if ($request->getMethod() == "POST") {
-            $form->submit($request);
-            if ($form->isValid()) {
-                $em = $this->getDoctrine()->getManager();
-                $em->persist($user);
-                $em->flush();
-            }
+        if ($request->isMethod('POST') && $form->submit($request)->isValid()) {
+           $em = $this->getDoctrine()->getManager();
+           $em->persist($user);
+           $em->flush();
         }
         return $this->render( 'TempoUserBundle:Profile:edit.html.twig',  array('form' => $form->createView()));
 
@@ -124,23 +93,14 @@ class ProfileController extends Controller
         $profile = $this->getDoctrine()->getRepository('TempoUserBundle:User')->findOneBy(array('usernameCanonical' => $slug));
 
         if(!$profile) {
-            throw $this->createNotFoundException('Unable to find User entity.');
+            throw $this->createNotFoundException('Unable to find User.');
         }
 
-        return $this->render('TempoUserBundle:Profile:show.html.twig', array('profile' => $profile));
-    }
+        $organizations = $this->get('tempo_project.manager.organization')->findAllByUser($profile->getId());
 
-    /***
-     * @return Response
-     */
-    public function passwordAction()
-    {
-        $profile = $this->getEditableUser();
-
-        $form = $this->createForm(new PasswordType(), $profile);
-        return $this->render('TempoUserBundle:Profile:password.html.twig', array(
+        return $this->render('TempoUserBundle:Profile:show.html.twig', array(
             'profile' => $profile,
-            'form' => $form->createView()
+            'organizations' => $organizations
         ));
     }
 
@@ -154,6 +114,31 @@ class ProfileController extends Controller
             'profile' => $profile,
             'form' => $form->createView()
         ));
+    }
+
+    /**
+     * @param $own
+     * @param $user
+     * @return RedirectResponse
+     */
+    public function SuccessUploadRedirect($own, $user)
+    {
+        return new  RedirectResponse($this->generateUrl('user_profile_avatar', array('id' => $own ? null : $user->getId())));
+    }
+
+    /**
+     * Get translator.
+     *
+     * @return TranslatorInterface
+     */
+    protected function getTranslator()
+    {
+        return $this->get('translator');
+    }
+
+    public function translate($trans)
+    {
+        $this->getTranslator()->trans($trans, array(), 'TempoUser');
     }
 
     public function getEditableUser()

@@ -34,6 +34,11 @@ abstract class Organization implements OrganizationInterface
     protected $slug;
 
     /**
+     * @var string
+     */
+    protected $avatar;
+
+    /**
      * @var integer
      */
     protected $enabled;
@@ -125,6 +130,44 @@ abstract class Organization implements OrganizationInterface
     public function getSlug()
     {
         return $this->slug;
+    }
+
+    public function hasAvatar()
+    {
+        return $this->hasLocalAvatar() || $this->hasGravatar();
+    }
+
+    public function hasLocalAvatar()
+    {
+        return (boolean)$this->avatar;
+    }
+
+    public function hasGravatar()
+    {
+        return (boolean)@fopen($this->getGravatarUrl() . '?d=404', 'r');
+    }
+
+
+    public function getAvatar($size = 80, $default = 'mm')
+    {
+        if ($this->avatar) {
+            return '/uploads/avatars/' . $this->avatar;
+        }
+
+        return $this->getGravatarUrl() . '?s=' . $size . '&d=' . $default;
+    }
+
+    /**
+     * @param string $avatar
+     */
+    public function setAvatar($avatar)
+    {
+        $this->avatar = $avatar;
+    }
+
+    protected function getGravatarUrl()
+    {
+        return 'http://www.gravatar.com/avatar/' . md5(strtolower(trim($this->contact)));
     }
 
     /**

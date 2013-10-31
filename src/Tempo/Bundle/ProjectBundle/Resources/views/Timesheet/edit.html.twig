@@ -1,23 +1,9 @@
-{% extends "TempoMainBundle::Layout/web.html.twig" %}
-<h1>Timesheet edit</h1>
-
-<form action="{{ path('timesheet_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }}>
-    {{ form_widget(edit_form) }}
-    <p>
-        <button type="submit">Edit</button>
-    </p>
-</form>
-
-<ul class="record_actions">
-    <li>
-        <a href="{{ path('timesheet') }}">
-            Back to the list
-        </a>
-    </li>
-    <li>
-        <form action="{{ path('timesheet_delete', { 'id': entity.id }) }}" method="post">
-            {{ form_widget(delete_form) }}
-            <button type="submit">Delete</button>
-        </form>
-    </li>
-</ul>
+{% extends "TempoMainBundle::Layout/ajax.html.twig" %}
+{% block content %}
+    <form action="{{ path('timesheet_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }}>
+        {{ form_widget(edit_form) }}
+        <p>
+            <button type="submit" class="btn btn-sm btn-primary">Edit</button>
+        </p>
+    </form>
+{% endblock content %}

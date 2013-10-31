@@ -1,5 +1,5 @@
 {
-    "name": "tempo-project/Tempo",
+    "name": "tempo-project/tempo",
     "type":        "project",
     "description": "Symfony2 Project Management Software",
     "license":     "MIT",
@@ -29,6 +29,8 @@
         "sensio/distribution-bundle": "2.3.*",
         "sensio/framework-extra-bundle": "2.3.*",
         "sensio/generator-bundle": "2.3.*",
+        "incenteev/composer-parameter-handler": "~2.0",
+
         "twig/extensions": "1.0.*",
         "knplabs/knp-snappy-bundle": "dev-master",
 
@@ -36,6 +38,7 @@
         "friendsofsymfony/rest-bundle": "1.0.*@dev",
         "friendsofsymfony/user-bundle": "dev-master",
         "ikimea/browser": "dev-master",
+        "yohang/calendr": "1.*",
         "egeloen/ckeditor-bundle": "2.*",
         "knplabs/knp-menu-bundle": "dev-master",
         "knplabs/knp-time-bundle": "dev-master",
@@ -43,6 +46,7 @@
         "stof/doctrine-extensions-bundle": "dev-master",
 
         "white-october/pagerfanta-bundle": "dev-master",
+        "mopa/bootstrap-bundle": "v3.0.0-beta2",
         "fkr/cssurlrewrite-bundle": "1.0.*@dev",
         "liip/imagine-bundle": "dev-master"
     },
@@ -53,17 +57,19 @@
         "behat/mink-goutte-driver": "dev-master",
         "behat/mink-selenium2-driver": "*",
         "doctrine/doctrine-fixtures-bundle": "dev-master",
-        "elao/web-profiler-extra-bundle": "dev-master",
-        "leek/git-debug-bundle": "2.0.x-dev"
+        "willdurand/faker-bundle": "dev-master",
+        "elao/web-profiler-extra-bundle": "dev-master"
     },
     "scripts": {
         "post-install-cmd": [
+            "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile"
         ],
         "post-update-cmd": [
+            "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
@@ -80,7 +86,10 @@
     },
     "extra": {
         "symfony-app-dir": "app",
-        "symfony-web-dir": "web"
+        "symfony-web-dir": "web",
+        "incenteev-parameters": {
+           "file": "app/config/parameters.yml"
+        }
     },
     "minimum-stability": "dev"
 }

@@ -118,9 +118,8 @@ class ProjectController extends Controller
         $this->getParent($project);
 
         $form  = $this->createForm(new ProjectType(), $project, array('user_id' => $this->getUser()->getId() ));
-        $form->submit( $this->getRequest());
 
-        if ($form->isValid()) {
+        if ($form->submit($this->getRequest())->isValid()) {
             $this->getManager()->persistAndFlush($project);
             return $this->redirect($this->generateUrl('project_show', array('slug' => $project->getSlug() )));
 
@@ -155,13 +154,12 @@ class ProjectController extends Controller
      */
     public function updateAction($slug)
     {
+
+        $request = $this->getRequest();
         $project = $this->getProject($slug);
         $editForm   = $this->createForm(new ProjectType(), $project);
 
-        $editForm->submit($this->getRequest());
-
-        if ($editForm->isValid()) {
-
+        if ($request->isMethod('POST') && $editForm->submit($request)->isValid()) {
             $this->getManager()->persistAndFlush($project);
             return $this->redirect($this->generateUrl('project_edit', array('slug' => $project->getSlug() )));
         }
@@ -192,7 +190,7 @@ class ProjectController extends Controller
     }
 
     /**
-     * return Tempo\Bundle\ProjectBundle\Manager\Project
+     * return Tempo\Bundle\ProjectBundle\Manager\ProjectManager
      * @return mixed
      */
     private function getManager()

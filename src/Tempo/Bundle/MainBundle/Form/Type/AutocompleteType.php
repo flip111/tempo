@@ -15,7 +15,6 @@ namespace Tempo\Bundle\MainBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\Form\FormViewInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 use Tempo\Bundle\MainBundle\Helper\Behavior;

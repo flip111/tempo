@@ -16,6 +16,10 @@ organization:
   email_contact: E-mail contact
   web_site: Web site
   undefined_info: undefined
+  success_create: Organization created
+  success_modify: Organization successfully edit
+  success_delete: Organization successfully removed
+  failed_delete: Unable to delete organization
 
 
 project:
@@ -43,8 +47,12 @@ project:
     label.estimated: Budget estimated
 
 timesheets:
+  page_title: Timesheet
   last_week: Last week
   next_week: Next week
+
+team:
+ success_add: The user has been added to the team
 
 buttons:
   edit: Edit

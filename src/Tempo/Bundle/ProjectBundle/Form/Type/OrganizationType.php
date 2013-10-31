@@ -28,6 +28,7 @@ class OrganizationType extends AbstractType
         $builder->add('name');
 
         if(false === $options['is_new']) {
+            $builder->add('avatar');
             $builder->add('website');
             $builder->add('contact', 'email');
         }

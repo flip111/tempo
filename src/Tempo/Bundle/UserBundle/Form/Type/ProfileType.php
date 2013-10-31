@@ -21,13 +21,13 @@ class ProfileType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('username')
             ->add('email')
-            ->add('first_name')
-            ->add('last_name')
-            ->add('job_title')
+            ->add('firstName')
+            ->add('lastName')
+            ->add('company')
+            ->add('jobTitle')
             ->add('phone')
-            ->add('phone_mobile')
+            ->add('phoneMobile')
         ;
     }
 

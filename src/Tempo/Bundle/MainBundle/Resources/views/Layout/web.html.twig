@@ -45,7 +45,7 @@
                     </button>
                 </form>
             </div>
-            <nav id="menu">{{ knp_menu_render('menu') }}</nav>
+            <nav id="menu">{{ knp_menu_render('main') }}</nav>
             <div id="member-menu" class="dropdown">
                 <ul>
                     <li class="notification dropdown togglable dropdown-notifications">
@@ -59,7 +59,7 @@
                         </a>
                         <ul class="dropdown-menu">
                             <li> <a href="{{ path('user_profile_edit') }}">{{ 'Profile'|trans({},'TempoMain') }}</a> </li>
-                            <li> <a href="{{ path('user_profile_setting') }}">{{ 'Settings'|trans({},'TempoMain') }}</a> </li>
+                            <li> <a href="{{ path('user_profile_settings') }}">{{ 'Settings'|trans({},'TempoMain') }}</a> </li>
                             <li> <a href="{{ path('fos_user_security_logout') }}"> {{ 'layout.logout'|trans([], 'FOSUserBundle') }} </a> </li>
                             <li role="presentation" class="divider"></li>
                             <li> <a href="/help"> Help </a></li>
@@ -71,19 +71,23 @@
         <div id="content">
             <div class="row">
                 <div id="child-content" class="col-md-{% if sidebar is defined %}8{% else %}10{% endif %}">
-                    {% for flashMessage in app.session.flashbag.get('notice') %}
-                        <div class="alert alert-success">
-                        <button class="close" data-dismiss="alert">×</button>{{ flashMessage }}</div>
-                    {% endfor %}
-                    {% for flashMessage in app.session.flashbag.get('error') %}
-                        <div class="alert alert-error">
-                        <button class="close" data-dismiss="alert">×</button>{{ flashMessage }}</div>
-                    {% endfor %}
-                    {{ knp_menu_render('breadcrumb') }}
+                    {% block flashes %}
+                        {% for name, flashes in app.session.flashbag.all if name in ['success', 'error', 'fos_user_success'] %}
+                            {% for flash in flashes %}
+                                <div class="alert alert-{{ name == 'fos_user_success' ? 'success' : name }}">
+                                    <a class="close" data-dismiss="alert" href="#">×</a>
+                                    {{ flash|trans }}
+                                </div>
+                            {% endfor %}
+                        {% endfor %}
+                    {% endblock %}
+                    {% block breadcrumb %}
+                        {{ knp_menu_render('breadcrumb') }}
+                    {% endblock breadcrumb %}
                     {% block content %}  {% endblock %}
                 </div>
                 {% if sidebar is defined %}
-                <div id="sidebar-right" class="col-md-2">{% block right %} {% endblock %}</div>
+                <div id="sidebar" class="col-md-2">{% block right %} {% endblock %}</div>
                 {% endif %}
             </div>
         </div>

@@ -14,7 +14,6 @@ namespace Tempo\Bundle\ProjectBundle\Form\Type;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
-use Symfony\Component\OptionsResolver\Options;
 use Tempo\Bundle\ProjectBundle\Repository\OrganizationRepository;
 use Tempo\Bundle\ProjectBundle\Entity\Project;
 

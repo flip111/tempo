@@ -1,6 +1,6 @@
 parameters:
     tempo_main.settings_manager.class: Tempo\Bundle\MainBundle\Manager\SettingsManager
-    tempo_main.menu_builder.class: Tempo\Bundle\MainBundle\Menu\Builder
+    tempo_main.menu_builder.class: Tempo\Bundle\MainBundle\Menu\MenuBuilder
     tempo_main.behavior_manager.class: Tempo\Bundle\MainBundle\Helper\Behavior
     tempo_main.resource_manager.class: Tempo\Bundle\MainBundle\Resource\ResourceManager
     form.type.autocomplete.class : Tempo\Bundle\MainBundle\Form\Type\AutocompleteType
@@ -31,9 +31,9 @@ services:
     tempo_main.menu:
       class: Knp\Menu\MenuItem # the service definition requires setting the class
       factory_service: tempo_main.menu_builder
-      factory_method: menu
+      factory_method: mainMenu
       tags:
-        - { name: knp_menu.menu, alias: menu }
+        - { name: knp_menu.menu, alias: main }
 
     tempo_main.breadcrumb:
       class: Knp\Menu\MenuItem # the service definition requires setting the class

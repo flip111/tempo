@@ -4,14 +4,20 @@
            xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <parameters>
+        <parameter key="tempo_core.eventlister.class">Tempo\Bundle\CoreBundle\EventListener\ControllerListener</parameter>
         <parameter key="tempo_core.twig.extension.class">Tempo\Bundle\CoreBundle\Twig\Extension\CoreExtension</parameter>
         <parameter key="tempo_core.imagine_cache.manager.class">Tempo\Bundle\CoreBundle\Imagine\Cache\CacheManager</parameter>
     </parameters>
     <services>
+
+        <service id="tempo_core.listener.controller" class="%tempo_core.eventlister.class%" scope="request">
+            <tag name="kernel.event_listener" event="kernel.controller" method="onKernelController"/>
+        </service>
+
         <service id="tempo_core.imagine_cache.manager" class="%tempo_core.imagine_cache.manager.class%">
             <argument type="service" id="liip_imagine"/>
             <call method="setBasePath">
-                <argument type="string">%kernel.root_dir%/../web/upload/</argument>
+                <argument type="string">%kernel.root_dir%/../web/uploads/</argument>
             </call>
         </service>
         <service id="tempo_core.twig.extension" class="%tempo_core.twig.extension.class%" public="false">

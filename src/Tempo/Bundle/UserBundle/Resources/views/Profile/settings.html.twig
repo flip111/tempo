@@ -1,10 +1,13 @@
 {% extends "TempoMainBundle::Layout/web.html.twig" %}
 
 {% block content %}
-    <h1 class="title">Setting</h1>
+    <h1 id="page-title" class="col-md-3">Setting</h1>
+    {% include "TempoUserBundle:Profile:_tabs.html.twig" %}
 
-
-    {{ form_widget(form) }}
-
-    <input type="submit" class="btn btn-primary">
+    <div class="form-block clearbox">
+        {{ form_widget(form) }}
+    </div>
+    <div class="form-actions">
+        <input type="submit" class="btn btn-primary">
+    </div>
 {% endblock %}

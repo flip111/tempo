@@ -7,21 +7,42 @@
 * file that was distributed with this source code.
 */
 
-
-
 /* Generale */
-.clearfix { display:block; }
-.clearfix:after { content:"."; height:0; line-height:0; display:block; visibility:hidden; clear:both; }
+.clearbox {
+    clear: both;
+}
 
-.line_1, .odd {background-color: white;}
-.line_2, .even {background-color: #F7F7F7;}
-.modal { margin: 0px; }
+.clearfix {
+    display: block;
+}
+
+.clearfix:after {
+    content: ".";
+    height: 0;
+    line-height: 0;
+    display: block;
+    visibility: hidden;
+    clear: both;
+}
+
+.line_1, .odd {
+    background-color: white;
+}
+
+.line_2, .even {
+    background-color: #F7F7F7;
+}
+
+.modal {
+    margin: 0px;
+}
+
 input:-webkit-autofill {
     background: #FAFAFA;
 }
-#page-title{
-    margin-left: 25px;
-    margin-bottom: 50px;
+
+#page-title {
+    margin: 0px 25px 50px 0px;
     color: #005782;
 }
 
@@ -31,6 +52,7 @@ input:-webkit-autofill {
     top: 270px;
     z-index: 750;
 }
+
 #feedback a {
     background: url("/bundles/tempomain/images/feedback.png") #313131;
     width: 42px;
@@ -39,15 +61,14 @@ input:-webkit-autofill {
     display: none;
 }
 
-ul.autocompleter-choices
-{
+ul.autocompleter-choices {
     position: absolute;
-    margin:	0;
+    margin: 0;
     padding: 0;
-    list-style:	none;
-    border:	 1px solid #7c7c7c;
-    border-left-color:	#c3c3c3;
-    border-right-color:	#c3c3c3;
+    list-style: none;
+    border: 1px solid #7c7c7c;
+    border-left-color: #c3c3c3;
+    border-right-color: #c3c3c3;
     border-bottom-color: #ddd;
     background-color: #fff;
     text-align: left;
@@ -56,48 +77,45 @@ ul.autocompleter-choices
     background-color: #fff;
 }
 
-ul.autocompleter-choices li
-{
+ul.autocompleter-choices li {
     position: relative;
-    margin:	-2px 0 0 0;
+    margin: -2px 0 0 0;
     padding: 0.2em 1.5em 0.2em 1em;
     display: block;
-    float:	none !important;
-    cursor:	pointer;
+    float: none !important;
+    cursor: pointer;
     font-weight: normal;
     white-space: nowrap;
-    font-size:	1em;
+    font-size: 1em;
     line-height: 1.5em;
 }
 
-ul.autocompleter-choices li.autocompleter-selected
-{
+ul.autocompleter-choices li.autocompleter-selected {
     background-color: #444;
     color: #fff;
 }
 
-ul.autocompleter-choices span.autocompleter-queried
-{
+ul.autocompleter-choices span.autocompleter-queried {
     display: inline;
-    float:	 none;
-    font-weight:bold;
-    margin:	0;
+    float: none;
+    font-weight: bold;
+    margin: 0;
     padding: 0;
 }
 
 ul.autocompleter-choices li.autocompleter-selected span.autocompleter-queried {
-    color:	#9FCFFF;
+    color: #9FCFFF;
 }
+
 .ui-autocomplete-loading {
     background: white url('/bundles/tempomain/images/ui-anim_basic_16x16.gif') right center no-repeat;
 }
 
-.ui-autocomplete.ui-front
-{
+.ui-autocomplete.ui-front {
     z-index: 1051;
 }
 
-.records-list thead{
+.records-list thead {
     border-top: 2px solid #666666;
     border-bottom: 1px solid #cccccc;
     background-color: #dddddd;
@@ -107,28 +125,38 @@ ul.autocompleter-choices li.autocompleter-selected span.autocompleter-queried {
     border-left: 1px solid #CCCCCC;
     border-right: 1px solid #CCCCCC;
     color: white !important;
-    font-family: Arial,Helvetica,sans-serif !important;
+    font-family: Arial, Helvetica, sans-serif !important;
     font-weight: bold;
     width: 100%;
 }
-.table .actions li{ float: left; margin-right: 10px; }
 
-table.table-striped tbody .actions .edit{ text-indent: -9999px; }
-
-.record_actions { list-style-type: none; }
-
-/* Dashboard */
-.dashboard #content{ width: 97%; min-height: 130px; }
-
-
-/* User */
-#user.login{
-    background: #D7D7D7;
-    color: #333;
-    font: 12px Arial,Verdana,sans-serif;
+.table .actions li {
+    float: left;
+    margin-right: 10px;
 }
 
-#user.login #contenair{
+table.table-striped tbody .actions .edit {
+    text-indent: -9999px;
+}
+
+.record_actions {
+    list-style-type: none;
+}
+
+/* Dashboard */
+.dashboard #content {
+    width: 97%;
+    min-height: 130px;
+}
+
+/* User */
+#user.login {
+    background: #D7D7D7;
+    color: #333;
+    font: 12px Arial, Verdana, sans-serif;
+}
+
+#user.login #contenair {
     width: 546px;
     min-height: 380px;
     margin: 100px auto 0;
@@ -137,12 +165,14 @@ table.table-striped tbody .actions .edit{ text-indent: -9999px; }
     border-radius: 5px;
     box-shadow: 1px 1px 15px #888;
 }
-#user.login #contenair .form-error{
+
+#user.login #contenair .form-error {
     color: #ffa500;
     margin: 10px;
     text-align: center;
 }
-#user.login #contenair h1{
+
+#user.login #contenair h1 {
     color: #000;
     font-size: 4em;
     margin-top: 0px;
@@ -150,24 +180,29 @@ table.table-striped tbody .actions .edit{ text-indent: -9999px; }
     padding-right: 40px;
     text-shadow: 0 0 1px rgba(0, 0, 0, 0.01);
 }
-#user.login #contenair .widget{
+
+#user.login #contenair .widget {
     margin: 0 auto;
     padding-bottom: 18px;
     width: 456px;
 }
-#user.login #contenair .widget.remember{
+
+#user.login #contenair .widget.remember {
     margin-bottom: 0px;
 }
-#user.login #contenair label{
+
+#user.login #contenair label {
     margin-bottom: 8px;
     color: #888;
     display: block;
     font-size: 12px;
 }
-#user.login #contenair label#remember_me{
+
+#user.login #contenair label#remember_me {
     display: inline;
 }
-#user.login #contenair input[type="text"], #user.login #contenair input[type="password"]{
+
+#user.login #contenair input[type="text"], #user.login #contenair input[type="password"] {
     font-size: 12px;
     line-height: 20px;
     margin: 0;
@@ -179,169 +214,102 @@ table.table-striped tbody .actions .edit{ text-indent: -9999px; }
 
 }
 
-#user.login #contenair .submit{
+#user.login #contenair .submit {
     float: right;
 }
 
-#user.login #contenair .submit input[type="submit"]{
+#user.login #contenair .submit input[type="submit"] {
 }
 
-#user.login #contenair .send{
+#user.login #contenair .send {
     float: left;
     padding-top: 8px;
 }
-#user.login #contenair .send a{
+
+#user.login #contenair .send a {
     color: #0066BC;
     text-decoration: none;
 }
-#user #powered{
+
+#user #powered {
     float: right;
     margin: 0px;
     padding: 0px;
     color: #CCC;
 }
-#user #powered a{
+
+#user #powered a {
     color: #CCC;
 }
-#user #powered a:hover{
+
+#user #powered a:hover {
     color: #0066BC;
 }
 
-
 /** userBundle */
-#user_list .user-list-info{
+#user_list .user-list-info {
     width: 300px;
     float: left;
     margin-right: 20px;
 }
-#user_list .user-list-info .avatar{
+
+#user_list .user-list-info .avatar {
     float: left;
 }
-#user_list .user-list-info .infos{
+
+#user_list .user-list-info .infos {
     float: left;
     padding-left: 20px;
 }
-#user_list .user-list-info a{
+
+#user_list .user-list-info a {
     text-decoration: none;
 }
 
+.user.show .card-orgs ul {
+   padding: 0;
+}
+.user.show .card-orgs ul li {
+    list-style: none;
+    float: left;
+    padding-left: 10px;
 
-#dashbord h3.homeTitle{
+}
+
+#dashbord h3.homeTitle {
     font-size: 15px;
     margin-left: 30px;
 }
 
-#sidebar-right .list{
+#sidebar .list {
     margin: 30px 0px;
-
-}
-#sidebar-right .list{ list-style-type: none; }
-#sidebar-right .list li, #settings  li{
-    margin-top: 10px;
-    width: 170px;
-}
-#sidebar-right .list li a.close{
-    float: right;
-    display: none;
-}
-#sidebar-right .list li:hover a.close{
-    display: block;
+    list-style: none;
 }
 
-#choose-organization{
+#choose-organization {
     padding: 20px;
     background: none repeat scroll 0 0 #F1F5FA;
     text-align: center;
 }
 
-
-
 /* Settings */
-.records_list{
+.records_list {
     width: 90%;
 }
+
 .records_list td li {
     float: left;
     margin-right: 20px;
 }
-
-/* Project */
-
-.project #sidebar-right .add_new_btn a.btn { width: 125px; }
-
-.form-block  #project_description {
-    height: 280px;
-    width: 100%;
-}
-.fieldset-block{
-    width: 45%;
-}
-
-/* Stories */
-
-ol.stories
-{
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-}
-
-.story_id
-{
-    width: 50px;
-    display: block;
-    float: left;
-    opacity: 0.5;
-}
-
-.story_project
-{
-    padding: 1px 5px;
-    border: 2px solid #444;
-    -moz-border-radius: 12px;
-    -webkit-border-radius: 12px;
-    margin-left: 5px;
-    font-size:0.8em;
-}
-
-.story_project a
-{
-    color: #444;
-    text-decoration: none;
-}
-
-.col
-{
-    width: 47.5%;
-}
-
-.col_left
-{
-    float: left;
-}
-
-.col_right
-{
-    float: right;
-}
-
-#scheduling {
-    margin: 0 15px;
-}
-
-#scheduling li.story
-{
-    font-size: 1em;
-}
-
 /*
     TimeSheet
 */
 
 #timesheet_week {
-  margin-bottom: 30px;
+    margin-bottom: 20px;
 }
-#timesheet_week a{
+
+#timesheet_week a {
     text-decoration: none;
     color: #000;
 }
@@ -362,7 +330,8 @@ ol.stories
     text-align: center;
     font-size: 12px;
 }
-#craTable th.first{
+
+#craTable th.first {
     text-align: left;
 }
 
@@ -398,43 +367,76 @@ ol.stories
     margin-right: 10px;
     width: 30px;
 }
-#craTable tr td div.cra_load{
+
+#craTable tr td div.cra_load {
     margin-top: 4px;
     display: block;
     font-size: 10px;
 }
-#craTable tr td input.cra_desc {  width: 45px; display: none; }
-#craTable tr td form { float: left;  margin: 0px;}
-#craTable tr td .cra { float: left; }
-#craTable tr td .show_cra { font-size: 10px; display: block; width: 30px; }
-#craTable tr td div.cra_load span.total{
+
+#craTable tr td input.cra_desc {
+    width: 45px;
+    display: none;
+}
+
+#craTable tr td form {
+    float: left;
+    margin: 0px;
+}
+
+#craTable tr td .cra {
+    float: left;
+}
+
+#craTable tr td .show_cra {
+    font-size: 10px;
+    display: block;
+    width: 30px;
+}
+
+#craTable tr td div.cra_load span.total {
     font-size: 8px;
 }
-#craTable tr td div.cra_load span.heures{
+
+#craTable tr td div.cra_load span.heures {
     font-size: 8px;
 }
-#craTable tr td div.cra_load a{
+
+#craTable tr td div.cra_load a {
     color: inherit;
     text-decoration: none;
 }
-#craTable tr td div.list{
+
+#craTable tr td div.list {
     display: none;
     position: relative;
 }
+
 #craTable tr td table {
     background-color: #FFFFFF;
     border: 1px solid #8CAFCA;
 
     position: absolute;
-    z-index: 1827;
+    z-index: 2;
     min-width: 500px;
 }
+
 #craTable tr td table tr td {
     height: 17px;
     font-size: 9px;
 }
-#craTable tr td table tr td span.carre { margin: auto; display: block; width: 15px; height: 15px; background-color: #0B5794; }
-#craTable tr td table tr td span.carre.yellow { background-color: #F7A922; }
+
+#craTable tr td table tr td span.carre {
+    margin: auto;
+    display: block;
+    width: 15px;
+    height: 15px;
+    background-color: #0B5794;
+}
+
+#craTable tr td table tr td span.carre.yellow {
+    background-color: #F7A922;
+}
 
 #craTable tr td table tr th a {
     color: white;
@@ -444,43 +446,122 @@ ol.stories
     background: none repeat scroll 0 0 #CCCCCC;
     height: 24px;
     width: 173px;
-    background-color:#fff;
-    border:1px solid #d0d0d0;
-    font-size:14px;
-    line-height:normal;
-    color:#606060;
-    resize:none;
-    border-radius:2px;
-    -moz-border-radius:2px;
-    -webkit-border-radius:2px;
-    box-shadow:inset 0 0 2px rgba(0, 0, 0, 0.12);
-    -moz-box-shadow:inset 0 0 2px rgba(0, 0, 0, 0.12);
-    -webkit-box-shadow:inset 0 0 2px rgba(0, 0, 0, 0.12);
+    background-color: #fff;
+    border: 1px solid #d0d0d0;
+    font-size: 14px;
+    line-height: normal;
+    color: #606060;
+    resize: none;
+    border-radius: 2px;
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.12);
+    -moz-box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.12);
+    -webkit-box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.12);
 }
+
 .slider .knob {
     background: none repeat scroll 0 0 #DDD;
     height: 24px;
     width: 24px;
 }
 
-.user.edit.avatar h1 small{ display: block; }
+.user.edit.avatar h1 small {
+    display: block;
+}
+
+.organization #sidebar h4, .project #sidebar h4 {
+    margin-top: 35px;
+    margin-bottom: 35px;
+    text-align: center;
+}
+
+.organization #sidebar a.btn, .project #sidebar a.btn {
+    margin-bottom: 5px;
+    display: block;
+}
+
+.organization.show #sidebar .list_membre, .project #sidebar .list_membre {
+    clear: both;
+}
+
+.organization.show #sidebar .list_membre li, .project #sidebar .list_membre li {
+    padding-bottom: 10px;
+}
+
+.organization.show #sidebar .list_membre ul li a span, .project #sidebar .list_membre ul li a span {
+    display: inline-block;
+    margin-left: 5px;
+}
+
 /* Organizations */
-.organization-add #organization{ width: 350px; float: left; }
-.organization-add #organization label, .organization.edit label { width: 100px; display: block; float: left; padding-top: 2px; font-weight: bold; }
-.organization-add #organization #organization_name{  }
-.organization-add .rest{ float: left; width: 60px; }
-.organization.show #page-title{  }
-.organization.show .action{ margin-top: 30px }
-.organization.show #sidebar-right h4{ padding: 20px 40px; }
-.organization.show .infos { clear: both; }
-.organization.show .infos li{ display: block; margin-bottom: 10px; }
-.organization.show .infos strong{ display: block; }
-.organization.show .infos .float-right{ margin-right: 25px; }
-.organization.show .infos .float-right span{ margin-right: 25px; }
-.organization.show .infos .float-right .nbr-project{ margin-bottom: 10px; }
-.organization.show #sidebar-right .list-project{ clear: both;  }
-.organization.show #sidebar-right .suite{ font-style: italic;  margin-left: 60px; margin-top: 30px; ; }
-.organization.show #sidebar-right .suite a { color: #484848; }
+.organization-add #organization {
+    width: 350px;
+    float: left;
+}
+
+.organization-add #organization label, .organization.edit label {
+    width: 100px;
+    display: block;
+    float: left;
+    padding-top: 2px;
+    font-weight: bold;
+}
+
+.organization-add #organization #organization_name {
+}
+
+.organization-add .rest {
+    float: left;
+    width: 60px;
+}
+
+.organization.show #page-title {
+}
+
+.organization.show .action {
+    margin-top: 30px
+}
+
+.organization.show .infos {
+    clear: both;
+}
+
+.organization.show .infos li {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.organization.show .infos strong {
+    display: block;
+}
+
+.organization.show .infos .float-right {
+    margin-right: 25px;
+}
+
+.organization.show .infos .float-right span {
+    margin-right: 25px;
+}
+
+.organization.show .infos .float-right .nbr-project {
+    margin-bottom: 10px;
+}
+
+.organization.show #sidebar .list-project {
+    clear: both;
+}
+
+.organization.show #sidebar .suite {
+    font-style: italic;
+    margin-left: 60px;
+    margin-top: 30px;;
+}
+
+.organization.show #sidebar .suite a {
+    color: #484848;
+}
+
 .organization.show #organization-list-project h3 {
     margin: 35px 50px 60px 50px;
     height: 0;
@@ -489,6 +570,7 @@ ol.stories
     font-weight: normal;
     border-bottom: 1px solid #ddd;
 }
+
 .organization.show #organization-list-project h3 .inner {
     display: inline-block;
     position: relative;
@@ -496,6 +578,7 @@ ol.stories
     padding: 0 5px;
     background: #fff;
 }
+
 .organization.show #organization-list-project ul li {
     float: left;
     width: 300px;
@@ -504,38 +587,103 @@ ol.stories
     padding: 45px;
 }
 
-.organization.show .modal-body{ text-align: center; }
-.organization.edit form #organization div{ clear: both; }
-.organization.edit form .rest{ margin-top:  25px; }
-.organization.edit #sidebar-right .list_membre  li img{ width: 28px; height: 28px; display: inline-block; margin-right: 10px; }
+.organization.show .modal-body {
+    text-align: center;
+}
 
+.organization.edit form #organization div {
+    clear: both;
+}
+
+.organization.edit form .rest {
+    margin-top: 25px;
+}
+
+.organization.edit #sidebar .list_membre li img {
+    width: 28px;
+    height: 28px;
+    display: inline-block;
+    margin-right: 10px;
+}
 
 /* end Organizations */
 
-
 /* Project */
-.show #content  .actions{ float: right; margin-top: 30px;}
-
+.show #content .actions {
+    float: right;
+    margin-top: 30px;
+}
 
 .project.dashboard .list li span {
     font-size: 10px;
 }
+
 .project #content form .formtextField #project_beginning #project_beginning_time,
-.project #content form .formtextField #project_ending #project_ending_time{ width: 50px; }
+.project #content form .formtextField #project_ending #project_ending_time {
+    width: 50px;
+}
 
-.project #content form .formtextField #project_avancement{ display: none;  }
+.project #content form .formtextField #project_avancement {
+    display: none;
+}
 
-.project.show #content  .mod-head{  clear: both; background: url("/bundles/tempomain/images/head_bg.png") repeat-x scroll left center transparent; margin: 0 80px 25px 25px; padding: 0; }
-.project.show #content h3{ display: inline; font-weight: normal; margin: 0; padding: 0 8px 0 0; color: #292929; font-size: 19px; background-color: #FFF; }
-.project.show #content ul.item-details{ display: inline-block; vertical-align: top; width: 45%; list-style-type: none; margin: 0 0 25px 30px; padding: 0; }
-.project.show #content ul.item-details dl { display: table;  margin: 0 0 2px;  width: 100%; }
-.project.show #content ul.item-details dl dt { color: #666666; display: table-cell; vertical-align: top; width: 16%; font-size: 13px; }
-.project.show #content ul.item-details dl dd {   display: table-cell; vertical-align: top; }
-.project.show #content .mod-content .description{ margin: 10px; clear: both; }
-.project.show #content .project-children { margin-left: 25px; }
+.project.show #content .mod-head {
+    clear: both;
+    background: url("/bundles/tempomain/images/head_bg.png") repeat-x scroll left center transparent;
+    margin: 0 80px 25px 25px;
+    padding: 0;
+}
+
+.project.show #content h3 {
+    display: inline;
+    font-weight: normal;
+    margin: 0;
+    padding: 0 8px 0 0;
+    color: #292929;
+    font-size: 19px;
+    background-color: #FFF;
+}
+
+.project.show #content ul.item-details {
+    display: inline-block;
+    vertical-align: top;
+    width: 45%;
+    list-style-type: none;
+    margin: 0 0 25px 30px;
+    padding: 0;
+}
+
+.project.show #content ul.item-details dl {
+    display: table;
+    margin: 0 0 2px;
+    width: 100%;
+}
+
+.project.show #content ul.item-details dl dt {
+    color: #666666;
+    display: table-cell;
+    vertical-align: top;
+    width: 16%;
+    font-size: 13px;
+}
+
+.project.show #content ul.item-details dl dd {
+    display: table-cell;
+    vertical-align: top;
+}
+
+.project.show #content .mod-content .description {
+    margin: 10px;
+    clear: both;
+}
+
+.project.show #content .project-children {
+    margin-left: 25px;
+}
+
 .project.show #content .project-children .children {
     display: inline-block;
-    background-color: rgba(219,218,206,0.3);
+    background-color: rgba(219, 218, 206, 0.3);
     height: 123px;
     margin: 0 12px 20px 0;
     padding: 0;
@@ -547,51 +695,114 @@ ol.stories
     -moz-border-radius: 3px;
     -webkit-border-radius: 3px;
 }
-.project.show #content .project-children .children{
+
+.project.show #content .project-children .children {
     height: 72px;
     padding: 8px 7px 0 20px;
 }
-.project.show #sidebar-right .list_membre li img{ width: 28px; height: 28px; display: inline-block; margin-right: 10px; }
+
+.project.show #sidebar .list_membre li img {
+    width: 28px;
+    height: 28px;
+    display: inline-block;
+    margin-right: 10px;
+}
+
 .project.show #team div label {
     margin-right: 30px;
 }
+
 .project.show #team {
     float: left;
     margin-top: 2px;
 }
+
 .project.show #add_membre .rest {
     float: left;
     margin-left: 20px;
 }
-.project.show .action { margin-bottom: 16px; }
 
-.project.edit #content #center form .formtextField input#project_avancement{ display: none; background: none; border: none; border-radius: none; box-shadow: none; border-left: none;  padding: 0; height: 24px;  }
-.project.edit #content form .formtextField #slider #knob_value, .project.new #content form .formtextField #slider #knob_value{ margin-top: 1px; font-size: 10px; }
+.project.show .action {
+    margin-bottom: 16px;
+}
+
+.project.edit .form-block, .project.new .form-block #project_description {
+    height: 280px;
+    width: 100%;
+}
+
+.project.edit #content #center form .formtextField input#project_avancement {
+    display: none;
+    background: none;
+    border: none;
+    border-radius: none;
+    box-shadow: none;
+    border-left: none;
+    padding: 0;
+    height: 24px;
+}
+
+.project.edit #content form .formtextField #slider #knob_value, .project.new #content form .formtextField #slider #knob_value {
+    margin-top: 1px;
+    font-size: 10px;
+}
+
 .project.edit #content form .formtextField #slider .ui-slider-handle, .project.new #content form .formtextField #slider .ui-slider-handle {
     background: none repeat scroll 0 0 #DDD;
     margin-top: 3px;
     height: 24px;
     width: 24px;
 }
-.project.edit #content #center form .formtextField #slider span{ padding-top: 10px; display: inline-block; font-size: 11px; }
+
+.project.edit #content #center form .formtextField #slider span {
+    padding-top: 10px;
+    display: inline-block;
+    font-size: 11px;
+}
+
 .project.edit #content .actions {
     margin-top: 35px;
 }
+
 .project.edit #content #project_form {
     clear: both;
 }
-.project .formtextField #slider{ float: left; }
-.project .formtextField input[type="date"]{ width: 200px; }
+
+.project .formtextField #slider {
+    float: left;
+}
+
+.project .formtextField input[type="date"] {
+    width: 200px;
+}
+
 .project #organization .head .btn {
     margin-top: 5px;
 }
-.project #organization .head h4 { margin-left: 10px; }
 
-.timesheet.list #sidebar-right .form-horizontal .control-group { margin-top: 10px;  }
-.timesheet.list #sidebar-right .form-horizontal .control-label { text-align: left; width: 50px; padding-left: 20px;  }
-.timesheet.list #sidebar-right .form-horizontal #select-user { width: 130px;  }
-.timesheet.list #sidebar-right .form-horizontal .btn{ margin-left: 20px; }
+.project #organization .head h4 {
+    margin-left: 10px;
+}
+
+.timesheet.list #sidebar .form-horizontal .control-group {
+    margin-top: 10px;
+}
+
+.timesheet.list #sidebar .form-horizontal .control-label {
+    text-align: left;
+    width: 50px;
+    padding-left: 20px;
+}
+
+.timesheet.list #sidebar .form-horizontal #select-user {
+    width: 130px;
+}
+
+.timesheet.list #sidebar .form-horizontal .btn {
+    margin-left: 20px;
+}
 
 /* Help */
 
-.help{ }
+.help {
+}
