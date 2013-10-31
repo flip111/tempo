@@ -29,6 +29,13 @@ class Activity
     private $provider;
 
     /**
+     * @var \DateTime
+     *
+     * @ORM\Column(type="datetime")
+     */
+    private $datetime;
+
+    /**
      * @var string
      *
      * @ORM\Column(type="string", length=255)
@@ -41,6 +48,11 @@ class Activity
      * @ORM\Column(type="array")
      */
     private $parameters;
+
+    public function __toString()
+    {
+        return $this->getMessage();
+    }
 
     /**
      * Get id
@@ -119,5 +131,28 @@ class Activity
     public function getParameters()
     {
         return $this->parameters;
+    }
+
+    /**
+     * Set datetime
+     *
+     * @param \DateTime $datetime
+     * @return Activity
+     */
+    public function setDatetime($datetime)
+    {
+        $this->datetime = $datetime;
+
+        return $this;
+    }
+
+    /**
+     * Get datetime
+     *
+     * @return \DateTime 
+     */
+    public function getDatetime()
+    {
+        return $this->datetime;
     }
 }

@@ -12,6 +12,7 @@
 namespace Tempo\Bundle\ProjectBundle\Model;
 
 use Doctrine\Common\Collections\ArrayCollection;
+use Tempo\Bundle\ActivityBundle\Entity\ActivityProvider;
 
 /**
  * Project Model
@@ -126,6 +127,11 @@ class Project implements ProjectInterface
      */
     protected $parents;
 
+    /**
+     * @var Collection
+     */
+    protected $activityProviders;
+
     public function __construct()
     {
         $this->isActive = true;
@@ -133,6 +139,7 @@ class Project implements ProjectInterface
         $this->timesheets = new ArrayCollection();
         $this->children = new ArrayCollection();
         $this->parents = new ArrayCollection();
+        $this->activityProviders = new ArrayCollection();
     }
 
     public function __toString()
@@ -581,6 +588,32 @@ class Project implements ProjectInterface
         }
 
         return $this->parents;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function addActivityProvider(ActivityProvider $activityProvider)
+    {
+        $this->activityProviders[] = $activityProvider;
+
+        $activityProvider->setProject($this);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getActivityProviders()
+    {
+        return $this->activityProviders;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setActivityProviders($activityProviders)
+    {
+        $this->activityProviders = $activityProviders;
     }
 
 }
