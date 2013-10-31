@@ -1,6 +1,10 @@
 parameters:
     tempo.activity.provider.github.class: Tempo\Bundle\ActivityBundle\Providers\GithubProvider
+    tempo.activity.provider.trello.class: Tempo\Bundle\ActivityBundle\Providers\TrelloProvider
 
 services:
     tempo.activity.provider.github:
         class: "%tempo.activity.provider.github.class%"
+
+    tempo.activity.provider.trello:
+        class: "%tempo.activity.provider.trello.class%"
