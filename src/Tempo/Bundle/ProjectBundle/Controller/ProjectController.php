@@ -14,6 +14,7 @@ namespace Tempo\Bundle\ProjectBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
+use Tempo\Bundle\ActivityBundle\Manager\ActivityManager;
 use Tempo\Bundle\ProjectBundle\Entity\Project;
 use Tempo\Bundle\ProjectBundle\Form\Type\ProjectType;
 use Tempo\Bundle\ProjectBundle\Form\Type\TeamType;
@@ -30,7 +31,6 @@ class ProjectController extends Controller
      */
     public function dashboardAction()
     {
-
         /* set breadcrumb */
         $breadcrumb  = $this->get('tempo_main.breadcrumb');
         $breadcrumb->addChild('Project');
@@ -38,7 +38,9 @@ class ProjectController extends Controller
         $manager = $this->container->get('tempo_project.manager.organization');
         $organizations = $manager->findAllByUser($this->getUser()->getId());
 
-        return $this->render('TempoProjectBundle:Project:dashboard.html.twig', array('organizations' => $organizations) );
+        return $this->render('TempoProjectBundle:Project:dashboard.html.twig', array(
+            'organizations' => $organizations
+        ));
     }
 
     /**
@@ -77,10 +79,14 @@ class ProjectController extends Controller
 
         $teamForm = $this->createForm(new TeamType());
 
+        /** @var ActivityManager $activityManager */
+        $activityManager = $this->get('tempo.activity.manager');
+
         return $this->render('TempoProjectBundle:Project:show.html.twig', array(
             'teamForm'      => $teamForm->createView(),
-            'project'      => $project,
-            'csrfToken'      => $csrfToken,
+            'project'       => $project,
+            'csrfToken'     => $csrfToken,
+            'activities'    => $activityManager->getByProject($project)
         ));
     }
 

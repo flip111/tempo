@@ -13,6 +13,7 @@
 namespace Tempo\Bundle\ActivityBundle\Entity;
 
 use Doctrine\ORM\EntityRepository;
+use Tempo\Bundle\ProjectBundle\Entity\Project;
 
 /**
  * ActivityRepository
@@ -22,4 +23,8 @@ use Doctrine\ORM\EntityRepository;
  */
 class ActivityRepository extends EntityRepository
 {
+    public function findByProject(Project $project)
+    {
+        return array();
+    }
 }

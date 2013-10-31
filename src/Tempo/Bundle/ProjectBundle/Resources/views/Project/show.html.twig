@@ -1,77 +1,96 @@
 {% extends "TempoMainBundle::Layout/web.html.twig" %}
 {% block bodyClass %}project show{% endblock %}
+
 {% set sidebar = true %}
 {% block content %}
 
     <h1 id="page-title" class="col-md-6">{{ project.name }}</h1>
 
-    <div class="actions col-md-3">
+    <div class="col-md-3">
         <a class="btn btn-xs btn-primary" href="{{ path('project_new', { 'parent' : project.id, 'organization': project.organization.slug }) }}"> <span class="glyphicon glyphicon-plus"></span> {{ 'project.title_subprojects'|trans([], 'TempoProject') }}</a>
         <a class="btn btn-xs btn-info " href="{{ path('project_edit', { 'slug': project.slug }) }}"> <span class="glyphicon glyphicon-edit"></span> Edit</a>
         <a class="btn btn-xs btn-danger" data-toggle="modal" data-target="#" data-title="Delete project" href="#delete_project"> <span class="glyphicon glyphicon-trash"></span> Delete</a>
     </div>
 
-    <div class="mod-head">
-        <h3>Description </h3>
-    </div>
-    <div class="mod-content clearfix">
-
-        <ul class="item-details col-md-6">
-            <li>
-                <dl>
-                    <dt>Code:</dt>
-                    <dd>{{ project.code }}</dd>
-                </dl>
-                <dl>
-                    <dt>Created</dt>
-                    <dd>{{ datetime_diff(project.created) }} </dd>
-                </dl>
-                <dl>
-                    <dt>Updated</dt>
-                    <dd>{{ datetime_diff(project.updated) }}</dd>
-                </dl>
-            </li>
-
+    <div class="col-md-9">
+        <ul class="nav nav-tabs" id="myTab">
+            <li class="active"><a href="#project" data-toggle="tab">Project</a></li>
+            <li><a href="#sub-project" data-toggle="tab">Sub-Projects</a></li>
+            <li><a href="#activity" data-toggle="tab">Activity</a></li>
         </ul>
-        <ul class="item-details col-md-6">
-            <li>
-                <dl>
-                    <dt>Organization:</dt>
-                    <dd>{{ project.organization }}</dd>
-                </dl>
-                <dl>
-                    <dt>Début</dt>
-                    <dd> {{ datetime_diff(project.created, null, false) }} </dd>
-                </dl>
-                <dl>
-                    <dt>Fin</dt>
-                    <dd>{{ datetime_diff(project.updated, null, false) }}</dd>
-                </dl>
-            </li>
 
-        </ul>
-        <blockquote class="description">
-            {{ project.description|raw }}
-        </blockquote>
-    </div>
+        <div class="tab-content">
+            <div class="tab-pane active" id="project">
+                <div class="mod-head">
+                    <h3>Description </h3>
+                </div>
+                <div class="mod-content clearfix">
 
-    <div class="mod-head">
-        <h3> {{ 'project.title_subprojects'|trans([], 'TempoProject') }} </h3>
-    </div>
+                    <ul class="item-details col-md-6">
+                        <li>
+                            <dl>
+                                <dt>Code:</dt>
+                                <dd>{{ project.code }}</dd>
+                            </dl>
+                            <dl>
+                                <dt>Created</dt>
+                                <dd>{{ datetime_diff(project.created) }} </dd>
+                            </dl>
+                            <dl>
+                                <dt>Updated</dt>
+                                <dd>{{ datetime_diff(project.updated) }}</dd>
+                            </dl>
+                        </li>
 
-    <div class="project-children">
-        {% for children in project.children %}
-            <div class="children"><a href="{{ path('project_show', { 'slug' : children.slug } ) }}">{{ children.name }}</a> </div>
-        {% endfor %}
-    </div>
+                    </ul>
+                    <ul class="item-details col-md-6">
+                        <li>
+                            <dl>
+                                <dt>Organization:</dt>
+                                <dd>{{ project.organization }}</dd>
+                            </dl>
+                            <dl>
+                                <dt>Début</dt>
+                                <dd> {{ datetime_diff(project.created, null, false) }} </dd>
+                            </dl>
+                            <dl>
+                                <dt>Fin</dt>
+                                <dd>{{ datetime_diff(project.updated, null, false) }}</dd>
+                            </dl>
+                        </li>
+
+                    </ul>
+                    <blockquote class="description">
+                        {{ project.description|raw }}
+                    </blockquote>
+                </div>
+            </div>
+            <div class="tab-pane" id="sub-project">
+                <div class="mod-head">
+                    <h3> {{ 'project.title_subprojects'|trans([], 'TempoProject') }} </h3>
+                </div>
+
+                <div class="project-children">
+                    {% for children in project.children %}
+                        <div class="children"><a href="{{ path('project_show', { 'slug' : children.slug } ) }}">{{ children.name }}</a> </div>
+                    {% endfor %}
+                </div>
 
 
-    <div id="delete_project" style="display: none">
-        {{ 'project.msg_delete'|trans([], 'TempoProject') }}
+                <div id="delete_project" style="display: none">
+                    {{ 'project.msg_delete'|trans([], 'TempoProject') }}
+                </div>
+            </div>
+            <div class="tab-pane" id="activity">
+
+            </div>
+        </div>
     </div>
 
 {% endblock %}
+
 {% block right %}
+<ul class="record_actions">
 
     <h4>{{ 'organization.team'|trans({},'TempoProject') }} </h4>
 
@@ -84,6 +103,5 @@
     <div class="list_membre">
         {% include 'TempoProjectBundle:Team:list.html.twig' with { 'users': project.team } %}
     </div>
-
-
+</ul>
 {% endblock %}
