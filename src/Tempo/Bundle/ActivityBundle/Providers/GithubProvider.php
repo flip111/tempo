@@ -30,10 +30,10 @@ class GithubProvider implements ProviderInterface
             $activity = new Activity();
             $activity->setProvider('github');
             $activity->setMessage('tempo.activity.provider.github.commit');
-            $activity->setParameters([
+            $activity->setParameters(array(
                 "repository" => $payload->repository,
                 "commit" => $commit
-            ]);
+            ));
 
             $activities[] = $activity;
         }
