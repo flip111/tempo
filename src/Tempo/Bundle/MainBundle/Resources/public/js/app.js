@@ -7,6 +7,8 @@
 * file that was distributed with this source code.
 */
 
+'use strict';
+
 var Tempo = Tempo || { 'settings': {}, 'notification' : {}, 'behavior' : {} };
 /**
  *
@@ -18,8 +20,7 @@ Tempo.behavior = {
     statics: {},
     initialized: {},
 
-    create: function(name, control_function)
-    {
+    create: function(name, control_function) {
         this.behaviors[name] = control_function;
         this.statics[name] = {};
     },
@@ -54,7 +55,40 @@ Tempo.behavior = {
     }
 };
 
+Tempo.provide = function (name, obj, force) {
+    if (!name) {
+        throw "Give a name for Dime.provide(name)";
+    }
+    var parent = this;
+
+    var parts = name.split('.');
+    if (parts) {
+        for (var i = 0; i < parts.length; i++) {
+            if (!parent[parts[i]]) {
+                if (i >= parts.length - 1 && obj) {
+                    parent[parts[i]] = obj;
+                } else {
+                    parent[parts[i]] = {};
+                }
+            }
+            parent = parent[parts[i]];
+        }
+
+        if (force) {
+            parent = obj;
+        }
+    }
+
+    return parent;
+},
+
+
+
 $(function() {
+    Tempo.run =  function() {
+        Tempo.log('Starting application', 'INFO');
+
+    };
     Tempo.log = function() {
         var msg = '[Tempo] ' + Array.prototype.join.call(arguments,', ');
         if (window.console && window.console.log) {
@@ -101,5 +135,29 @@ $(function() {
             e.preventDefault();
             window.location.href = redirect;
         });
+
     });
+
+    Tempo.provide('router', function() {
+        Backbone.Router.extend({
+            el:undefined,
+            $el:undefined,
+            currentRoute:undefined,
+            currentView:undefined,
+            navigate:function (fragment, options) {
+                this.currentRoute = fragment;
+                return Backbone.Router.prototype.navigate.call(this, fragment, options);
+            },
+            route: function(route, name, callback) {
+                Tempo.log("Add route [" + route + "]");
+                return Backbone.Router.prototype.route.call(this, route, name, callback);
+            },
+            setElement:function (el) {
+                this.el = el;
+                this.$el = $(this.el);
+            }
+        });
+    });
+    Tempo.run();
+
 });

@@ -7,6 +7,8 @@
         "jquery-ui": "latest",
         "moment": "latest",
         "modernizr": "latest",
-        "tinycon": "latest"
+        "tinycon": "latest",
+        "backbone": "latest",
+        "underscore": "latest"
     }
 }

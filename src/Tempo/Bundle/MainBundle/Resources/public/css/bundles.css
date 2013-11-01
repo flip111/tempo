@@ -627,9 +627,12 @@ table.table-striped tbody .actions .edit {
     display: none;
 }
 
+.project.show #content #project-tab {
+    margin-bottom: 40px;
+}
+
 .project.show #content .mod-head {
     clear: both;
-    background: url("/bundles/tempomain/images/head_bg.png") repeat-x scroll left center transparent;
     margin: 0 80px 25px 25px;
     padding: 0;
 }

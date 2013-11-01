@@ -34,9 +34,9 @@
         "twig/extensions": "1.0.*",
         "knplabs/knp-snappy-bundle": "dev-master",
 
-        "frequence-web/calendr-bundle": "dev-master",
         "friendsofsymfony/rest-bundle": "1.0.*@dev",
         "friendsofsymfony/user-bundle": "dev-master",
+        "wisembly/elephant.io": "dev-master",
         "ikimea/browser": "dev-master",
         "yohang/calendr": "1.*",
         "egeloen/ckeditor-bundle": "2.*",

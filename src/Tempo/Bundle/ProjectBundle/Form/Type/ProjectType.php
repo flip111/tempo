@@ -64,7 +64,7 @@ class ProjectType extends AbstractType
                 'label' => 'project.form.label.organization',
                 'class' => 'TempoProjectBundle:Organization',
                 'query_builder' => function(OrganizationRepository $er) {
-                    return $er->findOrganizationByUser(1);
+                    return $er->findOrganizationByUser($options['user_id']);
                 }
             ))
         ;

@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "428469429bd3789d79b24e696241108a",
+    "hash": "b8fb1ceba0fed06e8a0c18da4d136f39",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -674,12 +674,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/doctrine2.git",
-                "reference": "0f3679f034e474575ae9c2182ebd1abe8e492469"
+                "reference": "e82e7147fa5b7bbb5c9315885e5905521c00bc29"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/doctrine2/zipball/0f3679f034e474575ae9c2182ebd1abe8e492469",
-                "reference": "0f3679f034e474575ae9c2182ebd1abe8e492469",
+                "url": "https://api.github.com/repos/doctrine/doctrine2/zipball/e82e7147fa5b7bbb5c9315885e5905521c00bc29",
+                "reference": "e82e7147fa5b7bbb5c9315885e5905521c00bc29",
                 "shasum": ""
             },
             "require": {
@@ -741,7 +741,7 @@
                 "database",
                 "orm"
             ],
-            "time": "2013-10-26 09:17:34"
+            "time": "2013-10-29 08:25:13"
         },
         {
             "name": "egeloen/ckeditor-bundle",
@@ -847,59 +847,18 @@
             "time": "2013-08-27 14:17:45"
         },
         {
-            "name": "frequence-web/calendr-bundle",
-            "version": "dev-master",
-            "target-dir": "FrequenceWeb/Bundle/CalendRBundle",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/frequence-web/FrequenceWebCalendRBundle.git",
-                "reference": "4f4558a47033a54c37797e8b54fbda3a6bc26200"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/frequence-web/FrequenceWebCalendRBundle/zipball/4f4558a47033a54c37797e8b54fbda3a6bc26200",
-                "reference": "4f4558a47033a54c37797e8b54fbda3a6bc26200",
-                "shasum": ""
-            },
-            "require": {
-                "symfony/framework-bundle": "2.*",
-                "yohang/calendr": ">=1.0"
-            },
-            "type": "symfony-bundle",
-            "autoload": {
-                "psr-0": {
-                    "FrequenceWeb\\Bundle\\CalendRBundle": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Yohan Giarelli",
-                    "homepage": "http://github.com/yohang"
-                }
-            ],
-            "description": "This bundle provides an integration of the CalendR library",
-            "keywords": [
-                "calendar"
-            ],
-            "time": "2013-02-03 17:15:03"
-        },
-        {
             "name": "friendsofsymfony/rest-bundle",
             "version": "dev-master",
             "target-dir": "FOS/RestBundle",
             "source": {
                 "type": "git",
                 "url": "https://github.com/FriendsOfSymfony/FOSRestBundle.git",
-                "reference": "eda156bc8341ecf17ff712d5cbb5808cd6bf3687"
+                "reference": "0595e424359e3e2b3a658c813ae070e6b55ff6ff"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSRestBundle/zipball/eda156bc8341ecf17ff712d5cbb5808cd6bf3687",
-                "reference": "eda156bc8341ecf17ff712d5cbb5808cd6bf3687",
+                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSRestBundle/zipball/0595e424359e3e2b3a658c813ae070e6b55ff6ff",
+                "reference": "0595e424359e3e2b3a658c813ae070e6b55ff6ff",
                 "shasum": ""
             },
             "require": {
@@ -961,7 +920,7 @@
             "keywords": [
                 "rest"
             ],
-            "time": "2013-10-28 11:05:40"
+            "time": "2013-10-28 13:12:59"
         },
         {
             "name": "friendsofsymfony/user-bundle",
@@ -1038,12 +997,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/l3pp4rd/DoctrineExtensions.git",
-                "reference": "01bb542cb35c373025dd609602098b8fbab04dd5"
+                "reference": "395d0f909facf2ba7937cfa9802d62ca729017d1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/l3pp4rd/DoctrineExtensions/zipball/01bb542cb35c373025dd609602098b8fbab04dd5",
-                "reference": "01bb542cb35c373025dd609602098b8fbab04dd5",
+                "url": "https://api.github.com/repos/l3pp4rd/DoctrineExtensions/zipball/395d0f909facf2ba7937cfa9802d62ca729017d1",
+                "reference": "395d0f909facf2ba7937cfa9802d62ca729017d1",
                 "shasum": ""
             },
             "require": {
@@ -1110,7 +1069,7 @@
                 "tree",
                 "uploadable"
             ],
-            "time": "2013-10-27 20:02:45"
+            "time": "2013-10-29 14:22:34"
         },
         {
             "name": "ikimea/browser",
@@ -1728,12 +1687,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Seldaek/monolog.git",
-                "reference": "0f3c054dff866aa687ab07572b731fb2ba32e703"
+                "reference": "68a4af953e21ad4cfdfe8719cc17171915b1af78"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/0f3c054dff866aa687ab07572b731fb2ba32e703",
-                "reference": "0f3c054dff866aa687ab07572b731fb2ba32e703",
+                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/68a4af953e21ad4cfdfe8719cc17171915b1af78",
+                "reference": "68a4af953e21ad4cfdfe8719cc17171915b1af78",
                 "shasum": ""
             },
             "require": {
@@ -1783,7 +1742,7 @@
                 "logging",
                 "psr-3"
             ],
-            "time": "2013-10-28 09:41:17"
+            "time": "2013-10-31 21:21:31"
         },
         {
             "name": "mopa/bootstrap-bundle",
@@ -1905,12 +1864,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/whiteoctober/Pagerfanta.git",
-                "reference": "330905b53510f6bb494cbe85491fe78c981d8be0"
+                "reference": "a92f61054cba16559ce4af0f7dec49b1c72b1ae3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/whiteoctober/Pagerfanta/zipball/330905b53510f6bb494cbe85491fe78c981d8be0",
-                "reference": "330905b53510f6bb494cbe85491fe78c981d8be0",
+                "url": "https://api.github.com/repos/whiteoctober/Pagerfanta/zipball/a92f61054cba16559ce4af0f7dec49b1c72b1ae3",
+                "reference": "a92f61054cba16559ce4af0f7dec49b1c72b1ae3",
                 "shasum": ""
             },
             "require": {
@@ -1959,7 +1918,7 @@
                 "paginator",
                 "paging"
             ],
-            "time": "2013-10-25 11:45:08"
+            "time": "2013-10-28 22:58:35"
         },
         {
             "name": "psr/log",
@@ -2590,12 +2549,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/symfony.git",
-                "reference": "c1247a20542886611be132ef6e6543b9703764cb"
+                "reference": "cac4aaa4ee1286c2cdb68491f5a610457653b3ea"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/symfony/zipball/c1247a20542886611be132ef6e6543b9703764cb",
-                "reference": "c1247a20542886611be132ef6e6543b9703764cb",
+                "url": "https://api.github.com/repos/symfony/symfony/zipball/cac4aaa4ee1286c2cdb68491f5a610457653b3ea",
+                "reference": "cac4aaa4ee1286c2cdb68491f5a610457653b3ea",
                 "shasum": ""
             },
             "require": {
@@ -2690,7 +2649,7 @@
             "keywords": [
                 "framework"
             ],
-            "time": "2013-10-26 07:52:48"
+            "time": "2013-10-31 15:59:00"
         },
         {
             "name": "twig/extensions",
@@ -2745,12 +2704,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/fabpot/Twig.git",
-                "reference": "0294a1395b3d698b277084667c073ad51320baa8"
+                "reference": "726a40a1b407c6f2ae675a25dcb24b8ce024559a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/fabpot/Twig/zipball/0294a1395b3d698b277084667c073ad51320baa8",
-                "reference": "0294a1395b3d698b277084667c073ad51320baa8",
+                "url": "https://api.github.com/repos/fabpot/Twig/zipball/726a40a1b407c6f2ae675a25dcb24b8ce024559a",
+                "reference": "726a40a1b407c6f2ae675a25dcb24b8ce024559a",
                 "shasum": ""
             },
             "require": {
@@ -2759,7 +2718,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.14-dev"
+                    "dev-master": "1.15-dev"
                 }
             },
             "autoload": {
@@ -2786,7 +2745,7 @@
             "keywords": [
                 "templating"
             ],
-            "time": "2013-10-28 10:44:48"
+            "time": "2013-10-31 12:37:55"
         },
         {
             "name": "white-october/pagerfanta-bundle",
@@ -2795,18 +2754,22 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/whiteoctober/WhiteOctoberPagerfantaBundle.git",
-                "reference": "bbc8b585de9354ab020e5e3f1350df4a2c53bc91"
+                "reference": "8371fd2c040df491ac3094fa27697a71accf958c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/whiteoctober/WhiteOctoberPagerfantaBundle/zipball/bbc8b585de9354ab020e5e3f1350df4a2c53bc91",
-                "reference": "bbc8b585de9354ab020e5e3f1350df4a2c53bc91",
+                "url": "https://api.github.com/repos/whiteoctober/WhiteOctoberPagerfantaBundle/zipball/8371fd2c040df491ac3094fa27697a71accf958c",
+                "reference": "8371fd2c040df491ac3094fa27697a71accf958c",
                 "shasum": ""
             },
             "require": {
                 "pagerfanta/pagerfanta": "1.0.*",
-                "symfony/framework-bundle": "~2.1",
-                "symfony/property-access": "~2.2"
+                "symfony/framework-bundle": "~2.2",
+                "symfony/property-access": "~2.2",
+                "symfony/twig-bundle": "~2.2"
+            },
+            "require-dev": {
+                "symfony/symfony": "~2.2"
             },
             "type": "symfony-bundle",
             "extra": {
@@ -2835,7 +2798,7 @@
                 "page",
                 "paging"
             ],
-            "time": "2013-10-25 13:38:21"
+            "time": "2013-10-31 11:28:49"
         },
         {
             "name": "willdurand/negotiation",
@@ -2886,6 +2849,46 @@
                 "negotiation"
             ],
             "time": "2013-10-21 15:15:05"
+        },
+        {
+            "name": "wisembly/elephant.io",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Wisembly/elephant.io.git",
+                "reference": "d6087bf32b6b9aaf2512fde637849df1a00c047d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Wisembly/elephant.io/zipball/d6087bf32b6b9aaf2512fde637849df1a00c047d",
+                "reference": "d6087bf32b6b9aaf2512fde637849df1a00c047d",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "type": "lib",
+            "autoload": {
+                "psr-0": {
+                    "ElephantIO": "lib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL"
+            ],
+            "authors": [
+                {
+                    "name": "Ludovic Barreca"
+                }
+            ],
+            "description": "Send events to socket.io though PHP",
+            "keywords": [
+                "Socket.io",
+                "nodejs",
+                "websocket"
+            ],
+            "time": "2013-09-10 12:02:19"
         },
         {
             "name": "yohang/calendr",
@@ -3081,12 +3084,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Behat/Mink.git",
-                "reference": "8d0458afb33d366d361a041a009be3fcaf880f05"
+                "reference": "b775d021836f97665f245d533e6b5dc4e9845c53"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Behat/Mink/zipball/8d0458afb33d366d361a041a009be3fcaf880f05",
-                "reference": "8d0458afb33d366d361a041a009be3fcaf880f05",
+                "url": "https://api.github.com/repos/Behat/Mink/zipball/b775d021836f97665f245d533e6b5dc4e9845c53",
+                "reference": "b775d021836f97665f245d533e6b5dc4e9845c53",
                 "shasum": ""
             },
             "require": {
@@ -3128,7 +3131,7 @@
                 "testing",
                 "web"
             ],
-            "time": "2013-09-12 16:08:40"
+            "time": "2013-10-31 18:45:53"
         },
         {
             "name": "behat/mink-browserkit-driver",
@@ -3187,16 +3190,16 @@
         },
         {
             "name": "behat/mink-extension",
-            "version": "2.0.x-dev",
+            "version": "1.3.x-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Behat/MinkExtension.git",
-                "reference": "ff87f2abe3ea89c280280ea33a7070140bb66652"
+                "reference": "253d919b420866008054fc3c0f94f09df05e51ed"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Behat/MinkExtension/zipball/ff87f2abe3ea89c280280ea33a7070140bb66652",
-                "reference": "ff87f2abe3ea89c280280ea33a7070140bb66652",
+                "url": "https://api.github.com/repos/Behat/MinkExtension/zipball/253d919b420866008054fc3c0f94f09df05e51ed",
+                "reference": "253d919b420866008054fc3c0f94f09df05e51ed",
                 "shasum": ""
             },
             "require": {
@@ -3233,7 +3236,7 @@
                 "test",
                 "web"
             ],
-            "time": "2013-09-25 12:32:58"
+            "time": "2013-10-29 11:11:35"
         },
         {
             "name": "behat/mink-goutte-driver",
@@ -3573,12 +3576,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/fabpot/Goutte.git",
-                "reference": "aea51354c70e1244d887c54a12e49cd6aa41beb4"
+                "reference": "6db1a02449c82f5d7957c5be9d43389306b7468e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/fabpot/Goutte/zipball/aea51354c70e1244d887c54a12e49cd6aa41beb4",
-                "reference": "aea51354c70e1244d887c54a12e49cd6aa41beb4",
+                "url": "https://api.github.com/repos/fabpot/Goutte/zipball/6db1a02449c82f5d7957c5be9d43389306b7468e",
+                "reference": "6db1a02449c82f5d7957c5be9d43389306b7468e",
                 "shasum": ""
             },
             "require": {
@@ -3621,7 +3624,7 @@
             "keywords": [
                 "scraper"
             ],
-            "time": "2013-10-19 07:57:09"
+            "time": "2013-10-31 08:53:55"
         },
         {
             "name": "fzaninotto/faker",
@@ -3629,12 +3632,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/fzaninotto/Faker.git",
-                "reference": "836a757943d9fc4dff0b98e6deb57b7f0cad1044"
+                "reference": "15ec357497d9bd33076f18bec2293d9ac0fe53e7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/fzaninotto/Faker/zipball/836a757943d9fc4dff0b98e6deb57b7f0cad1044",
-                "reference": "836a757943d9fc4dff0b98e6deb57b7f0cad1044",
+                "url": "https://api.github.com/repos/fzaninotto/Faker/zipball/15ec357497d9bd33076f18bec2293d9ac0fe53e7",
+                "reference": "15ec357497d9bd33076f18bec2293d9ac0fe53e7",
                 "shasum": ""
             },
             "require": {
@@ -3667,7 +3670,7 @@
                 "faker",
                 "fixtures"
             ],
-            "time": "2013-10-24 09:48:56"
+            "time": "2013-10-29 09:52:28"
         },
         {
             "name": "guzzle/common",
@@ -3926,52 +3929,6 @@
             "time": "2013-10-15 14:53:05"
         },
         {
-            "name": "leek/git-debug-bundle",
-            "version": "2.0.x-dev",
-            "target-dir": "Leek/GitDebugBundle",
-            "source": {
-                "type": "git",
-                "url": "git://github.com/leek/GitDebugBundle.git",
-                "reference": "5fed3e97ce058cfc33d5268dda38c85108a5f22e"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://github.com/leek/GitDebugBundle/zipball/5fed3e97ce058cfc33d5268dda38c85108a5f22e",
-                "reference": "5fed3e97ce058cfc33d5268dda38c85108a5f22e",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.2",
-                "symfony/web-profiler-bundle": ">=2.0.0"
-            },
-            "type": "symfony-bundle",
-            "autoload": {
-                "psr-0": {
-                    "Leek\\GitDebugBundle": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Chris Jones",
-                    "email": "leeked@gmail.com",
-                    "homepage": "https://github.com/leek"
-                }
-            ],
-            "description": "Adds useful Git information to the Symfony2 Debug Toolbar",
-            "homepage": "https://github.com/leek/GitDebugBundle",
-            "keywords": [
-                "debug",
-                "git",
-                "leek",
-                "toolbar"
-            ],
-            "time": "2012-04-30 22:02:02"
-        },
-        {
             "name": "willdurand/faker-bundle",
             "version": "dev-master",
             "target-dir": "Bazinga/Bundle/FakerBundle",
@@ -4024,9 +3981,9 @@
         "doctrine/orm": 20,
         "doctrine/doctrine-migrations-bundle": 20,
         "knplabs/knp-snappy-bundle": 20,
-        "frequence-web/calendr-bundle": 20,
         "friendsofsymfony/rest-bundle": 20,
         "friendsofsymfony/user-bundle": 20,
+        "wisembly/elephant.io": 20,
         "ikimea/browser": 20,
         "knplabs/knp-menu-bundle": 20,
         "knplabs/knp-time-bundle": 20,
@@ -4040,8 +3997,7 @@
         "behat/mink-goutte-driver": 20,
         "doctrine/doctrine-fixtures-bundle": 20,
         "willdurand/faker-bundle": 20,
-        "elao/web-profiler-extra-bundle": 20,
-        "leek/git-debug-bundle": 20
+        "elao/web-profiler-extra-bundle": 20
     },
     "platform": {
         "php": ">=5.3.3"

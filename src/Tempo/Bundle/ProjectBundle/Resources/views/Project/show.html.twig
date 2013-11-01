@@ -13,7 +13,7 @@
     </div>
 
     <div class="col-md-9">
-        <ul class="nav nav-tabs" id="myTab">
+        <ul class="nav nav-tabs" id="project-tab">
             <li class="active"><a href="#project" data-toggle="tab">Project</a></li>
             <li><a href="#sub-project" data-toggle="tab">Sub-Projects</a></li>
             <li><a href="#activity" data-toggle="tab">Activity</a></li>
@@ -66,16 +66,22 @@
                 </div>
             </div>
             <div class="tab-pane" id="sub-project">
-                <div class="mod-head">
-                    <h3> {{ 'project.title_subprojects'|trans([], 'TempoProject') }} </h3>
-                </div>
 
-                <div class="project-children">
+                <table class="project-children table">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                        </tr>
+                    </thead>
+                    <tbody>
                     {% for children in project.children %}
-                        <div class="children"><a href="{{ path('project_show', { 'slug' : children.slug } ) }}">{{ children.name }}</a> </div>
+                    <tr>
+                        <td><a href="{{ path('project_show', { 'slug' : children.slug } ) }}">{{ children.name }}</a> </tr>
+                    </tr>
                     {% endfor %}
-                </div>
 
+                    </tbody>
+                </table>
 
                 <div id="delete_project" style="display: none">
                     {{ 'project.msg_delete'|trans([], 'TempoProject') }}
