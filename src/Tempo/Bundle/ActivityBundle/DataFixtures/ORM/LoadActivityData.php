@@ -16,7 +16,6 @@ use Doctrine\Common\DataFixtures\AbstractFixture;
 use Doctrine\Common\Persistence\ObjectManager;
 
 use Tempo\Bundle\ActivityBundle\Entity\Activity;
-use Tempo\Bundle\ProjectBundle\Entity\Organization;
 
 class LoadActivityData extends AbstractFixture implements FixtureInterface
 {
