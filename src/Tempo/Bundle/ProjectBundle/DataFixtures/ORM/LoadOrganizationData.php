@@ -26,18 +26,23 @@ class LoadOrganizationData extends AbstractFixture implements FixtureInterface
     public function load(ObjectManager $manager)
     {
         $organization = array(
-            'ikimea',
-            'google',
-            'apple',
-            'microsoft',
-            'selenium'
+            'Ikimea',
+            'Google',
+            'Apple',
+            'Microsoft',
+            'Selenium',
+            'Sensiolabs',
+            'Twitter',
+            'Dell',
+            'Facebook',
+            'Pinterest',
         );
         $i = 1;
         foreach ($organization as $name) {
 
             $organization = new Organization();
             $organization->setName($name);
-            $organization->setContact('support'.$name.'.com');
+            $organization->setContact('support@'.$name.'.com');
             $organization->getWebSite('http://'.$name.'.com');
             $organization->addTeam($this->getReference('admin'));
 

@@ -26,11 +26,11 @@ class LoadProjectData extends AbstractFixture implements FixtureInterface
     public function load(ObjectManager $manager)
     {
         $userList = array('admin', 'john.doe');
-        for ($i = 1; $i <= 5; $i++) {
+        for ($i = 1; $i <= 10; $i++) {
             $name = str_shuffle('Le Lorem Ipsum');
 
-            $chiffre = str_shuffle('123456789');
-            $code = str_shuffle(substr($name, 0, 3).substr($chiffre, 0, 3));
+            $digit = str_shuffle('123456789');
+            $code = str_shuffle(substr($name, 0, 3).substr($digit, 0, 3));
 
             $project = new Project();
             $project->setName($name);
@@ -39,7 +39,7 @@ class LoadProjectData extends AbstractFixture implements FixtureInterface
             $project->setDescription('Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression.');
             $project->setOrganization( $this->getReference('organization'.$i));
             $project->setStatus( rand(1, 3) );
-            $project->setAvancement($chiffre[0]);
+            $project->setAvancement($digit[0]);
             $project->setCreated(new \DateTime());
             $project->setUpdated(new \DateTime());
             $project->setIsActive(true);
@@ -47,6 +47,11 @@ class LoadProjectData extends AbstractFixture implements FixtureInterface
             $project->setEnding(new \DateTime());
             $project->addTeam($this->getReference($userList[array_rand($userList, 1)]));
 
+            if($i > 5) {
+                $digit = str_shuffle('12345');
+                $project->setParent($this->getReference('project1'));
+                //$project->setParent($this->getReference('project'.$digit[0]));
+            }
 
             $manager->persist($project);
             $manager->flush();
