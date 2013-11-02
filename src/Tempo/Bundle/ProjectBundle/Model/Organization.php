@@ -11,7 +11,8 @@
 
 namespace Tempo\Bundle\ProjectBundle\Model;
 
-use DateTime;
+use Doctrine\Common\Collections\ArrayCollection;
+
 /**
 * @author Mbechezi Mlanawo <mlanawo.mbechezi@ikimea.com>
 */
@@ -80,8 +81,8 @@ abstract class Organization implements OrganizationInterface
 
     public function __construct()
     {
-        $this->projects = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->team = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->projects = new ArrayCollection();
+        $this->team = new ArrayCollection();
     }
 
     /**
@@ -213,7 +214,7 @@ abstract class Organization implements OrganizationInterface
     /**
      * {@inheritdoc}
      */
-    public function setCreated(DateTime $created)
+    public function setCreated(\DateTime $created)
     {
         $this->created = $created;
     }
@@ -229,7 +230,7 @@ abstract class Organization implements OrganizationInterface
     /**
      * {@inheritdoc}
      */
-    public function setUpdated(DateTime $updated)
+    public function setUpdated(\DateTime $updated)
     {
         $this->updated = $updated;
     }

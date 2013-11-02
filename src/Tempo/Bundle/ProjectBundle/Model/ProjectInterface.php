@@ -77,7 +77,7 @@ interface ProjectInterface
     /**
      * Get organization
      *
-     * @return Tempo\Bundle\ProjectBundle\Entity\Organization
+     * @return \Tempo\Bundle\ProjectBundle\Entity\Organization
      */
     public function getOrganization();
 
@@ -114,7 +114,7 @@ interface ProjectInterface
      *
      * @param \DateTime $beginning
      */
-    public function setBeginning($beginning);
+    public function setBeginning(\DateTime $beginning);
 
     /**
      * Get beginning
@@ -128,7 +128,7 @@ interface ProjectInterface
      *
      * @param \DateTime $ending
      */
-    public function setEnding($ending);
+    public function setEnding(\DateTime $ending);
 
     /**
      * @return \DateTime

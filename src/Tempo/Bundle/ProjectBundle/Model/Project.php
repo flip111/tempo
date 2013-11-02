@@ -12,7 +12,8 @@
 namespace Tempo\Bundle\ProjectBundle\Model;
 
 use Doctrine\Common\Collections\ArrayCollection;
-use Tempo\Bundle\ActivityBundle\Entity\ActivityProvider;
+use Tempo\Bundle\ProjectBundle\Model\OrganizationInterface;
+use Tempo\Bundle\ProjectBundle\Model\TimesheetInterface;
 
 /**
  * Project Model
@@ -20,7 +21,7 @@ use Tempo\Bundle\ActivityBundle\Entity\ActivityProvider;
  * @todo: fix php documentor
  */
 
-class Project implements ProjectInterface
+class Project implements ProjectTypeInterface
 {
 
     const STATUS_CREATED = 10;
@@ -28,7 +29,8 @@ class Project implements ProjectInterface
     const STATUS_FINISHED = 50;
     const STATUS_DELETED = -10;
 
-    public static $types = array(1 => 'Agile', 2 => 'Regie', 3 => 'Forfait');
+
+    public static $types = array(0 => 'Default', 1 => 'Agile', 2 => 'Regie', 3 => 'Forfait');
 
     protected $id;
 
@@ -111,6 +113,11 @@ class Project implements ProjectInterface
      * @var integer
      */
     protected $avancement;
+
+    /**
+     * @var integer
+     */
+    protected $priority;
 
     /**
      * @var integer
@@ -237,9 +244,9 @@ class Project implements ProjectInterface
     /**
      * Set organization
      *
-     * @param Tempo\Bundle\ProjectBundle\Entity\Organization $organization
+     * @param OrganizationInterface $organization
      */
-    public function setOrganization(\Tempo\Bundle\ProjectBundle\Entity\Organization $organization)
+    public function setOrganization(OrganizationInterface $organization)
     {
         $this->organization = $organization;
     }
@@ -247,7 +254,7 @@ class Project implements ProjectInterface
     /**
      * Get organization
      *
-     * @return Tempo\Bundle\ProjectBundle\Entity\Organization
+     * @return \Tempo\Bundle\ProjectBundle\Entity\Organization
      */
     public function getOrganization()
     {
@@ -299,7 +306,7 @@ class Project implements ProjectInterface
      *
      * @param datetime $beginning
      */
-    public function setBeginning($beginning)
+    public function setBeginning(\DateTime $beginning)
     {
         $this->beginning = $beginning;
     }
@@ -317,9 +324,9 @@ class Project implements ProjectInterface
     /**
      * Set ending
      *
-     * @param datetime $ending
+     * @param \DateTime $ending
      */
-    public function setEnding($ending)
+    public function setEnding(\DateTime $ending)
     {
         $this->ending = $ending;
     }
@@ -457,9 +464,9 @@ class Project implements ProjectInterface
     /**
      * Add timesheet
      *
-     * @param \Tempo\ProjectBundle\Entity\Timesheet $timesheet
+     * @param TimesheetInterface $timesheet
      */
-    public function addTimesheet( $timesheet)
+    public function addTimesheet(TimesheetInterface $timesheet)
     {
         $this->timesheets[] = $timesheet;
     }
@@ -482,7 +489,7 @@ class Project implements ProjectInterface
         return $this->timesheets;
     }
 
-    public static function renderStatus()
+    public static function getStatusList()
     {
         return array(
             self::STATUS_CREATED => 'created',
@@ -490,7 +497,12 @@ class Project implements ProjectInterface
             self::STATUS_FINISHED => 'finished',
             self::STATUS_DELETED => 'deleted'
         );
+    }
 
+    public function renderStatus()
+    {
+        $status = self::getStatusList();
+        return $status[$this->status];
     }
 
     /**
@@ -498,7 +510,7 @@ class Project implements ProjectInterface
      */
     public function getRenderType()
     {
-        return self::$types[$this->getType()];
+        return self::$types[intval($this->getType())];
     }
 
     /**
