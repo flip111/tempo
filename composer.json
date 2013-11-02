@@ -36,6 +36,7 @@
 
         "friendsofsymfony/rest-bundle": "1.0.*@dev",
         "friendsofsymfony/user-bundle": "dev-master",
+        "jms/serializer-bundle": "0.13.*@dev",
         "wisembly/elephant.io": "dev-master",
         "ikimea/browser": "dev-master",
         "yohang/calendr": "1.*",
