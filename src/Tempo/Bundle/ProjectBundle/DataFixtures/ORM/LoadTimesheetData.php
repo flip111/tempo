@@ -18,7 +18,7 @@ use Tempo\Bundle\ProjectBundle\Entity\Timesheet;
 use Tempo\Bundle\ProjectBundle\Entity\Project;
 use DateTime;
 
-class LoadTimesheetData extends AbstractFixture implements FixtureInterface
+class LoadTimesheetData extends AbstractFixture
 {
 
     /**
@@ -57,11 +57,11 @@ class LoadTimesheetData extends AbstractFixture implements FixtureInterface
     }
 
     /**
-     * @return int
+     * {@inheritDoc}
      */
     public function getOrder()
     {
-        return 4;
+        return 5;
     }
 
 }

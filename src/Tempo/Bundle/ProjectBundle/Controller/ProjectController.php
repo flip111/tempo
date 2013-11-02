@@ -13,11 +13,14 @@ namespace Tempo\Bundle\ProjectBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Symfony\Component\Security\Acl\Permission\MaskBuilder;
 
 use Tempo\Bundle\ActivityBundle\Manager\ActivityManager;
 use Tempo\Bundle\ProjectBundle\Entity\Project;
 use Tempo\Bundle\ProjectBundle\Form\Type\ProjectType;
 use Tempo\Bundle\ProjectBundle\Form\Type\TeamType;
+
+
 
 /**
  * Project controller.
@@ -77,6 +80,10 @@ class ProjectController extends Controller
         $project  = $this->getProject($slug);
         $csrfToken = $this->get('form.csrf_provider')->generateCsrfToken('delete-project');
 
+        if (false === $this->get('security.context')->isGranted('VIEW', $project)) {
+            throw new AccessDeniedException();
+        }
+
         $teamForm = $this->createForm(new TeamType());
 
         /** @var ActivityManager $activityManager */
@@ -96,6 +103,10 @@ class ProjectController extends Controller
      */
     public function newAction()
     {
+        if (false === $this->get('security.context')->isGranted('ROLE_ADMIN')) {
+            throw new AccessDeniedException();
+        }
+
         $project = new Project();
         $this->getParent($project);
 
@@ -113,6 +124,10 @@ class ProjectController extends Controller
      */
     public function createAction()
     {
+        if (false === $this->get('security.context')->isGranted('ROLE_ADMIN')) {
+            throw new AccessDeniedException();
+        }
+
         $project  = new Project();
         $project->addTeam($this->getUser());
         $this->getParent($project);
@@ -121,8 +136,8 @@ class ProjectController extends Controller
 
         if ($form->submit($this->getRequest())->isValid()) {
             $this->getManager()->persistAndFlush($project);
-            return $this->redirect($this->generateUrl('project_show', array('slug' => $project->getSlug() )));
-
+            $this->getAclManager()->addObjectPermission($project, MaskBuilder::MASK_OWNER); //set Permission
+            return $this->redirect($this->generateUrl('project_show', array('slug' => $project->getSlug())));
         }
 
         return $this->render('TempoProjectBundle:Project:new.html.twig', array(
@@ -141,6 +156,10 @@ class ProjectController extends Controller
         $project = $this->getProject($slug);
         $editForm = $this->createForm(new ProjectType(), $project);
 
+        if (false === $this->get('security.context')->isGranted('EDIT', $project)) {
+            throw new AccessDeniedException();
+        }
+
         return $this->render('TempoProjectBundle:Project:edit.html.twig', array(
             'project'      => $project,
             'form'   => $editForm->createView(),
@@ -154,10 +173,13 @@ class ProjectController extends Controller
      */
     public function updateAction($slug)
     {
-
         $request = $this->getRequest();
         $project = $this->getProject($slug);
         $editForm   = $this->createForm(new ProjectType(), $project);
+
+        if (false === $this->get('security.context')->isGranted('ROLE_ADMIN', $project)) {
+            throw new AccessDeniedException();
+        }
 
         if ($request->isMethod('POST') && $editForm->submit($request)->isValid()) {
             $this->getManager()->persistAndFlush($project);
@@ -184,6 +206,11 @@ class ProjectController extends Controller
         }
 
         $project = $this->getProject($slug);
+
+        if (false === $this->get('security.context')->isGranted('DELETE', $project)) {
+            throw new AccessDeniedException();
+        }
+
         $this->getManager()->removeAndFlush($project);
 
         return $this->redirect($this->generateUrl('project_home'));
@@ -230,5 +257,10 @@ class ProjectController extends Controller
         }
 
         return $project;
+    }
+
+    protected function getAclManager()
+    {
+        return $this->get('problematic.acl_manager');
     }
 }

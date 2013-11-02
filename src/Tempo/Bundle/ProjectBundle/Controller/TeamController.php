@@ -15,6 +15,8 @@ use Tempo\Bundle\ProjectBundle\Form\Type\TeamType;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\Security\Acl\Permission\MaskBuilder;
+
 
 /*
  * @author Mlanawo Mbechezi <mlanawo.mbechezi@ikimea.com>
@@ -29,21 +31,17 @@ class TeamController extends Controller
     public function addAction($slug)
     {
         $request = $this->getRequest();
+        $form = $this->createForm(new TeamType());
 
         if ($request->get('_route') == 'project_team_add') {
-
-            $category = $this->getDoctrine()->getRepository('TempoProjectBundle:Project')->findOneBySlug($slug);
+            $category = $this->get('tempo_project.manager.project')->findOneBySlug($slug);
             $routeSuccess = 'project_show';
 
         } else {
-
-            $manager = $this->container->get('tempo_project.manager.organization');
+            $manager = $this->get('tempo_project.manager.organization');
             $category = $manager->findOneBySlug($slug);
             $routeSuccess = 'organization_edit';
         }
-
-        $form = $this->createForm(new TeamType());
-
 
         if ($request->isMethod('POST') && $form->submit($request)->isValid()) {
             $formData = $form->getData();
@@ -51,14 +49,14 @@ class TeamController extends Controller
 
             $category->addTeam($findUser);
             $this->getManage()->persistAndFlush($category);
+            $this->getAclManager()->addObjectPermission($category, MaskBuilder::MASK_VIEW); //set Permission
 
             $request->getSession()->getFlashBag()->set('notice', $this->getTranslator()->trans('team.success_add'));
 
             return $this->redirect($this->generateUrl($routeSuccess, array('slug' => $category->getSlug())));
-
         }
 
-            return $this->redirect($this->generateUrl($routeSuccess, array('slug' => $category->getSlug()  )));
+        return $this->redirect($this->generateUrl($routeSuccess, array('slug' => $category->getSlug()  )));
     }
 
     /**
@@ -77,6 +75,14 @@ class TeamController extends Controller
      */
     protected function getTranslator()
     {
-           return $this->get('translator');
+        return $this->get('translator');
+    }
+
+    /**
+     * @return object
+     */
+    protected function getAclManager()
+    {
+        return $this->get('problematic.acl_manager');
     }
 }

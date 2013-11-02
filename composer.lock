@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "39e06b55fcb1bbf4185ed0a7bb063143",
+    "hash": "c1e8e67e0dd6a60175303c10d8237fe2",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -997,12 +997,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/l3pp4rd/DoctrineExtensions.git",
-                "reference": "395d0f909facf2ba7937cfa9802d62ca729017d1"
+                "reference": "c5b5d2f969a75b6ba3c3d34b6cd30751067ee1c3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/l3pp4rd/DoctrineExtensions/zipball/395d0f909facf2ba7937cfa9802d62ca729017d1",
-                "reference": "395d0f909facf2ba7937cfa9802d62ca729017d1",
+                "url": "https://api.github.com/repos/l3pp4rd/DoctrineExtensions/zipball/c5b5d2f969a75b6ba3c3d34b6cd30751067ee1c3",
+                "reference": "c5b5d2f969a75b6ba3c3d34b6cd30751067ee1c3",
                 "shasum": ""
             },
             "require": {
@@ -1069,7 +1069,7 @@
                 "tree",
                 "uploadable"
             ],
-            "time": "2013-10-29 14:22:34"
+            "time": "2013-11-01 18:28:55"
         },
         {
             "name": "ikimea/browser",
@@ -2243,6 +2243,54 @@
                 "type"
             ],
             "time": "2013-05-19 11:09:35"
+        },
+        {
+            "name": "problematic/acl-manager-bundle",
+            "version": "dev-master",
+            "target-dir": "Problematic/AclManagerBundle",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Problematic/ProblematicAclManagerBundle.git",
+                "reference": "70258f9f4646ebc8fbdfd94144b8f9221039dcbd"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Problematic/ProblematicAclManagerBundle/zipball/70258f9f4646ebc8fbdfd94144b8f9221039dcbd",
+                "reference": "70258f9f4646ebc8fbdfd94144b8f9221039dcbd",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.2",
+                "symfony/framework-bundle": "2.*",
+                "symfony/security-bundle": "2.*"
+            },
+            "suggest": {
+                "doctrine/couchdb-odm-bundle": "*",
+                "symfony/doctrine-bundle": "*",
+                "symfony/mongodb-odm-bundle": "*"
+            },
+            "type": "symfony-bundle",
+            "autoload": {
+                "psr-0": {
+                    "Problematic\\AclManagerBundle": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Derek Stobbe",
+                    "email": "djstobbe@gmail.com"
+                }
+            ],
+            "description": "ACL Manager for Symfony2",
+            "homepage": "https://github.com/Problematic/ProblematicAclManagerBundle",
+            "keywords": [
+                "ACL management"
+            ],
+            "time": "2013-10-10 23:02:00"
         },
         {
             "name": "psr/log",
@@ -4315,6 +4363,7 @@
         "knplabs/knp-time-bundle": 20,
         "sonata-project/seo-bundle": 20,
         "stof/doctrine-extensions-bundle": 20,
+        "problematic/acl-manager-bundle": 20,
         "white-october/pagerfanta-bundle": 20,
         "fkr/cssurlrewrite-bundle": 20,
         "liip/imagine-bundle": 20,

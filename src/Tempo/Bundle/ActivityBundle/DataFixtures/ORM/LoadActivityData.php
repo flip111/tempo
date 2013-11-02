@@ -44,6 +44,6 @@ class LoadActivityData extends AbstractFixture implements FixtureInterface
      */
     public function getOrder()
     {
-        return 5;
+        return 6;
     }
 }

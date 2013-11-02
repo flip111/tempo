@@ -17,7 +17,7 @@ use Doctrine\Common\Persistence\ObjectManager;
 
 use Tempo\Bundle\ProjectBundle\Entity\ProjectType;
 
-class LoadProjectData extends AbstractFixture implements FixtureInterface
+class LoadProjectTypeData extends AbstractFixture
 {
     /**
      * {@inheritdoc}
@@ -30,12 +30,23 @@ class LoadProjectData extends AbstractFixture implements FixtureInterface
             'Kanban'
         );
 
+        $i = 1;
         foreach($types as $type)
         {
             $projectType = new ProjectType();
             $projectType->setName($type);
             $manager->persist($projectType);
             $manager->flush();
+            $this->addReference('projetType'.$i, $projectType);
+            $i++;
         }
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getOrder()
+    {
+        return 3;
     }
 }

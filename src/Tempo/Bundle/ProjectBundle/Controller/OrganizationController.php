@@ -16,10 +16,10 @@ use Tempo\Bundle\ProjectBundle\Form\Type\OrganizationType;
 use Tempo\Bundle\ProjectBundle\Form\Type\TeamType;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpFoundation\RedirectResponse;
-use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
+use Symfony\Component\Security\Core\Exception\AccessDeniedException;
+use Symfony\Component\Security\Acl\Permission\MaskBuilder;
+
 
 /**
  * @author Mlanawo Mbechezi <mlanawo.mbechezi@ikimea.com>
@@ -37,7 +37,12 @@ class OrganizationController extends Controller
         $organization = $this->findOrganization($slug);
         $csrfToken = $this->get('form.csrf_provider')->generateCsrfToken('delete-organization');
 
-        $manager = $this->container->get('tempo_project.manager.organization');
+
+        if (false === $this->get('security.context')->isGranted('VIEW', $organization)) {
+            throw new AccessDeniedException();
+        }
+
+        $manager = $this->get('tempo_project.manager.organization');
         $counter = $manager->getStatusProjects($organization->getId());
 
         $breadcrumb = $this->get('tempo_main.breadcrumb');
@@ -61,6 +66,10 @@ class OrganizationController extends Controller
      */
     public function newAction()
     {
+        if (false === $this->get('security.context')->isGranted('ROLE_ADMIN')) {
+            throw new AccessDeniedException();
+        }
+
         $form = $this->createForm(new OrganizationType(), new Organization(), array('is_new' => true));
 
         return $this->render('TempoProjectBundle:Organization:new.html.twig', array(
@@ -76,6 +85,10 @@ class OrganizationController extends Controller
     public function editAction($slug)
     {
         $organization = $this->findOrganization($slug);
+
+        if (false === $this->get('security.context')->isGranted('EDIT', $organization)) {
+            throw new AccessDeniedException();
+        }
 
         $breadcrumb = $this->get('tempo_main.breadcrumb');
         $breadcrumb->addChild('Organization');
@@ -106,6 +119,10 @@ class OrganizationController extends Controller
 
         $organization = $manager->find($id);
 
+        if (false === $this->get('security.context')->isGranted('EDIT', $organization)) {
+            throw new AccessDeniedException();
+        }
+
         $editForm = $this->createForm(new OrganizationType(), $organization);
 
         if ($request->isMethod('POST') && $editForm->submit($request)->isValid()) {
@@ -127,6 +144,9 @@ class OrganizationController extends Controller
      */
     public function createAction()
     {
+        if (false === $this->get('security.context')->isGranted('ROLE_ADMIN')) {
+            throw new AccessDeniedException();
+        }
         $request = $this->getRequest();
 
         $organization = new Organization();
@@ -137,7 +157,8 @@ class OrganizationController extends Controller
         if ($request->isMethod('POST') && $form->submit($request)->isValid()) {
 
             $this->getManager()->persistAndFlush($organization);
-            $this->get('session')->getFlashBag()->set('notice', $this->getTranslator()->trans('organization.success_create', array(), 'TempoProject'));
+            $this->getAclManager()->addObjectPermission($organization, MaskBuilder::MASK_OWNER); //set Permission
+            $request->getSession()->getFlashBag()->set('notice', $this->getTranslator()->trans('organization.success_create', array(), 'TempoProject'));
 
             return $this->redirect($this->generateUrl('organization_edit', array('slug' => $organization->getSlug())));
         }
@@ -152,8 +173,11 @@ class OrganizationController extends Controller
     public function deleteAction($slug)
     {
         $request = $this->getRequest();
-
         $organization = $this->findOrganization($slug);
+
+        if (false === $this->get('security.context')->isGranted('DELETE', $organization)) {
+            throw new AccessDeniedException();
+        }
 
         //check CSRF token
         if (false === $this->get('form.csrf_provider')->isCsrfTokenValid('delete-organization', $request->get('token'))) {
@@ -202,5 +226,10 @@ class OrganizationController extends Controller
     protected function getTranslator()
     {
         return $this->get('translator');
+    }
+
+    protected function getAclManager()
+    {
+        return $this->get('problematic.acl_manager');
     }
 }

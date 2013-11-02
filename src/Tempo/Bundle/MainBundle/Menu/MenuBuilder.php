@@ -60,7 +60,7 @@ class MenuBuilder
         $menu->setChildrenAttribute('class', 'clearfix');
 
         $home_trans = $this->translator->trans('menu.home', array(), 'TempoMain');
-        $menu->addChild($home_trans, array('route' => '_welcome'));
+        $menu->addChild($home_trans, array('route' => 'homepage'));
         
         return $menu;
     }

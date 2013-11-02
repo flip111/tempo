@@ -15,10 +15,24 @@ use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\DataFixtures\AbstractFixture;
 use Doctrine\Common\Persistence\ObjectManager;
 
+use Symfony\Component\DependencyInjection\ContainerAwareInterface;
+use Symfony\Component\DependencyInjection\ContainerInterface;
+use Symfony\Component\Security\Acl\Permission\MaskBuilder;
+
+
 use Tempo\Bundle\ProjectBundle\Entity\Project;
 
-class LoadProjectData extends AbstractFixture implements FixtureInterface
+class LoadProjectData extends AbstractFixture implements ContainerAwareInterface
 {
+    private $container;
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setContainer(ContainerInterface $container = null)
+    {
+        $this->container = $container;
+    }
 
     /**
      * {@inheritdoc}
@@ -27,6 +41,9 @@ class LoadProjectData extends AbstractFixture implements FixtureInterface
     {
         $userList = array('admin', 'john.doe');
         for ($i = 1; $i <= 10; $i++) {
+
+            $userEntity = $this->getReference($userList[array_rand($userList, 1)]);
+
             $name = str_shuffle('Le Lorem Ipsum');
 
             $digit = str_shuffle('123456789');
@@ -38,33 +55,38 @@ class LoadProjectData extends AbstractFixture implements FixtureInterface
             $project->setSlug(str_replace(' ', '-', $name));
             $project->setDescription('Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression.');
             $project->setOrganization( $this->getReference('organization'.$i));
-            $project->setStatus( rand(1, 3) );
+            $project->setStatus( $this->getReference('projectType'.(rand(1, 3))) );
             $project->setAvancement($digit[0]);
             $project->setCreated(new \DateTime());
             $project->setUpdated(new \DateTime());
             $project->setIsActive(true);
             $project->setBeginning(new \DateTime());
             $project->setEnding(new \DateTime());
-            $project->addTeam($this->getReference($userList[array_rand($userList, 1)]));
+            $project->addTeam($userEntity);
 
             if($i > 5) {
                 $digit = str_shuffle('12345');
-                $project->setParent($this->getReference('project1'));
-                //$project->setParent($this->getReference('project'.$digit[0]));
+                $project->setParent($this->getReference('project'.$digit[0]));
             }
 
             $manager->persist($project);
             $manager->flush();
 
+            $this->getAclManager()->addObjectPermission($project, MaskBuilder::MASK_OWNER, $userEntity); //set Permission
             $this->addReference('project'.$i, $project);
         }
     }
 
     /**
-     * @return int
+     * {@inheritDoc}
      */
     public function getOrder()
     {
-        return 3;
+        return 4;
+    }
+
+    protected function getAclManager()
+    {
+        return $this->container->get('problematic.acl_manager');
     }
 }

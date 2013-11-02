@@ -8,7 +8,7 @@ _imagine:
     resource: .
     type:     imagine
 
-_welcome:
+homepage:
     pattern:  /
     defaults: { _controller: TempoMainBundle:Default:index }
 

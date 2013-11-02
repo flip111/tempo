@@ -45,6 +45,7 @@
         "knplabs/knp-time-bundle": "dev-master",
         "sonata-project/seo-bundle": "dev-master",
         "stof/doctrine-extensions-bundle": "dev-master",
+        "problematic/acl-manager-bundle": "dev-master",
 
         "white-october/pagerfanta-bundle": "dev-master",
         "mopa/bootstrap-bundle": "v3.0.0-beta2",

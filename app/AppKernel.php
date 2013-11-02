@@ -20,7 +20,6 @@ class AppKernel extends Kernel
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
 
-
             new FOS\UserBundle\FOSUserBundle(),
             new Knp\Bundle\SnappyBundle\KnpSnappyBundle(),
             new Knp\Bundle\MenuBundle\KnpMenuBundle(),
@@ -31,6 +30,7 @@ class AppKernel extends Kernel
             new Fkr\CssURLRewriteBundle\FkrCssURLRewriteBundle(),
             new Liip\ImagineBundle\LiipImagineBundle(),
             new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
+            new Problematic\AclManagerBundle\ProblematicAclManagerBundle(),
             new Mopa\Bundle\BootstrapBundle\MopaBootstrapBundle(),
 
             //Tempo
@@ -48,7 +48,6 @@ class AppKernel extends Kernel
             $bundles[] = new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle();
             $bundles[] = new Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle();
             $bundles[] = new Elao\WebProfilerExtraBundle\WebProfilerExtraBundle();
-
         }
 
         return $bundles;

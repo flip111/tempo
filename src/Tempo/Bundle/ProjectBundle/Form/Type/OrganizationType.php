@@ -32,7 +32,6 @@ class OrganizationType extends AbstractType
             $builder->add('website');
             $builder->add('contact', 'email');
         }
-
     }
 
     /**
