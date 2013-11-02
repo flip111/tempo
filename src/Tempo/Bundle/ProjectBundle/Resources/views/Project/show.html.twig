@@ -1,6 +1,12 @@
 {% extends "TempoMainBundle::Layout/web.html.twig" %}
 {% block bodyClass %}project show{% endblock %}
-
+{% block breadcrumb %}
+    <ol id="breadcrumb" class="clearfix">
+        <li class="first"> <a href="{{ path('project_home') }}">Accueil</a> </li>
+        <li class="first last"> <a href="{{ path('project_home') }}">Project</a> </li>
+        <li class="first last"> {{ project.name }} </li>
+    </ol>
+{% endblock breadcrumb %}
 {% set sidebar = true %}
 {% block content %}
 
@@ -67,19 +73,34 @@
             </div>
             <div class="tab-pane" id="sub-project">
 
-                <table class="project-children table">
+                <table class="project-children table table-striped">
                     <thead>
                         <tr>
-                            <th>Name</th>
+                            <th>ID</th>
+                            <th>Code</th>
+                            <th>Nom</th>
+                            <th>Type</th>
+                            <th>Status</th>
+                            <th>Criticité</th>
+                            <th>Avancement</th>
+                            <th>Début</th>
+                            <th>Fin</th>
                         </tr>
                     </thead>
                     <tbody>
-                    {% for children in project.children %}
-                    <tr>
-                        <td><a href="{{ path('project_show', { 'slug' : children.slug } ) }}">{{ children.name }}</a> </tr>
-                    </tr>
-                    {% endfor %}
-
+                        {% for children in project.children %}
+                        <tr>
+                            <td>{{ children.id }}</td>
+                            <td>{{ children.code }}</td>
+                            <td><a href="{{ path('project_show', { 'slug' : children.slug } ) }}">{{ children.name }}</a> </td>
+                            <td>{{ children.renderType }}</td>
+                            <td>{{ children.renderStatus }}</td>
+                            <td>{{ children.priority }}</td>
+                            <td>{{ children.avancement }}</td>
+                            <td>{{project.beginning.format("Y-m-j")}}</td>
+                            <td>{{project.ending.format("Y-m-j")}}</td>
+                        </tr>
+                        {% endfor %}
                     </tbody>
                 </table>
 

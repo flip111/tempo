@@ -35,6 +35,10 @@ class TimesheetController extends Controller
     public function indexAction()
     {
 
+        $breadcrumb  = $this->get('tempo_main.breadcrumb');
+        $breadcrumb->addChild('Time Management');
+        $breadcrumb->addChild('Dashboard');
+
         $locale = $this->container->getParameter('locale');
         $weekLang = $this->container->getParameter('tempo_project.week');
         $currentYear = $this->getRequest()->query->get('year', date('Y'));

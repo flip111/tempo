@@ -2,6 +2,7 @@ project_home:
     pattern:  /
     defaults: { _controller: TempoProjectBundle:Project:dashboard }
 
+
 project_organization_list:
     pattern:  /{organization}/list
     defaults: { _controller: TempoProjectBundle:Project:list }
@@ -23,7 +24,7 @@ project_edit:
     defaults: { _controller: TempoProjectBundle:Project:edit }
 
 project_update:
-    pattern:  /{id}/update
+    pattern:  /{slug}/update
     defaults: { _controller: "TempoProjectBundle:Project:update" }
     requirements: { _method: post }
 

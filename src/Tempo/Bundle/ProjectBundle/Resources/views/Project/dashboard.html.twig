@@ -1,5 +1,12 @@
 {% extends "TempoMainBundle::Layout/web.html.twig" %}
 {% block bodyClass %}project dashboard{% endblock %}
+{% block breadcrumb %}
+    <ol id="breadcrumb" class="clearfix">
+        <li class="first"> <a href="{{ path('homepage') }}">Accueil</a> </li>
+        <li class="first last"> <a href="{{ path('project_home') }}">Project</a> </li>
+        <li class="first last"> Dashboard </li>
+    </ol>
+{% endblock breadcrumb %}
 {% set sidebar = true %}
 {% block javascripts %}
     {{ parent() }}

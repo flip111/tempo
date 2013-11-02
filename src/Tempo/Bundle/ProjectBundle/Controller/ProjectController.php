@@ -210,7 +210,6 @@ class ProjectController extends Controller
         } else {
             $project =  $this->getManager()->find($primaryKey);
         }
-
         return $project;
     }
 

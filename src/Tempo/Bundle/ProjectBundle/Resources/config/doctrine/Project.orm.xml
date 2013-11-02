@@ -30,7 +30,7 @@
 
         <field name="beginning" type="date" nullable="true" />
         <field name="ending" type="date" nullable="true" />
-        <field name="type" column="type" type="integer" nullable="true"  />
+        <field name="status" column="status" type="integer" nullable="true"  />
 
         <field name="avancement" column="avancement" type="integer" nullable="true"  />
 
@@ -46,6 +46,7 @@
 
         <many-to-one field="organization" inversed-by="projects" target-entity="Organization" />
         <one-to-many field="timesheets" target-entity="Timesheet" mapped-by="project" />
+        <one-to-one field="type" target-entity="ProjectType" />
         <many-to-many field="team" inversed-by="organization" target-entity="Tempo\Bundle\UserBundle\Entity\User" />
         <one-to-many field="activityProviders" target-entity="Tempo\Bundle\ActivityBundle\Entity\ActivityProvider" mapped-by="project" />
 

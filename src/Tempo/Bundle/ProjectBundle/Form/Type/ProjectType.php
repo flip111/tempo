@@ -15,6 +15,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 use Tempo\Bundle\ProjectBundle\Repository\OrganizationRepository;
+use Tempo\Bundle\ProjectBundle\Repository\ProjectTypeRepository;
 use Tempo\Bundle\ProjectBundle\Entity\Project;
 
 class ProjectType extends AbstractType
@@ -44,8 +45,12 @@ class ProjectType extends AbstractType
                 'label' => 'project.form.label.ending',
                 'widget' => 'single_text'
             ))
-            ->add('type', 'choice', array(
-                'label' => 'project.form.label.type', 'choices' => Project::$types
+            ->add('type', null, array(
+                'label' => 'project.form.label.type',
+                'class' => 'TempoProjectBundle:ProjectType',
+                'query_builder' => function(ProjectTypeRepository $er) {
+                    return $er->findAllTypes();
+                }
             ))
             ->add('avancement', null, array(
                 'label' => 'project.form.label.avancement'
@@ -55,7 +60,7 @@ class ProjectType extends AbstractType
             ))
             ->add('status', 'choice', array(
                 'label' => 'project.form.label.status',
-                'choices' => Project::renderStatus()
+                'choices' => Project::getStatusList()
             ))
             ->add('budget_estimated', null, array(
                 'label' => 'project.form.label.estimated'
@@ -63,7 +68,7 @@ class ProjectType extends AbstractType
             ->add('organization', null, array(
                 'label' => 'project.form.label.organization',
                 'class' => 'TempoProjectBundle:Organization',
-                'query_builder' => function(OrganizationRepository $er) {
+                'query_builder' => function(OrganizationRepository $er) use ($options) {
                     return $er->findOrganizationByUser($options['user_id']);
                 }
             ))
