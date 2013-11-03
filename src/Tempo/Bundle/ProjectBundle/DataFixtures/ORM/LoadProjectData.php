@@ -11,9 +11,10 @@
 
 namespace Tempo\Bundle\ProjectBundle\DataFixtures\ORM;
 
-use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\DataFixtures\AbstractFixture;
+use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
+
 
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -22,7 +23,7 @@ use Symfony\Component\Security\Acl\Permission\MaskBuilder;
 
 use Tempo\Bundle\ProjectBundle\Entity\Project;
 
-class LoadProjectData extends AbstractFixture implements ContainerAwareInterface
+class LoadProjectData extends AbstractFixture implements ContainerAwareInterface, OrderedFixtureInterface
 {
     private $container;
 

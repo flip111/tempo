@@ -11,13 +11,14 @@
 
 namespace Tempo\Bundle\ProjectBundle\DataFixtures\ORM;
 
-use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\DataFixtures\AbstractFixture;
 use Doctrine\Common\Persistence\ObjectManager;
+use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
+
 
 use Tempo\Bundle\ProjectBundle\Entity\ProjectType;
 
-class LoadProjectTypeData extends AbstractFixture
+class LoadProjectTypeData extends AbstractFixture implements OrderedFixtureInterface
 {
     /**
      * {@inheritdoc}
@@ -37,7 +38,7 @@ class LoadProjectTypeData extends AbstractFixture
             $projectType->setName($type);
             $manager->persist($projectType);
             $manager->flush();
-            $this->addReference('projetType'.$i, $projectType);
+            $this->addReference('projectType'.$i, $projectType);
             $i++;
         }
     }

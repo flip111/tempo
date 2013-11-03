@@ -22,7 +22,7 @@ use Tempo\Bundle\ActivityBundle\Entity\ActivityProvider;
  * @todo: fix php documentor
  */
 
-class Project implements ProjectTypeInterface
+class Project implements ProjectInterface
 {
 
     const STATUS_CREATED = 10;
