@@ -17,11 +17,25 @@ Then configure your project and create database.
 
 ``` bash
 $ cd tempo
+
+# Only if the composer install didn't ask you:
 $ cp app/config/parameters.yml.dist app/config/parameters.yml
 $ vi app/config/parameters.yml # And put your values!
+
+# To create the database:
 $ php app/console doctrine:database:create
 $ php app/console doctrine:schema:create
-$ php app/console doctrine:fixtures:load # If you want to load sample data.
+
+# If you want to load sample data, use the following command
+$ php app/console doctrine:fixtures:load
+```
+
+You probably need to setting up rights for apache, uses the following commands:
+
+```bash
+$ mkdir -p app/cache app/logs app/data web/uploads
+$ setfacl -R -m u:www-data:rwx -m u:`whoami`:rwx app/cache app/logs app/data web/uploads
+$ setfacl -dR -m u:www-data:rwx -m u:`whoami`:rwx app/cache app/logs app/data web/uploads
 ```
 
 [Behat](http://behat.org) scenarios
