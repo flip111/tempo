@@ -12,6 +12,8 @@
 namespace Tempo\Bundle\MainBundle\Model;
 
 
+use Doctrine\Common\Collections\ArrayCollection;
+
 abstract class Room
 {
     /**
@@ -70,12 +72,13 @@ abstract class Room
     /**
      * Get a specfic chat message
      *
-     * @param type $id
+     * @param integer $id
      * @return ChatMessage
      */
     public function getChatMessage($id)
     {
         foreach ($this->chatMessages as $message) {
+            /** @var ChatMessage $message */
             if ($id == $message->getId()) {
                 return $message;
             }
