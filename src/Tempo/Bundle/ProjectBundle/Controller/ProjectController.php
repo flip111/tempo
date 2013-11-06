@@ -19,6 +19,7 @@ use Tempo\Bundle\ActivityBundle\Manager\ActivityManager;
 use Tempo\Bundle\ProjectBundle\Entity\Project;
 use Tempo\Bundle\ProjectBundle\Form\Type\ProjectType;
 use Tempo\Bundle\ProjectBundle\Form\Type\TeamType;
+use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
 
 
