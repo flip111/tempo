@@ -9,7 +9,17 @@
 
 'use strict';
 
-var Tempo = Tempo || { 'settings': {}, 'notification' : {}, 'behavior' : {} };
+var Tempo = Tempo || {
+    'settings': {},
+    'notification' : {},
+    'behavior' : {},
+    'Controller':{},
+    'View':{},
+    'Model':{},
+    'Collection':{}
+};
+
+
 /**
  *
  * @type {Object}
@@ -20,7 +30,7 @@ Tempo.behavior = {
     statics: {},
     initialized: {},
 
-    create: function(name, control_function) {
+    create: function (name, control_function) {
         this.behaviors[name] = control_function;
         this.statics[name] = {};
     },
@@ -57,7 +67,7 @@ Tempo.behavior = {
 
 Tempo.provide = function (name, obj, force) {
     if (!name) {
-        throw "Give a name for Dime.provide(name)";
+        throw "Give a name for Tempo.provide(name)";
     }
     var parent = this;
 
@@ -80,13 +90,37 @@ Tempo.provide = function (name, obj, force) {
     }
 
     return parent;
-},
+};
 
+Tempo.baseObject = {
+    extend: function(props) {
+        var prop, obj;
+        obj = Object.create(this);
+        for (prop in props) {
+            if (props.hasOwnProperty(prop)) {
+                obj[prop] = props[prop];
+            }
+        }
+        return obj;
+    },
+
+    getSimple: function()
+    {
+        var simple = {};
+        for (var prop in this) {
+            if (this.hasOwnProperty(prop)) {
+                simple[prop] = this[prop];
+            }
+        }
+        return simple;
+    }
+};
 
 
 $(function() {
     Tempo.run =  function() {
         Tempo.log('Starting application', 'INFO');
+        Backbone.history.start({pushState: true});
 
     };
     Tempo.log = function() {

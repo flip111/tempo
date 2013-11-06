@@ -16,6 +16,7 @@ namespace Tempo\Bundle\MainBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Tempo\Bundle\MainBundle\Entity\Settings;
 use Tempo\Bundle\MainBundle\Form\SettingsType;
+use Tempo\Bundle\MainBundle\Form\Type\ChatMessageType;
 
 
 class DefaultController extends Controller
@@ -25,7 +26,21 @@ class DefaultController extends Controller
      */
     public function indexAction()
     {
-        return $this->render('TempoMainBundle:Default:index.html.twig');
+        $rooms = $this->getDoctrine()->getManager()->getRepository('TempoMainBundle:Room')->findAll();
+        $this->getRequest()->getSession()->set('currentRoom', 1);
+
+        $currentRoom = array(
+            'id' => 1,
+            'name' => 'Room1'
+        );
+
+        $form  = $this->createForm(new ChatMessageType());
+
+        return $this->render('TempoMainBundle:Default:dashboard.html.twig', array(
+            'rooms' => $rooms,
+            'form' => $form->createView(),
+            'currentRoom' => $currentRoom,
+        ));
     }
 
     /**

@@ -143,11 +143,6 @@ table.table-striped tbody .actions .edit {
     list-style-type: none;
 }
 
-/* Dashboard */
-.dashboard #content {
-    width: 97%;
-    min-height: 130px;
-}
 
 /* User */
 #user.login {
@@ -276,7 +271,88 @@ table.table-striped tbody .actions .edit {
 
 }
 
-#dashbord h3.homeTitle {
+.dashboard  {
+    overflow: hidden;
+}
+.dashboard #content {
+    margin-top: 0;
+}
+.dashboard .rooms {
+    padding: 10px 0;
+    background: #FFF;
+    border-color: #D5D5D5;
+    box-shadow: 0 1px 0 #FFFFFF inset, 0 1px 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 10px;
+}
+
+.dashboard .rooms ul li {
+    float: left;
+    margin-left: 10px;
+    list-style: none;
+}
+
+.dashboard .rooms ul li a {
+    color: #4183c4;
+}
+.dashboard #row-box {
+    position: relative;
+}
+.dashboard #row-box ul {
+    margin-top: 10px;
+}
+.dashboard #activity-box, .dashboard #chat-box {
+    border-color: #D5D5D5;
+    box-shadow: 0 1px 0 #FFFFFF inset, 0 1px 5px rgba(0, 0, 0, 0.1);
+    background: #FFF;
+    position: relative;
+}
+
+.dashboard #connected-users {
+    border-bottom: 1px solid #C0C0C0;
+    position: absolute;
+    width: 100%;
+}
+.dashboard #connected-users #user-handle {
+    padding-top: 10px;
+}
+.dashboard #connected-users #users-list li {
+    float: left;
+    margin-left: 20px;
+}
+
+.dashboard #chat-box {
+    height: 89%;
+}
+
+.dashboard #chatbox #chat-messages{
+    overflow-x: hidden;
+    overflow-y: scroll;
+    position: absolute;
+    top: 120px;
+    width: 100%;
+    height: 79%;
+}
+
+.dashboard #chatbox form {
+    position: absolute;
+    bottom: 0px;
+    border-top: 1px solid #C0C0C0;
+    width: 100%;
+    background: none repeat scroll 0 0 #F9F9F9;
+}
+.dashboard #chat-box .form-control {
+    width: 80%;
+    float: left;
+
+}
+.dashboard #chat-box #message-submit {
+    float: left;
+}
+.dashboard #chat-box .message-head {
+    float: left;
+    font-weight: bold;
+}
+.dashboard h3.homeTitle {
     font-size: 15px;
     margin-left: 30px;
 }
@@ -291,16 +367,6 @@ table.table-striped tbody .actions .edit {
     background: none repeat scroll 0 0 #F1F5FA;
     text-align: center;
 }
-
-/* Settings */
-.records_list {
-    width: 90%;
-}
-
-.records_list td li {
-    float: left;
-    margin-right: 20px;
-}
 /*
     TimeSheet
 */
@@ -313,7 +379,9 @@ table.table-striped tbody .actions .edit {
     text-decoration: none;
     color: #000;
 }
-
+/**
+    @todo: refactor
+*/
 #craTable {
     width: 100%;
     clear: both;
@@ -441,6 +509,8 @@ table.table-striped tbody .actions .edit {
 #craTable tr td table tr th a {
     color: white;
 }
+
+/** --@todo: refactor */
 
 .slider {
     background: none repeat scroll 0 0 #CCCCCC;
@@ -629,6 +699,7 @@ table.table-striped tbody .actions .edit {
 
 .project.show #content #project-tab {
     margin-bottom: 40px;
+    clear: both;
 }
 
 .project.show #content .mod-head {

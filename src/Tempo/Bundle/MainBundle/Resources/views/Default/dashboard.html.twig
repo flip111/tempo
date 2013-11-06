@@ -1,0 +1,40 @@
+{% extends 'TempoMainBundle::Layout/web.html.twig' %}
+{% block javascripts %}
+    <script type="text/javascript" src="{{ asset('bundles/tempomain/js/socket.io.min.js') }}"></script>
+
+    {{ parent() }}
+    <script type="text/javascript" src="{{ asset('bundles/tempomain/js/app/model/chatMessage.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/tempomain/js/app/model/room.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/tempomain/js/app/collection/chatMessage.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/tempomain/js/app/views/chatBox.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/tempomain/js/app/views/ChatMessage.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/tempomain/js/app/views/connectedUsers.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/tempomain/js/app/controllers/dashboard.js') }}"></script>
+    <script type="application/javascript">
+    {% autoescape false %}
+        Tempo.Controller.Dashboard.room = new Tempo.Model.Room({{ currentRoom| serialize | raw }}, {parse:true});
+        Tempo.Controller.Dashboard.user = {{ app.user| serialize | raw }};
+        Tempo.Controller.Dashboard.load();
+    {% endautoescape %}
+    </script>
+{% endblock %}
+
+{% block bodyClass %}dashboard {% endblock %}
+{% block body %}
+    <nav class="col-md-12 rooms">
+        <ul class="clearfix">
+           {% for room in rooms %}
+               <li><a href="?currentRoom={{ room.id }}">{{ room.name }}</a></li>
+           {% endfor %}
+        </ul>
+    </nav>
+    <div id="row-box">
+        <div class="col-md-6" id="activity-box">
+            <h3 class="homeTitle">Activities across projects</h3>
+        </div>
+        <div class="col-md-6" id="chat-box">
+        </div>
+    </div>
+
+
+{% endblock %}

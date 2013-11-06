@@ -21,6 +21,7 @@ class AppKernel extends Kernel
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
 
             new FOS\UserBundle\FOSUserBundle(),
+            new FOS\RestBundle\FOSRestBundle(),
             new Knp\Bundle\SnappyBundle\KnpSnappyBundle(),
             new Knp\Bundle\MenuBundle\KnpMenuBundle(),
             new Knp\Bundle\TimeBundle\KnpTimeBundle(),
@@ -30,6 +31,7 @@ class AppKernel extends Kernel
             new Fkr\CssURLRewriteBundle\FkrCssURLRewriteBundle(),
             new Liip\ImagineBundle\LiipImagineBundle(),
             new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
+            new JMS\SerializerBundle\JMSSerializerBundle(),
             new Problematic\AclManagerBundle\ProblematicAclManagerBundle(),
             new Mopa\Bundle\BootstrapBundle\MopaBootstrapBundle(),
 
