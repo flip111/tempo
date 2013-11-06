@@ -11,13 +11,14 @@
 
 namespace Tempo\Bundle\ActivityBundle\DataFixtures\ORM;
 
-use Doctrine\Common\DataFixtures\FixtureInterface;
+use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\DataFixtures\AbstractFixture;
 use Doctrine\Common\Persistence\ObjectManager;
 
+
 use Tempo\Bundle\ActivityBundle\Entity\Activity;
 
-class LoadActivityData extends AbstractFixture implements FixtureInterface
+class LoadActivityData extends AbstractFixture implements OrderedFixtureInterface
 {
 
     /**

@@ -11,7 +11,7 @@
 
 namespace Tempo\Bundle\ProjectBundle\DataFixtures\ORM;
 
-use Doctrine\Common\DataFixtures\FixtureInterface;
+use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\DataFixtures\AbstractFixture;
 use Doctrine\Common\Persistence\ObjectManager;
 
@@ -22,7 +22,7 @@ use Symfony\Component\Security\Acl\Permission\MaskBuilder;
 
 use Tempo\Bundle\ProjectBundle\Entity\Organization;
 
-class LoadOrganizationData extends AbstractFixture implements ContainerAwareInterface
+class LoadOrganizationData extends AbstractFixture implements OrderedFixtureInterface, ContainerAwareInterface
 {
     private $container;
 

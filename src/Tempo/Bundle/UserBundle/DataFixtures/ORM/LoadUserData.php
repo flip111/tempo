@@ -11,7 +11,7 @@
 
 namespace Tempo\Bundle\UserBundle\DataFixtures\ORM;
 
-use Doctrine\Common\DataFixtures\FixtureInterface;
+use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\Common\DataFixtures\AbstractFixture;
 
@@ -23,7 +23,7 @@ use Tempo\Bundle\UserBundle\Entity\User;
 /**
  *
  */
-class LoadUserData extends AbstractFixture implements FixtureInterface, ContainerAwareInterface
+class LoadUserData extends AbstractFixture implements OrderedFixtureInterface, ContainerAwareInterface
 {
 
     private $container;
