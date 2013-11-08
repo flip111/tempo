@@ -5,8 +5,8 @@ Tempo.View.ChatBox = Backbone.View.extend({
     tagName: 'div',
     template: '<div id="chat-handle" class="live-box-heading"></div>' +
         '<div id="chat-window"><div id="chat-messages"></div>' +
-        '<form name="chat-input"><div id="message-input-area clearfix"><input name="chat[content]" required="required" id="message-input" class="form-control" value=""/><input id="message-submit" type="submit" value="&gt;" class="btn btn-sm btn-primary"/></form></div></div>',
-    id: 'chatbox',
+        '<form name="chat-input"><div id="message-input-area" class="clearfix"><input name="chat[content]" required="required" id="message-input" class="form-control" value=""/><input id="message-submit" type="submit" value="&gt;" class="btn btn-sm btn-primary"/></div></form>',
+    id: 'chat',
 
     events: {
         'submit form': 'newMessage'

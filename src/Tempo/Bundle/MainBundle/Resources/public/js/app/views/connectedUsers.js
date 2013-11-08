@@ -5,7 +5,7 @@ Tempo.View.ConnectedUsers = Backbone.View.extend({
 
     tagName: 'div',
     id: 'connected-users',
-    template: '<div id="user-handle" class="live-box-heading"><%= connectedCount %> Connected Users</div>' +
+    template: '<h5 id="user-handle" class="live-box-heading"><%= connectedCount %> Connected Users</h5>' +
         '<ul id="users-list" class="clearfix"></ul>',
     users: [],
     events: {

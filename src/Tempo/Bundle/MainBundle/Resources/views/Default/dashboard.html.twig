@@ -19,8 +19,10 @@
     </script>
 {% endblock %}
 
-{% block bodyClass %}dashboard {% endblock %}
+{% block bodyClass %}home dashboard {% endblock %}
 {% block body %}
+    {% trans_default_domain 'TempoMain' %}
+
     <nav class="col-md-12 rooms">
         <ul class="clearfix">
            {% for room in rooms %}
@@ -30,7 +32,11 @@
     </nav>
     <div id="row-box">
         <div class="col-md-6" id="activity-box">
-            <h3 class="homeTitle">Activities across projects</h3>
+            <h3 class="homeTitle">{{ 'dashboard.title'|trans }}</h3>
+
+
+
+
         </div>
         <div class="col-md-6" id="chat-box">
         </div>

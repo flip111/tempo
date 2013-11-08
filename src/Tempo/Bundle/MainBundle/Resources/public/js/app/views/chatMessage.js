@@ -3,7 +3,7 @@
  */
 Tempo.View.ChatMessage = Backbone.View.extend({
     tagName: 'div',
-    template: '<div class="message-head" title="<%= created %>"><%= user.username %> : </div><p class="message-content"><%= content %></p>',
+    template: '<div class="message-head" title="<%= created %>"><%= user.username %> </div><p class="message-content"><%= content %></p>',
     className: 'chat-message',
 
     initialize: function(options) {

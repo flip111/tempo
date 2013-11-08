@@ -3,3 +3,7 @@ menu:
   users: Users
   home: Accueil
   timesheet: Timesheets
+
+dashboard:
+  title: Activity Feed
+  form.status.label: Share something. Use @ to mention people.
