@@ -72,16 +72,6 @@
             <div class="row">
                 {% block body %}
                 <div id="child-content" class="col-md-{% if sidebar is defined %}8{% else %}10{% endif %}">
-                    {% block flashes %}
-                        {% for name, flashes in app.session.flashbag.all if name in ['success', 'error', 'fos_user_success'] %}
-                            {% for flash in flashes %}
-                                <div class="alert alert-{{ name == 'fos_user_success' ? 'success' : name }}">
-                                    <a class="close" data-dismiss="alert" href="#">×</a>
-                                    {{ flash|trans }}
-                                </div>
-                            {% endfor %}
-                        {% endfor %}
-                    {% endblock %}
                     {% block breadcrumb %}
                         {{ knp_menu_render('breadcrumb') }}
                     {% endblock breadcrumb %}
@@ -94,6 +84,18 @@
             {% endblock body %}
         </div>
 
+    </div>
+    <div class="flash-container" style="display: none;">
+        {% block flashes %}
+            {% for name, flashes in app.session.flashbag.all if name in ['success', 'notice', 'error', 'fos_user_success'] %}
+                {% for flash in flashes %}
+                    <div class="flash-{{ name == 'fos_user_success' ? 'success' : name }}">
+                        <a class="close" data-dismiss="alert" href="#">×</a>
+                        {{ flash|trans }}
+                    </div>
+                {% endfor %}
+            {% endfor %}
+        {% endblock %}
     </div>
     <div id="dialog">
         <!-- Modal -->

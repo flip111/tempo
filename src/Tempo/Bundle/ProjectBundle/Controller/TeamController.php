@@ -51,7 +51,7 @@ class TeamController extends Controller
             $this->getManage()->persistAndFlush($category);
             $this->getAclManager()->addObjectPermission($category, MaskBuilder::MASK_VIEW); //set Permission
 
-            $request->getSession()->getFlashBag()->set('notice', $this->getTranslator()->trans('team.success_add'));
+            $request->getSession()->getFlashBag()->set('success', $this->getTranslator()->trans('team.success_add'));
 
             return $this->redirect($this->generateUrl($routeSuccess, array('slug' => $category->getSlug())));
         }

@@ -56,7 +56,7 @@ class ProfileController extends Controller
             } elseif ($handler::AVATAR_DELETED === $retval) {
                 $this->get('session')->getFlashBag()->add('notice', $this->translate('avatar.success_delete'));
             } else {
-                $request->getSession()->getFlashBag()->add('notice', $this->translate('avatar.success_edit'));
+                $request->getSession()->getFlashBag()->add('success', $this->translate('avatar.success_edit'));
             }
         }
 

@@ -127,7 +127,7 @@ class OrganizationController extends Controller
 
         if ($request->isMethod('POST') && $editForm->submit($request)->isValid()) {
             $manager->persistAndFlush($organization);
-            $request->getSession()->getFlashBag()->set('notice', $this->getTranslator()->trans('organization.success_deleted', array(), 'TempoProject'));
+            $request->getSession()->getFlashBag()->set('success', $this->getTranslator()->trans('organization.success_deleted', array(), 'TempoProject'));
 
             return $this->redirect($this->generateUrl('organization_show', array('slug' => $organization->getSlug())));
         }
@@ -158,7 +158,7 @@ class OrganizationController extends Controller
 
             $this->getManager()->persistAndFlush($organization);
             $this->getAclManager()->addObjectPermission($organization, MaskBuilder::MASK_OWNER); //set Permission
-            $request->getSession()->getFlashBag()->set('notice', $this->getTranslator()->trans('organization.success_create', array(), 'TempoProject'));
+            $request->getSession()->getFlashBag()->set('success', $this->getTranslator()->trans('organization.success_create', array(), 'TempoProject'));
 
             return $this->redirect($this->generateUrl('organization_edit', array('slug' => $organization->getSlug())));
         }
