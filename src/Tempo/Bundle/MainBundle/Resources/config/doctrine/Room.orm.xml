@@ -19,6 +19,9 @@
                 <cascade-all/>
             </cascade>
         </one-to-many>
+
+        <many-to-many field="team" inversed-by="users" target-entity="Tempo\Bundle\UserBundle\Entity\User" />
+
     </entity>
 
 </doctrine-mapping>

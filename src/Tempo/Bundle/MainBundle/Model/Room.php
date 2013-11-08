@@ -24,12 +24,18 @@ abstract class Room
      */
     protected $name;
 
+    /**
+     * @var Collection
+     */
+    protected $team;
+
     protected $chatMessages;
 
 
     public function __construct()
     {
         $this->chatMessages = new ArrayCollection();
+        $this->team = new ArrayCollection();
     }
 
     public function getId()
