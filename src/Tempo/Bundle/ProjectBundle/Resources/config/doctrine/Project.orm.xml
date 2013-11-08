@@ -47,7 +47,7 @@
         <many-to-one field="organization" inversed-by="projects" target-entity="Organization" />
         <one-to-many field="timesheets" target-entity="Timesheet" mapped-by="project" />
         <one-to-one field="type" target-entity="ProjectType" />
-        <many-to-many field="team" inversed-by="organization" target-entity="Tempo\Bundle\UserBundle\Entity\User" />
+        <many-to-many field="team" inversed-by="users" target-entity="Tempo\Bundle\UserBundle\Entity\User" />
         <one-to-many field="activityProviders" target-entity="Tempo\Bundle\ActivityBundle\Entity\ActivityProvider" mapped-by="project" />
 
     </entity>
