@@ -150,12 +150,12 @@ interface ProjectInterface
     /**
      * @param integer $avancement
      */
-    public function setAvancement($avancement);
+    public function setAdvancement($avancement);
 
     /**
      * @return integer
      */
-    public function getAvancement();
+    public function getAdvancement();
 
     /**
      * @param string $code

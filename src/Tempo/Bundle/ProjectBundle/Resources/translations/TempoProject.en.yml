@@ -38,10 +38,12 @@ project:
     label.organization: Organization
     label.name: Name
     label.isactive: Active
+    label.created: Created
+    label.updated: Updated
     label.beginning: Beginning
     label.ending: Ending
     label.type: Type
-    label.avancement: Avancement
+    label.advancement: Avancement
     label.code: Code
     label.status: Status
     label.estimated: Budget estimated

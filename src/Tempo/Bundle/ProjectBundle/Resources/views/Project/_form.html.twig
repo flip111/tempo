@@ -46,13 +46,13 @@
         </div>
         <div class="formtextField">
 
-            {{ form_label(form.avancement) }}
-            {{ form_errors(form.avancement) }}
-            {{ form_widget(form.avancement, { 'attr' :  { 'disabled' : 'disabled', 'style': 'display: none' }}) }}
+            {{ form_label(form.advancement) }}
+            {{ form_errors(form.advancement) }}
+            {{ form_widget(form.advancement, { 'attr' :  { 'disabled' : 'disabled', 'style': 'display: none' }}) }}
 
             <div id="slider" class="slider form-control">
                 <a class="ui-slider-handle ui-state-default ui-corner-all" href="#">
-                    <span id="knob_value">{{ form.avancement.vars.value }}%</span>
+                    <span id="knob_value">{{ form.advancement.vars.value }}%</span>
                 </a>
             </div>
 

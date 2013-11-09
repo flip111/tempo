@@ -52,8 +52,8 @@ class ProjectType extends AbstractType
                     return $er->findAllTypes();
                 }
             ))
-            ->add('avancement', null, array(
-                'label' => 'project.form.label.avancement'
+            ->add('advancement', null, array(
+                'label' => 'project.form.label.advancement'
             ))
             ->add('code', null, array(
                 'label' => 'project.form.label.code'

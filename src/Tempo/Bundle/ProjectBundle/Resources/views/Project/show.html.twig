@@ -41,15 +41,15 @@
                     <ul class="item-details col-md-6">
                         <li>
                             <dl>
-                                <dt>Code:</dt>
+                                <dt>{{ 'project.form.label.code'|trans({}, 'TempoProject') }}:</dt>
                                 <dd>{{ project.code }}</dd>
                             </dl>
                             <dl>
-                                <dt>Created</dt>
+                                <dt>{{ 'project.form.label.created'|trans({}, 'TempoProject') }}:</dt>
                                 <dd>{{ datetime_diff(project.created) }} </dd>
                             </dl>
                             <dl>
-                                <dt>Updated</dt>
+                                <dt>{{ 'project.form.label.updated'|trans({}, 'TempoProject') }}:</dt>
                                 <dd>{{ datetime_diff(project.updated) }}</dd>
                             </dl>
                         </li>
@@ -58,16 +58,16 @@
                     <ul class="item-details col-md-6">
                         <li>
                             <dl>
-                                <dt>Organization:</dt>
+                                <dt>{{ 'project.form.label.organization'|trans({}, 'TempoProject') }}:</dt>
                                 <dd>{{ project.organization }}</dd>
                             </dl>
                             <dl>
-                                <dt>Début</dt>
-                                <dd> {{ datetime_diff(project.created, null, false) }} </dd>
+                                <dt>{{ 'project.form.label.beginning'|trans({}, 'TempoProject') }}:</dt>
+                                <dd> {{ datetime_diff(project.beginning, null, false) }} </dd>
                             </dl>
                             <dl>
-                                <dt>Fin</dt>
-                                <dd>{{ datetime_diff(project.updated, null, false) }}</dd>
+                                <dt>{{ 'project.form.label.ending'|trans({}, 'TempoProject') }}:</dt>
+                                <dd>{{ datetime_diff(project.ending, null, false) }}</dd>
                             </dl>
                         </li>
 
@@ -83,14 +83,14 @@
                     <thead>
                         <tr>
                             <th>ID</th>
-                            <th>Code</th>
-                            <th>Nom</th>
-                            <th>Type</th>
-                            <th>Status</th>
-                            <th>Criticité</th>
-                            <th>Avancement</th>
-                            <th>Début</th>
-                            <th>Fin</th>
+                            <th>{{ 'project.form.label.code'|trans({}, 'TempoProject') }}</th>
+                            <th>{{ 'project.form.label.name'|trans({}, 'TempoProject') }}</th>
+                            <th>{{ 'project.form.label.type'|trans({}, 'TempoProject') }}</th>
+                            <th>{{ 'project.form.label.status'|trans({}, 'TempoProject') }}</th>
+                            <th>{{ 'project.form.label.priority'|trans({}, 'TempoProject') }}</th>
+                            <th>{{ 'project.form.label.advancement'|trans({}, 'TempoProject') }}</th>
+                            <th>{{ 'project.form.label.beginning'|trans({}, 'TempoProject') }}</th>
+                            <th>{{ 'project.form.label.ending'|trans({}, 'TempoProject') }}</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -102,7 +102,7 @@
                             <td>{{ children.renderType }}</td>
                             <td>{{ children.renderStatus }}</td>
                             <td>{{ children.priority }}</td>
-                            <td>{{ children.avancement }}</td>
+                            <td>{{ children.advancement }}</td>
                             <td>{{project.beginning.format("Y-m-j")}}</td>
                             <td>{{project.ending.format("Y-m-j")}}</td>
                         </tr>
