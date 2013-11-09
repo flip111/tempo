@@ -26,20 +26,23 @@ class DefaultController extends Controller
      */
     public function indexAction()
     {
-        $rooms = $this->getDoctrine()->getManager()->getRepository('TempoMainBundle:Room')->findAll();
-        $this->getRequest()->getSession()->set('currentRoom', 1);
+        $request = $this->getRequest();
+        $em = $this->getDoctrine()->getManager();
 
-        $currentRoom = array(
-            'id' => 1,
-            'name' => 'Room1'
-        );
-
+        $rooms = $em->getRepository('TempoMainBundle:Room')->findAll();
+        $roomId = $request->query->get('currentRoom', $rooms[0]->getId());
+        $request->getSession()->set('currentRoom', $roomId);
+        $currentRoom = $request->getSession()->get('currentRoom');
+        $currentRoom = $em->getRepository('TempoMainBundle:Room')->find($currentRoom);
         $form  = $this->createForm(new ChatMessageType());
 
         return $this->render('TempoMainBundle:Default:dashboard.html.twig', array(
             'rooms' => $rooms,
             'form' => $form->createView(),
-            'currentRoom' => $currentRoom,
+            'currentRoom' => array(
+                'id' => $currentRoom->getId(),
+                'name' => $currentRoom->getName()
+            ),
         ));
     }
 

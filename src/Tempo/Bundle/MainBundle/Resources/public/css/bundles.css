@@ -294,6 +294,9 @@ table.table-striped tbody .actions .edit {
 .dashboard .rooms ul li a {
     color: #4183c4;
 }
+.dashboard .rooms ul li a.current {
+    font-weight: bold;
+}
 .dashboard #row-box {
     position: relative;
 }
