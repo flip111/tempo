@@ -44,17 +44,17 @@ class TimesheetController extends Controller
         $currentYear = $this->getRequest()->query->get('year', date('Y'));
         $currentWeek = $this->getRequest()->query->get('week', date('W'));
 
+
+        $week = new DateTime();
+        $week->setISOdate($currentYear, $currentWeek);
+        $factoryWeek = new Week($week);
+
         $weekPagination = array(
-            'next' => date("W", strtotime("+1 week")),
+            'next' => date("W", strtotime("+1 week", $week->getTimestamp())),
             'current' => $currentWeek ,
-            'prev' => date("W", strtotime("-1 week")),
+            'prev' => date("W", strtotime("-1 week", $week->getTimestamp())),
             'year' => $currentYear
         );
-
-        $currentWeek = new DateTime();
-        $currentWeek->setISOdate($currentYear, $weekPagination['current']);
-        $factoryWeek = new Week($currentWeek);
-
 
         $data = $this->getManager()->getAllCra(
             $factoryWeek,
@@ -66,7 +66,7 @@ class TimesheetController extends Controller
         return $this->render('TempoProjectBundle:Timesheet:dashboard.html.twig', array(
             'date' => $data['date'],
             'week' => $data['week'],
-            'currentWeek' => $currentWeek,
+            'currentWeek' => $week,
             'projects' => $data['projects'],
             'users' => $userList,
             'weekPagination' => $weekPagination
