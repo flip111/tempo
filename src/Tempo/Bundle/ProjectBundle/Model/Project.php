@@ -113,7 +113,7 @@ class Project implements ProjectInterface
     /**
      * @var integer
      */
-    protected $avancement;
+    protected $advancement;
 
     /**
      * @var integer
@@ -143,7 +143,7 @@ class Project implements ProjectInterface
     public function __construct()
     {
         $this->isActive = true;
-        $this->avancement = 0;
+        $this->advancement = 0;
         $this->timesheets = new ArrayCollection();
         $this->children = new ArrayCollection();
         $this->parents = new ArrayCollection();
@@ -363,23 +363,23 @@ class Project implements ProjectInterface
     }
 
     /**
-     * Set avancement
+     * Set advancement
      *
      * @param integer $avancement
      */
-    public function setAvancement($avancement)
+    public function setAdvancement($advancement)
     {
-        $this->avancement = $avancement;
+        $this->advancement = $advancement;
     }
 
     /**
-     * Get avancement
+     * Get advancement
      *
      * @return integer
      */
-    public function getAvancement()
+    public function getAdvancement()
     {
-        return $this->avancement;
+        return $this->advancement;
     }
 
     /**

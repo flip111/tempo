@@ -350,3 +350,35 @@ body {
 .form-block input[type="text"], .form-block input[type="email"], .form-block input[type="password"] {
     width: 250px;
 }
+
+.flash-container {
+    display: none;
+    cursor: pointer;
+    margin: 0;
+    text-align: center;
+    color: #fff;
+    font-size: 14px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    opacity: 0.8;
+    z-index: 100
+}
+
+.flash-container .flash-notice {
+    background: #49C;
+    padding: 10px;
+    text-shadow: 0 1px 1px #178
+}
+
+.flash-container .flash-success {
+    color: #468849;
+    background: #dff0d8;
+    padding: 10px;
+}
+
+.flash-container .flash-error{
+    background: #C67;
+    text-shadow: 0 1px 1px #945;
+    padding: 10px
+}

@@ -38,10 +38,12 @@ project:
     label.organization: Organization
     label.name: Name
     label.isactive: Active
+    label.created: Created
+    label.updated: Updated
     label.beginning: Beginning
     label.ending: Ending
     label.type: Type
-    label.avancement: Avancement
+    label.advancement: Avancement
     label.code: Code
     label.status: Status
     label.estimated: Budget estimated
@@ -50,6 +52,7 @@ timesheets:
   page_title: Timesheet
   last_week: Last week
   next_week: Next week
+  week: Week
 
 team:
  success_add: The user has been added to the team

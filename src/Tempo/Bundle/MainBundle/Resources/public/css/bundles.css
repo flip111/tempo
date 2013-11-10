@@ -141,6 +141,8 @@ table.table-striped tbody .actions .edit {
 
 .record_actions {
     list-style-type: none;
+    margin: 0;
+    padding: 0;
 }
 
 
@@ -413,150 +415,16 @@ table.table-striped tbody .actions .edit {
     background: none repeat scroll 0 0 #F1F5FA;
     text-align: center;
 }
-/*
-    TimeSheet
-*/
 
-#timesheet_week {
-    margin-bottom: 20px;
+/* Settings */
+.records_list {
+    width: 90%;
 }
 
-#timesheet_week a {
-    text-decoration: none;
-    color: #000;
-}
-/**
-    @todo: refactor
-*/
-#craTable {
-    width: 100%;
-    clear: both;
-}
-
-#craTable th {
-    background-color: #40689b;
-    border: medium none;
-    border-right: 1px solid #FFF;
-    color: #FFFFFF;
-    font-weight: bold;
-    height: 15px;
-    padding: 5px;
-    text-align: center;
-    font-size: 12px;
-}
-
-#craTable th.first {
-    text-align: left;
-}
-
-#craTable tr.t1 {
-    background-color: #EBEBEB;
-}
-
-#craTable tr.t2 {
-    background-color: #FFF;
-}
-
-#craTable tr td {
-    height: 30px;
-    max-height: 30px;
-    padding-left: 12px;
-    padding-top: 4px;
-}
-
-#craTable tr td input {
-    border: 1px solid #CCCCCC;
-    padding: 0px 2px 2px 12px;
+.records_list td li {
     float: left;
+    margin-right: 20px;
 }
-
-#craTable tr td input.ch_cra {
-    display: none;
-}
-
-#craTable tr td input.cra_load {
-    background-image: url(/bundles/tempoproject/images/timesheet/durationmillis.gif);
-    background-position: 0 0;
-    background-repeat: no-repeat;
-    margin-right: 10px;
-    width: 30px;
-}
-
-#craTable tr td div.cra_load {
-    margin-top: 4px;
-    display: block;
-    font-size: 10px;
-}
-
-#craTable tr td input.cra_desc {
-    width: 45px;
-    display: none;
-}
-
-#craTable tr td form {
-    float: left;
-    margin: 0px;
-}
-
-#craTable tr td .cra {
-    float: left;
-}
-
-#craTable tr td .show_cra {
-    font-size: 10px;
-    display: block;
-    width: 30px;
-}
-
-#craTable tr td div.cra_load span.total {
-    font-size: 8px;
-}
-
-#craTable tr td div.cra_load span.heures {
-    font-size: 8px;
-}
-
-#craTable tr td div.cra_load a {
-    color: inherit;
-    text-decoration: none;
-}
-
-#craTable tr td div.list {
-    display: none;
-    position: relative;
-}
-
-#craTable tr td table {
-    background-color: #FFFFFF;
-    border: 1px solid #8CAFCA;
-
-    position: absolute;
-    z-index: 2;
-    min-width: 500px;
-}
-
-#craTable tr td table tr td {
-    height: 17px;
-    font-size: 9px;
-}
-
-#craTable tr td table tr td span.carre {
-    margin: auto;
-    display: block;
-    width: 15px;
-    height: 15px;
-    background-color: #0B5794;
-}
-
-#craTable tr td table tr td span.carre.yellow {
-    background-color: #F7A922;
-}
-
-#craTable tr td table tr th a {
-    color: white;
-}
-
-/** --@todo: refactor */
 
 .slider {
     background: none repeat scroll 0 0 #CCCCCC;
@@ -783,8 +651,7 @@ table.table-striped tbody .actions .edit {
     color: #666666;
     display: table-cell;
     vertical-align: top;
-    width: 16%;
-    font-size: 13px;
+    width: 45%;
 }
 
 .project.show #content ul.item-details dl dd {
@@ -902,6 +769,210 @@ table.table-striped tbody .actions .edit {
 
 .project #organization .head h4 {
     margin-left: 10px;
+}
+
+.timesheet.dashboard #page-title{
+    font-size: 17px;
+    font-weight: normal;
+    color: #4a87b6;
+}
+.timesheet.dashboard .actions-filter {
+    float: right;
+}
+.timesheet.dashboard .actions {
+    float: left;
+    list-style: none;
+}
+.timesheet.dashboard .actions li {
+    float: left;
+    padding: 8px 15px 0 15px;
+
+}
+.timesheet.dashboard .actions li.actions{
+    padding-top: 0px;
+}
+.timesheet.dashboard .actions li.actions a{
+    background: #f6f6f6;
+}
+
+.timesheet.dashboard .week-pagination{
+    list-style: none;
+    float: left;
+}
+.timesheet.dashboard .week-pagination li{
+    float: left;
+}
+
+.timesheet.dashboard .week-pagination a{
+    color: #999;
+    font-size: 12px;
+}
+.timesheet.dashboard .week-pagination .btn{
+    font-weight: normal;
+    background: #f6f6f6;
+    border: 1px solid #ddd;
+}
+
+#time-list {
+    width: 100%;
+    clear: both;
+}
+
+#time-list thead {
+    background-color: #f6f6f6;
+}
+#time-list thead .header{
+
+    border: 1px solid #e9e9e9;
+}
+#time-list thead  th {
+    height: 15px;
+    padding: 5px;
+    text-align: center;
+
+}
+#time-list thead .header th {
+    color: rgb(68, 68, 68);
+    /**background-color: #40689b;**/
+    font-weight: normal;
+    font-size: 12px;
+}
+#time-list .spacing th {
+    background: #FFF;
+}
+
+#time-list th.first {
+    text-align: left;
+}
+
+#time-list tr.t1 {
+    background-color: #EBEBEB;
+}
+
+#time-list tr.t2 {
+    background-color: #FFF;
+}
+
+#time-list tbody tr {
+    border: 1px solid #e9e9e9;
+
+}
+#time-list tr td {
+    height: 30px;
+    max-height: 30px;
+    padding-left: 12px;
+    padding-top: 4px;
+}
+#time-list tr td a {
+    font-weight: normal;
+    font-size: 13px;
+}
+#time-list tr td a.boxclose {
+    color: #000;
+}
+
+#time-list tr td input {
+    border: 1px solid #CCCCCC;
+    padding: 0px 2px 2px 12px;
+    float: left;
+}
+
+#time-list tr td input.ch_cra {
+    display: none;
+}
+
+#time-list tr td input.cra_load {
+    background-image: url(/bundles/tempoproject/images/timesheet/durationmillis.gif);
+    background-position: 0 0;
+    background-repeat: no-repeat;
+    margin-right: 10px;
+    width: 30px;
+}
+
+#time-list tr td div.cra_load {
+    margin-top: 4px;
+    display: block;
+    font-size: 10px;
+}
+
+#time-list tr td input.cra_desc {
+    width: 45px;
+    display: none;
+}
+
+#time-list tr td form {
+    float: left;
+    margin: 0px;
+}
+
+#time-list tr td .cra {
+    float: left;
+}
+
+#time-list tr td .show_cra {
+    font-size: 10px;
+    display: block;
+    width: 30px;
+}
+
+#time-list tr td div.cra_load span.total {
+    font-size: 8px;
+}
+
+#time-list tr td div.cra_load span.heures {
+    font-size: 8px;
+}
+
+#time-list tr td div.cra_load a {
+    color: inherit;
+    text-decoration: none;
+}
+
+#time-list tr td div.list {
+    display: none;
+    position: relative;
+}
+#time-list tr td div.list table thead tr th {
+    font-size: 12px;
+}
+#time-list tr td div.list table tr td.actions ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+#time-list tr td div.list table tr td.actions ul li {
+    padding: 0;
+}
+
+
+#time-list tr td table {
+    background-color: #FFFFFF;
+    border: 1px solid #8CAFCA;
+
+    position: absolute;
+    z-index: 2;
+    min-width: 500px;
+}
+
+#time-list tr td table tr td {
+    height: 17px;
+    font-size: 9px;
+}
+
+#time-list tr td table tr td span.carre {
+    margin: auto;
+    display: block;
+    width: 15px;
+    height: 15px;
+    background-color: #0B5794;
+}
+
+#time-list tr td table tr td span.carre.yellow {
+    background-color: #F7A922;
+}
+
+#time-list tr td table tr th a {
+    color: white;
 }
 
 .timesheet.list #sidebar .form-horizontal .control-group {

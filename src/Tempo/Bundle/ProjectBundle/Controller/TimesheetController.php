@@ -32,7 +32,7 @@ class TimesheetController extends Controller
      * Lists all Timesheet entities.
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
-    public function indexAction()
+    public function dashboardAction()
     {
 
         $breadcrumb  = $this->get('tempo_main.breadcrumb');
@@ -63,9 +63,10 @@ class TimesheetController extends Controller
         );
         $userList = $this->getDoctrine()->getRepository('TempoUserBundle:User')->findAll();
 
-        return $this->render('TempoProjectBundle:Timesheet:index.html.twig', array(
+        return $this->render('TempoProjectBundle:Timesheet:dashboard.html.twig', array(
             'date' => $data['date'],
             'week' => $data['week'],
+            'currentWeek' => $currentWeek,
             'projects' => $data['projects'],
             'users' => $userList,
             'weekPagination' => $weekPagination

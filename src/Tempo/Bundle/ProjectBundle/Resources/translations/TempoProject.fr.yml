@@ -46,18 +46,21 @@ project:
   form:
     label_name: Nom
     label_isactive: Actif
-    label_beginning: Commence
-    label_ending: Fini
-    label_type: Type
-    label_avancement: Avancement
-    label_code: Code
-    label_status: Status
-    label_estimated: Budget estimé
+    label.created: Crée le
+    label.updated: Mise à jour
+    label.beginning: Commence
+    label.ending: Fini
+    label.type: Type
+    label.advancements: Avancement
+    label.code: Code
+    label.status: Status
+    label.estimated: Budget estimé
 
 timesheets:
   page_title: Gestion du temps
   last_week: Semaine précédente
   next_week: Semaine suivante
+  week: Semaine
 
 team:
  success_add: L'utilisateur a bien été ajouté à l'équipe

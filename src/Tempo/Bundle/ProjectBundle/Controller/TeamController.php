@@ -48,10 +48,11 @@ class TeamController extends Controller
             $findUser = $this->getDoctrine()->getRepository('TempoUserBundle:User')->findOneBy(array('username' => $formData['username']));
 
             $category->addTeam($findUser);
-            $this->getManage()->persistAndFlush($category);
+            $this->getManager()->persist($category);
+            $this->getManager()->flush();
             $this->getAclManager()->addObjectPermission($category, MaskBuilder::MASK_VIEW); //set Permission
 
-            $request->getSession()->getFlashBag()->set('notice', $this->getTranslator()->trans('team.success_add'));
+            $request->getSession()->getFlashBag()->set('success', $this->getTranslator()->trans('team.success_add', array(), 'TempoProject'));
 
             return $this->redirect($this->generateUrl($routeSuccess, array('slug' => $category->getSlug())));
         }
@@ -65,7 +66,7 @@ class TeamController extends Controller
      */
     protected function getManager()
     {
-        return $this->get('tempo_project.manager.team');
+        return $this->getDoctrine()->getManager();
     }
 
     /**
