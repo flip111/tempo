@@ -1,6 +1,6 @@
 timesheet:
     pattern:  /
-    defaults: { _controller: "TempoProjectBundle:Timesheet:index" }
+    defaults: { _controller: "TempoProjectBundle:Timesheet:dashboard" }
 
 timesheet_show:
     pattern:  /{id}/show

@@ -52,6 +52,7 @@ timesheets:
   page_title: Timesheet
   last_week: Last week
   next_week: Next week
+  week: Week
 
 team:
  success_add: The user has been added to the team

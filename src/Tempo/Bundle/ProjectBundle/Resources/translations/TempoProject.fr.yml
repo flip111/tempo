@@ -60,6 +60,7 @@ timesheets:
   page_title: Gestion du temps
   last_week: Semaine précédente
   next_week: Semaine suivante
+  week: Semaine
 
 team:
  success_add: L'utilisateur a bien été ajouté à l'équipe

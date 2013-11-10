@@ -53,7 +53,7 @@ $(function() {
     });
 
 
-    $('#craTable .boxclose').on('click', function(e) {
+    $('#time-list .boxclose').on('click', function(e) {
         $('#' + $(this).attr('rel')).hide();
     });
 

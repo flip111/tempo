@@ -3,22 +3,35 @@
     {{ parent() }}
     <script type="text/javascript" src="{{ asset('bundles/tempoproject/js/timesheet.js')}}"></script>
 {% endblock %}
+{% block bodyClass %}timesheet dashboard{% endblock %}
 
 {% block content %}
-    <div id="timesheet_week">
-        <p class="float_left">
-            <a href="?week={{ weekPagination.prev }}&year={{ weekPagination.year  }}" class="btn">{{ 'timesheets.last_week'|trans({}, 'TempoProject') }}</a>
-        </p>
-        <p class="float_right">
-            <a href="?week={{ weekPagination.next }}&year={{ weekPagination.year  }}" class="btn">{{ 'timesheets.next_week'|trans({}, 'TempoProject') }}</a>
-        </p>
-        <div class="clearfix"></div>
+    <div class="actions-filter">
+        <ul class="actions">
+            <li><a><span class="glyphicon glyphicon-filter"> </span></a></li>
+            <li><a><span class="glyphicon glyphicon-th"> </span></a></li>
+            <li class="actions"><a class="btn">Actions</a></li>
+        </ul>
+        <ul class="week-pagination">
+            <li>
+                <a data-toggle="tooltip"  href="?week={{ weekPagination.prev }}&year={{ weekPagination.year }}" class="btn" title data-original-title="{{ 'timesheets.last_week'|trans({}, 'TempoProject') }}">
+                    <span class="glyphicon glyphicon-chevron-left"></span>
+                </a>
+            </li>
+            <li>
+                <a data-toggle="tooltip"  href="?week={{ weekPagination.next }}&year={{ weekPagination.year }}" class="btn" title data-original-title="{{ 'timesheets.next_week'|trans({}, 'TempoProject') }}">
+                    <span class="glyphicon glyphicon-chevron-right"></span>
+                </a>
+            </li>
+        </ul>
     </div>
-
-    <h1 id="page-title">{{ 'timesheets.page_title'|trans({}, 'TempoProject') }}</h1>
+    <h1 id="page-title">
+        <span class="glyphicon glyphicon-time"></span>
+        {{ 'timesheets.page_title'|trans({}, 'TempoProject') }} - {{ 'timesheets.week'|trans({}, 'TempoProject') }} {{ weekPagination.current }}, {{ currentWeek|date('m/Y') }}
+    </h1>
 
     <div>
-        <table id="craTable">
+        <table id="time-list">
             <colgroup>
                 <col align="left">
                 <col width="11%" id="col1">
@@ -30,11 +43,14 @@
                 <col width="11%" id="col7">
             </colgroup>
             <thead>
-            <tr>
+            <tr class="header">
                 <th class="first">Projets</th>
                 {% for jour in week %}
                     <th>{{jour }}</th>
                 {% endfor %}
+            </tr>
+            <tr class="spacing">
+                <th colspan="8"></th>
             </tr>
             </thead>
             <tbody>
@@ -75,12 +91,11 @@
                                                 <td><strong>{{ cra.time }}:00</strong></td>
                                                 <td><span class="carre {% if cra.billable == 0 %}yellow{% endif %}"> </span></td>
                                                 <td>{{ cra.description }} </td>
-                                                <td>
+                                                <td class="actions">
                                                     <ul>
                                                         <li>
                                                             <a data-toggle="modal" data-target="#" data-title="Edit" href="{{ path('timesheet_edit', { 'id': cra.id }) }}" >
                                                                 <span class="glyphicon glyphicon-edit"></span>
-                                                                Edit
                                                             </a>
                                                         </li>
                                                     </ul>
