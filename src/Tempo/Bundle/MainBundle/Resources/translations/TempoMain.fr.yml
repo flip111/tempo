@@ -3,3 +3,7 @@ menu:
   users: Utilisateurs
   home: Home
   timesheet: Timesheets
+
+dashboard:
+  title: Flux d'activité
+  form.status.label: Partagez quelque chose. Utilisez @ pour mentionner des personnes.

@@ -5,3 +5,7 @@ settings:
 help:
     pattern: /help
     defaults: { _controller: TempoMainBundle:Default:help }
+
+main_chat:
+  type: rest
+  resource: "@TempoMainBundle/Resources/config/routing/chat.yml"

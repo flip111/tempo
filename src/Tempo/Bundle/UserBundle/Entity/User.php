@@ -15,12 +15,15 @@ namespace Tempo\Bundle\UserBundle\Entity;
 use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use JMS\Serializer\Annotation\ExclusionPolicy;
+use JMS\Serializer\Annotation\Expose;
 
 
 /**
  * @ORM\Entity
  * @ORM\Table(name="membre")
  * @ORM\Entity(repositoryClass="Tempo\Bundle\UserBundle\Repository\UserRepository")
+ * @ExclusionPolicy("all")
  */
 class User extends BaseUser
 {

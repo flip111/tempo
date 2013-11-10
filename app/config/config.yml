@@ -59,6 +59,24 @@ stof_doctrine_extensions:
           timestampable: true
           translatable: false
           tree: false
+sensio_framework_extra:
+    view:
+        annotations: false
+
+fos_rest:
+    param_fetcher_listener: true
+    body_listener: true
+    format_listener: true
+    view:
+        view_response_listener: 'force'
+    routing_loader:
+        default_format: json
+    access_denied_listener:
+        json: true
+    exception:
+        codes:
+            'Symfony\Component\Routing\Exception\ResourceNotFoundException': 404
+            'Doctrine\ORM\OptimisticLockException': HTTP_CONFLICT
 
 knp_time: ~  # Enable the helper for use in templates
 
@@ -117,3 +135,12 @@ mopa_bootstrap:
 fkr_css_url_rewrite:
     rewrite_only_if_file_exists: true
     clear_urls: true
+
+jms_serializer:
+    metadata:
+      debug: "%kernel.debug%"
+      auto_detection: true
+      directories:
+            FOSUserBundle:
+              namespace_prefix: "FOS\\UserBundle"
+              path: "@TempoUserBundle/Resources/config/serializer/FOSUserBundle"
