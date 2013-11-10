@@ -28,6 +28,11 @@ $ php app/console doctrine:schema:create
 
 # If you want to load sample data, use the following command
 $ php app/console doctrine:fixtures:load
+
+# Instant messaging
+$ node server.js
+
+
 ```
 
 You probably need to setting up rights for apache, uses the following commands:
