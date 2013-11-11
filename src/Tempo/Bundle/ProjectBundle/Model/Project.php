@@ -14,7 +14,7 @@ namespace Tempo\Bundle\ProjectBundle\Model;
 use Doctrine\Common\Collections\ArrayCollection;
 use Tempo\Bundle\ProjectBundle\Model\OrganizationInterface;
 use Tempo\Bundle\ProjectBundle\Model\TimesheetInterface;
-use Tempo\Bundle\ActivityBundle\Entity\ActivityProvider;
+use Tempo\Bundle\ActivityBundle\Entity\ActivityProviderInterface;
 
 /**
  * Project Model
@@ -606,7 +606,7 @@ class Project implements ProjectInterface
     /**
      * {@inheritdoc}
      */
-    public function addActivityProvider(ActivityProvider $activityProvider)
+    public function addActivityProvider(ActivityProviderInterface $activityProvider)
     {
         $this->activityProviders[] = $activityProvider;
 

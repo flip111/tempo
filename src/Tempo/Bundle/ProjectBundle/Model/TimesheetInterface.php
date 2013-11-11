@@ -17,7 +17,6 @@ namespace Tempo\Bundle\ProjectBundle\Model;
 
 interface TimesheetInterface
 {
-
     /**
      * @return integer
      */
@@ -34,18 +33,22 @@ interface TimesheetInterface
     public function getTime();
 
     /**
-     * @param date $date
+     * Set Date
+     *
+     * @param \DateTime $datetime
      */
-    public function setCreated($date);
+    public function setCreated(\DateTime $datetime);
 
     /**
      * Get date
      *
-     * @return date
+     * @return \DateTime
      */
     public function getDate();
 
     /**
+     * Set time
+     *
      * @param \DateTime $time
      */
     public function setTime($time);
@@ -56,12 +59,12 @@ interface TimesheetInterface
     public function setPeriod($time);
 
     /**
-     * @param text $description
+     * @param string $description
      */
     public function setDescription($description);
 
     /**
-     * @return text
+     * @return string
      */
     public function getDescription();
 
@@ -76,7 +79,7 @@ interface TimesheetInterface
     public function getBillable();
 
     /**
-     * @return Tempo\Bundle\ProjectBundle\Entity\Projet
+     * @return \Tempo\Bundle\ProjectBundle\Model\Projet
      */
     public function getProject();
 
@@ -91,8 +94,7 @@ interface TimesheetInterface
     public function getUser();
 
     /**
-     * @param integer $project
+     * @param ProjectInterface $project
      */
-    public function setProject(\Tempo\Bundle\ProjectBundle\Entity\Project $project);
-
+    public function setProject(ProjectInterface $project);
 }

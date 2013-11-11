@@ -10,12 +10,11 @@
 */
 
 namespace Tempo\Bundle\ProjectBundle\Model;
+use \Tempo\Bundle\ProjectBundle\Model\ProjectInterface;
 
 /**
  * @author Mbechezi Mlanawo <mlanawo.mbechezi@ikimea.com>
  */
-
-use DateTime;
 
 abstract class Timesheet implements TimesheetInterface
 {
@@ -58,18 +57,6 @@ abstract class Timesheet implements TimesheetInterface
      */
     protected $billable;
 
-    public function setCreated($created)
-    {
-        $this->created = $created;
-    }
-
-    /**
-     * @return int
-     */
-    public function getCreated()
-    {
-        return $this->created;
-    }
 
     public function __toString()
     {
@@ -77,9 +64,23 @@ abstract class Timesheet implements TimesheetInterface
     }
 
     /**
-     * Get id
-     *
-     * @return integer
+     * {@inheritdoc}
+     */
+    public function setCreated(\DateTime $created)
+    {
+        $this->created = $created;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getCreated()
+    {
+        return $this->created;
+    }
+
+    /**
+     * {@inheritdoc}
      */
     public function getId()
     {
@@ -87,9 +88,7 @@ abstract class Timesheet implements TimesheetInterface
     }
 
     /**
-     * Set time
-     *
-     * @param \DateTime $time
+     * {@inheritdoc}
      */
     public function setTime($time)
     {
@@ -127,15 +126,13 @@ abstract class Timesheet implements TimesheetInterface
      *
      * @param \DateTime $created
      */
-    public function setDate(DateTime $created)
+    public function setDate(\DateTime $created)
     {
         $this->created = $created;
     }
 
     /**
-     * Get date
-     *
-     * @return date
+     * {@inheritdoc}
      */
     public function getDate()
     {
@@ -143,9 +140,7 @@ abstract class Timesheet implements TimesheetInterface
     }
 
     /**
-     * Set description
-     *
-     * @param text $description
+     * {@inheritdoc}
      */
     public function setDescription($description)
     {
@@ -153,9 +148,7 @@ abstract class Timesheet implements TimesheetInterface
     }
 
     /**
-     * Get description
-     *
-     * @return text
+     * {@inheritdoc}
      */
     public function getDescription()
     {
@@ -163,9 +156,7 @@ abstract class Timesheet implements TimesheetInterface
     }
 
     /**
-     * Set billable
-     *
-     * @param boolean $billable
+     * {@inheritdoc}
      */
     public function setBillable($billable)
     {
@@ -173,9 +164,8 @@ abstract class Timesheet implements TimesheetInterface
     }
 
     /**
-     * Get facturable
-     *
-     * @return boolean
+    /**
+     * {@inheritdoc}
      */
     public function getBillable()
     {
@@ -183,11 +173,9 @@ abstract class Timesheet implements TimesheetInterface
     }
 
     /**
-     * Set project
-     *
-     * @param Tempo\Bundle\ProjectBundle\Entity\Project $project
+     * {@inheritdoc}
      */
-    public function setProject(\Tempo\Bundle\ProjectBundle\Entity\Project $project)
+    public function setProject(ProjectInterface $project)
     {
         $this->project = $project;
     }
