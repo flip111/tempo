@@ -10,15 +10,26 @@
 */
 
 
-namespace Tempo\Bundle\ActivityBundle\Providers;
+namespace Tempo\Bundle\ActivityBundle\Provider;
 
 use Symfony\Component\HttpFoundation\Request;
+use Tempo\Bundle\ActivityBundle\Entity\Activity;
 
-interface ProviderInterface
+class TrelloProvider  implements ProviderInterface
 {
     /**
-     * @param Request $request
-     * @return mixed
+     * {inheritedDoc}
      */
-    public function parse(Request $request);
+    public function parse(Request $request)
+    {
+
+    }
+
+    /**
+     * {inheritedDoc}
+     */
+    public function getName()
+    {
+        return 'Trello';
+    }
 }

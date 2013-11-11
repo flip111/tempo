@@ -10,7 +10,7 @@
 */
 
 
-namespace Tempo\Bundle\ActivityBundle\Providers;
+namespace Tempo\Bundle\ActivityBundle\Provider;
 
 use Symfony\Component\HttpFoundation\Request;
 use Tempo\Bundle\ActivityBundle\Entity\Activity;
@@ -97,12 +97,6 @@ class GithubProvider implements ProviderInterface
         return array();
     }
 
-    protected function forkEvent($payload)
-    {
-        // TODO
-        return array();
-    }
-
     protected function memberEvent($payload)
     {
         // TODO
@@ -125,5 +119,10 @@ class GithubProvider implements ProviderInterface
     {
         // TODO
         return array();
+    }
+
+    public function getName()
+    {
+        return 'Github';
     }
 }
