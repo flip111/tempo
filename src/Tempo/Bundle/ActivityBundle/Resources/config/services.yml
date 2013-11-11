@@ -1,9 +1,0 @@
-parameters:
-    tempo.activity.manager.class: Tempo\Bundle\ActivityBundle\Manager\ActivityManager
-
-services:
-    tempo.activity.manager:
-        class: "%tempo.activity.manager.class%"
-        arguments: ["@doctrine.orm.entity_manager"]
-        calls:
-            - [setContainer, ["@service_container"]]

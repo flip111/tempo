@@ -11,8 +11,8 @@
 
 namespace Tempo\Bundle\ActivityBundle\Entity;
 
-use Tempo\Bundle\ActivityBundle\Model\Activity as BaseActivity;
+use Tempo\Bundle\ActivityBundle\Model\Events as BaseEvents;
 
-class Activity extends BaseActivity
+class Events extends BaseEvents
 {
 }

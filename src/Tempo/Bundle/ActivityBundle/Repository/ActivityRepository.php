@@ -10,7 +10,7 @@
 */
 
 
-namespace Tempo\Bundle\ActivityBundle\Entity;
+namespace Tempo\Bundle\ActivityBundle\Repository;
 
 use Doctrine\ORM\EntityRepository;
 use Tempo\Bundle\ProjectBundle\Entity\Project;

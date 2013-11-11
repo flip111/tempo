@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+    <parameters>
+      <parameter id="tempo.activity.provider.github.class"> Tempo\Bundle\ActivityBundle\Providers\TempoProvider</parameter>
+      <parameter id="tempo.activity.provider.trello.class">: Tempo\Bundle\ActivityBundle\Providers\TrelloProvider</parameter>
+      <parameter id="tempo.activity.provider.trello.class">: Tempo\Bundle\ActivityBundle\Providers\TrelloProvider</parameter>
+    </parameters>
+
+    <services>
+        <service id="tempo.activity.provider.github" class="%tempo.activity.provider.github.class%" />
+        <service id="tempo.activity.provider.trello" class="%tempo.activity.provider.trello.class%" />
+    </services>
+</container>
