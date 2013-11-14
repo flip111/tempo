@@ -1,23 +1,24 @@
 {% extends "TempoMainBundle::Layout/web.html.twig" %}
 {% block bodyClass %}users list{% endblock %}
+{% set sidebar = true %}
 
 {% block content %}
-    <h1>List Users</h1>
+    <h1 id="page-title">List Users</h1>
     <div id="user_list">
 
     {% for user in users %}
         <div id="user-{{ user.id }}" class="user-list-info">
-            <p class="avatar">
-                <img src="{{ user.avatar(68) }}" />
-            </p>
-            <p class="infos">
+            <div class="avatar">
+                <img src="{{ user.avatar(40) }}" />
+            </div>
+            <div class="infos">
                 {% if is_granted('ROLE_ADMIN') %}
-                <a class="btn btn-xs btn-info" href="{{path('user_profile_edit')}}">edit</a> <br />
+                <a class="btn btn-xs btn-info" href="{{ path('user_profile_edit') }}">edit</a> <br />
                 {% endif %}
                 <a href="{{ path('user_profile_show', {'slug':user.usernameCanonical }) }}">{{ user.username }} </a>
                 <br />
-                {{ user.email}}
-            </p>   
+                <span class="email">{{ user.email }}</span>
+            </div>   
         </div>
 
     {% endfor %}
@@ -26,5 +27,4 @@
 {% endblock %}
 
 {% block right %}
-    {% include 'TempoUserBundle::Default/_sidebar-right.html.twig' %}
-{% endblock %}
+xs{% endblock %}
