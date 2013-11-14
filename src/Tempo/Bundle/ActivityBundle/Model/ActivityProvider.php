@@ -1,11 +1,10 @@
 <?php
 
-namespace Tempo\Bundle\ActivityBundle\Entity;
+namespace Tempo\Bundle\ActivityBundle\Model;
 
-use Tempo\Bundle\ProjectBundle\Entity\ProjectInterface;
-use Tempo\Bundle\ActivityBundle\Model\ActivityProviderInterface;
+use Tempo\Bundle\ProjectBundle\Model\ProjectInterface;
 
-class ActivityProvider implements  ActivityProviderInterface
+class ActivityProvider implements ActivityProviderInterface
 {
     /**
      * @var integer
