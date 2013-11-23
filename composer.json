@@ -50,7 +50,8 @@
         "white-october/pagerfanta-bundle": "dev-master",
         "mopa/bootstrap-bundle": "v3.0.0-beta2",
         "fkr/cssurlrewrite-bundle": "1.0.*@dev",
-        "liip/imagine-bundle": "dev-master"
+        "liip/imagine-bundle": "dev-master",
+        "mattzuba/php-trello": "dev-default"
     },
     "require-dev": {
         "behat/behat": "2.5.*@stable",

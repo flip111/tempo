@@ -5,13 +5,13 @@
                   xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
                   http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
 
-
-    <entity name="Tempo\Bundle\MainBundle\Entity\Events" repository-class="Tempo\Bundle\MainBundle\Repository\EventsRepository" table="events">
+<entity name="Tempo\Bundle\ActivityBundle\Entity\Events" repository-class="Tempo\Bundle\ActivityBundle\Repository\EventsRepository" table="events">
 
         <id name="id" type="integer" column="id">
             <generator strategy="AUTO" />
         </id>
 
+        <field name="action" column="action" type="string"  nullable="true"  />
         <field name="data" column="data" type="string"  nullable="true"  />
         <field name="targetType" column="target_type" type="string"  nullable="true"  />
 

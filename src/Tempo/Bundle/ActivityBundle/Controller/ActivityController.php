@@ -13,14 +13,49 @@ namespace Tempo\Bundle\ActivityBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Tempo\Bundle\ActivityBundle\Form\Type\ActivityFormType;
 
 class ActivityController extends Controller
 {
-    public function providerAction(Request $request, $providerName)
+    /**
+     * @param Request $request
+     * @param $providerName
+     */
+    public function providerAction(Request $request, $id)
     {
         /** @var $manager \Tempo\Bundle\ActivityBundle\Manager\ActivityManager */
         $manager = $this->get('tempo.activity.manager');
+        $manager->add($id, $request);
+    }
 
-        $manager->add($providerName, $request);
+    /**
+     * @param $type
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function listAction($type, $project = null)
+    {
+        if ('provider' == $type) {
+
+            $events = $this->getDoctrine()->getRepository('TempoActivityBundle:Activity')->findAll();
+
+        } else {
+            $manager = $this->get('tempo.activity.feed.events');
+            $events = $manager->render($type, $this->getUser());
+        }
+
+
+        return $this->render('TempoActivityBundle:Activity:list.html.twig', array(
+            'type' => $type,
+            'events' => $events
+        ));
+    }
+
+    public function newAction()
+    {
+        $form = $this->createForm(new ActivityFormType());
+
+        return $this->render('TempoActivityBundle:Activity:new.html.twig', array(
+            'form' => $form->createView()
+        ));
     }
 }

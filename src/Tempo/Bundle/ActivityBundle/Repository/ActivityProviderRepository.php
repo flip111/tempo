@@ -1,6 +1,6 @@
 <?php
 
-namespace Tempo\Bundle\ActivityBundle\Entity;
+namespace Tempo\Bundle\ActivityBundle\Repository;
 
 use Doctrine\ORM\EntityRepository;
 
@@ -12,4 +12,12 @@ use Doctrine\ORM\EntityRepository;
  */
 class ActivityProviderRepository extends EntityRepository
 {
+    public function getAllTrelloBoard()
+    {
+        $query = $this->createQueryBuilder('ap');
+        $query->where('ap.provider = :provider');
+        $query->setParameter('provider', 'Trello');
+
+        return $query->getQuery()->getResult();
+    }
 }

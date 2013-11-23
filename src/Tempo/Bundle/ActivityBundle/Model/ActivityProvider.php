@@ -16,6 +16,24 @@ class ActivityProvider implements ActivityProviderInterface
      * @var string
      *
      */
+    protected $appId;
+
+    /**
+     * @var string
+     *
+     */
+    protected $secret;
+
+    /**
+     * @var string
+     *
+     */
+    protected $token;
+
+    /**
+     * @var string
+     *
+     */
     protected $provider;
 
     /**
@@ -42,6 +60,54 @@ class ActivityProvider implements ActivityProviderInterface
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getAppId()
+    {
+        return $this->appId;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setAppId($appId)
+    {
+        return $this->appId = $appId ;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getSecret()
+    {
+        return $this->secret;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setSecret($secret)
+    {
+        $this->secret = $secret;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getToken()
+    {
+        return $this->token;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setToken($token)
+    {
+        $this->token = $token;
     }
 
     /**
@@ -99,7 +165,7 @@ class ActivityProvider implements ActivityProviderInterface
     /**
      * {@inheritdoc}
      */
-    public function setProject(ProjectInterface $project = null)
+    public function setProject(ProjectInterface $project)
     {
         $this->project = $project;
 

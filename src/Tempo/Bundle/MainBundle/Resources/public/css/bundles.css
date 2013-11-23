@@ -314,7 +314,6 @@ table.table-striped tbody .actions .edit {
     background: #FFF;
     position: relative;
 }
-
 .dashboard #activity-box ul {
     list-style: none;
 }
@@ -407,7 +406,22 @@ table.table-striped tbody .actions .edit {
     font-weight: normal;
     color: #4a87b6;
 }
+.home.dashboard .events-push {
+    clear: both;
+    padding-top: 10px;
+}
+.home.dashboard .events-push .event time{
+    color: #bbb;
+    padding-left: 40px
+}
 
+.home.dashboard .events-push .action ul {
+    margin-top: 0;
+}
+.home.dashboard .events-push .action .more {
+    padding-left: 40px;
+    display: block;
+}
 #sidebar .list {
     margin: 30px 0px;
     list-style: none;
@@ -1002,7 +1016,7 @@ table.table-striped tbody .actions .edit {
 .help {
 }
 
-.events .events-push .event {
+.events .event.event {
     padding: 10px;
 }
 .events .events-push time {

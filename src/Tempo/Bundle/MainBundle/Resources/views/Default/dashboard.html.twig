@@ -34,8 +34,9 @@
         <div class="col-md-6" id="activity-box">
             <h3 class="homeTitle">{{ 'dashboard.title'|trans }}</h3>
 
+            {{ render(controller('TempoActivityBundle:Activity:new')) }}
 
-
+            {{ render(controller('TempoActivityBundle:Activity:list', {'type': 'provider'})) }}
 
         </div>
         <div class="col-md-6" id="chat-box">

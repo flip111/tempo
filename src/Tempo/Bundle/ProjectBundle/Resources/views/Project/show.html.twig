@@ -3,7 +3,7 @@
 {% block breadcrumb %}
     <ol id="breadcrumb" class="clearfix">
         <li class="first"> <a href="{{ path('project_home') }}">Accueil</a> </li>
-        <li class="first last"> <a href="{{ path('project_home') }}">Project</a> </li>
+        <li class="first last"> <a href="{{ path('project_home') }}">{{ 'Project'|trans  }}</a> </li>
         <li class="first last"> {{ project.name }} </li>
     </ol>
 {% endblock breadcrumb %}
@@ -21,6 +21,9 @@
         {% endif %}
         {% if is_granted('DELETE', project) %}
         <a class="btn btn-xs btn-danger" data-toggle="modal" data-target="#" data-title="Delete project" href="#delete_project"> <span class="glyphicon glyphicon-trash"></span> Delete</a>
+        {% endif %}
+        {% if is_granted('EDIT', project) %}
+        <a class="btn btn-xs btn-primary" href="{{ path('project_provider_list', { 'slug': project.slug }) }}"> <span class="glyphicon glyphicon-cog"></span> {{ 'Source'|trans }} </a>
         {% endif %}
     </div>
 

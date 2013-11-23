@@ -2,7 +2,7 @@
 
 namespace Tempo\Bundle\ActivityBundle\Model;
 
-use Tempo\Bundle\ProjectBundle\Entity\ProjectInterface;
+use Tempo\Bundle\ProjectBundle\Model\ProjectInterface;
 
 interface ActivityProviderInterface
 {
@@ -12,6 +12,49 @@ interface ActivityProviderInterface
      * @return integer
      */
     public function getId();
+
+    /**
+     * Get appId
+     *
+     * @return integer
+     */
+    public function getAppId();
+
+    /**
+     * Set appId
+     *
+     * @return integer
+     */
+    public function setAppId($appId);
+
+    /**
+     * Get secret
+     *
+     * @return integer
+     */
+    public function getSecret();
+
+    /**
+     * Set secret
+     *
+     * @return integer
+     */
+    public function setSecret($secret);
+
+
+    /**
+     * Get Token
+     *
+     * @return integer
+     */
+    public function getToken();
+
+    /**
+     * Set Token
+     *
+     * @return integer
+     */
+    public function setToken($secret);
 
     /**
      * Set provider

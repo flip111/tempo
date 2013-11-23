@@ -4,11 +4,27 @@
            xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
     <parameters>
         <parameter key="tempo.activity.manager.class">Tempo\Bundle\ActivityBundle\Manager\ActivityManager</parameter>
+        <parameter key="tempo.activity.manager.events.class">Tempo\Bundle\ActivityBundle\Manager\EventsManager</parameter>
+        <parameter key="tempo.activity.model.events.class">Tempo\Bundle\ActivityBundle\Entity\Events</parameter>
+        <parameter key="tempo.activity.feed.events.class">Tempo\Bundle\ActivityBundle\Feed\EventsFeed</parameter>
+
     </parameters>
     <services>
-      <service id="tempo.activity.manager" class="%tempo.activity.manager.class%">
+        <service id="tempo.activity.manager" class="%tempo.activity.manager.class%">
             <argument type="service" id="doctrine.orm.entity_manager"/>
             <argument type="service" id="service_container"/>
-      </service>
+        </service>
+
+        <service id="tempo.activity.manager.events" class="%tempo.activity.manager.events.class%">
+            <argument type="service" id="event_dispatcher" />
+            <argument type="service" id="doctrine.orm.entity_manager"/>
+            <argument>%tempo.activity.model.events.class%</argument>
+        </service>
+
+        <service id="tempo.activity.feed.events" class="%tempo.activity.feed.events.class%">
+            <argument type="service" id="tempo.activity.manager.events"/>
+            <argument type="service" id="security.context" />
+        </service>
+
     </services>
 </container>

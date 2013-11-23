@@ -23,7 +23,7 @@ class GithubProvider implements ProviderInterface
     public function parse(Request $request)
     {
         $eventName = $request->headers->get('X-Github-Event');
-        $payload = json_decode($request->get('payload'));
+        $payload = $request->request->get('payload');
 
         $methodName = sprintf('%sEvent', $eventName);
         return $this->$methodName($payload);
@@ -31,22 +31,13 @@ class GithubProvider implements ProviderInterface
 
     protected function pushEvent($payload)
     {
-        $activities = array();
+        $activity = new Activity();
+        $activity->setProvider('github');
+        $activity->setMessage('provider.github.commit');
+        $activity->setCreated(new \DateTime());
+        $activity->setParameters($payload);
 
-        foreach ($payload->commits as $commit) {
-            $activity = new Activity();
-            $activity->setProvider('github');
-            $activity->setMessage('tempo.activity.provider.github.commit');
-            $activity->setDatetime(new \DateTime($commit->timestamp));
-            $activity->setParameters(array(
-                "repository" => $payload->repository,
-                "commit" => $commit
-            ));
-
-            $activities[] = $activity;
-        }
-
-        return $activities;
+        return $activity;
     }
 
     protected function issuesEvent($payload)

@@ -20,6 +20,10 @@ interface ProviderInterface
      * @param Request $request
      * @return mixed
      */
-    public function getName();
     public function parse(Request $request);
+
+    /**
+     * @return name
+     */
+    public function getName();
 }

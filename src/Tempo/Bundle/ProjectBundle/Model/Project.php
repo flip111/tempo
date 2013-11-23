@@ -14,7 +14,7 @@ namespace Tempo\Bundle\ProjectBundle\Model;
 use Doctrine\Common\Collections\ArrayCollection;
 use Tempo\Bundle\ProjectBundle\Model\OrganizationInterface;
 use Tempo\Bundle\ProjectBundle\Model\TimesheetInterface;
-use Tempo\Bundle\ActivityBundle\Entity\ActivityProviderInterface;
+use Tempo\Bundle\ActivityBundle\Model\ActivityProviderInterface;
 
 /**
  * Project Model

@@ -23,6 +23,7 @@ interface ActivityInterface
      * @return integer
      */
     public function getId();
+
     /**
      * Set provider
      *
@@ -82,4 +83,9 @@ interface ActivityInterface
      * @return \DateTime
      */
     public function getCreated();
+
+    /**
+     * @return Object
+     */
+    public function getData();
 }

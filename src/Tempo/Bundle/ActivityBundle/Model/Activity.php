@@ -11,8 +11,6 @@
 
 namespace Tempo\Bundle\ActivityBundle\Model;
 
-use Tempo\Bundle\ActivityBundle\Model\ActivityInterface;
-
 /**
  * Activity
  *
@@ -23,31 +21,31 @@ class Activity implements ActivityInterface
      * @var integer
      *
      */
-    private $id;
+    protected  $id;
 
     /**
      * @var string
      *
      */
-    private $provider;
+    protected $provider;
 
     /**
      * @var \DateTime
      *
      */
-    private $created;
+    protected $created;
 
     /**
      * @var string
      *
      */
-    private $message;
+    protected $message;
 
     /**
      * @var array
      *
      */
-    private $parameters;
+    protected $parameters;
 
     public function __toString()
     {
@@ -132,5 +130,13 @@ class Activity implements ActivityInterface
     public function getCreated()
     {
         return $this->created;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getData($decoder = 'unserialize')
+    {
+        return $decoder($this->parameters);
     }
 }

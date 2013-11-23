@@ -23,19 +23,48 @@ interface EventsInterface
      */
     public function getId();
 
+
     /**
-     * Get id.
+     * Get target.
+     *
+     * @return string
+     */
+    public function getTarget();
+
+    /**
+     * Set target.
+     *
+     * @return string
+     */
+    public function setTarget($type);
+
+    /**
+     * Get target type.
      *
      * @return string
      */
     public function getTargetType();
 
     /**
-     * Set id.
+     * Set target type.
      *
      * @return string
      */
     public function setTargetType($type);
+
+    /**
+     * Get action.
+     *
+     * @return string
+     */
+    public function getAction();
+
+    /**
+     * Set action.
+     *
+     * @param string $data
+     */
+    public function setAction($data);
 
     /**
      * Get data.

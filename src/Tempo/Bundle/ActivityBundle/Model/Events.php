@@ -24,6 +24,24 @@ class Events implements EventsInterface
 
     /**
      *
+     * @var integer
+     */
+    protected $target;
+
+    /**
+     *
+     * @var integer
+     */
+    protected $targetType;
+
+    /**
+     *
+     * @var string
+     */
+    protected $action;
+
+    /**
+     *
      * @var string
      */
     protected $data;
@@ -51,6 +69,23 @@ class Events implements EventsInterface
     /**
      * {@inheritdoc}
      */
+    public function getTarget()
+    {
+        return $this->target;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setTarget($type)
+    {
+        $this->target = $type;
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function getTargetType()
     {
         return $this->targetType;
@@ -67,6 +102,24 @@ class Events implements EventsInterface
     /**
      * {@inheritdoc}
      */
+    public function getAction()
+    {
+        return $this->action;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setAction($action)
+    {
+        $this->action = $action;
+
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function getData()
     {
         return $this->data;
@@ -77,7 +130,7 @@ class Events implements EventsInterface
      */
     public function setData($data)
     {
-        return $this->data = $data;
+        $this->data = $data;
     }
 
     /**
@@ -93,7 +146,9 @@ class Events implements EventsInterface
      */
     public function setAuthor($author)
     {
-        return $this->author = $author;
+        $this->author = $author;
+
+        return $this;
     }
 
     /**
@@ -113,5 +168,4 @@ class Events implements EventsInterface
 
         return $this;
     }
-
 }

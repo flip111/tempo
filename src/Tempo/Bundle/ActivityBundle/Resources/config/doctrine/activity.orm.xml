@@ -19,8 +19,6 @@
         <field name="message" column="message" type="string"  nullable="false"  />
         <field name="parameters" column="parameters" type="array"  nullable="true"  />
 
-        <many-to-one field="author" target-entity="Tempo\Bundle\UserBundle\Entity\User" />
-
     </entity>
 
 </doctrine-mapping>

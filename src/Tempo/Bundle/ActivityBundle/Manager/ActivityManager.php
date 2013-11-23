@@ -24,10 +24,12 @@ class ActivityManager extends ContainerAware
      * @var \Doctrine\ORM\EntityManager
      */
     protected $em;
+    protected $container;
 
-    public function __construct(EntityManager $em)
+    public function __construct(EntityManager $em, $container)
     {
         $this->em = $em;
+        $this->container = $container;
     }
 
     protected function getProvider($providerName)
@@ -41,14 +43,15 @@ class ActivityManager extends ContainerAware
         return $this->container->get($serviceName);
     }
 
-    public function add($providerName, Request $request)
+    public function add($id, Request $request)
     {
-        $provider = $this->getProvider($providerName);
-        $activities = $provider->parse($request);
 
-        foreach ($activities as $activity) {
-            $this->em->persist($activity);
-        }
+        $provider = $this->em->getRepository('TempoActivityBundle:ActivityProvider')->find($id);
+        $provider = $this->getProvider(strtolower($provider->getProvider()));
+
+        $activity = $provider->parse($request);
+
+        $this->em->persist($activity);
         $this->em->flush();
     }
 

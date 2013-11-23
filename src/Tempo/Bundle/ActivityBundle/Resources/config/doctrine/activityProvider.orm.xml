@@ -12,11 +12,14 @@
             <generator strategy="AUTO" />
         </id>
 
+        <field name="appId" column="app_id" type="string"  nullable="true"  />
+        <field name="secret" column="secret" type="string"  nullable="true"  />
+        <field name="token" column="token" type="string"  nullable="true"  />
+
         <field name="created" type="datetime">
             <gedmo:timestampable on="create"/>
         </field>
         <field name="provider" column="provider" type="string"  nullable="false"  />
-        <field name="message" column="message" type="string"  nullable="false"  />
         <field name="url" column="url" type="string"  nullable="true"  />
 
     </entity>
