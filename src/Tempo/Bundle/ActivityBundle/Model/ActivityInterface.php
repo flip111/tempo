@@ -9,83 +9,100 @@
 * file that was distributed with this source code.
 */
 
+
 namespace Tempo\Bundle\ActivityBundle\Model;
 
-/**
- * Activity
- *
- */
+use Tempo\Bundle\UserBundle\Entity\User;
+
 interface ActivityInterface
 {
     /**
-     * Get id
+     * Get id.
      *
      * @return integer
      */
     public function getId();
 
-    /**
-     * Set provider
-     *
-     * @param string $provider
-     * @return Activity
-     */
-    public function setProvider($provider);
 
     /**
-     * Get provider
+     * Get target.
      *
      * @return string
      */
-    public function getProvider();
+    public function getTarget();
 
     /**
-     * Set message
-     *
-     * @param string $message
-     * @return Activity
-     */
-    public function setMessage($message);
-
-    /**
-     * Get message
+     * Set target.
      *
      * @return string
      */
-    public function getMessage();
+    public function setTarget($type);
 
     /**
-     * Set parameters
+     * Get target type.
      *
-     * @param array $parameters
-     * @return Activity
+     * @return string
      */
-    public function setParameters($parameters);
+    public function getTargetType();
 
     /**
-     * Get parameters
+     * Set target type.
      *
-     * @return array
+     * @return string
      */
-    public function getParameters();
+    public function setTargetType($type);
 
     /**
-     * Set datetime
+     * Get action.
      *
-     * @param \DateTime $datetime
-     * @return Activity
+     * @return string
      */
-    public function setCreated($datetime);
+    public function getAction();
 
     /**
-     * Get datetime
+     * Set action.
+     *
+     * @param string $data
+     */
+    public function setAction($data);
+
+    /**
+     * Get data.
+     *
+     * @return string
+     */
+    public function getData();
+
+    /**
+     * Set data.
+     *
+     * @param string $data
+     */
+    public function setData($data);
+
+    /**
+     * get User.
+     *
+     * @return User $user
+     */
+    public function getAuthor();
+
+    /**
+     * Set User.
+     *
+     * @param User $user
+     */
+    public function setAuthor($user);
+
+    /**
+     * Creation date.
      *
      * @return \DateTime
      */
-    public function getCreated();
+    public function getCreatedAt();
 
     /**
-     * @return Object
+     * @param \DateTime $created
      */
-    public function getData();
+    public function setCreatedAt(\DateTime $created);
 }

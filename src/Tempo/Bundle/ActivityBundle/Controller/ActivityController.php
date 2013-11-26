@@ -34,19 +34,31 @@ class ActivityController extends Controller
      */
     public function listAction($type, $project = null)
     {
-        if ('provider' == $type) {
 
-            $events = $this->getDoctrine()->getRepository('TempoActivityBundle:Activity')->findAll();
+        if ('all' == $type) {
+            $activities = array();
 
+            $lastActivitiesProvider = $this->getDoctrine()->getRepository('TempoActivityBundle:ActivityProvider')->findByProject($project);
+            $lastActivitiesInternal = $this->get('tempo.activity.manager.activity')->render('Project');
+
+            foreach($lastActivitiesProvider as $activity) {
+                $activities[$activity->getCreated()->getTimestamp()] = $activity;
+            }
+
+            foreach($lastActivitiesInternal as $activity) {
+                $activities[$activity->getCreatedAt()->getTimestamp()] = $activity;
+            }
+
+        } else if('provider' == $type) {
+            $events = $this->getDoctrine()->getRepository('TempoActivityBundle:Activity')->findAllWithProvider();
         } else {
             $manager = $this->get('tempo.activity.feed.events');
             $events = $manager->render($type, $this->getUser());
         }
 
-
         return $this->render('TempoActivityBundle:Activity:list.html.twig', array(
             'type' => $type,
-            'events' => $events
+            'activities' => $activities
         ));
     }
 

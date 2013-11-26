@@ -6,7 +6,7 @@
                   http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
 
 
-    <entity name="Tempo\Bundle\ActivityBundle\Entity\ActivityProvider" repository-class="Tempo\Bundle\ActivityBundle\Repository\ActivityProviderRepository" table="activity_provider">
+    <entity name="Tempo\Bundle\ProjectBundle\Entity\ProjectProvider" repository-class="Tempo\Bundle\ActivityBundle\Repository\ProjectProviderRepository" table="project_provider">
 
         <id name="id" type="integer" column="id">
             <generator strategy="AUTO" />
@@ -21,6 +21,8 @@
         </field>
         <field name="provider" column="provider" type="string"  nullable="false"  />
         <field name="url" column="url" type="string"  nullable="true"  />
+
+        <many-to-one field="project" inversed-by="providers" target-entity="Project" />
 
     </entity>
 

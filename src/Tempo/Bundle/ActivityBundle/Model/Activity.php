@@ -11,49 +11,55 @@
 
 namespace Tempo\Bundle\ActivityBundle\Model;
 
-/**
- * Activity
- *
- */
+use Tempo\Bundle\ActivityBundle\Model\ActivityInterface;
+
+
 class Activity implements ActivityInterface
 {
     /**
+     *
      * @var integer
-     *
      */
-    protected  $id;
+    protected $id;
 
     /**
+     *
+     * @var integer
+     */
+    protected $target;
+
+    /**
+     *
+     * @var integer
+     */
+    protected $targetType;
+
+    /**
+     *
      * @var string
-     *
      */
-    protected $provider;
+    protected $action;
 
     /**
-     * @var \DateTime
      *
-     */
-    protected $created;
-
-    /**
      * @var string
-     *
      */
-    protected $message;
+    protected $data;
 
     /**
-     * @var array
      *
+     * @var object
      */
-    protected $parameters;
-
-    public function __toString()
-    {
-        return $this->getMessage();
-    }
+    protected $author;
 
     /**
-     * {inheritedDoc}
+     *
+     * @var object
+     */
+    protected $createdAt;
+
+    /**
+     * {@inheritdoc}
      */
     public function getId()
     {
@@ -61,82 +67,105 @@ class Activity implements ActivityInterface
     }
 
     /**
-     * {inheritedDoc}
+     * {@inheritdoc}
      */
-    public function setProvider($provider)
+    public function getTarget()
     {
-        $this->provider = $provider;
-
-        return $this;
-    }
-
-    /**
-     * {inheritedDoc}
-     */
-    public function getProvider()
-    {
-        return $this->provider;
-    }
-
-    /**
-     * {inheritedDoc}
-     */
-    public function setMessage($message)
-    {
-        $this->message = $message;
-
-        return $this;
-    }
-
-    /**
-     * {inheritedDoc}
-     */
-    public function getMessage()
-    {
-        return $this->message;
-    }
-
-    /**
-     * {inheritedDoc}
-     */
-    public function setParameters($parameters)
-    {
-        $this->parameters = $parameters;
-
-        return $this;
-    }
-
-    /**
-     * {inheritedDoc}
-     */
-    public function getParameters()
-    {
-        return $this->parameters;
-    }
-
-    /**
-     * {inheritedDoc}
-     */
-    public function setCreated($datetime)
-    {
-        $this->created = $datetime;
-
-        return $this;
-    }
-
-    /**
-     * {inheritedDoc}
-     */
-    public function getCreated()
-    {
-        return $this->created;
+        return $this->target;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function getData($decoder = 'unserialize')
+    public function setTarget($type)
     {
-        return $decoder($this->parameters);
+        $this->target = $type;
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getTargetType()
+    {
+        return $this->targetType;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setTargetType($type)
+    {
+        $this->targetType = $type;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getAction()
+    {
+        return $this->action;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setAction($action)
+    {
+        $this->action = $action;
+
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getData()
+    {
+        return $this->data;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setData($data)
+    {
+        $this->data = $data;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getAuthor()
+    {
+        return $this->author;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setAuthor($author)
+    {
+        $this->author = $author;
+
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getCreatedAt()
+    {
+        return $this->createdAt;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setCreatedAt(\DateTime $createdAt)
+    {
+        $this->createdAt = $createdAt;
+
+        return $this;
     }
 }

@@ -2,6 +2,8 @@
     <time  datetime="2013-11-14T09:45:16Z" title="2013-11-14 09:45:16">17 minutes ago</time>
 </div>
 <div class="action">
-    <a href="{{ event.author.slug }}">{{ event.author }}</a>
-    {{ event.action|trans }} {% if event.target == 'User' %} {{ event.target }} {% endif %}
+    <div class="message">
+        <a href="{{ activity.author.slug }}">{{ activity.author }}</a>
+        {{ activity.action|trans }} {% if activity.target == 'User' %} {{ activity.target }} {% endif %}
+    </div>
 </div>

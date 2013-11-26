@@ -12,52 +12,44 @@
 
 namespace Tempo\Bundle\ActivityBundle\Manager;
 
-use Doctrine\ORM\EntityManager;
-use Symfony\Component\DependencyInjection\ContainerAware;
-use Symfony\Component\HttpFoundation\Request;
-use Tempo\Bundle\ActivityBundle\Entity\Activity;
-use Tempo\Bundle\ProjectBundle\Entity\Project;
+use Tempo\Bundle\CoreBundle\Manager\BaseManager;
 
-class ActivityManager extends ContainerAware
+class ActivityManager extends BaseManager
 {
-    /**
-     * @var \Doctrine\ORM\EntityManager
-     */
-    protected $em;
-    protected $container;
+    private $userContext;
 
-    public function __construct(EntityManager $em, $container)
+    public function setSecurityContext($userContext)
     {
-        $this->em = $em;
-        $this->container = $container;
+        $this->userContext = $userContext->getToken()->getUser();
     }
 
-    protected function getProvider($providerName)
+    public function build($action, $target = '', $actor = null)
     {
-        $serviceName = sprintf('tempo.activity.provider.%s', $providerName);
-
-        if (!$this->container->has($serviceName)) {
-            throw new \Exception(sprintf('Provider "%s" does not exists', $providerName));
+        if(null == $actor) {
+            $actor = $this->userContext;
         }
 
-        return $this->container->get($serviceName);
+        $reflected =  new \ReflectionObject($target);
+
+        $event = new Activity();
+        $event
+            ->setAuthor($actor)
+            ->setAction($action)
+            ->setTarget($target)
+            ->setTargetType($reflected->getShortName());
+
+        $this->persistAndFlush($event);
     }
 
-    public function add($id, Request $request)
+    /**
+     * @param $type
+     * @param SecurityContext $user
+     * @return strings
+     */
+    public function render($type = null, $user = null)
     {
+        $fin = $this->getRepository()->findLastActivities($type, $user);
 
-        $provider = $this->em->getRepository('TempoActivityBundle:ActivityProvider')->find($id);
-        $provider = $this->getProvider(strtolower($provider->getProvider()));
-
-        $activity = $provider->parse($request);
-
-        $this->em->persist($activity);
-        $this->em->flush();
-    }
-
-    public function getByProject(Project $project)
-    {
-        //foreach($project->)
-        return $this->em->getRepository('TempoActivityBundle:Activity')->findByProject($project);
+        return $fin;
     }
 }

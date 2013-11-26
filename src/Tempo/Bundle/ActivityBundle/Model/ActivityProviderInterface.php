@@ -1,9 +1,20 @@
 <?php
 
+/*
+* This file is part of the Tempo-project package http://tempo.ikimea.com/>.
+*
+* (c) Mlanawo Mbechezi  <mlanawo.mbechezi@ikimea.com>
+*
+* For the full copyright and license information, please view the LICENSE
+* file that was distributed with this source code.
+*/
+
 namespace Tempo\Bundle\ActivityBundle\Model;
 
-use Tempo\Bundle\ProjectBundle\Model\ProjectInterface;
-
+/**
+ * Activity
+ *
+ */
 interface ActivityProviderInterface
 {
     /**
@@ -14,53 +25,10 @@ interface ActivityProviderInterface
     public function getId();
 
     /**
-     * Get appId
-     *
-     * @return integer
-     */
-    public function getAppId();
-
-    /**
-     * Set appId
-     *
-     * @return integer
-     */
-    public function setAppId($appId);
-
-    /**
-     * Get secret
-     *
-     * @return integer
-     */
-    public function getSecret();
-
-    /**
-     * Set secret
-     *
-     * @return integer
-     */
-    public function setSecret($secret);
-
-
-    /**
-     * Get Token
-     *
-     * @return integer
-     */
-    public function getToken();
-
-    /**
-     * Set Token
-     *
-     * @return integer
-     */
-    public function setToken($secret);
-
-    /**
      * Set provider
      *
      * @param string $provider
-     * @return ActivityProvider
+     * @return Activity
      */
     public function setProvider($provider);
 
@@ -72,42 +40,42 @@ interface ActivityProviderInterface
     public function getProvider();
 
     /**
-     * Set url
+     * Set message
      *
-     * @param string $url
-     * @return ActivityProvider
+     * @param string $message
+     * @return Activity
      */
-    public function setUrl($url);
+    public function setMessage($message);
 
     /**
-     * Get url
+     * Get message
      *
      * @return string
      */
-    public function getUrl();
+    public function getMessage();
 
     /**
-     * Set project
+     * Set parameters
      *
-     * @param Project $project
-     * @return ActivityProvider
+     * @param array $parameters
+     * @return Activity
      */
-    public function setProject(ProjectInterface $project);
+    public function setParameters($parameters);
 
     /**
-     * Get project
+     * Get parameters
      *
-     * @return Project
+     * @return array
      */
-    public function getProject();
+    public function getParameters();
 
     /**
      * Set datetime
      *
      * @param \DateTime $datetime
-     * @return ActivityProvider
+     * @return Activity
      */
-    public function setCreated(\Datetime $datetime);
+    public function setCreated($datetime);
 
     /**
      * Get datetime
@@ -115,4 +83,9 @@ interface ActivityProviderInterface
      * @return \DateTime
      */
     public function getCreated();
+
+    /**
+     * @return Object
+     */
+    public function getData();
 }

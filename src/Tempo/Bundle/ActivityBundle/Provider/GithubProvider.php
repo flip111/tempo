@@ -13,7 +13,7 @@
 namespace Tempo\Bundle\ActivityBundle\Provider;
 
 use Symfony\Component\HttpFoundation\Request;
-use Tempo\Bundle\ActivityBundle\Entity\Activity;
+use Tempo\Bundle\ActivityBundle\Entity\ActivityProvider;
 
 class GithubProvider implements ProviderInterface
 {
@@ -31,7 +31,7 @@ class GithubProvider implements ProviderInterface
 
     protected function pushEvent($payload)
     {
-        $activity = new Activity();
+        $activity = new ActivityProvider();
         $activity->setProvider('github');
         $activity->setMessage('provider.github.commit');
         $activity->setCreated(new \DateTime());

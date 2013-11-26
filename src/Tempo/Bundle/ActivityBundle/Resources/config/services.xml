@@ -3,11 +3,9 @@
            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
            xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
     <parameters>
-        <parameter key="tempo.activity.manager.class">Tempo\Bundle\ActivityBundle\Manager\ActivityManager</parameter>
-        <parameter key="tempo.activity.manager.events.class">Tempo\Bundle\ActivityBundle\Manager\EventsManager</parameter>
-        <parameter key="tempo.activity.model.events.class">Tempo\Bundle\ActivityBundle\Entity\Events</parameter>
-        <parameter key="tempo.activity.feed.events.class">Tempo\Bundle\ActivityBundle\Feed\EventsFeed</parameter>
-
+        <parameter key="tempo.activity.manager.class">Tempo\Bundle\ActivityBundle\Manager\ActivityProviderManager</parameter>
+        <parameter key="tempo.activity.manager.activity.class">Tempo\Bundle\ActivityBundle\Manager\ActivityManager</parameter>
+        <parameter key="tempo.activity.model.activity.class">Tempo\Bundle\ActivityBundle\Entity\Activity</parameter>
     </parameters>
     <services>
         <service id="tempo.activity.manager" class="%tempo.activity.manager.class%">
@@ -15,15 +13,13 @@
             <argument type="service" id="service_container"/>
         </service>
 
-        <service id="tempo.activity.manager.events" class="%tempo.activity.manager.events.class%">
+        <service id="tempo.activity.manager.activity" class="%tempo.activity.manager.activity.class%">
             <argument type="service" id="event_dispatcher" />
             <argument type="service" id="doctrine.orm.entity_manager"/>
-            <argument>%tempo.activity.model.events.class%</argument>
-        </service>
-
-        <service id="tempo.activity.feed.events" class="%tempo.activity.feed.events.class%">
-            <argument type="service" id="tempo.activity.manager.events"/>
-            <argument type="service" id="security.context" />
+            <argument>%tempo.activity.model.activity.class%</argument>
+            <call method="setSecurityContext">
+                <argument type="service" id="security.context" />
+            </call>
         </service>
 
     </services>

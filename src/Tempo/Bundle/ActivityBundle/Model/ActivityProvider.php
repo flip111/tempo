@@ -1,34 +1,27 @@
 <?php
 
+/*
+* This file is part of the Tempo-project package http://tempo.ikimea.com/>.
+*
+* (c) Mlanawo Mbechezi  <mlanawo.mbechezi@ikimea.com>
+*
+* For the full copyright and license information, please view the LICENSE
+* file that was distributed with this source code.
+*/
+
 namespace Tempo\Bundle\ActivityBundle\Model;
 
-use Tempo\Bundle\ProjectBundle\Model\ProjectInterface;
-
+/**
+ * Activity
+ *
+ */
 class ActivityProvider implements ActivityProviderInterface
 {
     /**
      * @var integer
      *
      */
-    protected $id;
-
-    /**
-     * @var string
-     *
-     */
-    protected $appId;
-
-    /**
-     * @var string
-     *
-     */
-    protected $secret;
-
-    /**
-     * @var string
-     *
-     */
-    protected $token;
+    protected  $id;
 
     /**
      * @var string
@@ -46,16 +39,21 @@ class ActivityProvider implements ActivityProviderInterface
      * @var string
      *
      */
-    protected $url;
+    protected $message;
 
     /**
-     * @var Project
+     * @var array
      *
      */
-    protected $project;
+    protected $parameters;
+
+    public function __toString()
+    {
+        return $this->getMessage();
+    }
 
     /**
-     * {@inheritdoc}
+     * {inheritedDoc}
      */
     public function getId()
     {
@@ -63,71 +61,7 @@ class ActivityProvider implements ActivityProviderInterface
     }
 
     /**
-     * {@inheritdoc}
-     */
-    public function getAppId()
-    {
-        return $this->appId;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function setAppId($appId)
-    {
-        return $this->appId = $appId ;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getSecret()
-    {
-        return $this->secret;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function setSecret($secret)
-    {
-        $this->secret = $secret;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getToken()
-    {
-        return $this->token;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function setToken($token)
-    {
-        $this->token = $token;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function setCreated(\DateTime $created)
-    {
-        $this->created = $created;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getCreated()
-    {
-        return $this->created;
-    }
-
-    /**
-     * {@inheritdoc}
+     * {inheritedDoc}
      */
     public function setProvider($provider)
     {
@@ -137,7 +71,7 @@ class ActivityProvider implements ActivityProviderInterface
     }
 
     /**
-     * {@inheritdoc}
+     * {inheritedDoc}
      */
     public function getProvider()
     {
@@ -145,38 +79,64 @@ class ActivityProvider implements ActivityProviderInterface
     }
 
     /**
-     * {@inheritdoc}
+     * {inheritedDoc}
      */
-    public function setUrl($url)
+    public function setMessage($message)
     {
-        $this->url = $url;
+        $this->message = $message;
 
         return $this;
     }
 
     /**
-     * {@inheritdoc}
+     * {inheritedDoc}
      */
-    public function getUrl()
+    public function getMessage()
     {
-        return $this->url;
+        return $this->message;
     }
 
     /**
-     * {@inheritdoc}
+     * {inheritedDoc}
      */
-    public function setProject(ProjectInterface $project)
+    public function setParameters($parameters)
     {
-        $this->project = $project;
+        $this->parameters = $parameters;
 
         return $this;
     }
 
     /**
+     * {inheritedDoc}
+     */
+    public function getParameters()
+    {
+        return $this->parameters;
+    }
+
+    /**
+     * {inheritedDoc}
+     */
+    public function setCreated($datetime)
+    {
+        $this->created = $datetime;
+
+        return $this;
+    }
+
+    /**
+     * {inheritedDoc}
+     */
+    public function getCreated()
+    {
+        return $this->created;
+    }
+
+    /**
      * {@inheritdoc}
      */
-    public function getProject()
+    public function getData($decoder = 'unserialize')
     {
-        return $this->project;
+        return $decoder($this->parameters);
     }
 }
