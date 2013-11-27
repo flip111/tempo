@@ -15,6 +15,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Security\Acl\Permission\MaskBuilder;
 
+use Tempo\Bundle\MainBundle\Entity\Room;
 use Tempo\Bundle\ProjectBundle\Entity\Project;
 use Tempo\Bundle\ProjectBundle\Form\Type\ProjectType;
 use Tempo\Bundle\ProjectBundle\Form\Type\TeamType;
@@ -133,6 +134,13 @@ class ProjectController extends Controller
         if ($form->submit($this->getRequest())->isValid()) {
             $this->getManager()->persistAndFlush($project);
             $this->getAclManager()->addObjectPermission($project, MaskBuilder::MASK_OWNER); //set Permission
+
+            //create room
+            $room = new Room();
+            $room->setName($project->getName());
+            $room->setProject($project);
+            $this->getManager()->persistAndFlush($room);
+
             return $this->redirect($this->generateUrl('project_show', array('slug' => $project->getSlug())));
         }
 
