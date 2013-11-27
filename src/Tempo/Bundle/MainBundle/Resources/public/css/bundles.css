@@ -186,6 +186,20 @@ table.table-striped tbody .actions .edit {
 
 #user.login #contenair .widget.remember {
     margin-bottom: 0px;
+    width: 45%;
+    float: left;
+    margin-left: 45px;
+}
+#user.login #contenair .widget.send {
+    margin-right: 45px;
+    margin-bottom: 0px;
+    width: 35%;
+    float: right;
+    text-align: right;
+}
+
+#user.login #contenair .widget.reset {
+    clear: both;
 }
 
 #user.login #contenair label {
@@ -287,9 +301,12 @@ table.table-striped tbody .actions .edit {
     background: #FFF;
     border-color: #D5D5D5;
     box-shadow: 0 1px 0 #FFFFFF inset, 0 1px 5px rgba(0, 0, 0, 0.1);
-    margin-bottom: 10px;
+    margin-bottom: 3px;
 }
 
+.dashboard .rooms ul{
+    margin-bottom: 0px;
+}
 .dashboard .rooms ul li {
     float: left;
     margin-left: 10px;
@@ -391,7 +408,7 @@ table.table-striped tbody .actions .edit {
 .dashboard #chat form #message-input {
     border-radius: 0;
     border-radius: 0;
-    margin: 5px 25px 10px 0px;
+    margin: 5px 3px 10px 0px;
     height: 30px;
     width: 75%;
 }

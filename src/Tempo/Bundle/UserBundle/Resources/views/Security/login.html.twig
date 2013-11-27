@@ -30,16 +30,18 @@
         <input type="password" id="password" name="_password" />
     </div>
     <div class="widget remember">
-
         <label for="remember_me">{{ 'security.login.remember_me'|trans([], 'FOSUserBundle') }}</label>
         <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
     </div>
+    <div class="widget send">
+        <input id="login" type="image" src="{{ asset('bundles/tempomain/images/button-login.png') }}" alt="Login" name="{{ 'security.login.submit'|trans([], 'FOSUserBundle') }}" />
+    </div>
+    <div class="widget reset">
+        <a href="{{ path('fos_user_change_password') }}">{{ 'resetting.request.submit'|trans([], 'FOSUserBundle') }}</a>
+    </div>
     <div class="widget rest clearfix">
 
-        <p class="send">
-            <a href="{{ path('fos_user_change_password') }}">{{ 'resetting.request.submit'|trans([], 'FOSUserBundle') }}</a>
-        </p>
-        <div class="submit"><input id="login" type="image" src="{{ asset('bundles/tempomain/images/button-login.png') }}" alt="Login" name="{{ 'security.login.submit'|trans([], 'FOSUserBundle') }}" /></div>
+
 
          <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
 
