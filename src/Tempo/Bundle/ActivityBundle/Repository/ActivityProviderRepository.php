@@ -21,36 +21,31 @@ use Tempo\Bundle\ProjectBundle\Entity\Project;
  */
 class ActivityProviderRepository extends EntityRepository
 {
+    /**
+     * @param $type
+     * @return \Doctrine\ORM\Query
+     */
+    public function queryLastActivities()
+    {
+        $query = $this->createQueryBuilder('a');
+
+        return $query;
+    }
+
     public function findByProject(Project $project)
     {
-        $query  = $this->queryLastActivities(null);
-        $query->Andwhere('e.project = :project');
-        $query->setParameter('project', $project);
+        $query  = $this->queryLastActivities();
+        $query->leftJoin('a.provider', 'ap');
+        $query->leftJoin('ap.project', 'p');
+        $query->AndWhere('p.id = :project');
+        $query->setParameter('project', $project->getId());
 
-        return $query->getResult();
+        return $query->getQuery()->getResult();
     }
 
     public function findAllWithProvider($type)
     {
         $query  = $this->queryLastActivities($type);
-
-        return $query->getResult();
-    }
-
-    /**
-     * @param $type
-     * @return \Doctrine\ORM\Query
-     */
-    public function queryLastActivities($type)
-    {
-        $query = $this->createQueryBuilder('a');
-        $query->leftJoin('a.author', 'a');
-
-        if (null !== $type) {
-            $query->where('e.provider = :type');
-            $query->setParameter('type', $type);
-        }
-
-        return $query->getQuery();
+        return $query->getQuery()->getResult();
     }
 }

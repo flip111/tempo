@@ -34,7 +34,7 @@ class ProjectProvider implements ProjectProviderInterface
      * @var string
      *
      */
-    protected $provider;
+    protected $name;
 
     /**
      * @var \DateTime
@@ -53,6 +53,11 @@ class ProjectProvider implements ProjectProviderInterface
      *
      */
     protected $project;
+
+    /**
+     * @var
+     */
+    protected $activities;
 
     /**
      * {@inheritdoc}
@@ -129,9 +134,9 @@ class ProjectProvider implements ProjectProviderInterface
     /**
      * {@inheritdoc}
      */
-    public function setProvider($provider)
+    public function setName($name)
     {
-        $this->provider = $provider;
+        $this->name = $name;
 
         return $this;
     }
@@ -139,9 +144,9 @@ class ProjectProvider implements ProjectProviderInterface
     /**
      * {@inheritdoc}
      */
-    public function getProvider()
+    public function getName()
     {
-        return $this->provider;
+        return $this->name;
     }
 
     /**
@@ -178,5 +183,21 @@ class ProjectProvider implements ProjectProviderInterface
     public function getProject()
     {
         return $this->project;
+    }
+
+    /**
+     * @param mixed $activities
+     */
+    public function setActivities($activities)
+    {
+        $this->activities = $activities;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getActivities()
+    {
+        return $this->activities;
     }
 }

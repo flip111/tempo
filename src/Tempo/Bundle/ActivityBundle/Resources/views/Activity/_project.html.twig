@@ -9,7 +9,7 @@
             </a>
         </div>
         <div class="message">
-            <a href="{{ activity.author.slug }}">{{ activity.author }}</a>
+            <a href="{{ path('user_profile_show', {'slug': activity.author.slug }) }}">{{ activity.author }}</a>
             {{ activity.action|trans }} {% if activity.target == 'User' %} {{ activity.target }} {% endif %}
         </div>
     </div>

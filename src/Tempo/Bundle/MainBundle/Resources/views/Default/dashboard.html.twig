@@ -36,7 +36,7 @@
 
             {{ render(controller('TempoActivityBundle:Activity:new')) }}
 
-            {{ render(controller('TempoActivityBundle:Activity:list', {'type': 'provider'})) }}
+            {{ render(controller('TempoActivityBundle:Activity:list', {'type': 'all', 'project': project})) }}
 
         </div>
         <div class="col-md-6" id="chat-box">

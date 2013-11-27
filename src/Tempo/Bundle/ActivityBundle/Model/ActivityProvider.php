@@ -11,6 +11,9 @@
 
 namespace Tempo\Bundle\ActivityBundle\Model;
 
+use Tempo\Bundle\ProjectBundle\Model\ProjectProviderInterface;
+
+
 /**
  * Activity
  *
@@ -63,7 +66,7 @@ class ActivityProvider implements ActivityProviderInterface
     /**
      * {inheritedDoc}
      */
-    public function setProvider($provider)
+    public function setProvider(ProjectProviderInterface $provider)
     {
         $this->provider = $provider;
 

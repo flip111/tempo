@@ -26,14 +26,14 @@ class DefaultController extends Controller
      */
     public function indexAction()
     {
+
         $request = $this->getRequest();
         $em = $this->getDoctrine()->getManager();
 
         $rooms = $em->getRepository('TempoMainBundle:Room')->findAll();
         $roomId = $request->query->get('currentRoom', $rooms[0]->getId());
         $request->getSession()->set('currentRoom', $roomId);
-        $currentRoom = $request->getSession()->get('currentRoom');
-        $currentRoom = $em->getRepository('TempoMainBundle:Room')->find($currentRoom);
+        $currentRoom = $em->getRepository('TempoMainBundle:Room')->find( $request->getSession()->get('currentRoom'));
         $form  = $this->createForm(new ChatMessageType());
 
         return $this->render('TempoMainBundle:Default:dashboard.html.twig', array(
@@ -41,8 +41,9 @@ class DefaultController extends Controller
             'form' => $form->createView(),
             'currentRoom' => array(
                 'id' => $currentRoom->getId(),
-                'name' => $currentRoom->getName()
+                'name' => $currentRoom->getName(),
             ),
+            'project' => $currentRoom->getProject(),
         ));
     }
 

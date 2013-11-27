@@ -50,10 +50,9 @@ class ActivityController extends Controller
             }
 
         } else if('provider' == $type) {
-            $events = $this->getDoctrine()->getRepository('TempoActivityBundle:Activity')->findAllWithProvider();
+            $activities = $this->getDoctrine()->getRepository('TempoActivityBundle:Activity')->findAllWithProvider();
         } else {
-            $manager = $this->get('tempo.activity.feed.events');
-            $events = $manager->render($type, $this->getUser());
+            $activities = $this->get('tempo.activity.manager.activity')->render($type, $this->getUser());
         }
 
         return $this->render('TempoActivityBundle:Activity:list.html.twig', array(

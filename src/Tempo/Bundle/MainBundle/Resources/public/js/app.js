@@ -185,13 +185,13 @@ $(function() {
         }), 3000);
     };
 
+
     Tempo.provide('router', function() {
         Backbone.Router.extend({
             el:undefined,
             $el:undefined,
             currentRoute:undefined,
-            currentView:undefined,
-            navigate:function (fragment, options) {
+            currentView:undefined,            navigate:function (fragment, options) {
                 this.currentRoute = fragment;
                 return Backbone.Router.prototype.navigate.call(this, fragment, options);
             },

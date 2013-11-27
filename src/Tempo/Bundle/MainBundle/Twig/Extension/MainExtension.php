@@ -54,9 +54,26 @@ class MainExtension extends \Twig_Extension
                 'is_safe' => array('html')
             )),
             'get_browser' => new \Twig_Function_Method($this, 'getBrowser'),
+            'truncate' => new \Twig_Function_Method($this, 'truncate'),
             'behavior' => new \Twig_Function_Method($this, 'getBehavior'),
             'icon' => new \Twig_Function_Method($this, 'getIcon'),
+            'gravatar'    => new \Twig_Function_Method($this, 'getGravatar'),
         );
+    }
+
+    /**
+     * @param $string
+     * @param $max
+     * @param string $replacement
+     * @return mixed
+     */
+    public function truncate($string, $max, $replacement = '')
+    {
+        if (strlen($string) <= $max) {
+            return $string;
+        }
+        $leave = $max - strlen ($replacement);
+        return substr_replace($string, $replacement, $leave);
     }
 
     /**
@@ -71,11 +88,14 @@ class MainExtension extends \Twig_Extension
         return round($size, 2).$units[$i];
     }
 
-    public function dateTimeDiff($since = null, $to = null, $seconde = 'H:i:s')
+    public function dateTimeDiff($since = null, $to = null)
     {
-        if( null !== $since  && strtotime($since->format('Y-m-d H:i:s')) <= strtotime('+3 days')) {
-           return $this->container->get('request')->getLocale() == 'fr' ? $since->format('d/m/Y '.$seconde) : $since->format('Y-m-d '.$seconde) ;
+        if ($since !== null && !$since instanceof DateTimeInterface) {
+            $date = new \DateTime();
+            $date->setTimestamp($since);
+            $since = $date;
         }
+
         return $this->helper->diff($since, $to);
     }
 
@@ -86,7 +106,6 @@ class MainExtension extends \Twig_Extension
         }
 
         return $this->cacheManager->getBrowserPath($path, $size);
-
     }
 
     /**
@@ -102,14 +121,40 @@ class MainExtension extends \Twig_Extension
             $browser->getPlatform();
     }
 
+    // get gravatar image
+    public function getGravatar($email, $size = null, $default = null, $rating = null, $secure = null)
+    {
+        $defaults = array(
+            'size'    => 80,
+            'rating'  => 'g',
+            'default' => null,
+            'secure'  => false,
+        );
+
+
+        $map = array(
+            's' => $size    ?: $defaults['size'],
+            'r' => $rating  ?: $defaults['rating'],
+            'd' => $default ?: $defaults['default'],
+        );
+
+        $hash = md5(strtolower(trim($email)));
+
+
+        if (null === $secure) {
+            $secure = $defaults['secure'];
+        }
+
+        return ($secure ? 'https://secure' : 'http://www') . '.gravatar.com/avatar/' . $hash . '?' . http_build_query(array_filter($map));
+    }
+
     /**
-     *  @return Tempo\Bundle\MainBundle\Helper\Behavior
+     *  @return \Tempo\Bundle\MainBundle\Helper\Behavior
      */
     public function getBehavior()
     {
         return $this->container->get('tempo_main.behavior');
     }
-
 
     /**
      * {@inheritdoc}

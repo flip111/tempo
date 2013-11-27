@@ -31,8 +31,12 @@ abstract class Room
      */
     protected $team;
 
-    protected $chatMessages;
+    protected $project;
 
+    /**
+     * @var Collection
+     */
+    protected $chatMessages;
 
     public function __construct()
     {
@@ -92,5 +96,19 @@ abstract class Room
         return null;
     }
 
+    /**
+     * @param mixed $project
+     */
+    public function setProject($project)
+    {
+        $this->project = $project;
+    }
 
+    /**
+     * @return mixed
+     */
+    public function getProject()
+    {
+        return $this->project;
+    }
 }

@@ -11,6 +11,8 @@
 
 namespace Tempo\Bundle\ActivityBundle\Model;
 
+use Tempo\Bundle\ProjectBundle\Model\ProjectProviderInterface;
+
 /**
  * Activity
  *
@@ -30,7 +32,7 @@ interface ActivityProviderInterface
      * @param string $provider
      * @return Activity
      */
-    public function setProvider($provider);
+    public function setProvider(ProjectProviderInterface $provider);
 
     /**
      * Get provider

@@ -59,17 +59,17 @@ interface ProjectProviderInterface
     /**
      * Set provider
      *
-     * @param string $provider
+     * @param string $names
      * @return ActivityProvider
      */
-    public function setProvider($provider);
+    public function setName($name);
 
     /**
      * Get provider
      *
      * @return string
      */
-    public function getProvider();
+    public function getName();
 
     /**
      * Set url

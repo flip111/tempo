@@ -21,6 +21,7 @@
         </one-to-many>
 
         <many-to-many field="team" inversed-by="users" target-entity="Tempo\Bundle\UserBundle\Entity\User" />
+        <many-to-one field="project"  target-entity="Tempo\Bundle\ProjectBundle\Entity\Project" nullable="true" />
 
     </entity>
 

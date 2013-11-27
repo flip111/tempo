@@ -306,9 +306,9 @@ table.table-striped tbody .actions .edit {
     position: relative;
 }
 .dashboard #row-box ul {
-    margin-top: 10px;
+    /*margin-top: 10px;*/
 }
-.dashboard #activity-box{
+.dashboard #activity-box {
     border-color: #D5D5D5;
     box-shadow: 0 1px 0 #FFFFFF inset, 0 1px 5px rgba(0, 0, 0, 0.1);
     background: #FFF;
@@ -343,11 +343,14 @@ table.table-striped tbody .actions .edit {
 }
 
 .dashboard #connected-users #user-handle {
-    padding-top: 10px;
 }
 .dashboard #connected-users #users-list li {
     float: left;
     margin-left: 20px;
+}
+
+.dashboard #connected-users #users-list {
+    margin-bottom: 10px;
 }
 
 .dashboard #chat #chat-messages{
@@ -412,11 +415,27 @@ table.table-striped tbody .actions .edit {
 }
 .home.dashboard .events-push .event time{
     color: #bbb;
-    padding-left: 40px
+    padding-left: 40px;
 }
 
-.home.dashboard .events-push .action ul {
+.home.dashboard .events-push .action .feed {
+    clear: both;
+    padding-right: 0;
+}
+.home.dashboard .events-push .action .feed.user {
+    padding-left: 40px ;
+}
+
+.home.dashboard .events-push .action .message {
+    padding-left: 40px
+}
+.home.dashboard .events-push .action .details {
+    float: left;
+}
+.home.dashboard .events-push .action .commits {
     margin-top: 0;
+    padding-left: 20px;
+    float: left;
 }
 .home.dashboard .events-push .action .more {
     padding-left: 40px;
