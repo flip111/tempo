@@ -118,7 +118,7 @@
                 </div>
             </div>
             <div class="tab-pane" id="activity">
-
+                {{ render(controller('TempoActivityBundle:Activity:list', {'type': 'all', 'project': project})) }}
             </div>
         </div>
     </div>

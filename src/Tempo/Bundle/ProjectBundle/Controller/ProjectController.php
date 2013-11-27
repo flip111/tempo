@@ -15,7 +15,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Security\Acl\Permission\MaskBuilder;
 
-use Tempo\Bundle\ActivityBundle\Manager\ActivityManager;
 use Tempo\Bundle\ProjectBundle\Entity\Project;
 use Tempo\Bundle\ProjectBundle\Form\Type\ProjectType;
 use Tempo\Bundle\ProjectBundle\Form\Type\TeamType;
@@ -87,14 +86,10 @@ class ProjectController extends Controller
 
         $teamForm = $this->createForm(new TeamType());
 
-        /** @var ActivityManager $activityManager */
-        $activityManager = $this->get('tempo.activity.manager');
-
         return $this->render('TempoProjectBundle:Project:show.html.twig', array(
             'teamForm'      => $teamForm->createView(),
             'project'       => $project,
-            'csrfToken'     => $csrfToken,
-            'activities'    => $activityManager->getByProject($project)
+            'csrfToken'     => $csrfToken
         ));
     }
 
