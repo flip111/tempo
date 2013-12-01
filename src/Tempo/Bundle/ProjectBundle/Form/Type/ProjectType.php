@@ -34,7 +34,7 @@ class ProjectType extends AbstractType
                 'required' => false,
                 'label'    => 'project.form.label.isactive'
             ))
-            ->add('isActive', null, array(
+            ->add('active', null, array(
                 'label' => 'project.form.label.isactive'
             ))
             ->add('beginning', 'date', array(

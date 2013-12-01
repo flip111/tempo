@@ -14,6 +14,8 @@ namespace Tempo\Bundle\ProjectBundle\Controller;
 use Tempo\Bundle\ProjectBundle\Entity\Organization;
 use Tempo\Bundle\ProjectBundle\Form\Type\OrganizationType;
 use Tempo\Bundle\ProjectBundle\Form\Type\TeamType;
+use Tempo\Bundle\ProjectBundle\TempoProjectEvents;
+use Tempo\Bundle\ProjectBundle\Event\OrganizationEvent;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
@@ -124,10 +126,15 @@ class OrganizationController extends Controller
         $editForm = $this->createForm(new OrganizationType(), $organization);
 
         if ($request->isMethod('POST') && $editForm->submit($request)->isValid()) {
+            $event = new OrganizationEvent($organization, $request);
+            $this->get('event_dispatcher')->dispatch(TempoProjectEvents::ORGANIZATION_EDIT_INITIALIZE, $event);
+
             $manager->persistAndFlush($organization);
+            $this->get('event_dispatcher')->dispatch(TempoProjectEvents::ORGANIZATION_EDIT_SUCCESS, $event);
+
             $request->getSession()->getFlashBag()->set('success', $this->getTranslator()->trans('organization.success_deleted', array(), 'TempoProject'));
 
-            return $this->redirect($this->generateUrl('organization_show', array('slug' => $organization->getSlug())));
+            return $this->redirectToOrganization($organization);
         }
 
         return $this->render('TempoProjectBundle:Organization:edit.html.twig', array(
@@ -153,12 +160,16 @@ class OrganizationController extends Controller
         $form = $this->createForm(new OrganizationType(), $organization);
 
         if ($request->isMethod('POST') && $form->submit($request)->isValid()) {
+            $event = new OrganizationEvent($organization, $request);
+            $this->get('event_dispatcher')->dispatch(TempoProjectEvents::ORGANIZATION_CREATE_INITIALIZE, $event);
 
             $this->getManager()->persistAndFlush($organization);
+            $this->get('event_dispatcher')->dispatch(TempoProjectEvents::ORGANIZATION_CREATE_SUCCESS, $event);
+
             $this->getAclManager()->addObjectPermission($organization, MaskBuilder::MASK_OWNER); //set Permission
             $request->getSession()->getFlashBag()->set('success', $this->getTranslator()->trans('organization.success_create', array(), 'TempoProject'));
 
-            return $this->redirect($this->generateUrl('organization_edit', array('slug' => $organization->getSlug())));
+            return $this->redirectToOrganization($organization);
         }
     }
 
@@ -185,14 +196,14 @@ class OrganizationController extends Controller
         try {
 
             $this->getManager()->removeAndFlush($organization);
+            $event = new ProjectEvent($organization, $this->getRequest());
+            $this->get('event_dispatcher')->dispatch(TempoProjectEvents::ORGANIZATION_DELETE_COMPLETED, $event);
             $request->getSession()->getFlashBag()->set('success', $this->getTranslator()->trans('organization.success_delete', array(), 'TempoProject'));
-
-            return $this->redirect($this->generateUrl('project_home'));
 
         } catch (\InvalidArgumentException $e) {
             $request->getSession()->getFlashBag()->set('error', $this->getTranslator()->trans('organization.failed_delete', array(), 'TempoProject'));
 
-            return $this->redirect($this->generateUrl('organization_show', array('slug' => $organization->getSlug() )));
+            return $this->redirectToOrganization($organization);
         }
 
     }
@@ -201,7 +212,7 @@ class OrganizationController extends Controller
      * return Tempo\Bundle\ProjectBundle\Manager\OrganizationManager
      * @return mixed
      */
-    private function getManager()
+    protected function getManager()
     {
         return $this->get('tempo_project.manager.organization');
     }
@@ -211,7 +222,7 @@ class OrganizationController extends Controller
      * @return mixed
      * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
      */
-    private function findOrganization($slug)
+    protected function findOrganization($slug)
     {
         return $this->getManager()->findOneBySlug($slug);
     }
@@ -229,5 +240,10 @@ class OrganizationController extends Controller
     protected function getAclManager()
     {
         return $this->get('problematic.acl_manager');
+    }
+
+    protected function redirectToOrganization($organization)
+    {
+        $this->redirect($this->generateUrl('organization_show', array('slug' => $organization->getSlug())));
     }
 }

@@ -14,12 +14,14 @@ namespace Tempo\Bundle\ProjectBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Security\Acl\Permission\MaskBuilder;
+use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
 use Tempo\Bundle\MainBundle\Entity\Room;
 use Tempo\Bundle\ProjectBundle\Entity\Project;
 use Tempo\Bundle\ProjectBundle\Form\Type\ProjectType;
 use Tempo\Bundle\ProjectBundle\Form\Type\TeamType;
-use Symfony\Component\Security\Core\Exception\AccessDeniedException;
+use Tempo\Bundle\ProjectBundle\TempoProjectEvents;
+use Tempo\Bundle\ProjectBundle\Event\ProjectEvent;
 
 /**
  * Project controller.
@@ -123,15 +125,21 @@ class ProjectController extends Controller
             throw new AccessDeniedException();
         }
 
+        $request = $this->getRequest();
+
         $project  = new Project();
         $project->addTeam($this->getUser());
         $this->getParent($project);
 
         $form  = $this->createForm(new ProjectType(), $project, array('user_id' => $this->getUser()->getId() ));
 
-        if ($form->submit($this->getRequest())->isValid()) {
+        if ($form->submit($request)->isValid()) {
+            $event = new ProjectEvent($project, $request);
+            $this->get('event_dispatcher')->dispatch(TempoProjectEvents::PROJECT_CREATE_INITIALIZE, $event);
+
             $this->getManager()->persistAndFlush($project);
             $this->getAclManager()->addObjectPermission($project, MaskBuilder::MASK_OWNER); //set Permission
+            $this->get('event_dispatcher')->dispatch(TempoProjectEvents::PROJECT_CREATE_SUCCESS, $event);
 
             //create room
             $room = new Room();
@@ -184,7 +192,11 @@ class ProjectController extends Controller
         }
 
         if ($request->isMethod('POST') && $editForm->submit($request)->isValid()) {
+            $event = new ProjectEvent($project, $request);
+            $this->get('event_dispatcher')->dispatch(TempoProjectEvents::PROJECT_EDIT_INITIALIZE, $event);
+
             $this->getManager()->persistAndFlush($project);
+            $this->get('event_dispatcher')->dispatch(TempoProjectEvents::PROJECT_EDIT_SUCCESS, $event);
 
             return $this->redirect($this->generateUrl('project_edit', array('slug' => $project->getSlug() )));
         }
@@ -197,7 +209,7 @@ class ProjectController extends Controller
 
     /**
      * Deletes a Project entity.
-     * @param $id
+     * @param $slug
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
      * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
      */
@@ -215,6 +227,8 @@ class ProjectController extends Controller
         }
 
         $this->getManager()->removeAndFlush($project);
+        $event = new ProjectEvent($project, $this->getRequest());
+        $this->get('event_dispatcher')->dispatch(TempoProjectEvents::PROJECT_DELETE_COMPLETED, $event);
 
         return $this->redirect($this->generateUrl('project_home'));
     }

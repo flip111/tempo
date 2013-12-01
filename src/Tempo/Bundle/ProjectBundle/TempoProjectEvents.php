@@ -14,6 +14,13 @@ namespace Tempo\Bundle\ProjectBundle;
 
 final class TempoProjectEvents
 {
+
+    const ORGANIZATION_CREATE_INITIALIZE = 'tempo_organization.project.create.initialize';
+    const ORGANIZATION_CREATE_SUCCESS = 'tempo_organization.project.create.success';
+    const ORGANIZATION_EDIT_INITIALIZE = 'tempo_organization.project.edit.initialize';
+    const ORGANIZATION_EDIT_SUCCESS = 'tempo_organization.project.edit.success';
+    const ORGANIZATION_DELETE_COMPLETED = 'tempo_organization.project.delete.completed';
+
     const PROJECT_CREATE_INITIALIZE = 'tempo_project.project.create.initialize';
     const PROJECT_CREATE_SUCCESS = 'tempo_project.project.create.success';
     const PROJECT_EDIT_INITIALIZE = 'tempo_project.project.edit.initialize';
