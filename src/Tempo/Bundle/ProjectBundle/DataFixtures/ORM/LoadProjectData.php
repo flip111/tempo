@@ -60,7 +60,7 @@ class LoadProjectData extends AbstractFixture implements ContainerAwareInterface
             $project->setAvancement($digit[0]);
             $project->setCreated(new \DateTime());
             $project->setUpdated(new \DateTime());
-            $project->setIsActive(true);
+            $project->setActive(true);
             $project->setBeginning(new \DateTime());
             $project->setEnding(new \DateTime());
             $project->addTeam($userEntity);

@@ -20,22 +20,6 @@ use Symfony\Component\HttpFoundation\Response;
 
 class DefaultController extends Controller
 {
-    /**
-     * @return \Symfony\Component\HttpFoundation\Response
-     */
-    public function indexAction()
-    {
-        return $this->render('TempoUserBundle:Default:index.html.twig');
-    }
-
-    /**
-     * @return \Symfony\Component\HttpFoundation\Response
-     */
-    public function showAction()
-    {
-        return $this->render('TempoUserBundle:Default:show.html.twig');
-
-    }
 
     /**
      * @return \Symfony\Component\HttpFoundation\Response

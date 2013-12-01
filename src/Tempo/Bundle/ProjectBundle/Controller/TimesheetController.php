@@ -44,7 +44,6 @@ class TimesheetController extends Controller
         $currentYear = $this->getRequest()->query->get('year', date('Y'));
         $currentWeek = $this->getRequest()->query->get('week', date('W'));
 
-
         $week = new DateTime();
         $week->setISOdate($currentYear, $currentWeek);
         $factoryWeek = new Week($week);
@@ -166,6 +165,7 @@ class TimesheetController extends Controller
 
         if ($request->isMethod('POST') && $editForm->submit($request)->isValid()) {
             $this->getManager()->persistAndFlush($entity);
+
             return $this->redirect($this->generateUrl('timesheet'));
         }
 
@@ -214,7 +214,6 @@ class TimesheetController extends Controller
     {
         return $this->get('tempo_project.manager.timesheet');
     }
-
 
     /**
      * @param $id

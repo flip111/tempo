@@ -21,8 +21,6 @@ use Tempo\Bundle\ProjectBundle\Form\Type\ProjectType;
 use Tempo\Bundle\ProjectBundle\Form\Type\TeamType;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
-
-
 /**
  * Project controller.
  * @author Mlanawo Mbechezi <mlanawo.mbechezi@ikimea.com>
@@ -187,6 +185,7 @@ class ProjectController extends Controller
 
         if ($request->isMethod('POST') && $editForm->submit($request)->isValid()) {
             $this->getManager()->persistAndFlush($project);
+
             return $this->redirect($this->generateUrl('project_edit', array('slug' => $project->getSlug() )));
         }
 
@@ -234,16 +233,16 @@ class ProjectController extends Controller
      * @return mixed
      * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
      */
-    public function getProject($primaryKey)
+    private function getProject($primaryKey)
     {
         if (is_string($primaryKey)) {
             $project =  $this->getManager()->findOneBySlug($primaryKey);
         } else {
             $project =  $this->getManager()->find($primaryKey);
         }
+
         return $project;
     }
-
 
     /**
      * @param  \Tempo\Bundle\ProjectBundle\Entity\Project $project

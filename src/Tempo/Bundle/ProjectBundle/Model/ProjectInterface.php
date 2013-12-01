@@ -96,18 +96,18 @@ interface ProjectInterface
     public function getDescription();
 
     /**
-     * Set isActive
+     * Set active
      *
      * @param boolean $isActive
      */
-    public function setIsActive($isActive);
+    public function setActive($isActive);
 
     /**
-     * Get isActive
+     * Get active
      *
      * @return boolean
      */
-    public function getIsActive();
+    public function getActive();
 
     /**
      * Set beginning

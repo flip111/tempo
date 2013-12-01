@@ -20,7 +20,6 @@ use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use Symfony\Component\Security\Acl\Permission\MaskBuilder;
 
-
 /**
  * @author Mlanawo Mbechezi <mlanawo.mbechezi@ikimea.com>
  */
@@ -36,7 +35,6 @@ class OrganizationController extends Controller
     {
         $organization = $this->findOrganization($slug);
         $csrfToken = $this->get('form.csrf_provider')->generateCsrfToken('delete-organization');
-
 
         if (false === $this->get('security.context')->isGranted('VIEW', $organization)) {
             throw new AccessDeniedException();

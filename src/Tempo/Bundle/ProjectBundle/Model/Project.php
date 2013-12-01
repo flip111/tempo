@@ -53,7 +53,7 @@ class Project implements ProjectInterface
     /**
      * @var Boolean
      */
-    protected $isActive;
+    protected $active;
 
     /**
      * @var string
@@ -142,7 +142,7 @@ class Project implements ProjectInterface
 
     public function __construct()
     {
-        $this->isActive = true;
+        $this->active = true;
         $this->advancement = 0;
         $this->timesheets = new ArrayCollection();
         $this->children = new ArrayCollection();
@@ -156,9 +156,7 @@ class Project implements ProjectInterface
     }
 
     /**
-     * Get id
-     *
-     * @return integer $id
+     * {@inheritdoc}
      */
     public function getId()
     {
@@ -173,9 +171,7 @@ class Project implements ProjectInterface
     }
 
     /**
-     * Set name
-     *
-     * @param string $name
+     * {@inheritdoc}
      */
     public function setName($name)
     {
@@ -183,9 +179,7 @@ class Project implements ProjectInterface
     }
 
     /**
-     * Get name
-     *
-     * @return string $name
+     * {@inheritdoc}
      */
     public function getName()
     {
@@ -193,9 +187,7 @@ class Project implements ProjectInterface
     }
 
     /**
-     * Get slug
-     *
-     * @return string
+     * {@inheritdoc}
      */
     public function getSlug()
     {
@@ -203,9 +195,7 @@ class Project implements ProjectInterface
     }
 
     /**
-     * Set created
-     *
-     * @param \DateTime $created
+     * {@inheritdoc}
      */
     public function setCreated($created)
     {
@@ -213,9 +203,7 @@ class Project implements ProjectInterface
     }
 
     /**
-     * Get created
-     *
-     * @return \DateTime
+     * {@inheritdoc}
      */
     public function getCreated()
     {
@@ -223,9 +211,7 @@ class Project implements ProjectInterface
     }
 
     /**
-     * Set updated
-     *
-     * @param \DateTime $updated
+     * {@inheritdoc}
      */
     public function setUpdated($updated)
     {
@@ -233,9 +219,7 @@ class Project implements ProjectInterface
     }
 
     /**
-     * Get updated
-     *
-     * @return \DateTime
+     * {@inheritdoc}
      */
     public function getUpdated()
     {
@@ -243,9 +227,7 @@ class Project implements ProjectInterface
     }
 
     /**
-     * Set organization
-     *
-     * @param OrganizationInterface $organization
+     * {@inheritdoc}
      */
     public function setOrganization(OrganizationInterface $organization)
     {
@@ -253,9 +235,7 @@ class Project implements ProjectInterface
     }
 
     /**
-     * Get organization
-     *
-     * @return \Tempo\Bundle\ProjectBundle\Entity\Organization
+     * {@inheritdoc}
      */
     public function getOrganization()
     {
@@ -263,9 +243,7 @@ class Project implements ProjectInterface
     }
 
     /**
-     * Set description
-     *
-     * @param text $description
+     * {@inheritdoc}
      */
     public function setDescription($description)
     {
@@ -273,9 +251,7 @@ class Project implements ProjectInterface
     }
 
     /**
-     * Get description
-     *
-     * @return text
+     * {@inheritdoc}
      */
     public function getDescription()
     {
@@ -283,29 +259,23 @@ class Project implements ProjectInterface
     }
 
     /**
-     * Set isActive
-     *
-     * @param boolean $isActive
+     * {@inheritdoc}
      */
-    public function setIsActive($isActive)
+    public function setActive($isActive)
     {
-        $this->isActive = $isActive;
+        $this->active = $isActive;
     }
 
     /**
-     * Get isActive
-     *
-     * @return boolean
+     * {@inheritdoc}
      */
-    public function getIsActive()
+    public function getActive()
     {
-        return $this->isActive;
+        return $this->active;
     }
 
     /**
-     * Set beginning
-     *
-     * @param datetime $beginning
+     * {@inheritdoc}
      */
     public function setBeginning(\DateTime $beginning)
     {
@@ -313,9 +283,7 @@ class Project implements ProjectInterface
     }
 
     /**
-     * Get beginning
-     *
-     * @return datetime
+     * {@inheritdoc}
      */
     public function getBeginning()
     {
@@ -323,9 +291,7 @@ class Project implements ProjectInterface
     }
 
     /**
-     * Set ending
-     *
-     * @param \DateTime $ending
+     * {@inheritdoc}
      */
     public function setEnding(\DateTime $ending)
     {
@@ -333,9 +299,7 @@ class Project implements ProjectInterface
     }
 
     /**
-     * Get ending
-     *
-     * @return datetime
+     * {@inheritdoc}
      */
     public function getEnding()
     {
@@ -343,9 +307,7 @@ class Project implements ProjectInterface
     }
 
     /**
-     * Set type
-     *
-     * @param integer $type
+     * {@inheritdoc}
      */
     public function setType($type)
     {
@@ -353,9 +315,7 @@ class Project implements ProjectInterface
     }
 
     /**
-     * Get type
-     *
-     * @return integer
+     * {@inheritdoc}
      */
     public function getType()
     {
@@ -363,9 +323,7 @@ class Project implements ProjectInterface
     }
 
     /**
-     * Set advancement
-     *
-     * @param integer $avancement
+     * {@inheritdoc}
      */
     public function setAdvancement($advancement)
     {
@@ -373,9 +331,7 @@ class Project implements ProjectInterface
     }
 
     /**
-     * Get advancement
-     *
-     * @return integer
+     * {@inheritdoc}
      */
     public function getAdvancement()
     {
@@ -383,9 +339,7 @@ class Project implements ProjectInterface
     }
 
     /**
-     * Set code
-     *
-     * @param string $code
+     * {@inheritdoc}
      */
     public function setCode($code)
     {
@@ -393,9 +347,7 @@ class Project implements ProjectInterface
     }
 
     /**
-     * Get code
-     *
-     * @return string
+     * {@inheritdoc}
      */
     public function getCode()
     {
@@ -403,9 +355,7 @@ class Project implements ProjectInterface
     }
 
     /**
-     * Set status
-     *
-     * @param integer $status
+     * {@inheritdoc}
      */
     public function setStatus($status)
     {
@@ -413,9 +363,7 @@ class Project implements ProjectInterface
     }
 
     /**
-     * Get status
-     *
-     * @return integer
+     * {@inheritdoc}
      */
     public function getStatus()
     {
@@ -423,9 +371,7 @@ class Project implements ProjectInterface
     }
 
     /**
-     * Set budget_estimated
-     *
-     * @param decimal $budgetEstimated
+     * {@inheritdoc}
      */
     public function setBudgetEstimated($budgetEstimated)
     {
@@ -433,9 +379,7 @@ class Project implements ProjectInterface
     }
 
     /**
-     * Get budget_estimated
-     *
-     * @return decimal
+     * {@inheritdoc}
      */
     public function getBudgetEstimated()
     {
@@ -443,9 +387,7 @@ class Project implements ProjectInterface
     }
 
     /**
-     * Set priority
-     *
-     * @param integer $priority
+     * {@inheritdoc}
      */
     public function setPriority($priority)
     {
@@ -453,9 +395,7 @@ class Project implements ProjectInterface
     }
 
     /**
-     * Get priority
-     *
-     * @return integer
+     * {@inheritdoc}
      */
     public function getPriority()
     {
@@ -463,9 +403,7 @@ class Project implements ProjectInterface
     }
 
     /**
-     * Add timesheet
-     *
-     * @param TimesheetInterface $timesheet
+     * {@inheritdoc}
      */
     public function addTimesheet(TimesheetInterface $timesheet)
     {
@@ -473,7 +411,7 @@ class Project implements ProjectInterface
     }
 
     /**
-     * @param $timesheets
+     * {@inheritdoc}
      */
     public function setTimesheets($timesheets)
     {
@@ -481,9 +419,7 @@ class Project implements ProjectInterface
     }
 
     /**
-     * Get timesheet
-     *
-     * @return \Doctrine\Common\Collections\Collection
+     * {@inheritdoc}
      */
     public function getTimesheets()
     {
@@ -628,5 +564,4 @@ class Project implements ProjectInterface
     {
         $this->activityProviders = $activityProviders;
     }
-
 }

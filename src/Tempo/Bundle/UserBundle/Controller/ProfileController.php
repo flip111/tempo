@@ -28,7 +28,7 @@ class ProfileController extends Controller
      */
     public function editAction()
     {
-        $form = $this->createForm(new ProfileType(), $this->getEditableUser());
+        $form = $this->createForm(new ProfileType(), $this->getUser());
         return $this->render( 'TempoUserBundle:Profile:edit.html.twig', array('form' => $form->createView()) );
     }
 
@@ -40,8 +40,7 @@ class ProfileController extends Controller
     public function pictureAction($id = null)
     {
         $request = $this->getRequest();
-        $user = $this->getEditableUser($id);
-        $own = $user->getId() == $this->getUser()->getId();
+        $user = $this->getUser();
 
         $form = $this->get('tempo_user.profile.form.avatar.factory');
         $handler = $this->get('tempo_user.profile.handler.avatar');
@@ -62,7 +61,6 @@ class ProfileController extends Controller
 
         return $this->render('TempoUserBundle:Profile:avatar.html.twig', array(
             'user' => $user,
-            'own' => $own,
             'form' => $form->createView(),
         ));
     }
@@ -71,7 +69,7 @@ class ProfileController extends Controller
     {
         $request = $this->getRequest();
 
-        $user = $this->getEditableUser();
+        $user = $this->getUser();
         $form = $this->createForm(new ProfileType(), $user);
 
         if ($request->isMethod('POST') && $form->submit($request)->isValid()) {
@@ -104,10 +102,12 @@ class ProfileController extends Controller
         ));
     }
 
-
+    /**
+     * @return Response
+     */
     public function settingAction()
     {
-        $profile = $this->getEditableUser();
+        $profile = $this->getUser();
 
         $form = $this->createForm(new SettingsType());
         return $this->render('TempoUserBundle:Profile:settings.html.twig', array(
@@ -117,32 +117,17 @@ class ProfileController extends Controller
     }
 
     /**
-     * @param $own
-     * @param $user
-     * @return RedirectResponse
-     */
-    public function SuccessUploadRedirect($own, $user)
-    {
-        return new  RedirectResponse($this->generateUrl('user_profile_avatar', array('id' => $own ? null : $user->getId())));
-    }
-
-    /**
      * Get translator.
      *
      * @return TranslatorInterface
      */
-    protected function getTranslator()
+    private function getTranslator()
     {
         return $this->get('translator');
     }
 
-    public function translate($trans)
+    private function translate($trans)
     {
         $this->getTranslator()->trans($trans, array(), 'TempoUser');
-    }
-
-    public function getEditableUser()
-    {
-        return $this->getUser();
     }
 }

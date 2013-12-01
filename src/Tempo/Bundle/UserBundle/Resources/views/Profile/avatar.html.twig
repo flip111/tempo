@@ -9,9 +9,6 @@
 {% endblock breadcrumb %}
 
 {% block content %}
-{% if own %}
-<h1 id="page-title" class="col-md-5">{{ 'avatar.title'|trans({}, 'TempoUser') }}</h1>
-{% else %}
 <h1>{{ 'avatar.admin_change'|trans({}, 'TempoUser') }} {{ user.getUsername() }} ?></h1>
 
 <div class="alert alert-error">
