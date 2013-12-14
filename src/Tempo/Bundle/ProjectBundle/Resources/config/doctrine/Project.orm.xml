@@ -48,7 +48,9 @@
         <one-to-many field="timesheets" target-entity="Timesheet" mapped-by="project" />
         <one-to-one field="type" target-entity="ProjectType" />
         <many-to-many field="team" inversed-by="users" target-entity="Tempo\Bundle\UserBundle\Entity\User" />
-        <one-to-many field="activityProviders" target-entity="Tempo\Bundle\ActivityBundle\Entity\ActivityProvider" mapped-by="project" />
+
+        <one-to-many field="providers" target-entity="ProjectProvider" mapped-by="project" />
+
 
     </entity>
 

@@ -2,8 +2,6 @@
 
 namespace Tempo\Bundle\ProjectBundle\Model;
 
-use Tempo\Bundle\ProjectBundle\Model\ProjectInterface;
-
 class ProjectProvider implements ProjectProviderInterface
 {
     /**

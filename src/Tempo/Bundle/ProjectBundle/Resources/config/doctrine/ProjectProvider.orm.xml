@@ -24,6 +24,9 @@
 
         <many-to-one field="project" inversed-by="providers" target-entity="Project" />
 
+        <one-to-many field="activities" target-entity="Tempo\Bundle\ActivityBundle\Entity\ActivityProvider" mapped-by="provider" />
+
+
     </entity>
 
 </doctrine-mapping>
