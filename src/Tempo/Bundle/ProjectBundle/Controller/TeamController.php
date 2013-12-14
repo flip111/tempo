@@ -27,9 +27,8 @@ class TeamController extends Controller
      * @param $slug
      * @return array|\Symfony\Component\HttpFoundation\RedirectResponse
      */
-    public function addAction($slug)
+    public function addAction(Request $request, $slug)
     {
-        $request = $this->getRequest();
         $form = $this->createForm(new TeamType());
 
         if ($request->get('_route') == 'project_team_add') {

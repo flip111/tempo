@@ -11,6 +11,8 @@
 
 namespace Tempo\Bundle\ProjectBundle\Controller;
 
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use \DateTime;
@@ -18,8 +20,6 @@ use CalendR\Period\Week;
 use Tempo\Bundle\ProjectBundle\Entity\Timesheet;
 use Tempo\Bundle\ProjectBundle\Form\Type\TimesheetType;
 
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 use Locale;
 
 /**
@@ -32,7 +32,7 @@ class TimesheetController extends Controller
      * Lists all Timesheet entities.
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
-    public function dashboardAction()
+    public function dashboardAction(Request $request)
     {
 
         $breadcrumb  = $this->get('tempo_main.breadcrumb');
@@ -41,8 +41,8 @@ class TimesheetController extends Controller
 
         $locale = $this->container->getParameter('locale');
         $weekLang = $this->container->getParameter('tempo_project.week');
-        $currentYear = $this->getRequest()->query->get('year', date('Y'));
-        $currentWeek = $this->getRequest()->query->get('week', date('W'));
+        $currentYear = $request->query->get('year', date('Y'));
+        $currentWeek = $request->query->get('week', date('W'));
 
         $week = new DateTime();
         $week->setISOdate($currentYear, $currentWeek);
@@ -77,11 +77,11 @@ class TimesheetController extends Controller
      *
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
-    public function newAction()
+    public function newAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $postTimesheet = $this->getRequest()->query->all();
+        $postTimesheet = $request->query->all();
         $project = $em->getRepository('TempoProjectBundle:Project')->find($postTimesheet['projectid']);
 
         $entity = new Timesheet();
@@ -102,13 +102,10 @@ class TimesheetController extends Controller
      *
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
-    public function createAction()
+    public function createAction(Request $request)
     {
-
         $em = $this->getDoctrine()->getManager();
-
         $entity  = new Timesheet();
-        $request = $this->getRequest();
 
         //Update request
         $postTimesheet = $request->request->get('timesheet');
@@ -156,10 +153,9 @@ class TimesheetController extends Controller
      *
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
-    public function updateAction($id)
+    public function updateAction(Request $request, $id)
     {
         $entity = $this->getManager()->find($id);
-        $request = $this->getRequest();
 
         $editForm   = $this->createForm(new TimesheetType(), $entity);
 
@@ -177,7 +173,7 @@ class TimesheetController extends Controller
 
     public function postDataAction()
     {
-        $post = $this->getRequest()->request->all();
+        $post = $$this->get('request_stack')->getCurrentRequest()->request->all();
         $post = $post['timesheet'];
 
         $time = new Timesheet();
@@ -197,10 +193,9 @@ class TimesheetController extends Controller
      *
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
-    public function deleteAction($id)
+    public function deleteAction(Request $request, $id)
     {
         $form = $this->createDeleteForm($id);
-        $request = $this->getRequest();
 
         if ($form->submit($request)->isValid()) {
             $entity = $this->getManager()->find($id);

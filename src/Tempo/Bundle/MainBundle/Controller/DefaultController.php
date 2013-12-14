@@ -13,6 +13,7 @@
 
 namespace Tempo\Bundle\MainBundle\Controller;
 
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Tempo\Bundle\MainBundle\Entity\Settings;
 use Tempo\Bundle\MainBundle\Form\SettingsType;
@@ -24,10 +25,8 @@ class DefaultController extends Controller
     /**
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function indexAction()
+    public function indexAction(Request $request)
     {
-
-        $request = $this->getRequest();
         $em = $this->getDoctrine()->getManager();
 
         $rooms = $em->getRepository('TempoMainBundle:Room')->findAll();

@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "e0adca15b4afe037e0b20e37f3fb8172",
+    "hash": "9760f5a3e0775ca6d4f99531f3851f20",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -1007,12 +1007,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/l3pp4rd/DoctrineExtensions.git",
-                "reference": "f78aec9a584fb7bd5ff234ba632ab76e7d221a60"
+                "reference": "05e1b31ed9be4cb21e08d2d53f209ceb39a3d5e7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/l3pp4rd/DoctrineExtensions/zipball/f78aec9a584fb7bd5ff234ba632ab76e7d221a60",
-                "reference": "f78aec9a584fb7bd5ff234ba632ab76e7d221a60",
+                "url": "https://api.github.com/repos/l3pp4rd/DoctrineExtensions/zipball/05e1b31ed9be4cb21e08d2d53f209ceb39a3d5e7",
+                "reference": "05e1b31ed9be4cb21e08d2d53f209ceb39a3d5e7",
                 "shasum": ""
             },
             "require": {
@@ -1079,7 +1079,7 @@
                 "tree",
                 "uploadable"
             ],
-            "time": "2013-12-06 19:17:11"
+            "time": "2013-12-14 02:12:03"
         },
         {
             "name": "ikimea/browser",
@@ -2439,27 +2439,35 @@
         },
         {
             "name": "sensio/framework-extra-bundle",
-            "version": "2.3.x-dev",
+            "version": "dev-master",
             "target-dir": "Sensio/Bundle/FrameworkExtraBundle",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sensiolabs/SensioFrameworkExtraBundle.git",
-                "reference": "62e45cd2d4eb5e50265fe0329d59ef8a2163e500"
+                "reference": "b36f307dfbfa28e26705b8f749ca33a83bfb3ce2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sensiolabs/SensioFrameworkExtraBundle/zipball/62e45cd2d4eb5e50265fe0329d59ef8a2163e500",
-                "reference": "62e45cd2d4eb5e50265fe0329d59ef8a2163e500",
+                "url": "https://api.github.com/repos/sensiolabs/SensioFrameworkExtraBundle/zipball/b36f307dfbfa28e26705b8f749ca33a83bfb3ce2",
+                "reference": "b36f307dfbfa28e26705b8f749ca33a83bfb3ce2",
                 "shasum": ""
             },
             "require": {
                 "doctrine/common": "~2.2",
-                "symfony/framework-bundle": "~2.2"
+                "symfony/framework-bundle": "~2.4"
+            },
+            "require-dev": {
+                "symfony/expression-language": "~2.4",
+                "symfony/security-bundle": "~2.4"
+            },
+            "suggest": {
+                "symfony/expression-language": "",
+                "symfony/security-bundle": ""
             },
             "type": "symfony-bundle",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.3.x-dev"
+                    "dev-master": "3.0.x-dev"
                 }
             },
             "autoload": {
@@ -2482,7 +2490,7 @@
                 "annotations",
                 "controllers"
             ],
-            "time": "2013-12-12 11:16:36"
+            "time": "2013-12-12 11:16:45"
         },
         {
             "name": "sensio/generator-bundle",

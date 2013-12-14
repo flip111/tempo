@@ -14,6 +14,7 @@ namespace Tempo\Bundle\CoreBundle\Manager;
 
 use Doctrine\ORM\EntityManager;
 use Symfony\Component\EventDispatcher\ContainerAwareEventDispatcher;
+use Symfony\Component\HttpKernel\Debug\TraceableEventDispatcher;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
@@ -31,7 +32,7 @@ abstract class BaseManager
      * @param EntityManager $em
      * @param $class
      */
-    public function __construct(ContainerAwareEventDispatcher $event, EntityManager $em, $class)
+    public function __construct(TraceableEventDispatcher $event, EntityManager $em, $class)
     {
         $this->em = $em;
         $this->class = $class;

@@ -17,6 +17,7 @@ use Tempo\Bundle\ProjectBundle\Form\Type\TeamType;
 use Tempo\Bundle\ProjectBundle\TempoProjectEvents;
 use Tempo\Bundle\ProjectBundle\Event\OrganizationEvent;
 
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
@@ -112,10 +113,9 @@ class OrganizationController extends Controller
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
      */
-    public function updateAction($id)
+    public function updateAction(Request $request, $id)
     {
         $manager = $this->get('tempo_project.manager.organization');
-        $request = $this->getRequest();
 
         $organization = $manager->find($id);
 
@@ -147,12 +147,11 @@ class OrganizationController extends Controller
      * Create a organization
      * @return array
      */
-    public function createAction()
+    public function createAction(Request $request)
     {
         if (false === $this->get('security.context')->isGranted('ROLE_ADMIN')) {
             throw new AccessDeniedException();
         }
-        $request = $this->getRequest();
 
         $organization = new Organization();
         $organization->addTeam($this->getUser());
@@ -179,9 +178,8 @@ class OrganizationController extends Controller
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
      * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
      */
-    public function deleteAction($slug)
+    public function deleteAction(Request $request, $slug)
     {
-        $request = $this->getRequest();
         $organization = $this->findOrganization($slug);
 
         if (false === $this->get('security.context')->isGranted('DELETE', $organization)) {
@@ -196,7 +194,7 @@ class OrganizationController extends Controller
         try {
 
             $this->getManager()->removeAndFlush($organization);
-            $event = new ProjectEvent($organization, $this->getRequest());
+            $event = new ProjectEvent($organization, $request);
             $this->get('event_dispatcher')->dispatch(TempoProjectEvents::ORGANIZATION_DELETE_COMPLETED, $event);
             $request->getSession()->getFlashBag()->set('success', $this->getTranslator()->trans('organization.success_delete', array(), 'TempoProject'));
 

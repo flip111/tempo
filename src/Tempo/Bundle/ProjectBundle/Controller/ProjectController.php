@@ -11,6 +11,7 @@
 
 namespace Tempo\Bundle\ProjectBundle\Controller;
 
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Security\Acl\Permission\MaskBuilder;
@@ -119,13 +120,11 @@ class ProjectController extends Controller
      * Creates a new Project entity.
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
-    public function createAction()
+    public function createAction(Request $request)
     {
         if (false === $this->get('security.context')->isGranted('ROLE_ADMIN')) {
             throw new AccessDeniedException();
         }
-
-        $request = $this->getRequest();
 
         $project  = new Project();
         $project->addTeam($this->getUser());
@@ -181,9 +180,8 @@ class ProjectController extends Controller
      * @param $id
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
-    public function updateAction($slug)
+    public function updateAction(Request $request, $slug)
     {
-        $request = $this->getRequest();
         $project = $this->getProject($slug);
         $editForm   = $this->createForm(new ProjectType(), $project);
 
@@ -213,10 +211,10 @@ class ProjectController extends Controller
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
      * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
      */
-    public function deleteAction($slug)
+    public function deleteAction(Request $request, $slug)
     {
         //check CSRF token
-        if (false === $this->get('form.csrf_provider')->isCsrfTokenValid('delete-organization', $this->getRequest()->get('token'))) {
+        if (false === $this->get('form.csrf_provider')->isCsrfTokenValid('delete-organization', $request->get('token'))) {
             throw new AccessDeniedHttpException('Invalid CSRF token.');
         }
 
@@ -227,7 +225,7 @@ class ProjectController extends Controller
         }
 
         $this->getManager()->removeAndFlush($project);
-        $event = new ProjectEvent($project, $this->getRequest());
+        $event = new ProjectEvent($project, $request);
         $this->get('event_dispatcher')->dispatch(TempoProjectEvents::PROJECT_DELETE_COMPLETED, $event);
 
         return $this->redirect($this->generateUrl('project_home'));
@@ -264,7 +262,7 @@ class ProjectController extends Controller
      */
     protected function getParent(Project $project)
     {
-        $parent = $this->getRequest()->query->get('parent');
+        $parent = $this->get('request_stack')->getCurrentRequest()->query->get('parent');
 
         if (!empty($parent)) {
             $parent = $this->getProject(intval($parent));

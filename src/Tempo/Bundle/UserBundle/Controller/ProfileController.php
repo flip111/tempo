@@ -37,9 +37,8 @@ class ProfileController extends Controller
      * @param null $id
      * @return mixed
      */
-    public function pictureAction($id = null)
+    public function pictureAction(Request $request)
     {
-        $request = $this->getRequest();
         $user = $this->getUser();
 
         $form = $this->get('tempo_user.profile.form.avatar.factory');
@@ -65,10 +64,8 @@ class ProfileController extends Controller
         ));
     }
 
-    public function updateAction()
+    public function updateAction(Request $request)
     {
-        $request = $this->getRequest();
-
         $user = $this->getUser();
         $form = $this->createForm(new ProfileType(), $user);
 
