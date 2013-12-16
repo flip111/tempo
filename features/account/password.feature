@@ -9,7 +9,7 @@ Feature: User account password change
 
   Scenario: Changing my password with a wrong current password
     Given I am on my account password page
-    When I fill in "Current password" with "john.does"
+    When I fill in "Current password" with "john.doe"
       And I fill in "New password" with "newpassword"
       And I fill in "Verification" with "newpassword"
       And I press "Change password"

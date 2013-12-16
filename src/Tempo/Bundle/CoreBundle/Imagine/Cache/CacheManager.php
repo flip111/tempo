@@ -19,22 +19,28 @@ use Symfony\Component\Filesystem\Filesystem;
 
 class CacheManager
 {
-
     /**
      * @var string
      */
-    private $cachePath;
+    protected $cachePath;
+
     /**
      * @var
      */
-    private $driver;
+    protected $driver;
+
+    /**
+     * @var Filesystem
+     */
+    protected $filesystem;
 
     /**
      * @param ImagineInterface $driver
      */
-    public function __construct(ImagineInterface $driver)
+    public function __construct(ImagineInterface $driver, Filesystem $file)
     {
         $this->driver = $driver;
+        $this->filesystem = new Filesystem();
     }
 
     /**
@@ -43,8 +49,7 @@ class CacheManager
     public function setBasePath($cachePath)
     {
         if (!is_dir($cachePathTemp = $cachePath. 'media/cache')) {
-            $filesystem = new Filesystem();
-            $filesystem->mkdir($cachePathTemp);
+            $this->filesystem->mkdir($cachePathTemp);
         }
         $this->cachePath = $cachePath;
     }
@@ -61,7 +66,8 @@ class CacheManager
         }
 
         $path =  $this->getResolver($path);
-        $newImage = $this->cachePath.'media/cache/'.md5(pathinfo($path, PATHINFO_BASENAME)).'.'.pathinfo($path, PATHINFO_EXTENSION);
+        $pathinfo = pathinfo($path);
+        $newImage = $this->cachePath.'media/cache/'.md5($pathinfo['basename']).'.'.$pathinfo['extension'];
 
         if(!is_file($newImage)) {
            $this->generateImage($path,$newImage, $sizes);

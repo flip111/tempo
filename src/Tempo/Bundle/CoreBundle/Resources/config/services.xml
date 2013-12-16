@@ -7,10 +7,12 @@
         <parameter key="tempo_core.eventlister.class">Tempo\Bundle\CoreBundle\EventListener\ControllerListener</parameter>
         <parameter key="tempo_core.twig.extension.class">Tempo\Bundle\CoreBundle\Twig\Extension\CoreExtension</parameter>
         <parameter key="tempo_core.imagine_cache.manager.class">Tempo\Bundle\CoreBundle\Imagine\Cache\CacheManager</parameter>
+        <parameter key="tempo_core.cache_clearer.class">Tempo\Bundle\CoreBundle\Cache\CacheClearer</parameter>
     </parameters>
     <services>
+        <service id="tempo.core.entity_manager" factory-service="doctrine" factory-method="getManager" class="Doctrine\ORM\EntityManager" public="false" />
 
-        <service id="tempo_core.listener.controller" class="%tempo_core.eventlister.class%" scope="request">
+        <service id="tempo_core.listener.controller" class="%tempo_core.eventlister.class%">
             <tag name="kernel.event_listener" event="kernel.controller" method="onKernelController"/>
         </service>
 
@@ -23,7 +25,15 @@
         <service id="tempo_core.twig.extension" class="%tempo_core.twig.extension.class%" public="false">
             <tag name="twig.extension" />
             <argument type="service" id="tempo_core.imagine_cache.manager" />
+        </service>
 
+        <service id="tempo_core.cache_clearer" class="%tempo_core.cache_clearer.class%">
+            <tag name="kernel.cache_clearer" />
+            <call method="setBasePath">
+                <argument type="collection">
+                    <argument>%kernel.root_dir%/../web/uploads/media/cache</argument>
+                </argument>
+            </call>
         </service>
     </services>
 </container>
