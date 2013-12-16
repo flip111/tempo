@@ -40,7 +40,7 @@ class CacheManager
     public function __construct(ImagineInterface $driver, Filesystem $file)
     {
         $this->driver = $driver;
-        $this->filesystem = new Filesystem();
+        $this->filesystem = $file;
     }
 
     /**
