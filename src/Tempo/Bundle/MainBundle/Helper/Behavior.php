@@ -9,10 +9,10 @@
 * file that was distributed with this source code.
 */
 
-namespace Tempo\Bundle\MainBundle\Helper;
+namespace Tempo\Bundle\CoreBundle\Helper;
 
 use Symfony\Component\Templating\Helper\Helper;
-use Tempo\Bundle\MainBundle\Resource\ResourceManager;
+use Tempo\Bundle\CoreBundle\Resource\ResourceManagerInterface;
 
 /**
  * @author Mbechezi Mlanawo <mlanawo.mbechezi@ikimea.com>
@@ -29,14 +29,14 @@ class Behavior extends Helper
     /**
      * @param ResourceManager $resourceManager
      */
-    public function __construct(ResourceManager $resourceManager, $router)
+    public function __construct(ResourceManagerInterface $resourceManager, $router)
     {
         $this->resourceManager = $resourceManager;
         $this->router = $router;
     }
 
     /**
-     * @return \Tempo\Bundle\MainBundle\Resource\ResourceManager
+     * @return \Tempo\Bundle\CoreBundle\Resource\ResourceManager
      */
     public function getResourceManager()
     {
@@ -107,7 +107,6 @@ class Behavior extends Helper
         $ressources['stylesheets'] = $this->resourceManager->getStylesheets();
 
         return $ressources;
-
     }
 
     /**

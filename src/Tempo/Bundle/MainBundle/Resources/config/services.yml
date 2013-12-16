@@ -2,7 +2,7 @@ parameters:
     tempo_main.settings_manager.class: Tempo\Bundle\MainBundle\Manager\SettingsManager
     tempo_main.menu_builder.class: Tempo\Bundle\MainBundle\Menu\MenuBuilder
     tempo_main.behavior_manager.class: Tempo\Bundle\MainBundle\Helper\Behavior
-    tempo_main.resource_manager.class: Tempo\Bundle\MainBundle\Resource\ResourceManager
+    tempo_main.resource_manager.class: Tempo\Bundle\CoreBundle\Resource\ResourceManager
     form.type.autocomplete.class : Tempo\Bundle\MainBundle\Form\Type\AutocompleteType
 
 services:

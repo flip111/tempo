@@ -9,7 +9,7 @@
 * file that was distributed with this source code.
 */
 
-namespace Tempo\Bundle\MainBundle\Resource;
+namespace Tempo\Bundle\CoreBundle\Resource;
 
 
 /**

@@ -9,7 +9,7 @@
 * file that was distributed with this source code.
 */
 
-namespace Tempo\Bundle\MainBundle\Resource;
+namespace Tempo\Bundle\CoreBundle\Resource;
 
 
 /**
@@ -20,7 +20,10 @@ namespace Tempo\Bundle\MainBundle\Resource;
 class ResourceManager implements ResourceManagerInterface
 {
 
-    protected $resources = array('javascripts' => array(), 'stylesheets' => array());
+    protected $resources = array(
+        'javascripts' => array(),
+        'stylesheets' => array()
+    );
 
     /**
      * {@inheritdoc}
@@ -33,7 +36,6 @@ class ResourceManager implements ResourceManagerInterface
         } else {
             $this->resources['stylesheets'][] = $filename;
         }
-
     }
 
     /**
