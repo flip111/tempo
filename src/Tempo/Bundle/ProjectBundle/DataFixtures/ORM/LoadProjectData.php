@@ -57,7 +57,7 @@ class LoadProjectData extends AbstractFixture implements ContainerAwareInterface
             $project->setDescription('Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression.');
             $project->setOrganization( $this->getReference('organization'.$i));
             $project->setStatus( $this->getReference('projectType'.(rand(1, 3))) );
-            $project->setAvancement($digit[0]);
+            $project->setAdvancement($digit[0]);
             $project->setCreated(new \DateTime());
             $project->setUpdated(new \DateTime());
             $project->setActive(true);

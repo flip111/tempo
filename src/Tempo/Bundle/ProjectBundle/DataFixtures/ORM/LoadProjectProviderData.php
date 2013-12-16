@@ -25,10 +25,11 @@ class LoadProjectProviderData extends AbstractFixture implements OrderedFixtureI
      */
     public function load(ObjectManager $manager)
     {
-        for ($i=0; $i<5; $i++) {
+        for ($i=1; $i<5; $i++) {
 
             $activityProvider = new ProjectProvider();
             $activityProvider->setCreated(new \DateTime());
+            $activityProvider->setName('Provider'.$i);
             $activityProvider->setProject($this->getReference('project'.$i));
 
             $manager->persist($activityProvider);
