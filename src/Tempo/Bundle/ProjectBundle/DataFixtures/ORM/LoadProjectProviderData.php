@@ -29,7 +29,7 @@ class LoadProjectProviderData extends AbstractFixture implements OrderedFixtureI
 
             $activityProvider = new ProjectProvider();
             $activityProvider->setCreated(new \DateTime());
-            $activityProvider->setName('Provider'.$i);
+            $activityProvider->setName('github');
             $activityProvider->setProject($this->getReference('project'.$i));
 
             $manager->persist($activityProvider);
