@@ -74,7 +74,8 @@ class CacheManager
         }
 
         if(strpos('web', $imagePath) === true) {
-            $imagePath = explode('web', $imagePath)[0];
+            $imagePath = explode('web', $imagePath);
+            $imagePath = $imagePath[0];
         }
         return $imagePath;
     }
