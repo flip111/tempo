@@ -14,7 +14,6 @@
         </service>
 
         <service id="tempo.activity.manager.activity" class="%tempo.activity.manager.activity.class%">
-            <argument type="service" id="event_dispatcher" />
             <argument type="service" id="doctrine.orm.entity_manager"/>
             <argument>%tempo.activity.model.activity.class%</argument>
             <call method="setSecurityContext">
