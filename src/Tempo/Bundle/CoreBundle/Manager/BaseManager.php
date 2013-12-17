@@ -32,7 +32,7 @@ abstract class BaseManager
      * @param EntityManager $em
      * @param $class
      */
-    public function __construct(TraceableEventDispatcher $event, EntityManager $em, $class)
+    public function __construct(EntityManager $em, $class)
     {
         $this->em = $em;
         $this->class = $class;

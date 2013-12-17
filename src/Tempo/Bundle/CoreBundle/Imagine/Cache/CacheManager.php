@@ -67,14 +67,16 @@ class CacheManager
 
         $path =  $this->getResolver($path);
         $pathinfo = pathinfo($path);
-        $newImage = $this->cachePath.'media/cache/'.md5($pathinfo['basename']).'.'.$pathinfo['extension'];
+        $imagePath = $this->cachePath.'media/cache/'.md5($pathinfo['basename']).'.'.$pathinfo['extension'];
 
-        if(!is_file($newImage)) {
-           $this->generateImage($path,$newImage, $sizes);
+        if(!is_file($imagePath)) {
+           $this->generateImage($path,$imagePath, $sizes);
         }
 
-        $imagePath = explode('web', $newImage);
-        return $imagePath[1];
+        if(strpos('web', $imagePath) === true) {
+            $imagePath = explode('web', $imagePath)[0];
+        }
+        return $imagePath;
     }
 
     /**
@@ -83,10 +85,8 @@ class CacheManager
      */
     protected function getResolver($path)
     {
-        $path = ltrim($path, '/');
-
         if (substr($path, 0, 7) == 'bundles') {
-            $path = $this->cachePath .'../'.$path;
+            $path = $this->cachePath .'../'.ltrim($path);
         }
 
         return $path;

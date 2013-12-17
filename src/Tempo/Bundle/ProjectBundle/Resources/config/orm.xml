@@ -22,36 +22,30 @@
         <parameter key="tempo_project.manager.project.default.class">Tempo\Bundle\ProjectBundle\Manager\ProjectManager</parameter>
         <parameter key="tempo_project.manager.timesheet.default.class">Tempo\Bundle\ProjectBundle\Manager\TimesheetManager</parameter>
         <parameter key="tempo_project.manager.team.default.class">Tempo\Bundle\ProjectBundle\Manager\TeamManager</parameter>
-
     </parameters>
 
     <services>
 
         <service id="tempo_project.manager.settings" class="%tempo_project.manager.timesheet.default.class%">
-            <argument type="service" id="event_dispatcher" />
             <argument type="service" id="doctrine.orm.entity_manager" />
             <argument>%tempo_project.model.timesheet.class%</argument>
         </service>
 
         <service id="tempo_project.manager.organization" class="%tempo_project.manager.organization.default.class%">
-            <argument type="service" id="event_dispatcher" />
             <argument type="service" id="doctrine.orm.entity_manager" />
             <argument>%tempo_project.model.organization.class%</argument>
         </service>
 
         <service id="tempo_project.manager.project" class="%tempo_project.manager.project.default.class%">
-            <argument type="service" id="event_dispatcher" />
             <argument type="service" id="doctrine.orm.entity_manager" />
             <argument>%tempo_project.model.project.class%</argument>
         </service>
 
         <service id="tempo_project.manager.timesheet" class="%tempo_project.manager.timesheet.default.class%">
-            <argument type="service" id="event_dispatcher" />
             <argument type="service" id="doctrine.orm.entity_manager" />
             <argument>%tempo_project.model.timesheet.class%</argument>
         </service>
         <service id="tempo_project.manager.team" class="%tempo_project.manager.team.default.class%">
-            <argument type="service" id="event_dispatcher" />
             <argument type="service" id="doctrine.orm.entity_manager" />
             <argument>%tempo_project.model.team.class%</argument>
         </service>

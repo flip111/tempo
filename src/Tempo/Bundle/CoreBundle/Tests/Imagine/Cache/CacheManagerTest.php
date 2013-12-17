@@ -21,7 +21,7 @@ class CacheManagerTest  extends \PHPUnit_Framework_TestCase
     protected function setUp()
     {
         $this->filesystem = new Filesystem();
-        $this->fixturesDir = __DIR__.'/../../Fixtures';
+        $this->fixturesDir = str_replace('/', DIRECTORY_SEPARATOR,__DIR__).DIRECTORY_SEPARATOR.'../../Fixtures';
 
         $this->tempDir =  DIRECTORY_SEPARATOR.sys_get_temp_dir().'/imagine_autogen_test';
 
@@ -38,9 +38,12 @@ class CacheManagerTest  extends \PHPUnit_Framework_TestCase
 
     public function testGetBrowserPath()
     {
-        $this->assertEquals(
-            str_replace('/', DIRECTORY_SEPARATOR, $this->fixturesDir.'/assets'),
-            $this->cacheManager->getBrowserPath('/'. DIRECTORY_SEPARATOR. $this->fixturesDir.'/assets/cats.jpeg', array(100, 100))
-        );
+        try {
+            $this->cacheManager->getBrowserPath($this->fixturesDir.'/assets/cats.jpeg', array(100, 100));
+        }
+
+        catch (InvalidArgumentException $expected) {
+            $this->fail('An expected exception has not been raised.');
+        }
     }
 }
