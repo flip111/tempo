@@ -9,7 +9,7 @@
 * file that was distributed with this source code.
 */
 
-namespace Tempo\Bundle\CoreBundle\Helper;
+namespace Tempo\Bundle\MainBundle\Helper;
 
 use Symfony\Component\Templating\Helper\Helper;
 use Tempo\Bundle\CoreBundle\Resource\ResourceManagerInterface;
@@ -50,8 +50,8 @@ class Behavior extends Helper
     public function init($behavior, array $options)
     {
         $this->behavior[$behavior][] = $options;
-
     }
+
     /**
      *  Registers a JavaScript code to execute when loading the page, a * Once the DOM is ready.
      * @param string $call Code à exécuter
@@ -68,18 +68,15 @@ class Behavior extends Helper
     {
         $data = array();
 
-
         if ($this->behavior) {
             $behavior = json_encode($this->behavior);
             $this->onload('Tempo.behavior.init('.$behavior.');');
             $this->behavior = array();
         }
 
-
         foreach ($this->onload as $func) {
             $data[] = '$('.$func.');';
         }
-
 
         if ($data) {
             $data = implode(' ', $data);
@@ -102,11 +99,10 @@ class Behavior extends Helper
      */
     public function getResource()
     {
-        $ressources = array();
-        $ressources['javascripts'] = $this->resourceManager->getJavascripts();
-        $ressources['stylesheets'] = $this->resourceManager->getStylesheets();
-
-        return $ressources;
+        return array(
+            'javascripts' => $this->resourceManager->getJavascripts(),
+            'stylesheets' => $this->resourceManager->getStylesheets()
+        );
     }
 
     /**
@@ -116,5 +112,4 @@ class Behavior extends Helper
     {
         return 'Behavior';
     }
-
 }

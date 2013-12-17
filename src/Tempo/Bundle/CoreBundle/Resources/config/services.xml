@@ -15,9 +15,11 @@
         <service id="tempo_core.listener.controller" class="%tempo_core.eventlister.class%">
             <tag name="kernel.event_listener" event="kernel.controller" method="onKernelController"/>
         </service>
-
+        
+        <service id="tempo.core.filesystem" class="Symfony\Component\Filesystem\Filesystem"/>
         <service id="tempo_core.imagine_cache.manager" class="%tempo_core.imagine_cache.manager.class%">
             <argument type="service" id="liip_imagine"/>
+            <argument type="service" id="tempo.core.filesystem" />
             <call method="setBasePath">
                 <argument type="string">%kernel.root_dir%/../web/uploads/</argument>
             </call>
