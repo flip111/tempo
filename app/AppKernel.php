@@ -22,6 +22,7 @@ class AppKernel extends Kernel
 
             new FOS\UserBundle\FOSUserBundle(),
             new FOS\RestBundle\FOSRestBundle(),
+            new FOS\JsRoutingBundle\FOSJsRoutingBundle(),
             new Knp\Bundle\SnappyBundle\KnpSnappyBundle(),
             new Knp\Bundle\MenuBundle\KnpMenuBundle(),
             new Knp\Bundle\TimeBundle\KnpTimeBundle(),
@@ -33,6 +34,8 @@ class AppKernel extends Kernel
             new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
             new JMS\SerializerBundle\JMSSerializerBundle(),
             new Problematic\AclManagerBundle\ProblematicAclManagerBundle(),
+            new Bazinga\ExposeTranslationBundle\BazingaExposeTranslationBundle(),
+
             new Mopa\Bundle\BootstrapBundle\MopaBootstrapBundle(),
 
             //Tempo

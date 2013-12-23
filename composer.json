@@ -34,8 +34,9 @@
         "twig/extensions": "1.0.*",
         "knplabs/knp-snappy-bundle": "dev-master",
 
-        "friendsofsymfony/rest-bundle": "1.0.*@dev",
+        "friendsofsymfony/rest-bundle": "dev-master",
         "friendsofsymfony/user-bundle": "dev-master",
+        "friendsofsymfony/jsrouting-bundle": "1.5.*@dev",
         "jms/serializer-bundle": "0.13.*@dev",
         "wisembly/elephant.io": "dev-master",
         "ikimea/browser": "dev-master",
@@ -51,7 +52,9 @@
         "mopa/bootstrap-bundle": "v3.0.0-beta2",
         "fkr/cssurlrewrite-bundle": "1.0.*@dev",
         "liip/imagine-bundle": "dev-master",
-        "mattzuba/php-trello": "dev-default"
+        "mattzuba/php-trello": "dev-default",
+        "nelmio/api-doc-bundle": "dev-master",
+        "willdurand/expose-translation-bundle": "dev-master"
     },
     "require-dev": {
         "behat/behat": "2.5.*@stable",

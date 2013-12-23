@@ -9,16 +9,25 @@
 * file that was distributed with this source code.
 */
 
-namespace Tempo\Bundle\UserBundle\Controller;
+namespace Tempo\Bundle\UserBundle\Controller\Api\Rest;
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use FOS\RestBundle\Controller\FOSRestController;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Request;
 
-class ApiController extends Controller
+use FOS\RestBundle\Controller\Annotations\Get;
+use FOS\RestBundle\Controller\Annotations\NamePrefix;
+
+
+class UserController extends FOSRestController
 {
-    public function autocompleteAction($username)
+    /**
+     * GET Route annotation.
+     * @Get("/users/search/{username}")
+     */
+    public function autocompleteAction(Request $request, $username)
     {
-        $username = $this->getRequest()->query->get('term', $username);
+        $username = $request->query->get('term', $username);
 
         $em = $this->getDoctrine()->getManager();
         $users = array();

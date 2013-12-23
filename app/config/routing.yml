@@ -8,10 +8,15 @@ _imagine:
     resource: .
     type:     imagine
 
+fos_js_routing:
+    resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"
+
+_bazinga_exposetranslation:
+    resource: "@BazingaExposeTranslationBundle/Resources/config/routing/routing.yml"
+
 homepage:
     pattern:  /
     defaults: { _controller: TempoMainBundle:Default:index }
-
 
 _tempo_users:
     resource: "@TempoUserBundle/Resources/config/routing/routing.yml"

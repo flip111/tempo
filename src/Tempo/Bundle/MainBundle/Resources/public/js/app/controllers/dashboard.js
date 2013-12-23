@@ -1,5 +1,5 @@
 /**
- * Controller for viewing a scrum board
+ * Controller for viewing dashboard
  *
  * Initializes the board view and board model
  */

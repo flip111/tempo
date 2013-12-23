@@ -3,8 +3,67 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "9760f5a3e0775ca6d4f99531f3851f20",
+    "hash": "923f5c4dc71430d34291ed1859daa31b",
     "packages": [
+        {
+            "name": "dflydev/markdown",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/dflydev/dflydev-markdown.git",
+                "reference": "6baed9b50f29c980795b6656d43722aadb126f7e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/dflydev/dflydev-markdown/zipball/6baed9b50f29c980795b6656d43722aadb126f7e",
+                "reference": "6baed9b50f29c980795b6656d43722aadb126f7e",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "dflydev\\markdown": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Dragonfly Development Inc.",
+                    "email": "info@dflydev.com",
+                    "homepage": "http://dflydev.com"
+                },
+                {
+                    "name": "Beau Simensen",
+                    "email": "beau@dflydev.com",
+                    "homepage": "http://beausimensen.com"
+                },
+                {
+                    "name": "Michel Fortin",
+                    "homepage": "http://michelf.com"
+                },
+                {
+                    "name": "John Gruber",
+                    "homepage": "http://daringfireball.net"
+                }
+            ],
+            "description": "PHP Markdown & Extra",
+            "homepage": "http://github.com/dflydev/dflydev-markdown",
+            "keywords": [
+                "markdown"
+            ],
+            "time": "2013-09-23 12:00:18"
+        },
         {
             "name": "doctrine/annotations",
             "version": "dev-master",
@@ -683,12 +742,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/doctrine2.git",
-                "reference": "d820c25eda423de37752f223cfdad7e7d3926bda"
+                "reference": "423ea00539d11e9a12e952a7e9144bd2c53019dc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/doctrine2/zipball/d820c25eda423de37752f223cfdad7e7d3926bda",
-                "reference": "d820c25eda423de37752f223cfdad7e7d3926bda",
+                "url": "https://api.github.com/repos/doctrine/doctrine2/zipball/423ea00539d11e9a12e952a7e9144bd2c53019dc",
+                "reference": "423ea00539d11e9a12e952a7e9144bd2c53019dc",
                 "shasum": ""
             },
             "require": {
@@ -751,7 +810,7 @@
                 "database",
                 "orm"
             ],
-            "time": "2013-12-13 21:13:37"
+            "time": "2013-12-17 18:39:36"
         },
         {
             "name": "egeloen/ckeditor-bundle",
@@ -760,12 +819,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/egeloen/IvoryCKEditorBundle.git",
-                "reference": "95fdc866a5f4a72e7ca8620a8d867768b5beba63"
+                "reference": "562b45e8038370dd3226ead3140a13c628bae302"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/egeloen/IvoryCKEditorBundle/zipball/95fdc866a5f4a72e7ca8620a8d867768b5beba63",
-                "reference": "95fdc866a5f4a72e7ca8620a8d867768b5beba63",
+                "url": "https://api.github.com/repos/egeloen/IvoryCKEditorBundle/zipball/562b45e8038370dd3226ead3140a13c628bae302",
+                "reference": "562b45e8038370dd3226ead3140a13c628bae302",
                 "shasum": ""
             },
             "require": {
@@ -806,7 +865,7 @@
             "keywords": [
                 "CKEditor"
             ],
-            "time": "2013-12-13 22:54:44"
+            "time": "2013-12-14 11:41:19"
         },
         {
             "name": "fkr/cssurlrewrite-bundle",
@@ -857,25 +916,82 @@
             "time": "2013-08-27 14:17:45"
         },
         {
+            "name": "friendsofsymfony/jsrouting-bundle",
+            "version": "dev-master",
+            "target-dir": "FOS/JsRoutingBundle",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/FriendsOfSymfony/FOSJsRoutingBundle.git",
+                "reference": "213ead783b40495a2eb4b87ee1c89ea46af7ae35"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSJsRoutingBundle/zipball/213ead783b40495a2eb4b87ee1c89ea46af7ae35",
+                "reference": "213ead783b40495a2eb4b87ee1c89ea46af7ae35",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.2",
+                "symfony/console": "~2.0",
+                "symfony/framework-bundle": "~2.0",
+                "symfony/serializer": "~2.0",
+                "willdurand/jsonp-callback-validator": "~1.0"
+            },
+            "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.5-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "FOS\\JsRoutingBundle": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "William Durand",
+                    "email": "william.durand1@gmail.com",
+                    "homepage": "http://www.willdurand.fr"
+                },
+                {
+                    "name": "FriendsOfSymfony Community",
+                    "homepage": "https://github.com/friendsofsymfony/FOSJsRoutingBundle/contributors"
+                }
+            ],
+            "description": "A pretty nice way to expose your Symfony2 routing to client applications.",
+            "homepage": "http://friendsofsymfony.github.com",
+            "keywords": [
+                "Js Routing",
+                "javascript",
+                "routing"
+            ],
+            "time": "2013-12-16 21:22:31"
+        },
+        {
             "name": "friendsofsymfony/rest-bundle",
-            "version": "1.0.0",
+            "version": "dev-master",
             "target-dir": "FOS/RestBundle",
             "source": {
                 "type": "git",
                 "url": "https://github.com/FriendsOfSymfony/FOSRestBundle.git",
-                "reference": "8e0b02a3ea9cbb76b2043868796659c8f61af29b"
+                "reference": "d469bffb7ca4db956bcfcce271271d16500cd274"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSRestBundle/zipball/8e0b02a3ea9cbb76b2043868796659c8f61af29b",
-                "reference": "8e0b02a3ea9cbb76b2043868796659c8f61af29b",
+                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSRestBundle/zipball/d469bffb7ca4db956bcfcce271271d16500cd274",
+                "reference": "d469bffb7ca4db956bcfcce271271d16500cd274",
                 "shasum": ""
             },
             "require": {
                 "doctrine/inflector": "1.0.*",
                 "php": ">=5.3.2",
-                "symfony/framework-bundle": "~2.1",
-                "willdurand/negotiation": "1.0.*"
+                "symfony/framework-bundle": "~2.2",
+                "willdurand/negotiation": "~1.2.0"
             },
             "conflict": {
                 "jms/serializer": "<0.12",
@@ -883,22 +999,22 @@
             },
             "require-dev": {
                 "jms/serializer-bundle": "0.12.*",
-                "sensio/framework-extra-bundle": "~2.1",
-                "symfony/form": "~2.1",
-                "symfony/security": "~2.1",
-                "symfony/serializer": "~2.1",
-                "symfony/validator": "~2.1",
-                "symfony/yaml": "~2.1"
+                "sensio/framework-extra-bundle": "~2.2",
+                "symfony/form": "~2.2",
+                "symfony/security": "~2.2",
+                "symfony/serializer": "~2.2",
+                "symfony/validator": "~2.2",
+                "symfony/yaml": "~2.2"
             },
             "suggest": {
                 "jms/serializer-bundle": "Add support for advanced serialization capabilities, recommended, requires 0.12.*",
                 "sensio/framework-extra-bundle": "Add support for route annotations and the view response listener",
-                "symfony/serializer": "Add support for basic serialization capabilities and xml decoding, requires ~2.1"
+                "symfony/serializer": "Add support for basic serialization capabilities and xml decoding, requires ~2.2"
             },
             "type": "symfony-bundle",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.0-dev"
+                    "dev-master": "1.2-dev"
                 }
             },
             "autoload": {
@@ -930,7 +1046,7 @@
             "keywords": [
                 "rest"
             ],
-            "time": "2013-10-11 14:23:24"
+            "time": "2013-12-16 18:40:03"
         },
         {
             "name": "friendsofsymfony/user-bundle",
@@ -939,12 +1055,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/FriendsOfSymfony/FOSUserBundle.git",
-                "reference": "945eebb625073c51072b721ec528f12199b34915"
+                "reference": "6596b9d754b6cb094e10470967ed7b51e2aa9e12"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSUserBundle/zipball/945eebb625073c51072b721ec528f12199b34915",
-                "reference": "945eebb625073c51072b721ec528f12199b34915",
+                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSUserBundle/zipball/6596b9d754b6cb094e10470967ed7b51e2aa9e12",
+                "reference": "6596b9d754b6cb094e10470967ed7b51e2aa9e12",
                 "shasum": ""
             },
             "require": {
@@ -999,7 +1115,7 @@
             "keywords": [
                 "User management"
             ],
-            "time": "2013-12-10 16:13:14"
+            "time": "2013-12-16 16:36:36"
         },
         {
             "name": "gedmo/doctrine-extensions",
@@ -1007,12 +1123,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/l3pp4rd/DoctrineExtensions.git",
-                "reference": "05e1b31ed9be4cb21e08d2d53f209ceb39a3d5e7"
+                "reference": "0df9223ec1cee7fb56a803b2db1fd8b2c81fd001"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/l3pp4rd/DoctrineExtensions/zipball/05e1b31ed9be4cb21e08d2d53f209ceb39a3d5e7",
-                "reference": "05e1b31ed9be4cb21e08d2d53f209ceb39a3d5e7",
+                "url": "https://api.github.com/repos/l3pp4rd/DoctrineExtensions/zipball/0df9223ec1cee7fb56a803b2db1fd8b2c81fd001",
+                "reference": "0df9223ec1cee7fb56a803b2db1fd8b2c81fd001",
                 "shasum": ""
             },
             "require": {
@@ -1079,7 +1195,7 @@
                 "tree",
                 "uploadable"
             ],
-            "time": "2013-12-14 02:12:03"
+            "time": "2013-12-15 20:09:02"
         },
         {
             "name": "ikimea/browser",
@@ -1290,12 +1406,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/schmittjoh/metadata.git",
-                "reference": "3cb8bd396b961c156e964e3f58c9ad5206acf0a0"
+                "reference": "814f758e0e1e37377a03b737a9270a63291c004b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/schmittjoh/metadata/zipball/3cb8bd396b961c156e964e3f58c9ad5206acf0a0",
-                "reference": "3cb8bd396b961c156e964e3f58c9ad5206acf0a0",
+                "url": "https://api.github.com/repos/schmittjoh/metadata/zipball/814f758e0e1e37377a03b737a9270a63291c004b",
+                "reference": "814f758e0e1e37377a03b737a9270a63291c004b",
                 "shasum": ""
             },
             "require": {
@@ -1334,7 +1450,7 @@
                 "xml",
                 "yaml"
             ],
-            "time": "2013-12-02 21:16:56"
+            "time": "2013-12-15 13:29:10"
         },
         {
             "name": "jms/parser-lib",
@@ -1377,12 +1493,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/schmittjoh/serializer.git",
-                "reference": "22daa254e54f4b69292bd8679d7a6f3a78dc85d4"
+                "reference": "64d99274c2014cadac14406138d785126c10c312"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/schmittjoh/serializer/zipball/22daa254e54f4b69292bd8679d7a6f3a78dc85d4",
-                "reference": "22daa254e54f4b69292bd8679d7a6f3a78dc85d4",
+                "url": "https://api.github.com/repos/schmittjoh/serializer/zipball/64d99274c2014cadac14406138d785126c10c312",
+                "reference": "64d99274c2014cadac14406138d785126c10c312",
                 "shasum": ""
             },
             "require": {
@@ -1439,7 +1555,7 @@
                 "serialization",
                 "xml"
             ],
-            "time": "2013-12-04 16:46:05"
+            "time": "2013-12-16 22:43:38"
         },
         {
             "name": "jms/serializer-bundle",
@@ -1962,12 +2078,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Seldaek/monolog.git",
-                "reference": "5ad421d6a1d5d7066a45b617e5164d309c4e2852"
+                "reference": "c9db00f8821b2cc7238732529f8d4007296a630c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/5ad421d6a1d5d7066a45b617e5164d309c4e2852",
-                "reference": "5ad421d6a1d5d7066a45b617e5164d309c4e2852",
+                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/c9db00f8821b2cc7238732529f8d4007296a630c",
+                "reference": "c9db00f8821b2cc7238732529f8d4007296a630c",
                 "shasum": ""
             },
             "require": {
@@ -2021,7 +2137,7 @@
                 "logging",
                 "psr-3"
             ],
-            "time": "2013-12-02 09:38:32"
+            "time": "2013-12-14 13:52:08"
         },
         {
             "name": "mopa/bootstrap-bundle",
@@ -2136,6 +2252,81 @@
                 "composer"
             ],
             "time": "2013-09-10 10:06:34"
+        },
+        {
+            "name": "nelmio/api-doc-bundle",
+            "version": "dev-master",
+            "target-dir": "Nelmio/ApiDocBundle",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/nelmio/NelmioApiDocBundle.git",
+                "reference": "4b6efc6631161f9ddb64aecfbcbc8d117a77df52"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/nelmio/NelmioApiDocBundle/zipball/4b6efc6631161f9ddb64aecfbcbc8d117a77df52",
+                "reference": "4b6efc6631161f9ddb64aecfbcbc8d117a77df52",
+                "shasum": ""
+            },
+            "require": {
+                "dflydev/markdown": "~1.0",
+                "symfony/console": "~2.1",
+                "symfony/framework-bundle": "~2.1",
+                "symfony/twig-bundle": "~2.1"
+            },
+            "conflict": {
+                "jms/serializer": "<0.12",
+                "jms/serializer-bundle": "<0.11"
+            },
+            "require-dev": {
+                "friendsofsymfony/rest-bundle": "~1.0",
+                "jms/serializer-bundle": ">=0.11",
+                "sensio/framework-extra-bundle": "~2.1",
+                "symfony/browser-kit": "~2.1",
+                "symfony/css-selector": "~2.1",
+                "symfony/form": "~2.1",
+                "symfony/validator": "~2.1",
+                "symfony/yaml": "~2.1"
+            },
+            "suggest": {
+                "friendsofsymfony/rest-bundle": "For making use of REST information in the doc.",
+                "jms/serializer": "For making use of serializer information in the doc.",
+                "symfony/form": "For using form definitions as input.",
+                "symfony/validator": "For making use of validator information in the doc."
+            },
+            "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.4.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Nelmio\\ApiDocBundle": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nelmio",
+                    "homepage": "http://nelm.io"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://github.com/nelmio/NelmioApiDocBundle/contributors"
+                }
+            ],
+            "description": "Generates documentation for your REST API from annotations",
+            "keywords": [
+                "api",
+                "doc",
+                "documentation",
+                "rest"
+            ],
+            "time": "2013-12-16 15:47:21"
         },
         {
             "name": "pagerfanta/pagerfanta",
@@ -2398,12 +2589,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sensiolabs/SensioDistributionBundle.git",
-                "reference": "52b964d793e989768a44a8900b2373bdc9ce666a"
+                "reference": "cf0179711b24d84d4a29d71a4010540f4c990bd8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sensiolabs/SensioDistributionBundle/zipball/52b964d793e989768a44a8900b2373bdc9ce666a",
-                "reference": "52b964d793e989768a44a8900b2373bdc9ce666a",
+                "url": "https://api.github.com/repos/sensiolabs/SensioDistributionBundle/zipball/cf0179711b24d84d4a29d71a4010540f4c990bd8",
+                "reference": "cf0179711b24d84d4a29d71a4010540f4c990bd8",
                 "shasum": ""
             },
             "require": {
@@ -2435,7 +2626,7 @@
                 "configuration",
                 "distribution"
             ],
-            "time": "2013-11-14 21:00:23"
+            "time": "2013-12-16 06:18:38"
         },
         {
             "name": "sensio/framework-extra-bundle",
@@ -2444,12 +2635,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sensiolabs/SensioFrameworkExtraBundle.git",
-                "reference": "b36f307dfbfa28e26705b8f749ca33a83bfb3ce2"
+                "reference": "84f2c730b1d403a212b23a1b308650544eaab820"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sensiolabs/SensioFrameworkExtraBundle/zipball/b36f307dfbfa28e26705b8f749ca33a83bfb3ce2",
-                "reference": "b36f307dfbfa28e26705b8f749ca33a83bfb3ce2",
+                "url": "https://api.github.com/repos/sensiolabs/SensioFrameworkExtraBundle/zipball/84f2c730b1d403a212b23a1b308650544eaab820",
+                "reference": "84f2c730b1d403a212b23a1b308650544eaab820",
                 "shasum": ""
             },
             "require": {
@@ -2490,7 +2681,7 @@
                 "annotations",
                 "controllers"
             ],
-            "time": "2013-12-12 11:16:45"
+            "time": "2013-12-16 06:15:23"
         },
         {
             "name": "sensio/generator-bundle",
@@ -2603,12 +2794,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sonata-project/SonataSeoBundle.git",
-                "reference": "bda7e0561d55c7a533af45b77b62b1d0d1fcfa28"
+                "reference": "c0b8090aefc286fb5c75a600fb8012d5bb7f9415"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataSeoBundle/zipball/bda7e0561d55c7a533af45b77b62b1d0d1fcfa28",
-                "reference": "bda7e0561d55c7a533af45b77b62b1d0d1fcfa28",
+                "url": "https://api.github.com/repos/sonata-project/SonataSeoBundle/zipball/c0b8090aefc286fb5c75a600fb8012d5bb7f9415",
+                "reference": "c0b8090aefc286fb5c75a600fb8012d5bb7f9415",
                 "shasum": ""
             },
             "require": {
@@ -2655,7 +2846,7 @@
                 "seo",
                 "sonata"
             ],
-            "time": "2013-12-11 11:30:04"
+            "time": "2013-12-17 11:48:48"
         },
         {
             "name": "stof/doctrine-extensions-bundle",
@@ -3000,12 +3191,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/symfony.git",
-                "reference": "6764f91ce987a55e19489e42b85a87ebb0b6ead7"
+                "reference": "67ae8fab191eb808787ae9e6aac1470b4298dd86"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/symfony/zipball/6764f91ce987a55e19489e42b85a87ebb0b6ead7",
-                "reference": "6764f91ce987a55e19489e42b85a87ebb0b6ead7",
+                "url": "https://api.github.com/repos/symfony/symfony/zipball/67ae8fab191eb808787ae9e6aac1470b4298dd86",
+                "reference": "67ae8fab191eb808787ae9e6aac1470b4298dd86",
                 "shasum": ""
             },
             "require": {
@@ -3105,7 +3296,7 @@
             "keywords": [
                 "framework"
             ],
-            "time": "2013-12-12 16:10:54"
+            "time": "2013-12-17 12:58:30"
         },
         {
             "name": "twig/extensions",
@@ -3258,17 +3449,110 @@
             "time": "2013-12-09 21:54:42"
         },
         {
+            "name": "willdurand/expose-translation-bundle",
+            "version": "dev-master",
+            "target-dir": "Bazinga/ExposeTranslationBundle",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/willdurand/BazingaExposeTranslationBundle.git",
+                "reference": "a026f52db130f310d542154e9473105fa35c6e86"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/willdurand/BazingaExposeTranslationBundle/zipball/a026f52db130f310d542154e9473105fa35c6e86",
+                "reference": "a026f52db130f310d542154e9473105fa35c6e86",
+                "shasum": ""
+            },
+            "require": {
+                "symfony/console": "~2.0",
+                "symfony/finder": "~2.0",
+                "symfony/framework-bundle": "~2.0"
+            },
+            "require-dev": {
+                "symfony/browser-kit": "~2.0",
+                "symfony/yaml": "~2.0"
+            },
+            "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Bazinga\\ExposeTranslationBundle": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "William Durand",
+                    "email": "william.durand1@gmail.com",
+                    "homepage": "http://www.willdurand.fr"
+                }
+            ],
+            "description": "A pretty nice way to expose your translation messages to your JavaScript.",
+            "keywords": [
+                "javascript",
+                "translation"
+            ],
+            "time": "2013-12-12 15:04:38"
+        },
+        {
+            "name": "willdurand/jsonp-callback-validator",
+            "version": "v1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/willdurand/JsonpCallbackValidator.git",
+                "reference": "58c0a6c76718794856f7049cf066fdda4e984c49"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/willdurand/JsonpCallbackValidator/zipball/58c0a6c76718794856f7049cf066fdda4e984c49",
+                "reference": "58c0a6c76718794856f7049cf066fdda4e984c49",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~3.7"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "JsonpCallbackValidator": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "William DURAND",
+                    "email": "william.durand1@gmail.com",
+                    "homepage": "http://www.willdurand.fr"
+                }
+            ],
+            "description": "JSONP callback validator.",
+            "time": "2013-10-21 12:01:32"
+        },
+        {
             "name": "willdurand/negotiation",
             "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/willdurand/Negotiation.git",
-                "reference": "8fc2f8cbcd5bb076e46af7d90ed044ec66807856"
+                "reference": "1757fc48a77a85df6f7659a16b4522bf8da14e99"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/willdurand/Negotiation/zipball/8fc2f8cbcd5bb076e46af7d90ed044ec66807856",
-                "reference": "8fc2f8cbcd5bb076e46af7d90ed044ec66807856",
+                "url": "https://api.github.com/repos/willdurand/Negotiation/zipball/1757fc48a77a85df6f7659a16b4522bf8da14e99",
+                "reference": "1757fc48a77a85df6f7659a16b4522bf8da14e99",
                 "shasum": ""
             },
             "require": {
@@ -3277,7 +3561,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.0-dev"
+                    "dev-master": "1.2-dev"
                 }
             },
             "autoload": {
@@ -3305,7 +3589,7 @@
                 "header",
                 "negotiation"
             ],
-            "time": "2013-12-09 08:50:14"
+            "time": "2013-12-14 14:09:01"
         },
         {
             "name": "wisembly/elephant.io",
@@ -3536,12 +3820,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Behat/Mink.git",
-                "reference": "75aa32c75c72ebabc0d29c78374aae92f3f8d020"
+                "reference": "fa5a157f713d341f09f0e4e524233c58438efe6b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Behat/Mink/zipball/75aa32c75c72ebabc0d29c78374aae92f3f8d020",
-                "reference": "75aa32c75c72ebabc0d29c78374aae92f3f8d020",
+                "url": "https://api.github.com/repos/Behat/Mink/zipball/fa5a157f713d341f09f0e4e524233c58438efe6b",
+                "reference": "fa5a157f713d341f09f0e4e524233c58438efe6b",
                 "shasum": ""
             },
             "require": {
@@ -3583,7 +3867,7 @@
                 "testing",
                 "web"
             ],
-            "time": "2013-12-14 01:28:10"
+            "time": "2013-12-16 15:13:55"
         },
         {
             "name": "behat/mink-browserkit-driver",
@@ -3591,12 +3875,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Behat/MinkBrowserKitDriver.git",
-                "reference": "8fa555312d754e64bdb14c62e0e52d44c63e484b"
+                "reference": "bf5733377cab4ee8a2d4d71bb0565670317fb9a6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Behat/MinkBrowserKitDriver/zipball/8fa555312d754e64bdb14c62e0e52d44c63e484b",
-                "reference": "8fa555312d754e64bdb14c62e0e52d44c63e484b",
+                "url": "https://api.github.com/repos/Behat/MinkBrowserKitDriver/zipball/bf5733377cab4ee8a2d4d71bb0565670317fb9a6",
+                "reference": "bf5733377cab4ee8a2d4d71bb0565670317fb9a6",
                 "shasum": ""
             },
             "require": {
@@ -3638,7 +3922,7 @@
                 "browser",
                 "testing"
             ],
-            "time": "2013-12-07 19:30:08"
+            "time": "2013-12-16 14:28:42"
         },
         {
             "name": "behat/mink-extension",
@@ -3748,12 +4032,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Behat/MinkSelenium2Driver.git",
-                "reference": "ad193537d1efc78fb5c60580607eb4f2fc117872"
+                "reference": "713090e85efe57797b717acff2ec651ed54c8ed3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Behat/MinkSelenium2Driver/zipball/ad193537d1efc78fb5c60580607eb4f2fc117872",
-                "reference": "ad193537d1efc78fb5c60580607eb4f2fc117872",
+                "url": "https://api.github.com/repos/Behat/MinkSelenium2Driver/zipball/713090e85efe57797b717acff2ec651ed54c8ed3",
+                "reference": "713090e85efe57797b717acff2ec651ed54c8ed3",
                 "shasum": ""
             },
             "require": {
@@ -3798,7 +4082,7 @@
                 "testing",
                 "webdriver"
             ],
-            "time": "2013-12-13 18:10:21"
+            "time": "2013-12-16 14:30:23"
         },
         {
             "name": "behat/symfony2-extension",
@@ -4086,12 +4370,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/fzaninotto/Faker.git",
-                "reference": "ca91fd3cce983578a7acceb8dec7131c3ba63a67"
+                "reference": "9f4ad8979821b9d0052656dffaabea035eed6c86"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/fzaninotto/Faker/zipball/ca91fd3cce983578a7acceb8dec7131c3ba63a67",
-                "reference": "ca91fd3cce983578a7acceb8dec7131c3ba63a67",
+                "url": "https://api.github.com/repos/fzaninotto/Faker/zipball/9f4ad8979821b9d0052656dffaabea035eed6c86",
+                "reference": "9f4ad8979821b9d0052656dffaabea035eed6c86",
                 "shasum": ""
             },
             "require": {
@@ -4100,7 +4384,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.3.x-dev"
+                    "dev-master": "1.4.x-dev"
                 }
             },
             "autoload": {
@@ -4124,7 +4408,7 @@
                 "faker",
                 "fixtures"
             ],
-            "time": "2013-12-06 12:38:25"
+            "time": "2013-12-17 09:29:03"
         },
         {
             "name": "guzzle/common",
@@ -4436,6 +4720,7 @@
         "knplabs/knp-snappy-bundle": 20,
         "friendsofsymfony/rest-bundle": 20,
         "friendsofsymfony/user-bundle": 20,
+        "friendsofsymfony/jsrouting-bundle": 20,
         "jms/serializer-bundle": 20,
         "wisembly/elephant.io": 20,
         "ikimea/browser": 20,
@@ -4448,6 +4733,8 @@
         "fkr/cssurlrewrite-bundle": 20,
         "liip/imagine-bundle": 20,
         "mattzuba/php-trello": 20,
+        "nelmio/api-doc-bundle": 20,
+        "willdurand/expose-translation-bundle": 20,
         "behat/behat": 0,
         "behat/symfony2-extension": 20,
         "behat/mink-goutte-driver": 20,

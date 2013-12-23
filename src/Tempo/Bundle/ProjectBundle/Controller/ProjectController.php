@@ -31,7 +31,6 @@ use Tempo\Bundle\ProjectBundle\Event\ProjectEvent;
 class ProjectController extends Controller
 {
     /**
-     * @todo generate automatique Breadcrumb
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function dashboardAction()

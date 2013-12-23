@@ -9,6 +9,7 @@
         "modernizr": "latest",
         "tinycon": "latest",
         "backbone": "latest",
-        "underscore": "latest"
+        "underscore": "latest",
+        "marionette": "latest"
     }
 }

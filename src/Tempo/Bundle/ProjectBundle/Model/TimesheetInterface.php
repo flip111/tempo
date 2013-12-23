@@ -40,13 +40,6 @@ interface TimesheetInterface
     public function setCreated(\DateTime $datetime);
 
     /**
-     * Get date
-     *
-     * @return \DateTime
-     */
-    public function getDate();
-
-    /**
      * Set time
      *
      * @param \DateTime $time
@@ -71,7 +64,7 @@ interface TimesheetInterface
     /**
      * @param boolean $billable
      */
-    public function setBillable($facturable);
+    public function setBillable($billable);
 
     /**
      * @return boolean
@@ -86,12 +79,12 @@ interface TimesheetInterface
     /**
      * @param integer $user
      */
-    public function setUser($user);
+    public function setMembre($user);
 
     /**
      * @return integer
      */
-    public function getUser();
+    public function getMembre();
 
     /**
      * @param ProjectInterface $project

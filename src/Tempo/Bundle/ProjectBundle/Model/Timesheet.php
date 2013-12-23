@@ -10,7 +10,6 @@
 */
 
 namespace Tempo\Bundle\ProjectBundle\Model;
-use \Tempo\Bundle\ProjectBundle\Model\ProjectInterface;
 
 /**
  * @author Mbechezi Mlanawo <mlanawo.mbechezi@ikimea.com>
@@ -122,24 +121,6 @@ abstract class Timesheet implements TimesheetInterface
     }
 
     /**
-     * Set date
-     *
-     * @param \DateTime $created
-     */
-    public function setDate(\DateTime $created)
-    {
-        $this->created = $created;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getDate()
-    {
-        return $this->created;
-    }
-
-    /**
      * {@inheritdoc}
      */
     public function setDescription($description)
@@ -195,9 +176,9 @@ abstract class Timesheet implements TimesheetInterface
      *
      * @param integer $user
      */
-    public function setUser($user)
+    public function setMembre($user)
     {
-        $this->user = $user;
+        $this->membre = $user;
     }
 
     /**
@@ -205,9 +186,8 @@ abstract class Timesheet implements TimesheetInterface
      *
      * @return integer
      */
-    public function getUser()
+    public function getMembre()
     {
         return $this->user;
     }
-
 }

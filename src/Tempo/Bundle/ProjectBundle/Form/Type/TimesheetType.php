@@ -14,7 +14,8 @@ namespace Tempo\Bundle\ProjectBundle\Form\Type;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
-use Symfony\Component\OptionsResolver\Options;
+use Symfony\Component\Form\FormEvent;
+use Symfony\Component\Form\FormEvents;
 
 class TimesheetType extends AbstractType
 {
@@ -25,6 +26,8 @@ class TimesheetType extends AbstractType
     {
         $builder
             ->add('time')
+            ->add('period', 'date', array('widget' => 'single_text'))
+            ->add('project', null, array( 'mapped' => false) )
             ->add('description')
         ;
     }
@@ -35,7 +38,8 @@ class TimesheetType extends AbstractType
     {
         $resolver->setDefaults(array(
             'data_class' => 'Tempo\Bundle\ProjectBundle\Entity\Timesheet',
-         ));
+            'csrf_protection' => false,
+        ));
     }
 
     /**
@@ -43,6 +47,6 @@ class TimesheetType extends AbstractType
      */
     public function getName()
     {
-        return 'timesheet';
+        return '';
     }
 }

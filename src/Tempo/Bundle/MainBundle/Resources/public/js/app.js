@@ -9,6 +9,13 @@
 
 'use strict';
 
+
+var container = new Pimple();
+container.set('router', function (c) {
+    return new RouterManager();
+});
+
+
 var Tempo = Tempo || {
     'settings': {},
     'notification' : {},
@@ -120,6 +127,8 @@ Tempo.baseObject = {
 $(function() {
     Tempo.run =  function() {
         Tempo.log('Starting application', 'INFO');
+        container.get('router');
+
         Backbone.history.start({pushState: true});
 
     };
@@ -191,7 +200,8 @@ $(function() {
             el:undefined,
             $el:undefined,
             currentRoute:undefined,
-            currentView:undefined,            navigate:function (fragment, options) {
+            currentView:undefined,
+            navigate:function (fragment, options) {
                 this.currentRoute = fragment;
                 return Backbone.Router.prototype.navigate.call(this, fragment, options);
             },

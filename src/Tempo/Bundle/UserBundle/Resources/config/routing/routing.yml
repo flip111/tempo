@@ -1,7 +1,9 @@
 user_autocomplete:
-    pattern:  /user/autocomplete/{username}
-    requirements: { _format: json }
-    defaults: { _controller: TempoUserBundle:Api:autocomplete, username: all }
+    type:         rest
+    defaults:
+      version:  latest
+    prefix:       api/{version}/
+    resource: Tempo\Bundle\UserBundle\Controller\Api\Rest\UserController
 
 user_list:
     pattern:  /user/list
