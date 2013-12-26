@@ -46,7 +46,7 @@ class ProjectRepository extends EntityRepository
      * @param $weekend
      * @return array
      */
-    public function findAllTimeSheet($user, $weekbegin, $weekend)
+    public function findTimeEntry($user, $weekbegin, $weekend)
     {
         $query = $this->createQueryBuilder('p');
         $query->leftJoin('p.team', 'pu');
@@ -58,7 +58,6 @@ class ProjectRepository extends EntityRepository
         $query->setParameter('end', $weekend);
         $query->setParameter('user', $user);
 
-
         /*
             SELECT p.id, p.name, p.slug, t.id, t.time, t.billable, t.created, t.description FROM project p
             LEFT JOIN project_user pu ON pu.project_id = p.id
@@ -68,9 +67,6 @@ class ProjectRepository extends EntityRepository
         return $query->getQuery()->getResult();
     }
 
-    /**
-     *
-     */
     public function resort()
     {
         foreach ($this->findAllOrderByPriority() as $priority => $project) {

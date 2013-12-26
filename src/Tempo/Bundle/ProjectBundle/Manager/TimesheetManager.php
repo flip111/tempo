@@ -13,7 +13,6 @@ namespace Tempo\Bundle\ProjectBundle\Manager;
 
 use Tempo\Bundle\CoreBundle\Manager\BaseManager;
 use Tempo\Bundle\MainBundle\Entity\Timesheet;
-use \DateTime;
 
 /**
  * @author Mbechezi Mlanawo <mlanawo.mbechezi@ikimea.com>
@@ -29,9 +28,8 @@ class TimesheetManager extends BaseManager
      * @param  null  $weekend
      * @return array
      */
-     public function getAllCra($curentWeek, $weekLang, $userId)
+     public function getTimeForPeriod($curentWeek, $weekLang, $userId)
      {
-
         $data = array(
             'date' => array(),
             'week' => array(),
@@ -51,10 +49,9 @@ class TimesheetManager extends BaseManager
            $data['week'][$key] = $week . ' ' . $data['date'][$key]->format('d');
         }
 
-
         $projectsList = $this->em->getRepository('TempoProjectBundle:Project')->findAllByUser($userId);
-        $projectsTracList = $this->em->getRepository('TempoProjectBundle:Project')->findAllTimeSheet(
-            $userId, $curentWeek->getBegin(), $curentWeek->getEnd()
+        $projectsTracList = $this->em->getRepository('TempoProjectBundle:Project')->findTimeEntry(
+            $userId, $curentWeek->getBegin()->format('Y-m-j'), $curentWeek->getEnd()->format('Y-m-j')
         );
 
         foreach($projectsList as $project) {
@@ -66,10 +63,10 @@ class TimesheetManager extends BaseManager
             $data['projects'][$projectName]['cras'][] = array();
         }
 
-
-         foreach ($projectsTracList as $project) {
+        foreach ($projectsTracList as $project) {
 
             $projectName = $project->getName();
+
 
             foreach ($project->getTimesheets() as $timesheet) {
 
@@ -92,7 +89,7 @@ class TimesheetManager extends BaseManager
             }
 
              unset($data['projects'][$projectName]['cras'][0]);     // @TODO fix bug indexe 0
-         }
+        }
 
         return $data;
     }

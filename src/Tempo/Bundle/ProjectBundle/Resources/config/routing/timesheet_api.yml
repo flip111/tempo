@@ -1,0 +1,3 @@
+timesheet_api_periods:
+    type:     rest
+    resource: Tempo\Bundle\ProjectBundle\Controller\Api\Rest\TimesheetController
