@@ -79,12 +79,12 @@ interface TimesheetInterface
     /**
      * @param integer $user
      */
-    public function setMembre($user);
+    public function setUser($user);
 
     /**
      * @return integer
      */
-    public function getMembre();
+    public function getUser();
 
     /**
      * @param ProjectInterface $project

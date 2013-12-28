@@ -6,7 +6,7 @@
                   http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
 
 
-    <entity name="Tempo\Bundle\ProjectBundle\Entity\Timesheet" repository-class="Tempo\Bundle\ProjectBundle\Repository\TimesheetRepository" table="timesheet">
+    <entity name="Tempo\Bundle\ProjectBundle\Entity\Timesheet" repository-class="Tempo\Bundle\ProjectBundle\Repository\TimesheetRepository" table="tempo_timesheet">
 
         <id name="id" type="integer" column="id">
             <generator strategy="AUTO" />
@@ -27,7 +27,7 @@
         </lifecycle-callbacks>
 
         <many-to-one field="project" inversed-by="timesheets" target-entity="Project" />
-        <many-to-one field="membre" target-entity="Tempo\Bundle\UserBundle\Entity\User" />
+        <many-to-one field="user" target-entity="Tempo\Bundle\UserBundle\Entity\User" />
 
     </entity>
 

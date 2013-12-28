@@ -28,7 +28,7 @@ abstract class Timesheet implements TimesheetInterface
     /**
      * @var integer
      */
-    protected $membre;
+    protected $user;
 
     /**
      * @var \DateTime
@@ -176,9 +176,9 @@ abstract class Timesheet implements TimesheetInterface
      *
      * @param integer $user
      */
-    public function setMembre($user)
+    public function setUser($user)
     {
-        $this->membre = $user;
+        $this->user = $user;
     }
 
     /**
@@ -186,7 +186,7 @@ abstract class Timesheet implements TimesheetInterface
      *
      * @return integer
      */
-    public function getMembre()
+    public function getUser()
     {
         return $this->user;
     }

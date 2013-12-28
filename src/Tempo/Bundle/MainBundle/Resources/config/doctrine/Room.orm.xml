@@ -6,7 +6,7 @@
                   http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
 
 
-    <entity name="Tempo\Bundle\MainBundle\Entity\Room" repository-class="Tempo\Bundle\MainBundle\Repository\RoomRepository" table="room">
+    <entity name="Tempo\Bundle\MainBundle\Entity\Room" repository-class="Tempo\Bundle\MainBundle\Repository\RoomRepository" table="tempo_room">
 
         <id name="id" type="integer" column="id">
             <generator strategy="AUTO" />
@@ -20,8 +20,21 @@
             </cascade>
         </one-to-many>
 
-        <many-to-many field="team" inversed-by="users" target-entity="Tempo\Bundle\UserBundle\Entity\User" />
-        <many-to-one field="project"  target-entity="Tempo\Bundle\ProjectBundle\Entity\Project" nullable="true" />
+        <many-to-many field="team" inversed-by="users" target-entity="Tempo\Bundle\UserBundle\Entity\User">
+            <join-table name="tempo_room_user">
+                <join-columns>
+                    <join-column name="room_id" referenced-column-name="id" on-delete="CASCADE"/>
+                </join-columns>
+                <inverse-join-columns>
+                    <join-column name="user_id" referenced-column-name="id" on-delete="CASCADE"/>
+                </inverse-join-columns>
+            </join-table>
+            <cascade>
+                <cascade-all />
+            </cascade>
+        </many-to-many>
+
+        <many-to-one field="project" target-entity="Tempo\Bundle\ProjectBundle\Entity\Project" nullable="true" />
 
     </entity>
 

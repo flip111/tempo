@@ -6,7 +6,7 @@
                   http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
 
 
-    <entity name="Tempo\Bundle\ActivityBundle\Entity\ActivityProvider" repository-class="Tempo\Bundle\ActivityBundle\Repository\ActivityProviderRepository" table="activity_provider">
+    <entity name="Tempo\Bundle\ActivityBundle\Entity\ActivityProvider" repository-class="Tempo\Bundle\ActivityBundle\Repository\ActivityProviderRepository" table="tempo_activity_provider">
 
         <id name="id" type="integer" column="id">
             <generator strategy="AUTO" />

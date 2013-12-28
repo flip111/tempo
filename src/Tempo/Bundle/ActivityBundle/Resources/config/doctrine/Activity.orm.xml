@@ -5,7 +5,7 @@
                   xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
                   http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
 
-<entity name="Tempo\Bundle\ActivityBundle\Entity\Activity" repository-class="Tempo\Bundle\ActivityBundle\Repository\ActivityRepository" table="activity">
+<entity name="Tempo\Bundle\ActivityBundle\Entity\Activity" repository-class="Tempo\Bundle\ActivityBundle\Repository\ActivityRepository" table="tempo_activity">
 
         <id name="id" type="integer" column="id">
             <generator strategy="AUTO" />

@@ -38,14 +38,14 @@ class LoadTimesheetData extends AbstractFixture implements OrderedFixtureInterfa
             $cra = new Timesheet();
             $cra->setProject($this->getReference('project'.$i));
             $cra->setUser($this->getReference($userList[array_rand($userList, 1)]));
-            $cra->setBillable(true);
+            $cra->setBillable($i%2);
             $nbr = str_shuffle('12345678');
 
             $cra->setTime($nbr[0]);
 
             $date = date('Y') .'-' . date('m'). '-' . $dateList[array_rand($dateList, 1)];
 
-            $cra->setDate(new DateTime($date));
+            $cra->setCreated(new DateTime());
             $cra->setPeriod(new DateTime($date));
 
             $cra->setDescription('Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression.');

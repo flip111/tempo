@@ -6,7 +6,7 @@
                   http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
 
 
-    <entity name="Tempo\Bundle\MainBundle\Entity\ChatMessage" table="chat_message">
+    <entity name="Tempo\Bundle\MainBundle\Entity\ChatMessage" table="tempo_chat_message">
 
         <id name="id" type="integer" column="id">
             <generator strategy="AUTO" />

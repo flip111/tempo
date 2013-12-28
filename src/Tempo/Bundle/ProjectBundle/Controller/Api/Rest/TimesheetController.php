@@ -38,7 +38,7 @@ class TimesheetController extends FOSRestController
 
         $period = new Timesheet();
         $period->setProject($project);
-        $period->setMembre($this->getUser());
+        $period->setUser($this->getUser());
 
         $form = $this->createForm(new TimesheetType(), $period);
         $form->submit($request);
