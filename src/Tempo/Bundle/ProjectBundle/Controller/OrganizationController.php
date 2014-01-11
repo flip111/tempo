@@ -56,7 +56,7 @@ class OrganizationController extends Controller
             'organization' => $organization,
             'counter' => $counter,
             'projects' => $organization->getProjects(),
-            'teamForm' => $teamForm,
+            'teamForm' => $teamForm->createView(),
             'csrfToken' => $csrfToken
         ));
     }
