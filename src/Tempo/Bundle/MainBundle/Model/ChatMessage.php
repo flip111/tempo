@@ -11,13 +11,12 @@
 
 namespace Tempo\Bundle\MainBundle\Model;
 
-class ChatMessage
+abstract class ChatMessage
 {
     /**
      * @var integer
      */
     protected $id;
-
 
     /**
      * @var collection
@@ -40,9 +39,7 @@ class ChatMessage
     protected $created;
 
     /**
-     * Get id
-     *
-     * @return id $id
+     * {@inheritdoc}
      */
     public function getId()
     {
@@ -50,21 +47,17 @@ class ChatMessage
     }
 
     /**
-     * Set content
-     *
-     * @param string $content
-     * @return ChatMessage
+     * {@inheritdoc}
      */
     public function setContent($content)
     {
         $this->content = $content;
+
         return $this;
     }
 
     /**
-     * Get content
-     *
-     * @return string $content
+     * {@inheritdoc}
      */
     public function getContent()
     {
@@ -72,21 +65,17 @@ class ChatMessage
     }
 
     /**
-     * Set user
-     *
-     * @param string $user
-     * @return ChatMessage
+     * {@inheritdoc}
      */
     public function setUser($user)
     {
         $this->user = $user;
+
         return $this;
     }
 
     /**
-     * Get user
-     *
-     * @return string $user
+     * {@inheritdoc}
      */
     public function getUser()
     {
@@ -94,21 +83,17 @@ class ChatMessage
     }
 
     /**
-     * Set datetime
-     *
-     * @param DateTime $datetime
-     * @return ChatMessage
+     * {@inheritdoc}
      */
     public function setCreated(\DateTime $datetime)
     {
         $this->created = $datetime;
+
         return $this;
     }
 
     /**
-     * Get datetime
-     *
-     * @return date $datetime
+     * {@inheritdoc}
      */
     public function getCreated()
     {
@@ -116,7 +101,7 @@ class ChatMessage
     }
 
     /**
-     * @param $room
+     * {@inheritdoc}
      */
     public function setRoom($room)
     {
@@ -124,13 +109,16 @@ class ChatMessage
     }
 
     /**
-     * @return $room
+     * {@inheritdoc}
      */
     public function getRoom()
     {
         return $this->room;
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function __toString()
     {
         return (string) $this->content;

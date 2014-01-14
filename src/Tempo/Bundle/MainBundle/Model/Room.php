@@ -11,7 +11,6 @@
 
 namespace Tempo\Bundle\MainBundle\Model;
 
-
 use Doctrine\Common\Collections\ArrayCollection;
 
 abstract class Room
@@ -44,25 +43,32 @@ abstract class Room
         $this->team = new ArrayCollection();
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function getId()
     {
         return $this->id;
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function getName()
     {
         return $this->name;
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function setName($name)
     {
        $this->name = $name;
     }
 
     /**
-     * Add chatMessage
-     *
-     * @param ChatMessage $chatMessage
+     * {@inheritdoc}
      */
     public function addChatMessage(ChatMessage $chatMessage)
     {
@@ -70,9 +76,7 @@ abstract class Room
     }
 
     /**
-     * Get chatMessages
-     *
-     * @return ArrayCollection $chatMessages
+     * {@inheritdoc}
      */
     public function getChatMessages()
     {
@@ -80,10 +84,7 @@ abstract class Room
     }
 
     /**
-     * Get a specfic chat message
-     *
-     * @param integer $id
-     * @return ChatMessage
+     * {@inheritdoc}
      */
     public function getChatMessage($id)
     {
@@ -93,11 +94,12 @@ abstract class Room
                 return $message;
             }
         }
+
         return null;
     }
 
     /**
-     * @param mixed $project
+     * {@inheritdoc}
      */
     public function setProject($project)
     {
@@ -105,7 +107,7 @@ abstract class Room
     }
 
     /**
-     * @return mixed
+     * {@inheritdoc}
      */
     public function getProject()
     {
