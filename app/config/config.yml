@@ -1,7 +1,6 @@
 imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
-    - { resource: fos_user.yml }
     - { resource: imagine.yml }
 
 framework:
@@ -48,6 +47,13 @@ swiftmailer:
     password:  %mailer_password%
 
 
+sylius_settings:
+    driver: doctrine/orm
+
+liip_doctrine_cache:
+    namespaces:
+        sylius_settings:
+            type: file_system
 
 stof_doctrine_extensions:
     default_locale: %locale%
@@ -59,6 +65,7 @@ stof_doctrine_extensions:
           timestampable: true
           translatable: false
           tree: false
+
 sensio_framework_extra:
     view:
         annotations: false
@@ -80,6 +87,15 @@ fos_rest:
 
 knp_time: ~  # Enable the helper for use in templates
 
+
+fos_user:
+    db_driver: orm
+    use_listener: false
+    firewall_name: main
+    user_class: Tempo\Bundle\UserBundle\Entity\User
+    group:
+        group_class: Tempo\Bundle\UserBundle\Entity\Group
+
 ivory_ck_editor:
   configs:
     default:
@@ -90,10 +106,6 @@ ivory_ck_editor:
         - ['NumberedList','BulletedList']
         - ['-','Link','Unlink','Anchor','-','Table']
         - ['Maximize','Source']
-
-sonata_seo:
-  page:
-    title:    Project Management Software
 
 tempo_project:
   week:

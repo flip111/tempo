@@ -23,19 +23,22 @@ class AppKernel extends Kernel
             new FOS\UserBundle\FOSUserBundle(),
             new FOS\RestBundle\FOSRestBundle(),
             new FOS\JsRoutingBundle\FOSJsRoutingBundle(),
+            new Sylius\Bundle\ResourceBundle\SyliusResourceBundle(),
+            new Sylius\Bundle\SettingsBundle\SyliusSettingsBundle(),
             new Knp\Bundle\SnappyBundle\KnpSnappyBundle(),
             new Knp\Bundle\MenuBundle\KnpMenuBundle(),
             new Knp\Bundle\TimeBundle\KnpTimeBundle(),
 
             new Ivory\CKEditorBundle\IvoryCKEditorBundle(),
-            new Sonata\SeoBundle\SonataSeoBundle(),
             new Fkr\CssURLRewriteBundle\FkrCssURLRewriteBundle(),
+            new Liip\DoctrineCacheBundle\LiipDoctrineCacheBundle(),
             new Liip\ImagineBundle\LiipImagineBundle(),
             new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
-            new JMS\SerializerBundle\JMSSerializerBundle(),
+            new JMS\SerializerBundle\JMSSerializerBundle($this),
             new Problematic\AclManagerBundle\ProblematicAclManagerBundle(),
             new Bazinga\ExposeTranslationBundle\BazingaExposeTranslationBundle(),
 
+            new WhiteOctober\PagerfantaBundle\WhiteOctoberPagerfantaBundle(),
             new Mopa\Bundle\BootstrapBundle\MopaBootstrapBundle(),
 
             //Tempo
