@@ -30,7 +30,7 @@ $ php app/console doctrine:schema:create
 $ php app/console doctrine:fixtures:load
 
 # Instant messaging
-$ node server.js
+$ node bin/server.js
 
 
 ```
