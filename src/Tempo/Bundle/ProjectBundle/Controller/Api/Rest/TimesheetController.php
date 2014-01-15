@@ -17,7 +17,6 @@ use Nelmio\ApiDocBundle\Annotation\ApiDoc;
 use FOS\RestBundle\Controller\FOSRestController;
 use FOS\RestBundle\View\View;
 
-use Symfony\Component\Validator\Constraints\DateTime;
 use Tempo\Bundle\ProjectBundle\Entity\Project;
 use Tempo\Bundle\ProjectBundle\Entity\Timesheet;
 use Tempo\Bundle\ProjectBundle\Form\Type\TimesheetType;
