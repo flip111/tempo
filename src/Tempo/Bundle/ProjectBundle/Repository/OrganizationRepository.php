@@ -47,7 +47,7 @@ class OrganizationRepository extends EntityRepository
     {
         $stmt = $this->getEntityManager()
         ->getConnection()
-        ->prepare('SELECT (SELECT COUNT(p1.id) FROM project p1 WHERE p1.organization_id = :organization AND is_active = 1) as prj_close, (SELECT COUNT(id) FROM project p2 WHERE p2.organization_id = :organization AND is_active = 0) as prj_open');
+        ->prepare('SELECT (SELECT COUNT(p1.id) FROM tempo_project p1 WHERE p1.organization_id = :organization AND is_active = 1) as prj_close, (SELECT COUNT(id) FROM tempo_project p2 WHERE p2.organization_id = :organization AND is_active = 0) as prj_open');
         $stmt->bindParam('organization', $id, \PDO::PARAM_INT);
         $stmt->execute();
         $counter =  $stmt->fetchAll(\PDO::FETCH_ASSOC);
