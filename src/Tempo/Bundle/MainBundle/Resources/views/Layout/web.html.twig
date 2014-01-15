@@ -17,11 +17,10 @@
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"  />
-    {{ sonata_seo_title() }}
     <link rel="shortcut icon" href="{{ asset('favicon.ico') }}"  />
 </head>
 
-<body class="no-js {{get_browser()}} {% block bodyClass %}{% endblock %}">
+<body class="no-js {{ get_browser() }} {% block bodyClass %}{% endblock %}">
     <!--[if IE 6]>
     <div class="ie6-bar">Vous utilisez Internet Explorer 6 ou une version inférieure. Le support
         de cette version d'Internet Explorer ne sera pas implémenté.
@@ -33,7 +32,7 @@
         <header id="header">
 
             <div id="logo">
-                <a href="/"> Tempo </a>
+                <a href="/"> {{ sylius_settings_get('general.name')  }} </a>
             </div>
             <div id="search">
                 <form method="get" action="/search/index/">
@@ -71,7 +70,7 @@
         <div id="content">
             <div class="row">
                 {% block body %}
-                <div id="child-content" class="col-md-{% if sidebar is defined %}8{% else %}10{% endif %}">
+                <div id="child-content" class="col-md-{{ sidebar is defined ? '8' : '12' }}">
                     {% block breadcrumb %}
                         {{ knp_menu_render('breadcrumb') }}
                     {% endblock breadcrumb %}
@@ -125,6 +124,7 @@
             'vendor/moment/moment.js'
             'vendor/modernizr/modernizr.js'
             'vendor/underscore/underscore.js'
+            'http://www.myersdaily.org/joseph/javascript/md5.js'
             'vendor/backbone/backbone.js'
             'vendor/marionette/lib/backbone.marionette.min.js'
             'bundles/tempomain/js/pimple.js'

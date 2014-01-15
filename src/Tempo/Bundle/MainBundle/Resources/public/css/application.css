@@ -5,8 +5,7 @@
 *
 * For the full copyright and license information, please view the LICENSE
 * file that was distributed with this source code.
-
-* Document   : application.css
+*
 */
 body {
     color: #333333;
@@ -45,7 +44,6 @@ body {
 }
 
 #header #logo {
-    padding-bottom: 25px;
     padding-left: 10px;
     padding-top: 10px;
     text-shadow: 0 1px 0 rgba(0, 0, 0, 0.8);
@@ -95,7 +93,6 @@ body {
     width: 16px;
     float: right;
     padding-top: 10px;
-
 }
 
 #header #search form label {
@@ -259,6 +256,10 @@ body {
 }
 #content{
     margin-top: 10px;
+}
+#content .row {
+    padding-right: 15px;
+    padding-left: 15px;
 }
 
 #child-content {

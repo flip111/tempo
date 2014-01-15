@@ -1,11 +1,18 @@
-settings:
-    pattern: /settings
-    defaults: { _controller: TempoMainBundle:Default:settings }
-
 help:
     pattern: /help
-    defaults: { _controller: TempoMainBundle:Default:help }
+    defaults: { _controller: TempoMainBundle:Frontend\Default:help }
+
+backend:
+    pattern: /admin
+    defaults: { _controller: TempoMainBundle:Backend\Dashboard:main }
 
 main_chat:
   type: rest
   resource: "@TempoMainBundle/Resources/config/routing/chat.yml"
+
+
+#Backend
+
+tempo_setting_backend:
+    resource: "@TempoMainBundle/Resources/config/routing/backend/settings.yml"
+    prefix: /admin/settings
