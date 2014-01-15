@@ -2,6 +2,14 @@ _project:
   resource: "@TempoProjectBundle/Resources/config/routing/project.yml"
   prefix:   /project
 
+_project_settings:
+    pattern: /
+    methods: [GET]
+    defaults:
+        _controller: sylius.controller.settings:updateAction
+        namespace: general
+        template: TempoMainBundle:Backend/Settings:general.html.twig
+
 _organization:
   resource: "@TempoProjectBundle/Resources/config/routing/organization.yml"
   prefix:   /organization

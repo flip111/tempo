@@ -11,7 +11,7 @@
 
 
 
-namespace Tempo\Bundle\MainBundle\Controller;
+namespace Tempo\Bundle\MainBundle\Controller\Frontend;
 
 use FOS\RestBundle\Controller\FOSRestController;
 

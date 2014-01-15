@@ -1,8 +1,8 @@
 chatRoom_rooms:
     type:     rest
-    resource: Tempo\Bundle\MainBundle\Controller\RoomController
+    resource: Tempo\Bundle\MainBundle\Controller\Frontend\RoomController
 
 chatRoom_messages:
     type:     rest
     parent: chatRoom_rooms
-    resource: Tempo\Bundle\MainBundle\Controller\MessagesController
+    resource: Tempo\Bundle\MainBundle\Controller\Frontend\MessagesController

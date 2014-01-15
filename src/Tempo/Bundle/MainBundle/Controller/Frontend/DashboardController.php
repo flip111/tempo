@@ -9,9 +9,7 @@
 * file that was distributed with this source code.
 */
 
-
-
-namespace Tempo\Bundle\MainBundle\Controller;
+namespace Tempo\Bundle\MainBundle\Controller\Frontend;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -19,13 +17,12 @@ use Tempo\Bundle\MainBundle\Entity\Settings;
 use Tempo\Bundle\MainBundle\Form\SettingsType;
 use Tempo\Bundle\MainBundle\Form\Type\ChatMessageType;
 
-
-class DefaultController extends Controller
+class DashboardController extends Controller
 {
     /**
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function indexAction(Request $request)
+    public function mainAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
 
@@ -44,34 +41,5 @@ class DefaultController extends Controller
             ),
             'project' => $currentRoom->getProject(),
         ));
-    }
-
-    /**
-     * @return \Symfony\Component\HttpFoundation\Response
-     */
-    public function settingsAction()
-    {
-
-        //get all options
-        $options = $this->get('Tempo_main.settings_manager')->loadOptions();
-
-        $settings = new Settings();
-        $form = $this->createForm(new SettingsType(), $settings,
-            array('options' => $options)
-        );
-
-        return $this->render('TempoMainBundle:Default:settings.html.twig',
-            array(
-                'form' => $form->createView(),
-            )
-        );
-    }
-
-    /**
-     * @return \Symfony\Component\HttpFoundation\Response
-     */
-    public function helpAction()
-    {
-         return $this->render('TempoMainBundle:Default:help.html.twig');
     }
 }

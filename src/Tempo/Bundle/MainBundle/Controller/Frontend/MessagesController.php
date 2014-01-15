@@ -9,7 +9,7 @@
 * file that was distributed with this source code.
 */
 
-namespace Tempo\Bundle\MainBundle\Controller;
+namespace Tempo\Bundle\MainBundle\Controller\Frontend;
 
 use FOS\RestBundle\Controller\FOSRestController;
 use Tempo\Bundle\MainBundle\Entity\ChatMessage;
