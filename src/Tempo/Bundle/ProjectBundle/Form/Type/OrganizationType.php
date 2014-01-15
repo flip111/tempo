@@ -42,7 +42,8 @@ class OrganizationType extends AbstractType
         $resolver->setDefaults(array(
             'data_class'      => 'Tempo\Bundle\ProjectBundle\Entity\Organization',
             'csrf_protection' => false,
-            'is_new' => false
+            'is_new' => false,
+            'translation_domain' => 'TempoProject'
         ));
     }
 

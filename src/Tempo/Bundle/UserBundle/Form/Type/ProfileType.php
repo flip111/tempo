@@ -13,8 +13,8 @@
 namespace Tempo\Bundle\UserBundle\Form\Type;
 
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\Form\FormViewInterface;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 class ProfileType extends AbstractType
 {
@@ -29,6 +29,15 @@ class ProfileType extends AbstractType
             ->add('phone')
             ->add('phoneMobile')
         ;
+    }
+
+    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    {
+        $resolver
+            ->setDefaults(array(
+                    'translation_domain' => 'TempoUser'
+                )
+            );
     }
 
     public function getName()

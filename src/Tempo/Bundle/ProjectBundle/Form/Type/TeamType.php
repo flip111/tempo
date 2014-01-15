@@ -24,7 +24,7 @@ class TeamType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('username', 'autocomplete', array(
-            'behavior' => array('name' => 'team_username', 'callback' => 'user_autocomplete' )
+            'behavior' => array('name' => 'team_username', 'callback' => 'user_api_autocomplete' )
         ));
     }
 
@@ -34,7 +34,7 @@ class TeamType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-
+            'translation_domain' => 'TempoProject'
         ));
     }
 
