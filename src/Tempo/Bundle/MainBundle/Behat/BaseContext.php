@@ -124,4 +124,41 @@ abstract class BaseContext extends MinkContext implements KernelAwareInterface
         return str_replace('"', '""', $argument);
     }
 
+    /**
+     * Wait
+     *
+     * @param integer $time
+     * @param string  $condition
+     *
+     * @throws BehaviorException If timeout is reached
+     */
+    public function wait($time = 10000, $condition = null)
+    {
+        if (!$this->getSession()->getDriver() instanceof Selenium2Driver) {
+            return;
+        }
+
+        $start = microtime(true);
+        $end = $start + $time / 1000.0;
+
+        $condition = $condition !== null ? $condition : <<<JS
+        document.readyState == 'complete'                  // Page is ready
+            && typeof $ != 'undefined'                     // jQuery is loaded
+            && !$.active                                   // No ajax request is active
+            && $('#page').css('display') == 'block'        // Page is displayed (no progress bar)
+            && $('.loading-mask').css('display') == 'none' // Page is not loading (no black mask loading page)
+            && $('.jstree-loading').length == 0;           // Jstree has finished loading
+JS;
+
+        // Make sure the AJAX calls are fired up before checking the condition
+        $this->getSession()->wait(100, false);
+
+        $this->getSession()->wait($time, $condition);
+
+        // Check if we reached the timeout unless the condition is false to explicitly wait the specified time
+        if ($condition !== false && microtime(true) > $end) {
+            throw new BehaviorException(sprintf('Timeout of %d reached when checking on %s', $time, $condition));
+        }
+    }
+
 }
