@@ -6,9 +6,17 @@
         <parameter key="tempo_user.menu_builder.class">Tempo\Bundle\UserBundle\Menu\Tabs</parameter>
         <parameter key="tempo_user.profile.form.type.avatar.class">Tempo\Bundle\UserBundle\Form\Type\AvatarType</parameter>
         <parameter key="tempo_user.profile.form.handler.avatar.class">Tempo\Bundle\UserBundle\Form\Handler\AvatarHandler</parameter>
+        <parameter key="tempo_user.oauth.user_provider.class">Tempo\Bundle\UserBundle\OAuth\UserProvider</parameter>
     </parameters>
 
     <services>
+
+        <service id="tempo_user.oauth.user_provider" class="%tempo_user.oauth.user_provider.class%">
+            <argument type="service" id="fos_user.user_manager" />
+            <argument type="collection">
+            <argument key="google">googleId</argument>
+            </argument>
+        </service>
         <service id="tempo_user.profil.menu_builder" class="%tempo_user.menu_builder.class%">
             <argument type="service" id="knp_menu.factory"/>
             <argument type="service" id="translator"/>

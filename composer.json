@@ -37,6 +37,7 @@
         "friendsofsymfony/rest-bundle": "dev-master",
         "friendsofsymfony/user-bundle": "dev-master",
         "friendsofsymfony/jsrouting-bundle": "1.5.*@dev",
+        "hwi/oauth-bundle": "0.3.*@dev",
         "jms/serializer-bundle": "0.12.*@dev",
         "sylius/resource-bundle": "1.0.*@dev",
         "wisembly/elephant.io": "dev-master",

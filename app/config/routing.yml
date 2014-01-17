@@ -20,6 +20,16 @@ homepage:
 
 _tempo_users:
     resource: "@TempoUserBundle/Resources/config/routing/routing.yml"
+hwi_oauth_security:
+     resource: "@HWIOAuthBundle/Resources/config/routing/login.xml"
+     prefix: /connect
+
+hwi_oauth_redirect:
+  resource: "@HWIOAuthBundle/Resources/config/routing/redirect.xml"
+  prefix: /login
+
+google_login:
+  pattern: /login/check-google
 
 _tempo_main:
     resource: "@TempoMainBundle/Resources/config/routing.yml"

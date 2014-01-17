@@ -180,6 +180,7 @@ table.table-striped tbody .actions .edit {
     color: #000;
     font-size: 4em;
     margin-top: 0px;
+    margin-bottom: 40px;
     padding-left: 40px;
     padding-right: 40px;
     text-shadow: 0 0 1px rgba(0, 0, 0, 0.01);
@@ -195,7 +196,7 @@ table.table-striped tbody .actions .edit {
     margin-bottom: 0px;
     width: 45%;
     float: left;
-    margin-left: 45px;
+    margin-left: 26px;
 }
 #user.login #contenair .widget.send {
     margin-right: 45px;
@@ -208,12 +209,17 @@ table.table-striped tbody .actions .edit {
 #user.login #contenair .widget.reset {
     clear: both;
 }
+#user.login #contenair .widget.pp {
+    margin-left: 25px;
+}
+
 
 #user.login #contenair label {
     margin-bottom: 8px;
     color: #888;
     display: block;
     font-size: 12px;
+    font-weight: normal;
 }
 
 #user.login #contenair label#remember_me {
@@ -226,7 +232,7 @@ table.table-striped tbody .actions .edit {
     margin: 0;
     padding: 3px;
     width: 440px;
-    height: 25px;
+    height:35px;
     background-color: #FAFAFA;
     border: 1px solid #EEE;
 
@@ -249,11 +255,18 @@ table.table-striped tbody .actions .edit {
     text-decoration: none;
 }
 
+#user #providers {
+    width: 45%;
+    padding: 0px;
+    margin: 0px;
+}
 #user #powered {
+    width: 45%;
     float: right;
     margin: 0px;
     padding: 0px;
     color: #CCC;
+    text-align: right;
 }
 
 #user #powered a {

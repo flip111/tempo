@@ -13,3 +13,6 @@ parameters:
 
   locale:            en
   secret:            cb8f190153190ebe8598ac49e86ebf37
+
+  oauth.google.clientid:     <google_client_id>
+  oauth.google.clientsecret: <google_client_secret>

@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "535f8367159ca56a2dfe49df09f033d1",
+    "hash": "0e614adffcb73e8ee5b9c9dff6864062",
     "packages": [
         {
             "name": "dflydev/markdown",
@@ -358,12 +358,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/dbal.git",
-                "reference": "2790ee79ff0fc09dc224e4529c24ff5d9f9a3936"
+                "reference": "0a7df7c58aeab4d1cef55a78e5ca50299a12a62b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/dbal/zipball/2790ee79ff0fc09dc224e4529c24ff5d9f9a3936",
-                "reference": "2790ee79ff0fc09dc224e4529c24ff5d9f9a3936",
+                "url": "https://api.github.com/repos/doctrine/dbal/zipball/0a7df7c58aeab4d1cef55a78e5ca50299a12a62b",
+                "reference": "0a7df7c58aeab4d1cef55a78e5ca50299a12a62b",
                 "shasum": ""
             },
             "require": {
@@ -421,7 +421,7 @@
                 "persistence",
                 "queryobject"
             ],
-            "time": "2014-01-08 19:26:50"
+            "time": "2014-01-15 00:19:18"
         },
         {
             "name": "doctrine/doctrine-bundle",
@@ -744,12 +744,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/doctrine2.git",
-                "reference": "b0736b5b6c975b9aafeedb62635e78cf326386cb"
+                "reference": "cf43edd6a10ac8b17dc07bd40f9886e582a832b2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/doctrine2/zipball/b0736b5b6c975b9aafeedb62635e78cf326386cb",
-                "reference": "b0736b5b6c975b9aafeedb62635e78cf326386cb",
+                "url": "https://api.github.com/repos/doctrine/doctrine2/zipball/cf43edd6a10ac8b17dc07bd40f9886e582a832b2",
+                "reference": "cf43edd6a10ac8b17dc07bd40f9886e582a832b2",
                 "shasum": ""
             },
             "require": {
@@ -812,7 +812,7 @@
                 "database",
                 "orm"
             ],
-            "time": "2014-01-13 17:52:17"
+            "time": "2014-01-14 22:50:33"
         },
         {
             "name": "egeloen/ckeditor-bundle",
@@ -981,12 +981,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/FriendsOfSymfony/FOSRestBundle.git",
-                "reference": "5f8f2f812f510e79396bcb4f97eb7782eef3129a"
+                "reference": "7c81a1879c5d8a3727932674509e96b2bb7a796e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSRestBundle/zipball/5f8f2f812f510e79396bcb4f97eb7782eef3129a",
-                "reference": "5f8f2f812f510e79396bcb4f97eb7782eef3129a",
+                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSRestBundle/zipball/7c81a1879c5d8a3727932674509e96b2bb7a796e",
+                "reference": "7c81a1879c5d8a3727932674509e96b2bb7a796e",
                 "shasum": ""
             },
             "require": {
@@ -1049,7 +1049,7 @@
             "keywords": [
                 "rest"
             ],
-            "time": "2014-01-13 23:31:22"
+            "time": "2014-01-16 12:08:55"
         },
         {
             "name": "friendsofsymfony/user-bundle",
@@ -1199,6 +1199,119 @@
                 "uploadable"
             ],
             "time": "2014-01-12 16:34:06"
+        },
+        {
+            "name": "hwi/oauth-bundle",
+            "version": "0.3.x-dev",
+            "target-dir": "HWI/Bundle/OAuthBundle",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/hwi/HWIOAuthBundle.git",
+                "reference": "6e5fd9846c0cf88f5134fdee052f8f99a8f62950"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/hwi/HWIOAuthBundle/zipball/6e5fd9846c0cf88f5134fdee052f8f99a8f62950",
+                "reference": "6e5fd9846c0cf88f5134fdee052f8f99a8f62950",
+                "shasum": ""
+            },
+            "require": {
+                "kriswallsmith/buzz": "~0.7",
+                "php": ">=5.3.3",
+                "symfony/framework-bundle": "~2.1",
+                "symfony/options-resolver": "~2.1",
+                "symfony/security-bundle": "~2.1"
+            },
+            "require-dev": {
+                "doctrine/orm": "~2.2",
+                "symfony/twig-bundle": "~2.1",
+                "symfony/validator": "~2.1"
+            },
+            "suggest": {
+                "doctrine/doctrine-bundle": "to use Doctrine user provider",
+                "friendsofsymfony/user-bundle": "to connect FOSUB with this bundle",
+                "symfony/twig-bundle": "to use the Twig hwi_oauth_* functions"
+            },
+            "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "0.3-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "HWI\\Bundle\\OAuthBundle": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Geoffrey Bachelet",
+                    "email": "geoffrey.bachelet@gmail.com",
+                    "homepage": "https://github.com/ubermuda"
+                },
+                {
+                    "name": "Contributors",
+                    "homepage": "https://github.com/hwi/HWIOAuthBundle/contributors"
+                },
+                {
+                    "name": "Alexander",
+                    "email": "iam.asm89@gmail.com",
+                    "homepage": "http://asm89.github.io/"
+                },
+                {
+                    "name": "Joseph Bielawski",
+                    "email": "stloyd@gmail.com"
+                }
+            ],
+            "description": "Support for authenticating users using both OAuth1.0a and OAuth2 in Symfony2.",
+            "homepage": "http://github.com/hwi/HWIOAuthBundle",
+            "keywords": [
+                "37signals",
+                "Authentication",
+                "amazon",
+                "bitbucket",
+                "bitly",
+                "box",
+                "dailymotion",
+                "deviantart",
+                "disqus",
+                "dropbox",
+                "eventbrite",
+                "facebook",
+                "firewall",
+                "flickr",
+                "foursquare",
+                "github",
+                "google",
+                "instagram",
+                "jira",
+                "linkedin",
+                "mail.ru",
+                "oauth",
+                "oauth1",
+                "oauth2",
+                "odnoklassniki",
+                "qq",
+                "salesforce",
+                "security",
+                "sensio connect",
+                "sina weibo",
+                "stack exchange",
+                "stereomood",
+                "trello",
+                "twitch",
+                "twitter",
+                "vkontakte",
+                "windows live",
+                "wordpress",
+                "yahoo",
+                "yandex"
+            ],
+            "time": "2013-12-17 13:52:09"
         },
         {
             "name": "ikimea/browser",
@@ -1496,12 +1609,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/schmittjoh/serializer.git",
-                "reference": "39de7a50bbf8ab91b2a3d6a51a645d105dc191f7"
+                "reference": "03842eee9e942796f05365913655a6afddef613e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/schmittjoh/serializer/zipball/39de7a50bbf8ab91b2a3d6a51a645d105dc191f7",
-                "reference": "39de7a50bbf8ab91b2a3d6a51a645d105dc191f7",
+                "url": "https://api.github.com/repos/schmittjoh/serializer/zipball/03842eee9e942796f05365913655a6afddef613e",
+                "reference": "03842eee9e942796f05365913655a6afddef613e",
                 "shasum": ""
             },
             "require": {
@@ -1558,7 +1671,7 @@
                 "serialization",
                 "xml"
             ],
-            "time": "2014-01-13 10:33:23"
+            "time": "2014-01-15 06:20:40"
         },
         {
             "name": "jms/serializer-bundle",
@@ -1984,6 +2097,54 @@
             "time": "2013-09-03 12:44:05"
         },
         {
+            "name": "kriswallsmith/buzz",
+            "version": "v0.10",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/kriswallsmith/Buzz.git",
+                "reference": "759432d66387e3433d3b06cb6f773b97225b9b17"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/kriswallsmith/Buzz/zipball/759432d66387e3433d3b06cb6f773b97225b9b17",
+                "reference": "759432d66387e3433d3b06cb6f773b97225b9b17",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "3.7.*"
+            },
+            "suggest": {
+                "ext-curl": "*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Buzz": "lib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Kris Wallsmith",
+                    "email": "kris.wallsmith@gmail.com",
+                    "homepage": "http://kriswallsmith.net/"
+                }
+            ],
+            "description": "Lightweight HTTP client",
+            "homepage": "https://github.com/kriswallsmith/Buzz",
+            "keywords": [
+                "curl",
+                "http client"
+            ],
+            "time": "2013-05-19 03:41:15"
+        },
+        {
             "name": "liip/doctrine-cache-bundle",
             "version": "dev-master",
             "target-dir": "Liip/DoctrineCacheBundle",
@@ -2092,12 +2253,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Seldaek/monolog.git",
-                "reference": "d81ca5a8d2d97bf9d77605359a12399c0ca28653"
+                "reference": "01a01a4841ea749426834d127c897f4dc9d62611"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/d81ca5a8d2d97bf9d77605359a12399c0ca28653",
-                "reference": "d81ca5a8d2d97bf9d77605359a12399c0ca28653",
+                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/01a01a4841ea749426834d127c897f4dc9d62611",
+                "reference": "01a01a4841ea749426834d127c897f4dc9d62611",
                 "shasum": ""
             },
             "require": {
@@ -2151,7 +2312,7 @@
                 "logging",
                 "psr-3"
             ],
-            "time": "2014-01-10 08:22:47"
+            "time": "2014-01-15 09:37:32"
         },
         {
             "name": "mopa/bootstrap-bundle",
@@ -3234,12 +3395,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/symfony.git",
-                "reference": "fff29a398d0b13963afd3bceee52e00df7503815"
+                "reference": "7da803f95d7c3bf2ee65b08169d9a5530b3e1823"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/symfony/zipball/fff29a398d0b13963afd3bceee52e00df7503815",
-                "reference": "fff29a398d0b13963afd3bceee52e00df7503815",
+                "url": "https://api.github.com/repos/symfony/symfony/zipball/7da803f95d7c3bf2ee65b08169d9a5530b3e1823",
+                "reference": "7da803f95d7c3bf2ee65b08169d9a5530b3e1823",
                 "shasum": ""
             },
             "require": {
@@ -3339,7 +3500,7 @@
             "keywords": [
                 "framework"
             ],
-            "time": "2014-01-13 20:44:32"
+            "time": "2014-01-15 21:16:34"
         },
         {
             "name": "twig/extensions",
@@ -3591,12 +3752,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/willdurand/Negotiation.git",
-                "reference": "8b32a05c2cfd41c0b350de5ea03aba8b35dfc13c"
+                "reference": "d9e50afb9646e0879f58a62eabd34d234973628c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/willdurand/Negotiation/zipball/8b32a05c2cfd41c0b350de5ea03aba8b35dfc13c",
-                "reference": "8b32a05c2cfd41c0b350de5ea03aba8b35dfc13c",
+                "url": "https://api.github.com/repos/willdurand/Negotiation/zipball/d9e50afb9646e0879f58a62eabd34d234973628c",
+                "reference": "d9e50afb9646e0879f58a62eabd34d234973628c",
                 "shasum": ""
             },
             "require": {
@@ -3633,7 +3794,7 @@
                 "header",
                 "negotiation"
             ],
-            "time": "2014-01-09 22:50:05"
+            "time": "2014-01-16 16:53:26"
         },
         {
             "name": "wisembly/elephant.io",
@@ -3864,12 +4025,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Behat/Mink.git",
-                "reference": "83a8ef9268a3a2f4bcba76aec2af9a1db672f29e"
+                "reference": "7ae005d9ce7ec0104de5083b4733c94da653aec0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Behat/Mink/zipball/83a8ef9268a3a2f4bcba76aec2af9a1db672f29e",
-                "reference": "83a8ef9268a3a2f4bcba76aec2af9a1db672f29e",
+                "url": "https://api.github.com/repos/Behat/Mink/zipball/7ae005d9ce7ec0104de5083b4733c94da653aec0",
+                "reference": "7ae005d9ce7ec0104de5083b4733c94da653aec0",
                 "shasum": ""
             },
             "require": {
@@ -3911,7 +4072,7 @@
                 "testing",
                 "web"
             ],
-            "time": "2014-01-14 08:48:25"
+            "time": "2014-01-15 10:44:59"
         },
         {
             "name": "behat/mink-browserkit-driver",
@@ -4766,6 +4927,7 @@
         "friendsofsymfony/rest-bundle": 20,
         "friendsofsymfony/user-bundle": 20,
         "friendsofsymfony/jsrouting-bundle": 20,
+        "hwi/oauth-bundle": 20,
         "jms/serializer-bundle": 20,
         "sylius/resource-bundle": 20,
         "wisembly/elephant.io": 20,

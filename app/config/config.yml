@@ -97,6 +97,15 @@ fos_user:
     group:
         group_class: Tempo\Bundle\UserBundle\Entity\Group
 
+hwi_oauth:
+    firewall_name: main
+    resource_owners:
+        google:
+            type:          google
+            client_id:     %oauth.google.clientid%
+            client_secret: %oauth.google.clientsecret%
+            scope:         "https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile"
+
 ivory_ck_editor:
   configs:
     default:
