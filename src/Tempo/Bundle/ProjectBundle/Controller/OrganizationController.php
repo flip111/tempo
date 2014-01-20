@@ -39,7 +39,8 @@ class OrganizationController extends Controller
         $organization = $this->findOrganization($slug);
         $csrfToken = $this->get('form.csrf_provider')->generateCsrfToken('delete-organization');
 
-        if (false === $this->get('security.context')->isGranted('VIEW', $organization)) {
+        if (false === $this->get('security.context')->isGranted('VIEW', $organization) &&
+            false === $this->get('security.context')->isGranted('ROLE_ADMIN') ) {
             throw new AccessDeniedException();
         }
 

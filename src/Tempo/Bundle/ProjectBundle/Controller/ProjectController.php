@@ -81,7 +81,9 @@ class ProjectController extends Controller
         $project  = $this->getProject($slug);
         $csrfToken = $this->get('form.csrf_provider')->generateCsrfToken('delete-project');
 
-        if (false === $this->get('security.context')->isGranted('VIEW', $project)) {
+        if (false === $this->get('security.context')->isGranted('VIEW', $project) &&
+            false === $this->get('security.context')->isGranted('ROLE_ADMIN')
+        ) {
             throw new AccessDeniedException();
         }
 
@@ -164,7 +166,8 @@ class ProjectController extends Controller
         $project = $this->getProject($slug);
         $editForm = $this->createForm(new ProjectType(), $project);
 
-        if (false === $this->get('security.context')->isGranted('EDIT', $project)) {
+        if (false === $this->get('security.context')->isGranted('EDIT', $project) &&
+            false === $this->get('security.context')->isGranted('ROLE_ADMIN')) {
             throw new AccessDeniedException();
         }
 
