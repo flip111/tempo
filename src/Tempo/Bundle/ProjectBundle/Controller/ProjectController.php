@@ -179,7 +179,7 @@ class ProjectController extends Controller
 
     /**
      * Edits an existing Project entity.
-     * @param $id
+     * @param $slug
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
     public function updateAction(Request $request, $slug)

@@ -1,0 +1,6 @@
+<form method="post" action="{{ path('project_provider_update', { 'slug' : slug, 'provider' : provider}) }}">
+    {{ form_errors(form) }}
+
+    {{ form_widget(form) }}
+    <input type="submit" class="btn btn-primary fantomas" />
+</form>

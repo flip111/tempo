@@ -1,0 +1,8 @@
+form.show: 'Show'
+form.create: 'Create'
+form.delete: 'delete'
+form.edit: 'Edit'
+form.search: "Search"
+form.cancel: "Cancel"
+form.save: 'Save'
+form.save_changes: 'Save changes'

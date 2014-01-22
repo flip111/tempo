@@ -435,8 +435,10 @@ class Project implements ProjectInterface
 
     public function renderStatus()
     {
-        $status = self::getStatusList();
-        return $status[$this->status];
+        if(!empty($this->status)) {
+            $status = self::getStatusList();
+            return $status[$this->status];
+        }
     }
 
     /**
@@ -444,7 +446,9 @@ class Project implements ProjectInterface
      */
     public function getRenderType()
     {
-        return self::$types[intval($this->getType())];
+        if(!empty($this->type)) {
+            return self::$types[$this->type];
+        }
     }
 
     /**
