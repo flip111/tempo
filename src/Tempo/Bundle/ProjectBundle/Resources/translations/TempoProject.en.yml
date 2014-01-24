@@ -46,6 +46,7 @@ project:
     label.advancement: Avancement
     label.code: Code
     label.status: Status
+    label.priority: Priority
     label.estimated: Budget estimated
 
 timesheets:

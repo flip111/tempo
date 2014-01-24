@@ -18,9 +18,6 @@ use Symfony\Component\HttpKernel\Bundle\Bundle;
  * @author Mbechezi Mlanawo <mlanawo.mbechezi@ikimea.com>
  */
 
-
 class TempoMainBundle extends Bundle
 {
-
-
 }

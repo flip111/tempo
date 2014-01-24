@@ -5,11 +5,12 @@ Tempo.View.ConnectedUsers = Backbone.View.extend({
 
     tagName: 'div',
     id: 'connected-users',
-    template: '<h5 id="user-handle" class="live-box-heading"><%= connectedCount %> Connected Users</h5>' +
+    template: '<h5 id="user-handle" class="live-box-heading"><%= connectedCount %> Connected users</h5>' +
+        '<a href="#" class="toolbar-btn"><span class="glyphicon glyphicon-chevron-up"></span> </a>'+
         '<ul id="users-list" class="clearfix"></ul>',
     users: [],
     events: {
-        'click #user-handle' : 'toggleShowUsers'
+        'click .toolbar-btn' : 'toggleShowUsers'
     },
 
     /**
@@ -27,7 +28,6 @@ Tempo.View.ConnectedUsers = Backbone.View.extend({
     bindSocketEvents: function() {
         var socket = Tempo.socket;
         if (typeof socket !== 'undefined') {
-
             socket.on('user:change', _.bind(this.onUserChange, this));
         }
     },
@@ -41,7 +41,7 @@ Tempo.View.ConnectedUsers = Backbone.View.extend({
         _.forEach(this.users, function(user) {
             var a = $('<a />')
                 .attr('href', '/profile/' + user.username_canonical)
-                .append('<img src="http://www.gravatar.com/avatar/5b37040e6200edb3c7f409e994076872?s=30&d=mm" />');
+                .append('<img src="http://www.gravatar.com/avatar/'+md5(user.username_canonical)+'?s=30&d=mm" />');
             list.append($('<li>').html(a));
         });
         return this;
@@ -60,7 +60,18 @@ Tempo.View.ConnectedUsers = Backbone.View.extend({
      * Show/hide the connected users
      */
     toggleShowUsers: function() {
-        $('#users-list', this.$el).slideToggle();
+
+        var toolbar = $( this.$el).find('.toolbar-btn span');
+        var element = $('#users-list', this.$el);
+
+        if(element.is(':hidden') ) {
+            element.show('slow');
+            toolbar.removeClass('glyphicon-chevron-down').addClass('glyphicon-chevron-up');
+        } else {
+            element.hide('slow');
+            toolbar.removeClass('glyphicon-chevron-up').addClass('glyphicon-chevron-down');
+        }
+
     }
 
 });

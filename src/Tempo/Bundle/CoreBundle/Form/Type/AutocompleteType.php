@@ -18,12 +18,9 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 use Tempo\Bundle\MainBundle\Helper\Behavior;
-use Symfony\Component\Routing\Router;
-
 
 class AutocompleteType extends AbstractType
 {
-
     protected $behaviorManager;
 
     /**
