@@ -15,11 +15,11 @@ use Tempo\Bundle\ProjectBundle\Entity\Organization;
 use Tempo\Bundle\ProjectBundle\Form\Type\OrganizationType;
 use Tempo\Bundle\ProjectBundle\Form\Type\TeamType;
 use Tempo\Bundle\ProjectBundle\TempoProjectEvents;
+use Tempo\Bundle\ProjectBundle\Event\ProjectEvent;
 use Tempo\Bundle\ProjectBundle\Event\OrganizationEvent;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use Symfony\Component\Security\Acl\Permission\MaskBuilder;
 
@@ -189,7 +189,7 @@ class OrganizationController extends Controller
 
         //check CSRF token
         if (false === $this->get('form.csrf_provider')->isCsrfTokenValid('delete-organization', $request->get('token'))) {
-            throw new AccessDeniedHttpException('Invalid CSRF token.');
+            throw new AccessDeniedException('Invalid CSRF token.');
         }
 
         try {

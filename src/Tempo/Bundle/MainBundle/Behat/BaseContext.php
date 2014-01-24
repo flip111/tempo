@@ -16,7 +16,8 @@ use Behat\MinkExtension\Context\MinkContext;
 use Symfony\Component\HttpKernel\KernelInterface;
 use Behat\Symfony2Extension\Context\KernelAwareInterface;
 use Symfony\Component\HttpFoundation\Request;
-
+use Behat\Mink\Driver\Selenium2Driver;
+use Behat\Behat\Exception\BehaviorException;
 
 abstract class BaseContext extends MinkContext implements KernelAwareInterface
 {
@@ -114,15 +115,6 @@ abstract class BaseContext extends MinkContext implements KernelAwareInterface
         return $this->getMinkParameter('base_url').$this->generateUrl($route, $parameters);
     }
 
-    private function unescape($argument)
-    {
-        return str_replace('""', '"', $argument);
-    }
-
-    private function escape($argument)
-    {
-        return str_replace('"', '""', $argument);
-    }
 
     /**
      * Wait

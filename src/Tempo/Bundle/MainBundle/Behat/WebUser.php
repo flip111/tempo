@@ -12,6 +12,7 @@
 
 namespace Tempo\Bundle\MainBundle\Behat;
 
+use Behat\Behat\Context\Step\When;
 
 class WebUser extends BaseContext
 {

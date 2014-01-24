@@ -69,12 +69,6 @@ class FeatureContext extends RawMinkContext implements KernelAwareInterface
         $this->getSession()->visit($this->getMinkParameter('base_url').$route);
     }
 
-    private function jqueryWait($duration = 1000)
-    {
-        $this->getSession()->wait($duration, '(0 === jQuery.active && 0 === jQuery(\':animated\').length)');
-    }
-
-
     /**
      * @Then /^I should see the modal "([^"]*)"$/
      */
