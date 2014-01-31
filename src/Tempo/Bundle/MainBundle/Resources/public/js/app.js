@@ -15,16 +15,16 @@ container.set('router', function (c) {
     return new RouterManager();
 });
 
-
-var Tempo = Tempo || {
-    'settings': {},
-    'notification' : {},
-    'behavior' : {},
+var App = {
+    'Settings' : {},
+    'Notification' : {},
+    'Behavior' : {},
     'Controller':{},
     'View':{},
     'Model':{},
     'Collection':{}
 };
+Tempo = $.extend(true, Tempo, App);
 
 
 /**
@@ -32,7 +32,7 @@ var Tempo = Tempo || {
  * @type {Object}
  * @todo : complete
  */
-Tempo.behavior = {
+Tempo.Behavior = {
     behaviors: {},
     statics: {},
     initialized: {},
@@ -72,7 +72,7 @@ Tempo.behavior = {
     }
 };
 
-Tempo.provide = function (name, obj, force) {
+Tempo.Provide = function (name, obj, force) {
     if (!name) {
         throw "Give a name for Tempo.provide(name)";
     }
@@ -209,7 +209,7 @@ $(function() {
     };
 
 
-    Tempo.provide('router', function() {
+    Tempo.Provide('router', function() {
         Backbone.Router.extend({
             el:undefined,
             $el:undefined,
