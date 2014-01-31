@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "64546ea00e3e2972f4a8da28a0197959",
+    "hash": "b0e1e43d0f3242a200ca28df7a7b6e7d",
     "packages": [
         {
             "name": "dflydev/markdown",
@@ -822,12 +822,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/egeloen/IvoryCKEditorBundle.git",
-                "reference": "f6e2d6a84c50a0feb459386f87214dd935e11422"
+                "reference": "8f7ce17be05e649c2a7f3a2e2577836631de7c83"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/egeloen/IvoryCKEditorBundle/zipball/f6e2d6a84c50a0feb459386f87214dd935e11422",
-                "reference": "f6e2d6a84c50a0feb459386f87214dd935e11422",
+                "url": "https://api.github.com/repos/egeloen/IvoryCKEditorBundle/zipball/8f7ce17be05e649c2a7f3a2e2577836631de7c83",
+                "reference": "8f7ce17be05e649c2a7f3a2e2577836631de7c83",
                 "shasum": ""
             },
             "require": {
@@ -868,7 +868,7 @@
             "keywords": [
                 "CKEditor"
             ],
-            "time": "2014-01-30 18:35:24"
+            "time": "2014-01-31 15:15:28"
         },
         {
             "name": "fkr/cssurlrewrite-bundle",
@@ -2750,21 +2750,21 @@
         },
         {
             "name": "stof/doctrine-extensions-bundle",
-            "version": "dev-master",
+            "version": "v1.1.0",
             "target-dir": "Stof/DoctrineExtensionsBundle",
             "source": {
                 "type": "git",
                 "url": "https://github.com/stof/StofDoctrineExtensionsBundle.git",
-                "reference": "cbec28d1ed6dce13b0c18c2dfd8f6af81e65cbae"
+                "reference": "0aa21137bcae43241ffa047946bbdd46b91a2b0a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/stof/StofDoctrineExtensionsBundle/zipball/cbec28d1ed6dce13b0c18c2dfd8f6af81e65cbae",
-                "reference": "cbec28d1ed6dce13b0c18c2dfd8f6af81e65cbae",
+                "url": "https://api.github.com/repos/stof/StofDoctrineExtensionsBundle/zipball/0aa21137bcae43241ffa047946bbdd46b91a2b0a",
+                "reference": "0aa21137bcae43241ffa047946bbdd46b91a2b0a",
                 "shasum": ""
             },
             "require": {
-                "gedmo/doctrine-extensions": "~2.3.1",
+                "gedmo/doctrine-extensions": "2.3.*",
                 "php": ">=5.3.2",
                 "symfony/framework-bundle": "~2.1"
             },
@@ -2808,7 +2808,7 @@
                 "translatable",
                 "tree"
             ],
-            "time": "2014-01-23 11:00:25"
+            "time": "2013-06-23 16:53:41"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -3231,16 +3231,16 @@
         },
         {
             "name": "symfony/symfony",
-            "version": "dev-master",
+            "version": "v2.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/symfony.git",
-                "reference": "d61f4921e6971263b007ca85521c6823b4643267"
+                "reference": "377a5fb23bfdc2fb616610b7b7ab7cc9a50e614d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/symfony/zipball/d61f4921e6971263b007ca85521c6823b4643267",
-                "reference": "d61f4921e6971263b007ca85521c6823b4643267",
+                "url": "https://api.github.com/repos/symfony/symfony/zipball/377a5fb23bfdc2fb616610b7b7ab7cc9a50e614d",
+                "reference": "377a5fb23bfdc2fb616610b7b7ab7cc9a50e614d",
                 "shasum": ""
             },
             "require": {
@@ -3306,7 +3306,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.5-dev"
+                    "dev-master": "2.4-dev"
                 }
             },
             "autoload": {
@@ -3340,7 +3340,7 @@
             "keywords": [
                 "framework"
             ],
-            "time": "2014-01-28 09:28:20"
+            "time": "2014-01-05 02:12:11"
         },
         {
             "name": "twig/extensions",
@@ -3395,12 +3395,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/fabpot/Twig.git",
-                "reference": "e9e474847542bd30c394c6aca81a04ea7bc0a5b3"
+                "reference": "5fd4db64de8398dedf5fcde3ec9c0dfdc910c81b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/fabpot/Twig/zipball/e9e474847542bd30c394c6aca81a04ea7bc0a5b3",
-                "reference": "e9e474847542bd30c394c6aca81a04ea7bc0a5b3",
+                "url": "https://api.github.com/repos/fabpot/Twig/zipball/5fd4db64de8398dedf5fcde3ec9c0dfdc910c81b",
+                "reference": "5fd4db64de8398dedf5fcde3ec9c0dfdc910c81b",
                 "shasum": ""
             },
             "require": {
@@ -3436,7 +3436,7 @@
             "keywords": [
                 "templating"
             ],
-            "time": "2014-01-29 08:45:07"
+            "time": "2014-01-31 15:13:11"
         },
         {
             "name": "white-october/pagerfanta-bundle",
@@ -3494,17 +3494,17 @@
         },
         {
             "name": "willdurand/js-translation-bundle",
-            "version": "dev-master",
+            "version": "v2.0.0",
             "target-dir": "Bazinga/Bundle/JsTranslationBundle",
             "source": {
                 "type": "git",
                 "url": "https://github.com/willdurand/BazingaJsTranslationBundle.git",
-                "reference": "37f3e5bb1b228a775d5c0534cbf2b77def63c205"
+                "reference": "3d1e0b1fafadcbd10475f05c3db84633eb186c32"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/willdurand/BazingaJsTranslationBundle/zipball/37f3e5bb1b228a775d5c0534cbf2b77def63c205",
-                "reference": "37f3e5bb1b228a775d5c0534cbf2b77def63c205",
+                "url": "https://api.github.com/repos/willdurand/BazingaJsTranslationBundle/zipball/3d1e0b1fafadcbd10475f05c3db84633eb186c32",
+                "reference": "3d1e0b1fafadcbd10475f05c3db84633eb186c32",
                 "shasum": ""
             },
             "require": {
@@ -3548,7 +3548,7 @@
                 "symfony",
                 "translation"
             ],
-            "time": "2014-01-20 16:54:37"
+            "time": "2014-01-20 16:17:52"
         },
         {
             "name": "willdurand/jsonp-callback-validator",
@@ -4766,6 +4766,7 @@
     ],
     "minimum-stability": "dev",
     "stability-flags": {
+        "symfony/symfony": 0,
         "doctrine/doctrine-migrations-bundle": 20,
         "knplabs/knp-snappy-bundle": 20,
         "friendsofsymfony/user-bundle": 20,
@@ -4774,15 +4775,14 @@
         "sylius/resource-bundle": 20,
         "wisembly/elephant.io": 20,
         "ikimea/browser": 20,
+        "egeloen/ckeditor-bundle": 20,
         "knplabs/knp-menu-bundle": 20,
         "knplabs/knp-time-bundle": 20,
-        "stof/doctrine-extensions-bundle": 20,
         "problematic/acl-manager-bundle": 20,
         "white-october/pagerfanta-bundle": 20,
         "fkr/cssurlrewrite-bundle": 20,
         "liip/imagine-bundle": 20,
         "nelmio/api-doc-bundle": 20,
-        "willdurand/js-translation-bundle": 20,
         "sylius/settings-bundle": 20,
         "behat/behat": 0,
         "behat/mink-goutte-driver": 20,
