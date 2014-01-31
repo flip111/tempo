@@ -1,6 +1,5 @@
 {% set behavior = behavior() %}
-<html>
-
+<html lang="{{ app.request.locale }}">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     {% stylesheets
@@ -36,7 +35,6 @@
             </div>
             <div id="search">
                 <form method="get" action="/search/index/">
-                    <a id="adv_search" rel="search" accesskey="4" title="Recherche avancée" href="#">avancée</a>
                     <label label-default="label-default" for="q"> <a accesskey="4" href="#">{{ 'header.search'|trans({},'TempoMain') }}  </a> :</label>
                     <input  type="text" size="20" name="q" id="q" class="form-control small" accesskey="f" />
                     <button type="submit" class="submit">
@@ -128,7 +126,7 @@
             'vendor/backbone/backbone.js'
             'vendor/marionette/lib/backbone.marionette.min.js'
             'bundles/tempomain/js/pimple.js'
-            'bundles/bazingaexposetranslation/js/translator.min.js'
+            'bundles/bazingajstranslation/js/translator.min.js'
             'bundles/fosjsrouting/js/router.js'
             'bundles/tempojsconfiguration/js/configuration.js'
             'js/tempo_configuration.js'
