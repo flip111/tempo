@@ -50,6 +50,6 @@ project_provider_list:
     pattern:  /{slug}/provider/list
     defaults: { _controller: TempoActivityBundle:Provider:list }
 
-project_provider_new:
-    pattern:  /{slug}/provider/new
-    defaults: { _controller: TempoActivityBundle:Provider:new }
+project_provider_update:
+    pattern:  /{slug}/provider/update/{provider}
+    defaults: { _controller: TempoActivityBundle:Provider:update }
