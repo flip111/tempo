@@ -10,12 +10,11 @@
 */
 
 
-namespace Tempo\Bundle\UserBundle\Entity;
+namespace Tempo\Bundle\UserBundle\Model;
+
+use FOS\UserBundle\Model\GroupInterface as BaseGroupInterface;
 
 
-use Tempo\Bundle\UserBundle\Model\User as BaseUser;
-
-class User extends BaseUser
+interface GroupInterface extends BaseGroupInterface
 {
-
 }

@@ -12,10 +12,9 @@
 
 namespace Tempo\Bundle\UserBundle\Entity;
 
+use Tempo\Bundle\UserBundle\Model\Group as BaseGroup;
 
-use Tempo\Bundle\UserBundle\Model\User as BaseUser;
-
-class User extends BaseUser
+class Group extends BaseGroup
 {
 
 }

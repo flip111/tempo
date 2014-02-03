@@ -10,12 +10,15 @@
 */
 
 
-namespace Tempo\Bundle\UserBundle\Entity;
+namespace Tempo\Bundle\UserBundle\Model;
+
+use FOS\UserBundle\Model\Group as BaseGroup;
 
 
-use Tempo\Bundle\UserBundle\Model\User as BaseUser;
-
-class User extends BaseUser
+class Group extends BaseGroup implements GroupInterface
 {
-
+    public function __construct()
+    {
+        $this->roles = array();
+    }
 }
