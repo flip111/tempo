@@ -19,5 +19,18 @@ use Tempo\Bundle\CoreBundle\Manager\BaseManager;
 
 class ProjectManager extends BaseManager
 {
+    /**
+     * @param $slug
+     * @return mixed
+     */
+    public function getProject($primaryKey)
+    {
+        if (is_string($primaryKey)) {
+            $project =  $this->repository->findOneBySlug($primaryKey);
+        } else {
+            $project =  $this->repository->find($primaryKey);
+        }
 
+        return $project;
+    }
 }

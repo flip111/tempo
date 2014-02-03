@@ -7,6 +7,7 @@
         <parameter key="tempo_main.menu_builder.class">Tempo\Bundle\MainBundle\Menu\MenuBuilder</parameter>
         <parameter key="tempo_main.behavior_manager.class">Tempo\Bundle\MainBundle\Helper\Behavior</parameter>
         <parameter key="tempo_main.resource_manager.class">Tempo\Bundle\CoreBundle\Resource\ResourceManager</parameter>
+        <parameter key="tempo_main.model.room.class">Tempo\Bundle\MainBundle\Entity\Room</parameter>
         <parameter key="tempo_main.manager.room.class">Tempo\Bundle\MainBundle\Manager\RoomManager</parameter>
     </parameters>
 
@@ -48,6 +49,8 @@
         </service>
 
         <service id="tempo_main.manager.room" class="%tempo_main.manager.room.class%">
+            <argument type="service" id="doctrine.orm.entity_manager" />
+            <argument>%tempo_main.model.room.class%</argument>
         </service>
 
     </services>

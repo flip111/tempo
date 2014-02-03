@@ -49,7 +49,7 @@ class ActivityManager extends BaseManager
      */
     public function render($type = null, $user = null)
     {
-        $fin = $this->getRepository()->findLastActivities($type, $user);
+        $fin = $this->repository->findLastActivities($type, $user);
 
         return $fin;
     }
