@@ -23,7 +23,7 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 abstract class BaseManager
 {
-    protected $repository;
+    public $repository;
     protected $em;
     protected $class;
 
@@ -45,7 +45,7 @@ abstract class BaseManager
      */
     public function find($id)
     {
-        $entity =  $this->getRepository()->find($id);
+        $entity =  $this->repository->find($id);
         return $this->createNotFoundException($entity);
     }
 
@@ -55,7 +55,7 @@ abstract class BaseManager
      */
     public function findOneBySlug($slug)
     {
-        $entity = $this->getRepository()->findOneBySlug($slug);
+        $entity = $this->repository->findOneBySlug($slug);
         return $this->createNotFoundException($entity);
     }
 
@@ -64,7 +64,7 @@ abstract class BaseManager
      */
     public function findAll()
     {
-        return $this->getRepository()->findAll();
+        return $this->repository->findAll();
     }
 
     /**
@@ -72,7 +72,7 @@ abstract class BaseManager
      */
     public function findAllByUser($user)
     {
-        return $this->getRepository()->findAllByUser($user);
+        return $this->repository->findAllByUser($user);
     }
 
     /**
@@ -93,14 +93,6 @@ abstract class BaseManager
     {
         $this->em->remove($entity);
         $this->em->flush();
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getRepository()
-    {
-        return $this->repository;
     }
 
     /**

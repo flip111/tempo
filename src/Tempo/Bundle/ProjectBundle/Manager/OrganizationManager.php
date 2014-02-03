@@ -19,15 +19,14 @@ use Tempo\Bundle\CoreBundle\Manager\BaseManager;
 
 class OrganizationManager extends BaseManager
 {
-
-    /**
-     * return list projects organization
-     * @param $id
-     * @return array
-     */
+   /**
+    * return list projects organization
+    * @param $id
+    * @return array
+    */
    public function getStatusProjects($id)
    {
-       $counter = $this->getRepository()->countProject($id);
+       $counter = $this->repository->countProject($id);
 
        return array(
            'close' => $counter['prj_close'],
