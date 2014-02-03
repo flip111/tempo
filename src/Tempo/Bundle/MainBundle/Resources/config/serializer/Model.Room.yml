@@ -1,0 +1,6 @@
+Tempo\Bundle\MainBundle\Model\Room:
+    exclusion_policy: all
+    exclude: true
+    properties :
+      name:
+        expose: true

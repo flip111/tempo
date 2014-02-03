@@ -15,7 +15,7 @@ use FOS\RestBundle\Controller\FOSRestController;
 use Tempo\Bundle\MainBundle\Entity\ChatMessage;
 use Tempo\Bundle\MainBundle\Entity\Room;
 use Symfony\Component\HttpFoundation\Request;
-use FOS\RestBundle\View\View;
+use FOS\RestBundle\Controller\Annotations\View;
 use Tempo\Bundle\MainBundle\Form\Type\ChatMessageType;
 
 /**
@@ -46,6 +46,7 @@ class MessagesController extends FOSRestController
      */
     public function getMessagesAction(Room $room)
     {
+
         return $room->getChatMessages();
     }
 
@@ -54,16 +55,15 @@ class MessagesController extends FOSRestController
      */
     public function postMessagesAction(Room $room, Request $request)
     {
-        $view = View::create();
+        $view = \FOS\RestBundle\View\View::create();
 
         $message = new ChatMessage();
         $message->setRoom($room);
         $message->setUser($this->getUser());
 
         $form = $this->createForm(new ChatMessageType(), $message);
-        $form->submit($request);
 
-        if ($form->isValid()) {
+        if ($form->submit($request) && $form->isValid()) {
             $dm = $this->getDoctrine()->getManager();
             $room->addChatMessage($message);
             $dm->persist($room);

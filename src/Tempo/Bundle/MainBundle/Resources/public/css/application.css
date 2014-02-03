@@ -84,17 +84,6 @@ body {
     margin-right: 30px;
     margin-top: 6px;
 }
-
-#header #search form #adv_search {
-    background: url("/bundles/tempomain/images/advanced_search.png") no-repeat scroll right 50% transparent;
-    display: none;
-    height: 16px;
-    text-indent: -3000em;
-    width: 16px;
-    float: right;
-    padding-top: 10px;
-}
-
 #header #search form label {
     color: #FFF;
     font-size: 11px;
