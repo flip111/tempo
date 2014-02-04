@@ -27,7 +27,7 @@ class ProfileType extends AbstractType
             ->add('company')
             ->add('jobTitle')
             ->add('phone')
-            ->add('phoneMobile')
+            ->add('mobilePhone')
         ;
     }
 

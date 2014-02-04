@@ -9,13 +9,12 @@
 {% endblock breadcrumb %}
 
 {% block content %}
-<h1>{{ 'avatar.admin_change'|trans({}, 'TempoUser') }} {{ user.getUsername() }} ?></h1>
+<h1>{{ 'avatar.admin_change'|trans({}, 'TempoUser') }} {{ user.getUsername() }} </h1>
 
 <div class="alert alert-error">
     {{ 'avatar.current_change'|trans({}, 'TempoUser') }}
-    <a href="{{ path('user_profile', { 'id' :  user.id, 'slug' : user.emailCanonical }) }}">{{ user.getUsername() }}</a>.
+    <a href="{{ path('user_profile_show', { 'slug' : user.emailCanonical }) }}">{{ user.getUsername() }}</a>.
 </div>
-{% endif %}
 
 {% include "TempoUserBundle:Profile:_tabs.html.twig" %}
 
