@@ -11,8 +11,16 @@
 
 namespace Tempo\Bundle\ProjectBundle;
 
+use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
+use Tempo\Bundle\ProjectBundle\DependencyInjection\CompilerPass\ProjectTabRegistryCompilerPass;
 
 class TempoProjectBundle extends Bundle
 {
+    public function build(ContainerBuilder $container)
+    {
+        parent::build($container);
+
+        $container->addCompilerPass(new ProjectTabRegistryCompilerPass());
+    }
 }
