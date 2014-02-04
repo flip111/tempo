@@ -29,6 +29,8 @@ $ php app/console doctrine:schema:create
 # If you want to load sample data, use the following command
 $ php app/console doctrine:fixtures:load
 
+$ php app/console tempo:js-configuration:dump
+
 # Instant messaging
 $ node bin/server.js
 
