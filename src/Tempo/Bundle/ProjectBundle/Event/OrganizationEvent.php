@@ -19,15 +19,15 @@ use Symfony\Component\HttpFoundation\Request;
 class OrganizationEvent extends Event
 {
     private $request;
-    private $project;
+    private $organization;
 
     /**
      * @param OrganizationInterface $organization
      * @param Request $request
      */
-    public function __construct(OrganizationInterface $project, Request $request)
+    public function __construct(OrganizationInterface $organization, Request $request)
     {
-        $this->project = $project;
+        $this->organization = $organization;
         $this->request = $request;
     }
 

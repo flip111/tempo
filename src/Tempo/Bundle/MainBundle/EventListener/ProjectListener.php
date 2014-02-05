@@ -9,7 +9,7 @@
 * file that was distributed with this source code.
 */
 
-namespace Tempo\Bundle\ActivityBundle\EventListener;
+namespace Tempo\Bundle\MainBundle\EventListener;
 
 use Tempo\Bundle\ProjectBundle\Event\ProjectEvent;
 use Tempo\Bundle\MainBundle\Manager\RoomManager;
@@ -18,11 +18,17 @@ class ProjectListener
 {
     private $roomManager;
 
+    /**
+     * @param RoomManager $roomManager
+     */
     public function __construct(RoomManager $roomManager)
     {
         $this->roomManager = $roomManager;
     }
 
+    /**
+     * @param ProjectEvent $event
+     */
     public function createProject(ProjectEvent $event)
     {
         $project = $event->getProject();
