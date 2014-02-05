@@ -2,7 +2,7 @@
 
 namespace Tempo\Bundle\ProjectBundle\Tabs;
 
-class ActivityTab implements ProviderInterface
+class ActivityTab implements TabProviderInterface
 {
     public function getTabId()
     {

@@ -2,7 +2,7 @@
 
 namespace Tempo\Bundle\ProjectBundle\Tabs;
 
-interface ProviderInterface
+interface TabProviderInterface
 {
     public function getTabId();
     public function getTabName();

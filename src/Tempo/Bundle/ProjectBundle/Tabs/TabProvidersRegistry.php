@@ -2,7 +2,7 @@
 
 namespace Tempo\Bundle\ProjectBundle\Tabs;
 
-class ProvidersRegistry
+class TabProvidersRegistry
 {
     protected $providers = array();
 

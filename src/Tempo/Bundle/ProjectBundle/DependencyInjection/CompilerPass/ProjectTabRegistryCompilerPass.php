@@ -10,12 +10,12 @@ class ProjectTabRegistryCompilerPass implements CompilerPassInterface
 {
     public function process(ContainerBuilder $container)
     {
-        if (!$container->hasDefinition('tempo.project.registry.providers')) {
+        if (!$container->hasDefinition('tempo.project.tabProvidersRegistry')) {
             return;
         }
 
         $definition = $container->getDefinition(
-            'tempo.project.registry.providers'
+            'tempo.project.tabProvidersRegistry'
         );
 
         $taggedServices = $container->findTaggedServiceIds(

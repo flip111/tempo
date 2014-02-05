@@ -92,7 +92,7 @@ class ProjectController extends Controller
             'teamForm'      => $teamForm->createView(),
             'project'       => $project,
             'csrfToken'     => $csrfToken,
-            'tabRegistry'   => $this->get('tempo.project.registry.providers')
+            'tabProvidersRegistry'   => $this->get('tempo.project.tabProvidersRegistry')
         ));
     }
 
