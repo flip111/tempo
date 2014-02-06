@@ -9,6 +9,8 @@
         <parameter key="tempo_main.resource_manager.class">Tempo\Bundle\CoreBundle\Resource\ResourceManager</parameter>
         <parameter key="tempo_main.model.room.class">Tempo\Bundle\MainBundle\Entity\Room</parameter>
         <parameter key="tempo_main.manager.room.class">Tempo\Bundle\MainBundle\Manager\RoomManager</parameter>
+        <parameter key="tempo_main.listener.project.class">Tempo\Bundle\MainBundle\EventListener\ProjectListener</parameter>
+
     </parameters>
 
     <services>
@@ -23,7 +25,6 @@
         <service id="tempo_main.twig.extension" class="Tempo\Bundle\MainBundle\Twig\Extension\MainExtension">
             <argument type="service" id="service_container" />
             <argument type="service" id="time.templating.helper.time" />
-            <argument type="service" id="tempo_core.imagine_cache.manager" />
             <tag name="twig.extension" />
         </service>
 
@@ -51,6 +52,11 @@
         <service id="tempo_main.manager.room" class="%tempo_main.manager.room.class%">
             <argument type="service" id="doctrine.orm.entity_manager" />
             <argument>%tempo_main.model.room.class%</argument>
+        </service>
+
+        <service id="tempo_main.listener.project" class="%tempo_main.listener.project.class%">
+            <argument type="service" id="tempo_main.manager.room" />
+            <tag name="kernel.event_listener" event="tempo_project.project.create.success" method="createProject" />
         </service>
 
     </services>

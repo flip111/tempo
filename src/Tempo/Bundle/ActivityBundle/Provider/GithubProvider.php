@@ -26,13 +26,13 @@ class GithubProvider implements ProviderInterface
         $payload = $request->request->get('payload');
 
         $methodName = sprintf('%sEvent', $eventName);
+
         return $this->$methodName($payload);
     }
 
     protected function pushEvent($payload)
     {
         $activity = new ActivityProvider();
-        $activity->setProvider('github');
         $activity->setMessage('provider.github.commit');
         $activity->setCreated(new \DateTime());
         $activity->setParameters($payload);

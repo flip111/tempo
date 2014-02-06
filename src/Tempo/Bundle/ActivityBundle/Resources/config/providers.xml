@@ -6,7 +6,6 @@
         <parameter key="tempo.activity.provider_registry.class">Tempo\Bundle\ActivityBundle\Provider\ProviderRegistry</parameter>
         <parameter key="tempo.activity.provider.github.class">Tempo\Bundle\ActivityBundle\Provider\GithubProvider</parameter>
         <parameter key="tempo.activity.provider.trello.class">Tempo\Bundle\ActivityBundle\Provider\TrelloProvider</parameter>
-        <parameter key="tempo.activity.listener.project.class">Tempo\Bundle\ActivityBundle\EventListener\ProjectListener</parameter>
     </parameters>
 
     <services>
@@ -19,11 +18,6 @@
 
         <service id="tempo.activity.provider.trello" class="%tempo.activity.provider.trello.class%">
             <tag name="tempo.activity.provider" />
-        </service>
-
-        <service id="tempo.activity.listener.project" class="%tempo.activity.listener.project.class%">
-            <argument type="service" id="tempo_main.manager.room" />
-            <tag name="kernel.event_listener" event="tempo_project.project.create.success" method="createProject" />
         </service>
 
     </services>

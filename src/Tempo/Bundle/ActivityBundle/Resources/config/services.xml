@@ -3,14 +3,18 @@
            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
            xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
     <parameters>
-        <parameter key="tempo.activity.manager.class">Tempo\Bundle\ActivityBundle\Manager\ActivityProviderManager</parameter>
+        <parameter key="tempo.activity.manager.activity_provider.class">Tempo\Bundle\ActivityBundle\Manager\ActivityProviderManager</parameter>
         <parameter key="tempo.activity.manager.activity.class">Tempo\Bundle\ActivityBundle\Manager\ActivityManager</parameter>
         <parameter key="tempo.activity.model.activity.class">Tempo\Bundle\ActivityBundle\Entity\Activity</parameter>
+        <parameter key="tempo.activity.model.activity_provider.class">Tempo\Bundle\ActivityBundle\Entity\ActivityProvider</parameter>
     </parameters>
     <services>
-        <service id="tempo.activity.manager" class="%tempo.activity.manager.class%">
+        <service id="tempo.activity.manager.activity_provider" class="%tempo.activity.manager.activity_provider.class%">
             <argument type="service" id="doctrine.orm.entity_manager"/>
-            <argument type="service" id="service_container"/>
+            <argument>%tempo.activity.model.activity_provider.class%</argument>
+            <call method="setContainer">
+                <argument type="service" id="service_container"/>
+            </call>
         </service>
 
         <service id="tempo.activity.manager.activity" class="%tempo.activity.manager.activity.class%">
