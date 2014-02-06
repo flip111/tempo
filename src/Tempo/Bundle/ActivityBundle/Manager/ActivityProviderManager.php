@@ -12,26 +12,24 @@
 
 namespace Tempo\Bundle\ActivityBundle\Manager;
 
-use Doctrine\ORM\EntityManager;
-use Symfony\Component\DependencyInjection\ContainerAware;
 use Symfony\Component\HttpFoundation\Request;
-use Tempo\Bundle\ActivityBundle\Entity\Activity;
-use Tempo\Bundle\ProjectBundle\Entity\Project;
+use Tempo\Bundle\CoreBundle\Manager\BaseManager;
 
-class ActivityProviderManager extends ContainerAware
+
+class ActivityProviderManager extends BaseManager
 {
-    /**
-     * @var \Doctrine\ORM\EntityManager
-     */
-    protected $em;
     protected $container;
 
-    public function __construct(EntityManager $em, $container)
+    public function setContainer($container)
     {
-        $this->em = $em;
         $this->container = $container;
     }
 
+    /**
+     * @param $providerName
+     * @return \Tempo\Bundle\ActivityBundle\Provider\ProviderInterface
+     * @throws \Exception
+     */
     protected function getProvider($providerName)
     {
         $serviceName = sprintf('tempo.activity.provider.%s', $providerName);
@@ -46,18 +44,13 @@ class ActivityProviderManager extends ContainerAware
     public function add($id, Request $request)
     {
 
-        $provider = $this->em->getRepository('TempoActivityBundle:ActivityProvider')->find($id);
-        $provider = $this->getProvider(strtolower($provider->getProvider()));
+        $projectProvider = $this->em->getRepository('TempoProjectBundle:ProjectProvider')->find($id);
+        $provider = $this->getProvider(strtolower($projectProvider->getName()));
 
+        /** @var \Tempo\Bundle\ActivityBundle\Model\ActivityProviderInterface $activity */
         $activity = $provider->parse($request);
+        $activity->setProvider($projectProvider);
 
-        $this->em->persist($activity);
-        $this->em->flush();
-    }
-
-    public function getByProject(Project $project)
-    {
-        //foreach($project->)
-        return $this->em->getRepository('TempoActivityBundle:Activity')->findByProject($project);
+        $this->save($activity);
     }
 }

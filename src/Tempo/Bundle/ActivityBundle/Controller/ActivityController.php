@@ -19,12 +19,12 @@ class ActivityController extends Controller
 {
     /**
      * @param Request $request
-     * @param $providerName
+     * @param $id
      */
     public function providerAction(Request $request, $id)
     {
-        /** @var $manager \Tempo\Bundle\ActivityBundle\Manager\ActivityManager */
-        $manager = $this->get('tempo.activity.manager');
+        /** @var $manager \Tempo\Bundle\ActivityBundle\Manager\ActivityProviderManager */
+        $manager = $this->get('tempo.activity.manager.activity_provider');
         $manager->add($id, $request);
     }
 
