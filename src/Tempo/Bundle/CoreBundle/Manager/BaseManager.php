@@ -78,6 +78,7 @@ abstract class BaseManager
     /**
      * persist and flush
      * @param $entity
+     * @deprecated
      */
     public function persistAndFlush($entity)
     {
@@ -88,11 +89,36 @@ abstract class BaseManager
     /**
      * remove and flush
      * @param $entity
+     * @deprecated
      */
     public function removeAndFlush($entity)
     {
+        $this->remove($entity);
+    }
+
+
+    /**
+     * Persist the given entity
+     *
+     * @param mixed $entity  An entity instance
+     * @param bool  $doFlush Also flush  entity manager?
+     */
+    public function save($entity, $doFlush = true)
+    {
+        $this->em->persist($entity);
+
+        if ($doFlush) {
+            $this->em->flush();
+        }
+    }
+
+    public function remove($entity, $doFlush = true)
+    {
         $this->em->remove($entity);
-        $this->em->flush();
+
+        if ($doFlush) {
+            $this->em->flush();
+        }
     }
 
     /**
