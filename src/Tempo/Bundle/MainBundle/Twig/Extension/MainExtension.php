@@ -26,11 +26,10 @@ class MainExtension extends \Twig_Extension
     /**
      * @param $container
      */
-    public function __construct($container, TimeHelper $helper, CacheManager $cacheManager)
+    public function __construct($container, TimeHelper $helper)
     {
         $this->container = $container;
         $this->helper = $helper;
-        $this->cacheManager = $cacheManager;
 
     }
 
@@ -97,15 +96,6 @@ class MainExtension extends \Twig_Extension
         }
 
         return $this->helper->diff($since, $to);
-    }
-
-    public function getIcon($path, $size = null)
-    {
-        if (null == $size) {
-            return $path;
-        }
-
-        return $this->cacheManager->getBrowserPath($path, $size);
     }
 
     /**
