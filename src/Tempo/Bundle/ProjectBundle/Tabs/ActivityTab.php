@@ -4,17 +4,17 @@ namespace Tempo\Bundle\ProjectBundle\Tabs;
 
 class ActivityTab implements TabProviderInterface
 {
-    public function getTabId()
+    public function getId()
     {
         return "activity";
     }
 
-    public function getTabName()
+    public function getName()
     {
         return "Activity";
     }
 
-    public function getTabContent()
+    public function getContent()
     {
         return "TempoProjectBundle:Project/Tabs:activity.html.twig";
     }

@@ -4,17 +4,17 @@ namespace Tempo\Bundle\ProjectBundle\Tabs;
 
 class SettingsTab implements TabProviderInterface
 {
-    public function getTabId()
+    public function getId()
     {
         return "settings";
     }
 
-    public function getTabName()
+    public function getName()
     {
         return "Settings";
     }
 
-    public function getTabContent()
+    public function getContent()
     {
         return "TempoProjectBundle:Project/Tabs:settings.html.twig";
     }

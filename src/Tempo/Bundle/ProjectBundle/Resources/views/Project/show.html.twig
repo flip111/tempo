@@ -30,14 +30,14 @@
         <div class="col-md-12">
             <ul class="nav nav-tabs" id="project-tab">
                 {% for provider in tabProvidersRegistry.providers %}
-                <li{% if loop.first %} class="active"{% endif %}><a href="#{{ provider.tabId }}" data-toggle="tab">{{ provider.tabName }}</a></li>
+                <li{% if loop.first %} class="active"{% endif %}><a href="#{{ provider.id }}" data-toggle="tab">{{ provider.name }}</a></li>
                 {% endfor %}
             </ul>
 
             <div class="tab-content">
                 {% for provider in tabProvidersRegistry.providers %}
-                <div class="tab-pane{% if loop.first %} active{% endif %}" id="{{ provider.tabId }}">
-                    {% include provider.tabContent %}
+                <div class="tab-pane{% if loop.first %} active{% endif %}" id="{{ provider.id }}">
+                    {% include provider.content %}
                 </div>
                 {% endfor %}
             </div>

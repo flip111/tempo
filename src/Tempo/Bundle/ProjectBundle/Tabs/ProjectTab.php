@@ -4,17 +4,17 @@ namespace Tempo\Bundle\ProjectBundle\Tabs;
 
 class ProjectTab implements TabProviderInterface
 {
-    public function getTabId()
+    public function getId()
     {
         return "project";
     }
 
-    public function getTabName()
+    public function getName()
     {
         return "Project";
     }
 
-    public function getTabContent()
+    public function getContent()
     {
         return "TempoProjectBundle:Project/Tabs:project.html.twig";
     }
