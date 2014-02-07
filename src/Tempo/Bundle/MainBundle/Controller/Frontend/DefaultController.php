@@ -11,7 +11,7 @@
 
 
 
-namespace Tempo\Bundle\MainBundle\Controller;
+namespace Tempo\Bundle\MainBundle\Controller\Frontend;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
