@@ -91,7 +91,8 @@ class ProjectController extends Controller
         return $this->render('TempoProjectBundle:Project:show.html.twig', array(
             'teamForm'      => $teamForm->createView(),
             'project'       => $project,
-            'csrfToken'     => $csrfToken
+            'csrfToken'     => $csrfToken,
+            'tabProvidersRegistry'   => $this->get('tempo.project.tabProvidersRegistry')
         ));
     }
 

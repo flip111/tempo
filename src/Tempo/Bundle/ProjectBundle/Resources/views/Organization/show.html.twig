@@ -58,7 +58,7 @@
     <ul class="list-project">
     {% for project in projects %}
         <li>
-            <img src="{{ icon('/bundles/tempomain/images/default-icon-project.png', 38 ) }}" />
+            <img src="{{ 'bundles/tempomain/images/default-icon-project.png' | imagine_filter('project_thumb') }}" />
             <a href="{{ path('project_show', { 'slug' :  project.slug } ) }}">{{ project.name }} </a>
         </li>
     {% else %}

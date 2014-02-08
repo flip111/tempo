@@ -40,12 +40,17 @@ class LoadProjectData extends AbstractFixture implements ContainerAwareInterface
      */
     public function load(ObjectManager $manager)
     {
+        $i = 1;
         $userList = array('admin', 'john.doe');
-        for ($i = 1; $i <= 10; $i++) {
+        $projectList = array(
+            'Bebop','Galasphere','Messie','Sérénité','Luciole ', 'Prometheus',
+            'Nimbus','Spartacus','Gothlauth','Dentless'
+        );
+
+        foreach($projectList as $name) {
+
 
             $userEntity = $this->getReference($userList[array_rand($userList, 1)]);
-
-            $name = str_shuffle('Le Lorem Ipsum');
 
             $digit = str_shuffle('123456789');
             $code = str_shuffle(substr($name, 0, 3).substr($digit, 0, 3));
@@ -75,6 +80,7 @@ class LoadProjectData extends AbstractFixture implements ContainerAwareInterface
 
             $this->getAclManager()->addObjectPermission($project, MaskBuilder::MASK_OWNER, $userEntity); //set Permission
             $this->addReference('project'.$i, $project);
+            $i++;
         }
     }
 
