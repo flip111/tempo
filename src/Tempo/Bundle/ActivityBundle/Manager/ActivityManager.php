@@ -39,7 +39,7 @@ class ActivityManager extends BaseManager
             ->setTarget($target)
             ->setTargetType($reflected->getShortName());
 
-        $this->persistAndFlush($event);
+        $this->save($event);
     }
 
     /**

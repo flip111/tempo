@@ -1,4 +1,4 @@
-Tempo\Bundle\MainBundle\Model\Room:
+Tempo\Bundle\ProjectBundle\Model\Project:
     exclusion_policy: all
     properties :
       id:

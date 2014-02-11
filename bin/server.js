@@ -50,4 +50,7 @@ io.sockets.on('connection', function (socket) {
         io.sockets.in(room).except(socket.id).emit(eventType, params);
     });
 
+    socket.on('ProviderEvent', function(room) {
+        socket.broadcast.emit('feed:change', room);
+    });
 });

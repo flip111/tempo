@@ -26,6 +26,11 @@ class RoomManager extends BaseManager
         $room->setName($name);
         $room->setProject($project);
 
-        $this->persistAndFlush($room);
+        $this->save($room);
+    }
+
+    public function findRoomWithProject($project)
+    {
+        return $this->repository->findRoomWithProject($project);
     }
 }

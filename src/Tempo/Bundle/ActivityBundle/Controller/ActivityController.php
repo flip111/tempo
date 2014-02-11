@@ -14,6 +14,7 @@ namespace Tempo\Bundle\ActivityBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Tempo\Bundle\ActivityBundle\Form\Type\ActivityFormType;
+use Tempo\Bundle\ProjectBundle\Entity\Project;
 
 class ActivityController extends Controller
 {
@@ -30,9 +31,10 @@ class ActivityController extends Controller
 
     /**
      * @param $type
+     * @param Project $project| null
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function listAction($type, $project = null)
+    public function listAction($type, Project $project = null)
     {
 
         if ('all' == $type) {

@@ -27,9 +27,6 @@ class Project implements ProjectInterface
     const STATUS_FINISHED = 50;
     const STATUS_DELETED = -10;
 
-
-    public static $types = array(0 => 'Default', 1 => 'Agile', 2 => 'Regie', 3 => 'Forfait');
-
     protected $id;
 
     /**
@@ -438,16 +435,6 @@ class Project implements ProjectInterface
         if(!empty($this->status)) {
             $status = self::getStatusList();
             return $status[$this->status];
-        }
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getRenderType()
-    {
-        if(!empty($this->type)) {
-            return self::$types[$this->type];
         }
     }
 

@@ -14,6 +14,8 @@ namespace Tempo\Bundle\ActivityBundle\Manager;
 
 use Symfony\Component\HttpFoundation\Request;
 use Tempo\Bundle\CoreBundle\Manager\BaseManager;
+use Tempo\Bundle\ActivityBundle\TempoActivityEvents;
+use Tempo\Bundle\ActivityBundle\Event\ActivityProviderEvent;
 
 
 class ActivityProviderManager extends BaseManager
@@ -47,10 +49,16 @@ class ActivityProviderManager extends BaseManager
         $projectProvider = $this->em->getRepository('TempoProjectBundle:ProjectProvider')->find($id);
         $provider = $this->getProvider(strtolower($projectProvider->getName()));
 
+
         /** @var \Tempo\Bundle\ActivityBundle\Model\ActivityProviderInterface $activity */
         $activity = $provider->parse($request);
         $activity->setProvider($projectProvider);
 
+        $event = new ActivityProviderEvent($projectProvider, $request);
+        $this->container->get('event_dispatcher')->dispatch(TempoActivityEvents::ACTIVITY_PROVIDER_CREATE_INITIALIZE, $event);
+
         $this->save($activity);
+        $this->container->get('event_dispatcher')->dispatch(TempoActivityEvents::ACTIVITY_PROVIDER_CREATE_SUCCESS, $event);
+
     }
 }
