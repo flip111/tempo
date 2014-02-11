@@ -127,7 +127,6 @@ tempo_project:
       - Saturday
       - Sunday
 
-
 knp_snappy:
     pdf:
         enabled:    true
@@ -145,9 +144,8 @@ mopa_bootstrap:
         error_type: block # or inline which is default
         render_optional_text: false
 
-fkr_css_url_rewrite:
-    rewrite_only_if_file_exists: true
-    clear_urls: true
+tempo_js_configuration:
+  config_to_expose: [mopa_bootstrap.form.show_legend]
 
 jms_serializer:
     metadata:

@@ -50,7 +50,6 @@
 
         "white-october/pagerfanta-bundle": "dev-master",
         "mopa/bootstrap-bundle": "v3.0.0-beta2",
-        "fkr/cssurlrewrite-bundle": "1.0.*@dev",
         "liip/doctrine-cache-bundle": "*",
         "liip/imagine-bundle": "dev-master",
         "nelmio/api-doc-bundle": "dev-master",

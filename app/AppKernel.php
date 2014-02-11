@@ -30,7 +30,6 @@ class AppKernel extends Kernel
             new Knp\Bundle\TimeBundle\KnpTimeBundle(),
 
             new Ivory\CKEditorBundle\IvoryCKEditorBundle(),
-            new Fkr\CssURLRewriteBundle\FkrCssURLRewriteBundle(),
             new Liip\DoctrineCacheBundle\LiipDoctrineCacheBundle(),
             new Liip\ImagineBundle\LiipImagineBundle(),
             new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
