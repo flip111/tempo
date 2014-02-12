@@ -37,7 +37,8 @@ class MenuBuilder
     public function mainMenu()
     {
         $menu = $this->factory->createItem('root');
-        $menu->setChildrenAttribute('class', 'right');
+        $menu->setChildrenAttribute('class', 'nav navbar-nav');
+        $menu->setChildrenAttribute('id', 'menu');
 
         $projects_trans = $this->translator->trans('menu.project', array(), 'TempoMain');
         $users_trans = $this->translator->trans('menu.users', array(), 'TempoMain');
