@@ -17,6 +17,9 @@ security:
         login:
             pattern:  ^/login$
             security: false
+        ws:
+            pattern: ^/ws
+            anonymous: true
         main:
             pattern: ^/
             switch_user: false

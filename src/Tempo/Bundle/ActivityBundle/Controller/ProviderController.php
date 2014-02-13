@@ -20,7 +20,6 @@ class ProviderController extends Controller
 {
     public function listAction($slug)
     {
-
         return $this->render('TempoActivityBundle:Provider:list.html.twig', array(
             'slug' => $slug,
             'providers' => $this->get('tempo.activity.provider_registry')->getProviders()

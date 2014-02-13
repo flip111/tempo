@@ -9,15 +9,19 @@
 * file that was distributed with this source code.
 */
 
-
 namespace Tempo\Bundle\ActivityBundle\Manager;
 
+use Symfony\Component\DependencyInjection\Container;
 use Symfony\Component\HttpFoundation\Request;
+use Tempo\Bundle\ActivityBundle\Provider\ProviderInterface;
 use Tempo\Bundle\CoreBundle\Manager\BaseManager;
-
+use Tempo\Bundle\ProjectBundle\Model\Project;
 
 class ActivityProviderManager extends BaseManager
 {
+    /**
+     * @var Container
+     */
     protected $container;
 
     public function setContainer($container)
@@ -27,7 +31,7 @@ class ActivityProviderManager extends BaseManager
 
     /**
      * @param $providerName
-     * @return \Tempo\Bundle\ActivityBundle\Provider\ProviderInterface
+     * @return ProviderInterface
      * @throws \Exception
      */
     protected function getProvider($providerName)
@@ -41,16 +45,15 @@ class ActivityProviderManager extends BaseManager
         return $this->container->get($serviceName);
     }
 
-    public function add($id, Request $request)
+    public function add($providerName, Project $project, Request $request)
     {
+        $activity = $this->getProvider($providerName)->parse($request);
 
-        $projectProvider = $this->em->getRepository('TempoProjectBundle:ProjectProvider')->find($id);
-        $provider = $this->getProvider(strtolower($projectProvider->getName()));
+        if (!$activity) {
+            return;
+        }
 
-        /** @var \Tempo\Bundle\ActivityBundle\Model\ActivityProviderInterface $activity */
-        $activity = $provider->parse($request);
-        $activity->setProvider($projectProvider);
-
+        $activity->setProject($project);
         $this->save($activity);
     }
 }

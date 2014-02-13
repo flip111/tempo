@@ -157,3 +157,8 @@ jms_serializer:
             FOSUserBundle:
               namespace_prefix: "FOS\\UserBundle"
               path: "@TempoUserBundle/Resources/config/serializer/FOSUserBundle"
+
+tempo_activity:
+    providers:
+        trello:
+            secret: %tempo_activity.providers.trello.secret%

@@ -1,5 +1,5 @@
 tempo_activity_provider_ws:
-    pattern: /ws/activity/provider/{id}
+    pattern: /ws/activity/provider/{providerName}/{projectId}
     defaults:
         _controller: TempoActivityBundle:Activity:provider
 

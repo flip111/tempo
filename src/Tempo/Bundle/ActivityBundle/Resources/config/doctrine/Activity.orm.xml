@@ -20,6 +20,8 @@
 
         <many-to-one field="author" target-entity="Tempo\Bundle\UserBundle\Entity\User" />
 
+        <many-to-one target-entity="Tempo\Bundle\ProjectBundle\Entity\Project" field="project" inversed-by="activities" />
+
     </entity>
 
 </doctrine-mapping>

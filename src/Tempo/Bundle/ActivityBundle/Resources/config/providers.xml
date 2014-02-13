@@ -17,6 +17,7 @@
         </service>
 
         <service id="tempo.activity.provider.trello" class="%tempo.activity.provider.trello.class%">
+            <argument>%tempo_activity.provider.trello%</argument>
             <tag name="tempo.activity.provider" />
         </service>
 

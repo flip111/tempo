@@ -11,7 +11,7 @@
 
 namespace Tempo\Bundle\ActivityBundle\Model;
 
-use Tempo\Bundle\ActivityBundle\Model\ActivityInterface;
+use Tempo\Bundle\ProjectBundle\Model\Project;
 
 
 class Activity implements ActivityInterface
@@ -57,6 +57,12 @@ class Activity implements ActivityInterface
      * @var object
      */
     protected $createdAt;
+
+    /**
+     *
+     * @var Project
+     */
+    protected $project;
 
     /**
      * {@inheritdoc}
@@ -165,6 +171,24 @@ class Activity implements ActivityInterface
     public function setCreatedAt(\DateTime $createdAt)
     {
         $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getProject()
+    {
+        return $this->project;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setProject(Project $project)
+    {
+        $this->project = $project;
 
         return $this;
     }

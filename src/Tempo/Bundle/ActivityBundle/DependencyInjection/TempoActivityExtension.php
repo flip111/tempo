@@ -35,5 +35,10 @@ class TempoActivityExtension extends Extension
         $loader = new Loader\XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.xml');
         $loader->load('providers.xml');
+
+        foreach ($config['providers'] as $providerName => $providerConfig)
+        {
+            $container->setParameter(sprintf('tempo_activity.provider.%s', $providerName), $providerConfig);
+        }
     }
 }

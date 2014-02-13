@@ -62,7 +62,7 @@
         </many-to-many>
 
         <one-to-many field="providers" target-entity="ProjectProvider" mapped-by="project" />
-
+        <one-to-many field="activities" target-entity="Tempo\Bundle\ActivityBundle\Entity\Activity" mapped-by="project" />
 
     </entity>
 

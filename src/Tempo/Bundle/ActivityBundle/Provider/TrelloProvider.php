@@ -13,16 +13,50 @@
 namespace Tempo\Bundle\ActivityBundle\Provider;
 
 use Symfony\Component\HttpFoundation\Request;
-use Tempo\Bundle\ActivityBundle\Entity\Activity;
 
 class TrelloProvider  implements ProviderInterface
 {
+    /**
+     * @var array
+     */
+    protected $config;
+
+    public function __construct($config)
+    {
+        $this->config = $config;
+    }
+
+    protected function verifySignature(Request $request)
+    {
+        $callbackUrl = $request->getUri();
+        $secret = $this->config['secret'];
+        $content = $secret.$request->getContent().$callbackUrl;
+
+        return base64_encode(hash_hmac('sha1', $content, $secret)) === $request->headers->get('X-Trello-Webhook');
+    }
+
     /**
      * {inheritedDoc}
      */
     public function parse(Request $request)
     {
+        if ($request->isMethod('HEAD')) {
+            return false;
+        }
 
+        if (!$this->verifySignature($request)) {
+            throw new \Exception('Signature verification failed');
+        }
+
+        $data = json_decode($request->getContent());
+
+        $methodName = sprintf('%sEvent', $data->action->type);
+        return $this->$methodName($data);
+    }
+
+    protected function commentCardEvent($data)
+    {
+        //TODO
     }
 
     /**

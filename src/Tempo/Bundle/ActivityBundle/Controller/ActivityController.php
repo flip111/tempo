@@ -12,26 +12,27 @@
 namespace Tempo\Bundle\ActivityBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Tempo\Bundle\ActivityBundle\Form\Type\ActivityFormType;
+use Tempo\Bundle\ProjectBundle\Model\Project;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration as Sensio;
+
 
 class ActivityController extends Controller
 {
     /**
-     * @param Request $request
-     * @param $id
+     * @Sensio\ParamConverter("project", class="TempoProjectBundle:Project", options={"id" = "projectId"})
      */
-    public function providerAction(Request $request, $id)
+    public function providerAction(Request $request, Project $project, $providerName)
     {
         /** @var $manager \Tempo\Bundle\ActivityBundle\Manager\ActivityProviderManager */
         $manager = $this->get('tempo.activity.manager.activity_provider');
-        $manager->add($id, $request);
+        $manager->add($providerName, $project, $request);
+
+        return new JsonResponse('ok');
     }
 
-    /**
-     * @param $type
-     * @return \Symfony\Component\HttpFoundation\Response
-     */
     public function listAction($type, $project = null)
     {
 
