@@ -13,7 +13,7 @@
     <h1 id="page-title" class="col-md-6">{{ project.name }}</h1>
 
     <div class="col-md-3">
-        {% if is_granted('NEW', project) %}
+        {% if is_granted('EDIT', project.organisation) %}
         <a class="btn btn-xs btn-primary" href="{{ path('project_new', { 'parent' : project.id, 'organization': project.organization.slug }) }}"> <span class="glyphicon glyphicon-plus"></span> {{ 'project.title_subprojects'|trans([], 'TempoProject') }}</a>
         {% endif %}
         {% if is_granted('EDIT', project) %}
