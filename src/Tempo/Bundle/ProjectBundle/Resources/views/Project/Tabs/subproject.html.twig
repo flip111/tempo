@@ -18,10 +18,10 @@
             <td>{{ children.id }}</td>
             <td>{{ children.code }}</td>
             <td><a href="{{ path('project_show', { 'slug' : children.slug } ) }}">{{ children.name }}</a> </td>
-            <td>{{ children.renderType }}</td>
+            <td>{{ children.type }}</td>
             <td>{{ children.renderStatus }}</td>
             <td>{{ children.priority }}</td>
-            <td>{{ children.advancement }}</td>
+            <td>{{ children.advancement }}%</td>
             <td>{{ children.beginning.format("Y-m-j") }}</td>
             <td>{{ children.ending.format("Y-m-j") }}</td>
         </tr>
