@@ -31,13 +31,12 @@ class AppKernel extends Kernel
 
             new HWI\Bundle\OAuthBundle\HWIOAuthBundle(),
             new Ivory\CKEditorBundle\IvoryCKEditorBundle(),
-            new Fkr\CssURLRewriteBundle\FkrCssURLRewriteBundle(),
             new Liip\DoctrineCacheBundle\LiipDoctrineCacheBundle(),
             new Liip\ImagineBundle\LiipImagineBundle(),
             new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
             new JMS\SerializerBundle\JMSSerializerBundle($this),
             new Problematic\AclManagerBundle\ProblematicAclManagerBundle(),
-            new Bazinga\ExposeTranslationBundle\BazingaExposeTranslationBundle(),
+            new Bazinga\Bundle\JsTranslationBundle\BazingaJsTranslationBundle(),
 
             new WhiteOctober\PagerfantaBundle\WhiteOctoberPagerfantaBundle(),
             new Mopa\Bundle\BootstrapBundle\MopaBootstrapBundle(),
@@ -48,15 +47,19 @@ class AppKernel extends Kernel
             new Tempo\Bundle\UserBundle\TempoUserBundle(),
             new Tempo\Bundle\ProjectBundle\TempoProjectBundle(),
             new Tempo\Bundle\ActivityBundle\TempoActivityBundle(),
+            new Tempo\Bundle\JsConfigurationBundle\TempoJsConfigurationBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
             $bundles[] = new Symfony\Bundle\WebProfilerBundle\WebProfilerBundle();
             $bundles[] = new Sensio\Bundle\DistributionBundle\SensioDistributionBundle();
             $bundles[] = new Sensio\Bundle\GeneratorBundle\SensioGeneratorBundle();
-            $bundles[] = new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle();
             $bundles[] = new Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle();
             $bundles[] = new Elao\WebProfilerExtraBundle\WebProfilerExtraBundle();
+
+            if(class_exists('Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle')) {
+                $bundles[] = new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle();
+            }
         }
 
         return $bundles;

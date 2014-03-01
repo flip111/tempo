@@ -1,0 +1,11 @@
+Tempo\Bundle\MainBundle\Model\ChatMessage:
+    exclusion_policy: ALL
+    properties :
+      id:
+        expose: true
+      content:
+        expose: true
+      created:
+        expose: true
+      user:
+        expose: true

@@ -15,16 +15,16 @@ container.set('router', function (c) {
     return new RouterManager();
 });
 
-
-var Tempo = Tempo || {
-    'settings': {},
-    'notification' : {},
-    'behavior' : {},
+var App = {
+    'Settings' : {},
+    'Notification' : {},
+    'Behavior' : {},
     'Controller':{},
     'View':{},
     'Model':{},
     'Collection':{}
 };
+Tempo = $.extend(true, Tempo, App);
 
 
 /**
@@ -32,7 +32,7 @@ var Tempo = Tempo || {
  * @type {Object}
  * @todo : complete
  */
-Tempo.behavior = {
+Tempo.Behavior = {
     behaviors: {},
     statics: {},
     initialized: {},
@@ -72,7 +72,7 @@ Tempo.behavior = {
     }
 };
 
-Tempo.provide = function (name, obj, force) {
+Tempo.Provide = function (name, obj, force) {
     if (!name) {
         throw "Give a name for Tempo.provide(name)";
     }
@@ -155,29 +155,43 @@ $(function() {
             data_target = 'modal'+parseInt(Math.random()*1000),
             modal =  $('#myModal').clone();
 
+        modal.attr('id', data_target);
+        modal.find('.modal-title').html(title);
+
+
         if(role != 'dialog') {
             modal.find('.modal-footer button.confirm').remove();
         }
+        $('#dialog').append(modal);
 
         if (url.indexOf('#') == 0) {
             $(url).show().appendTo(modal.find('.modal-body'));
+            modal.modal();
         } else {
             $.get(url, function(data) {
                 modal.find('.modal-body').html(data);
             }).success(function() {
+                modal.modal();
                 $('input:text:visible:first').focus();
             });
         }
 
-        modal.attr('id', data_target);
-        modal.find('.modal-title').html(title);
-        $('#dialog').append(modal);
-        modal.modal();
+        var fantomas = modal.find('.modal-body .fantomas');
+        fantomas.on('click', function(){
+            console.log('dddd');
+        })
 
-        modal.find('button.confirm').on('click', function(e) {
+        if(fantomas) {
+            modal.find('button.confirm').on('click', function(e) {
+                fantomas.parent('form').submit();
+                console.log(fantomas.parent('form'));
+            });
+        }
+
+        /** modal.find('button.confirm').on('click', function(e) {
             e.preventDefault();
             window.location.href = redirect;
-        });
+        });**/
 
     });
 
@@ -195,7 +209,7 @@ $(function() {
     };
 
 
-    Tempo.provide('router', function() {
+    Tempo.Provide('router', function() {
         Backbone.Router.extend({
             el:undefined,
             $el:undefined,

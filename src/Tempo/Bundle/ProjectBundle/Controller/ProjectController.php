@@ -17,7 +17,6 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Security\Acl\Permission\MaskBuilder;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
-use Tempo\Bundle\MainBundle\Entity\Room;
 use Tempo\Bundle\ProjectBundle\Entity\Project;
 use Tempo\Bundle\ProjectBundle\Form\Type\ProjectType;
 use Tempo\Bundle\ProjectBundle\Form\Type\TeamType;
@@ -50,7 +49,7 @@ class ProjectController extends Controller
     /**
      * Lists all organization projects.
      * @param $organization
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function listAction($slug)
     {
@@ -74,14 +73,16 @@ class ProjectController extends Controller
 
     /**
      * Finds and displays a Project entity.
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function showAction($slug)
     {
-        $project  = $this->getProject($slug);
+        $project  = $this->getManager()->getProject($slug);
         $csrfToken = $this->get('form.csrf_provider')->generateCsrfToken('delete-project');
 
-        if (false === $this->get('security.context')->isGranted('VIEW', $project)) {
+        if (false === $this->get('security.context')->isGranted('VIEW', $project) &&
+            false === $this->get('security.context')->isGranted('ROLE_ADMIN')
+        ) {
             throw new AccessDeniedException();
         }
 
@@ -90,13 +91,14 @@ class ProjectController extends Controller
         return $this->render('TempoProjectBundle:Project:show.html.twig', array(
             'teamForm'      => $teamForm->createView(),
             'project'       => $project,
-            'csrfToken'     => $csrfToken
+            'csrfToken'     => $csrfToken,
+            'tabProvidersRegistry'   => $this->get('tempo.project.tabProvidersRegistry')
         ));
     }
 
     /**
      * Displays a form to create a new Project entity.
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function newAction()
     {
@@ -117,7 +119,7 @@ class ProjectController extends Controller
 
     /**
      * Creates a new Project entity.
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function createAction(Request $request)
     {
@@ -139,12 +141,6 @@ class ProjectController extends Controller
             $this->getAclManager()->addObjectPermission($project, MaskBuilder::MASK_OWNER); //set Permission
             $this->get('event_dispatcher')->dispatch(TempoProjectEvents::PROJECT_CREATE_SUCCESS, $event);
 
-            //create room
-            $room = new Room();
-            $room->setName($project->getName());
-            $room->setProject($project);
-            $this->getManager()->persistAndFlush($room);
-
             return $this->redirect($this->generateUrl('project_show', array('slug' => $project->getSlug())));
         }
 
@@ -157,14 +153,15 @@ class ProjectController extends Controller
     /**
      * Displays a form to edit an existing Project entity.
      * @param $slug string
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function editAction($slug)
     {
-        $project = $this->getProject($slug);
+        $project = $this->getManager()->getProject($slug);
         $editForm = $this->createForm(new ProjectType(), $project);
 
-        if (false === $this->get('security.context')->isGranted('EDIT', $project)) {
+        if (false === $this->get('security.context')->isGranted('EDIT', $project) &&
+            false === $this->get('security.context')->isGranted('ROLE_ADMIN')) {
             throw new AccessDeniedException();
         }
 
@@ -176,12 +173,12 @@ class ProjectController extends Controller
 
     /**
      * Edits an existing Project entity.
-     * @param $id
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     * @param $slug
+     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function updateAction(Request $request, $slug)
     {
-        $project = $this->getProject($slug);
+        $project = $this->getManager()->getProject($slug);
         $editForm   = $this->createForm(new ProjectType(), $project);
 
         if (false === $this->get('security.context')->isGranted('ROLE_ADMIN', $project)) {
@@ -217,7 +214,7 @@ class ProjectController extends Controller
             throw new AccessDeniedHttpException('Invalid CSRF token.');
         }
 
-        $project = $this->getProject($slug);
+        $project = $this->getManager()->getProject($slug);
 
         if (false === $this->get('security.context')->isGranted('DELETE', $project)) {
             throw new AccessDeniedException();
@@ -240,22 +237,6 @@ class ProjectController extends Controller
     }
 
     /**
-     * @param $slug
-     * @return mixed
-     * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
-     */
-    private function getProject($primaryKey)
-    {
-        if (is_string($primaryKey)) {
-            $project =  $this->getManager()->findOneBySlug($primaryKey);
-        } else {
-            $project =  $this->getManager()->find($primaryKey);
-        }
-
-        return $project;
-    }
-
-    /**
      * @param  \Tempo\Bundle\ProjectBundle\Entity\Project $project
      * @return \Tempo\Bundle\ProjectBundle\Entity\Project
      */
@@ -264,7 +245,7 @@ class ProjectController extends Controller
         $parent = $this->get('request_stack')->getCurrentRequest()->query->get('parent');
 
         if (!empty($parent)) {
-            $parent = $this->getProject(intval($parent));
+            $parent = $this->getManager()->getProject(intval($parent));
             if ($parent) {
                 $project->setParent($parent);
             }

@@ -1,0 +1,64 @@
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <parameters>
+
+        <parameter key="tempo_main.menu_builder.class">Tempo\Bundle\MainBundle\Menu\MenuBuilder</parameter>
+        <parameter key="tempo_main.behavior_manager.class">Tempo\Bundle\MainBundle\Helper\Behavior</parameter>
+        <parameter key="tempo_main.resource_manager.class">Tempo\Bundle\CoreBundle\Resource\ResourceManager</parameter>
+        <parameter key="tempo_main.model.room.class">Tempo\Bundle\MainBundle\Entity\Room</parameter>
+        <parameter key="tempo_main.manager.room.class">Tempo\Bundle\MainBundle\Manager\RoomManager</parameter>
+        <parameter key="tempo_main.listener.project.class">Tempo\Bundle\MainBundle\EventListener\ProjectListener</parameter>
+
+    </parameters>
+
+    <services>
+
+        <service id="tempo_main.resource_manager" class="%tempo_main.resource_manager.class%" />
+
+        <service id="tempo_main.behavior" class="%tempo_main.behavior_manager.class%">
+            <argument type="service" id="tempo_main.resource_manager" />
+            <argument type="service" id="router" />
+        </service>
+
+        <service id="tempo_main.twig.extension" class="Tempo\Bundle\MainBundle\Twig\Extension\MainExtension">
+            <argument type="service" id="service_container" />
+            <argument type="service" id="time.templating.helper.time" />
+            <tag name="twig.extension" />
+        </service>
+
+        <service id="tempo_main.menu_builder" class="%tempo_main.menu_builder.class%">
+            <argument type="service" id="knp_menu.factory" />
+            <argument type="service" id="translator" />
+        </service>
+
+        <service id="tempo_main.menu" class="Knp\Menu\MenuItem" factory-service="tempo_main.menu_builder" factory-method="mainMenu">
+            <tag name="knp_menu.menu" alias="main" />
+        </service>
+
+        <service id="tempo_main.breadcrumb" class="Knp\Menu\MenuItem" factory-service="tempo_main.menu_builder" factory-method="breadcrumb">
+            <tag name="knp_menu.menu" alias="breadcrumb" />
+        </service>
+
+        <service id="tempo_main.settings_schema.generale" class="Tempo\Bundle\MainBundle\Settings\GeneralSettingsSchema">
+            <tag name="sylius.settings_schema" namespace="general" />
+        </service>
+
+        <service id="tempo_main.settings_schema.project" class="Tempo\Bundle\MainBundle\Settings\ProjectSettingsSchema">
+            <tag name="sylius.settings_schema" namespace="project" />
+        </service>
+
+        <service id="tempo_main.manager.room" class="%tempo_main.manager.room.class%">
+            <argument type="service" id="doctrine.orm.entity_manager" />
+            <argument>%tempo_main.model.room.class%</argument>
+        </service>
+
+        <service id="tempo_main.listener.project" class="%tempo_main.listener.project.class%">
+            <argument type="service" id="tempo_main.manager.room" />
+            <tag name="kernel.event_listener" event="tempo_project.project.create.success" method="createProject" />
+        </service>
+
+    </services>
+
+</container>

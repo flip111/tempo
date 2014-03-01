@@ -9,6 +9,7 @@
     <script type="text/javascript" src="{{ asset('bundles/tempomain/js/app/views/chatBox.js') }}"></script>
     <script type="text/javascript" src="{{ asset('bundles/tempomain/js/app/views/ChatMessage.js') }}"></script>
     <script type="text/javascript" src="{{ asset('bundles/tempomain/js/app/views/connectedUsers.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/tempomain/js/app/views/room.js') }}"></script>
     <script type="text/javascript" src="{{ asset('bundles/tempomain/js/app/controllers/dashboard.js') }}"></script>
     <script type="application/javascript">
     {% autoescape false %}
@@ -30,16 +31,24 @@
            {% endfor %}
         </ul>
     </nav>
-    <div id="row-box">
+    <div id="row-box" class="room-{{ currentRoom.id }}">
         <div class="col-md-6" id="activity-box">
             <h3 class="homeTitle">{{ 'dashboard.title'|trans }}</h3>
 
             {{ render(controller('TempoActivityBundle:Activity:new')) }}
 
-            {{ render(controller('TempoActivityBundle:Activity:list', {'type': 'all', 'project': project})) }}
+            <div id="room-activity-box">
+                {{ render(controller('TempoActivityBundle:Activity:list', {'type': 'all', 'project': project})) }}
+            </div>
 
         </div>
         <div class="col-md-6" id="chat-box">
+            <div id="progressbar">
+                <h3>Loading ...</h3>
+                <div class="progress progress-striped active">
+                    <div class="bar" style="width: 90%;"></div>
+                </div>
+            </div>
         </div>
     </div>
 

@@ -369,22 +369,27 @@ table.table-striped tbody .actions .edit {
     background: #FFF;
     position: absolute;
     width: 100%;
-
-}
-.dashboard #connected-users h5{
-    font-weight: normal;
-    color: #4a87b6
 }
 
 .dashboard #connected-users #user-handle {
+    font-weight: normal;
+    color: #4a87b6;
+    float: left;
+}
+.dashboard #connected-users .toolbar-btn {
+    float: right;
+}
+
+.dashboard #connected-users #users-list {
+    clear: both;
 }
 .dashboard #connected-users #users-list li {
     float: left;
-    margin-left: 20px;
 }
 
 .dashboard #connected-users #users-list {
     margin-bottom: 10px;
+    padding-left: 0;
 }
 
 .dashboard #chat #chat-messages{
@@ -734,10 +739,6 @@ table.table-striped tbody .actions .edit {
     clear: both;
 }
 
-.project.show #content .project-children {
-    margin-left: 25px;
-}
-
 .project.show #content .project-children .children {
     display: inline-block;
     background-color: rgba(219, 218, 206, 0.3);
@@ -781,6 +782,26 @@ table.table-striped tbody .actions .edit {
 
 .project.show .action {
     margin-bottom: 16px;
+}
+.project.show ul.list-provider {
+    margin-top: 15px;
+    padding-left: 0px;
+}
+.project.show ul.list-provider li {
+    list-style: none;
+    padding-top: 0.814em;
+    border-bottom-width: 0.143em;
+    border-bottom-style: solid;
+    padding-bottom: 0.671em;
+    margin: 0;
+    padding-right: 15px;
+    padding-left: 15px;
+    color: #777;
+    background-color: #f9f9f9;
+    border-color: #e4e4e4;
+}
+.project.show .container-provider {
+    margin-top: 20px;
 }
 
 .project.edit .form-block, .project.new .form-block #project_description {

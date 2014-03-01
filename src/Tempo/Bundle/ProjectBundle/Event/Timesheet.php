@@ -19,24 +19,24 @@ use Symfony\Component\HttpFoundation\Request;
 class TimesheetEvent extends Event
 {
     private $request;
-    private $project;
+    private $timesheet;
 
     /**
      * @param TimesheetInterface $timesheet
      * @param Request $request
      */
-    public function __construct(TimesheetInterface $project, Request $request)
+    public function __construct(TimesheetInterface $timesheet, Request $request)
     {
-        $this->project = $project;
+        $this->timesheet = $timesheet;
         $this->request = $request;
     }
 
     /**
-     * @return ProjectInterface
+     * @return TimesheetInterface
      */
-    public function getProject()
+    public function getTimesheet()
     {
-        return $this->project;
+        return $this->timesheet;
     }
 
     /**

@@ -14,25 +14,27 @@ namespace Tempo\Bundle\ActivityBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Tempo\Bundle\ActivityBundle\Form\Type\ActivityFormType;
+use Tempo\Bundle\ProjectBundle\Entity\Project;
 
 class ActivityController extends Controller
 {
     /**
      * @param Request $request
-     * @param $providerName
+     * @param $id
      */
     public function providerAction(Request $request, $id)
     {
-        /** @var $manager \Tempo\Bundle\ActivityBundle\Manager\ActivityManager */
-        $manager = $this->get('tempo.activity.manager');
+        /** @var $manager \Tempo\Bundle\ActivityBundle\Manager\ActivityProviderManager */
+        $manager = $this->get('tempo.activity.manager.activity_provider');
         $manager->add($id, $request);
     }
 
     /**
      * @param $type
+     * @param Project $project| null
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function listAction($type, $project = null)
+    public function listAction($type, Project $project = null)
     {
 
         if ('all' == $type) {

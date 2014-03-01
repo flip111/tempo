@@ -1,6 +1,5 @@
 {% set behavior = behavior() %}
-<html>
-
+<html lang="{{ app.request.locale }}">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     {% stylesheets
@@ -8,63 +7,64 @@
         'bundles/tempomain/css/jquery-ui-1.10.0.custom.css'
         'bundles/tempomain/css/application.css'
         'bundles/tempomain/css/bundles.css'
-        filter='css_url_rewrite, ?cssrewrite'
+        filter='?cssrewrite'
     %}
     <link rel="stylesheet" href="{{ asset_url }}" />
     {% endstylesheets %}
     {% block stylesheets %}{% endblock %}
     <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"  />
     <link rel="shortcut icon" href="{{ asset('favicon.ico') }}"  />
 </head>
 
 <body class="no-js {{ get_browser() }} {% block bodyClass %}{% endblock %}">
-    <!--[if IE 6]>
-    <div class="ie6-bar">Vous utilisez Internet Explorer 6 ou une version inférieure. Le support
-        de cette version d'Internet Explorer ne sera pas implémenté.
-        <br />Nous vous recommandons vivement d'utiliser <a href="http://www.mozilla-europe.org/fr/products/firefox/">Mozilla Firefox</a>,
-        <a href="http://www.apple.com/safari/">Apple Safari</a>ou <a href="http://www.microsoft.com/france/windows/downloads/ie/getitnow.mspx">Internet Explorer 9</a>.</div>
-    <![endif]-->
     <div id="feedback"> <a href="https://github.com/tempo-project/tempo"></a></div>
     <div id="glob">
-        <header id="header">
-
-            <div id="logo">
-                <a href="/"> {{ sylius_settings_get('general.name')  }} </a>
-            </div>
-            <div id="search">
-                <form method="get" action="/search/index/">
-                    <a id="adv_search" rel="search" accesskey="4" title="Recherche avancée" href="#">avancée</a>
-                    <label label-default="label-default" for="q"> <a accesskey="4" href="#">{{ 'header.search'|trans({},'TempoMain') }}  </a> :</label>
-                    <input  type="text" size="20" name="q" id="q" class="form-control small" accesskey="f" />
-                    <button type="submit" class="submit">
-                        <span class="glyphicon glyphicon-search"></span>
+        <header id="header" class="navbar navbar-static-top" role="banner">
+            <div class="container">
+                <div class="navbar-header">
+                    <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
                     </button>
-                </form>
-            </div>
-            <nav id="menu">{{ knp_menu_render('main') }}</nav>
-            <div id="member-menu" class="dropdown">
-                <ul>
-                    <li class="notification dropdown togglable dropdown-notifications">
-                        <a href="#"><span class="glyphicon glyphicon-bell"></span></a>
-                        <div class="notifications dropdown-menu">
-                        </div>
-                    </li>
-                    <li class="user">
-                        <a href="#" data-toggle="dropdown" class="dropdown-toggle">
-                            <img src=" {{ app.user.avatar(30) }}" alt="Avatar" />
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li> <a href="{{ path('user_profile_edit') }}">{{ 'Profile'|trans({},'TempoMain') }}</a> </li>
-                            <li> <a href="{{ path('user_profile_settings') }}">{{ 'Settings'|trans({},'TempoMain') }}</a> </li>
-                            <li> <a href="{{ path('fos_user_security_logout') }}"> {{ 'layout.logout'|trans([], 'FOSUserBundle') }} </a> </li>
-                            <li role="presentation" class="divider"></li>
-                            <li> <a href="/help"> Help </a></li>
-                        </ul>
-                    </li>
-                </ul>
+                    <a href="/" class="navbar-brand">{{ sylius_settings_get('general.name')  }} </a></a>
+                </div>
+                <div id="search">
+                    <form method="get" action="/search/index/">
+                        <label label-default="label-default" for="q"> <a accesskey="4" href="#">{{ 'header.search'|trans({},'TempoMain') }}  </a> :</label>
+                        <input  type="text" size="20" name="q" id="q" class="form-control small" accesskey="f" />
+                        <button type="submit" class="submit">
+                            <span class="glyphicon glyphicon-search"></span>
+                        </button>
+                    </form>
+                </div>
+                <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
+                    {{ knp_menu_render('main') }}
+                    <ul id="user-menu" class="nav navbar-nav navbar-right">
+                        <li class="notification dropdown togglable dropdown-notifications">
+                            <a href="#"><span class="glyphicon glyphicon-bell"></span></a>
+                            <div class="notifications dropdown-menu">
+                            </div>
+                        </li>
+                        <li class="avatar">
+                            <a href="#" data-toggle="dropdown" class="dropdown-toggle">
+                                <img src=" {{ app.user.avatar(30) }}" alt="Avatar" />
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="{{ path('user_profile_edit') }}"><span class="glyphicon glyphicon-user"></span> {{ 'Profile'|trans({},'TempoMain') }}</a> </li>
+                                <li><a href="{{ path('user_profile_settings') }}"><span class="glyphicon glyphicon-cog"></span> {{ 'Settings'|trans({},'TempoMain') }}</a> </li>
+                                <li><a href="{{ path('fos_user_security_logout') }}"> <span class="glyphicon glyphicon-log-out"></span> {{ 'layout.logout'|trans([], 'FOSUserBundle') }} </a> </li>
+                                <li role="presentation" class="divider"></li>
+                                <li> <a href="/help"><span class="glyphicon glyphicon-question-sign"></span> Help </a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
             </div>
         </header>
         <div id="content">
@@ -126,10 +126,12 @@
             'vendor/underscore/underscore.js'
             'http://www.myersdaily.org/joseph/javascript/md5.js'
             'vendor/backbone/backbone.js'
-            'vendor/marionette/lib/backbone.marionette.min.js'
+            'vendor/marionette/lib/backbone.marionette.js'
             'bundles/tempomain/js/pimple.js'
-            'bundles/bazingaexposetranslation/js/translator.min.js'
+            'bundles/bazingajstranslation/js/translator.min.js'
             'bundles/fosjsrouting/js/router.js'
+            'bundles/tempojsconfiguration/js/configuration.js'
+            'js/tempo_configuration.js'
             'bundles/tempomain/js/routerManager.js'
             'bundles/tempomain/js/app.js'
             'bundles/tempomain/js/behavior.js'

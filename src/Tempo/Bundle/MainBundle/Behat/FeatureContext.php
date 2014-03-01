@@ -69,4 +69,21 @@ class FeatureContext extends RawMinkContext implements KernelAwareInterface
         $this->getSession()->visit($this->getMinkParameter('base_url').$route);
     }
 
+    /**
+     * @Then /^I should see the modal "([^"]*)"$/
+     */
+    public function iShouldSeeTheModal($title)
+    {
+        $this->assertSession()->elementExists('css', '.modal-title');
+
+
+        //$this->wait();
+        //$this->assertSession()->pageTextContains($title);
+
+        /**
+
+        $this->assertTrue($this->getSession()->getPage()->find('css', '#modal-from-dom')->isVisible());
+         */
+    }
+
 }

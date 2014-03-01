@@ -1,0 +1,34 @@
+<table class="project-children table table-striped">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>{{ 'project.form.label.code'|trans({}, 'TempoProject') }}</th>
+        <th>{{ 'project.form.label.name'|trans({}, 'TempoProject') }}</th>
+        <th>{{ 'project.form.label.type'|trans({}, 'TempoProject') }}</th>
+        <th>{{ 'project.form.label.status'|trans({}, 'TempoProject') }}</th>
+        <th>{{ 'project.form.label.priority'|trans({}, 'TempoProject') }}</th>
+        <th>{{ 'project.form.label.advancement'|trans({}, 'TempoProject') }}</th>
+        <th>{{ 'project.form.label.beginning'|trans({}, 'TempoProject') }}</th>
+        <th>{{ 'project.form.label.ending'|trans({}, 'TempoProject') }}</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for children in project.children %}
+        <tr>
+            <td>{{ children.id }}</td>
+            <td>{{ children.code }}</td>
+            <td><a href="{{ path('project_show', { 'slug' : children.slug } ) }}">{{ children.name }}</a> </td>
+            <td>{{ children.type }}</td>
+            <td>{{ children.renderStatus }}</td>
+            <td>{{ children.priority }}</td>
+            <td>{{ children.advancement }}%</td>
+            <td>{{ children.beginning.format("Y-m-j") }}</td>
+            <td>{{ children.ending.format("Y-m-j") }}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+<div id="delete_project" style="display: none">
+    {{ 'project.msg_delete'|trans([], 'TempoProject') }}
+</div>

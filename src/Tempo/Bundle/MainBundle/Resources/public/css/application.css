@@ -40,25 +40,43 @@ body {
 #header {
     background-color: #005782;
     background-image: -moz-linear-gradient(center top, #1A719C 0%, #005782 100%);
-    height: 40px;
+    /**height: 40px;**/
+    margin-bottom: 0px;
 }
 
+#header .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    border: 0;
+}
+
+#header .navbar-header .navbar-toggle {
+    background-color: #fff;
+
+}
+#header .navbar-toggle .icon-bar {
+    background-color: #005777
+}
 #header #logo {
     padding-left: 10px;
     padding-top: 10px;
-    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.8);
     font-size: 24px;
     width: 150px;
     float: left;
 }
 
-#header #logo a {
+#header .navbar-brand {
     font-weight: bold;
     color: #FFF;
     text-decoration: none;
     border-bottom: none;
     font-size: 15px;
-    padding: 5px 50px;
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.8);
 }
 
 #header #logo a:hover {
@@ -84,17 +102,6 @@ body {
     margin-right: 30px;
     margin-top: 6px;
 }
-
-#header #search form #adv_search {
-    background: url("/bundles/tempomain/images/advanced_search.png") no-repeat scroll right 50% transparent;
-    display: none;
-    height: 16px;
-    text-indent: -3000em;
-    width: 16px;
-    float: right;
-    padding-top: 10px;
-}
-
 #header #search form label {
     color: #FFF;
     font-size: 11px;
@@ -130,51 +137,31 @@ body {
 }
 
 #header nav {
-    float: left;
     margin-top: 4px;
-
 }
 
-#header nav#menu a:hover, #header nav#menu ul li.current a {
+#header nav #menu a:hover, #header nav #menu ul li.current a {
     background: linear-gradient(to bottom, rgba(255, 255, 255, 0.23) 0, rgba(255, 255, 255, 0.2) 100%);
     border-radius: 3px;
 }
 
-#header #member-menu {
-    float: right;
-    margin-right: 50px;
-    margin-top: 4px;
-
+#header #user-menu li.notification, #header #user-menu li.avatar {
+    height: 30px;
+}
+#header #user-menu li.notification a, #header #user-menu li.avatar a {
+    background: none;
 }
 
-#header #member-menu ul li.notification, #header #member-menu ul li.user {
-    float: left;
-}
 
-#header #member-menu ul li.notification {
-    padding-top: 5px;
-    margin-right: 20px;
-}
-
-#header #member-menu ul li.notification a {
-    color: #FFF;
-    font-size: 20px;
-}
-
-#header #member-menu .user a {
-    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.23) 0, rgba(255, 255, 255, 0.2) 100%);
+#header #user-menu li.avatar a.dropdown-toggle {
+    padding: 0px;
 }
 
 #header #member-menu .dropdown-menu > li > a:hover, #header #member-menu .dropdown-menu > li > a:focus {
     color: #000000;
 }
 
-#header nav#menu ul.right {
-    float: none;
-}
-
-#header nav#menu ul {
-    clear: both;
+#header nav ul#menu {
     color: #FFFFFF;
     height: 28px;
     margin-left: 25px;
@@ -182,24 +169,23 @@ body {
     list-style-type: none;
 }
 
-#header nav#menu ul li {
-    float: left;
-    margin-top: 2px;
+#header nav ul#menu li {
+    margin-top: 5px;
     margin-right: 2px;
 }
 
-#header nav#menu ul li a {
+#header nav ul#menu li a {
     font-weight: bold;
     color: #FFF;
     font-size: 12px;
     text-decoration: none;
     text-align: center;
     display: block;
-    padding: 6px 15px 8px;
+    padding: 4px 15px 8px;
     height: 27px;
 }
 
-#header nav#menu ul li .notification {
+#header nav ul#menu li .notification {
     background: none repeat scroll 0 0 #FFFFFF;
     border-color: #DFDFDF;
     border-style: solid;
@@ -295,20 +281,6 @@ body {
 }
 
 /***************
-    Utils
-****************/
-/**
-    @deprecated
-*/
-.float_left, .float-left {
-    float: left;
-}
-
-.float_right, .float-right {
-    float: right;
-}
-
-/***************
     Form
 ****************/
 
@@ -382,4 +354,8 @@ body {
     background: #C67;
     text-shadow: 0 1px 1px #945;
     padding: 10px
+}
+
+.modal-body .fantomas {
+    display: none;
 }

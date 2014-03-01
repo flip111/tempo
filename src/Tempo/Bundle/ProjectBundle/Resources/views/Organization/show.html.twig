@@ -11,10 +11,8 @@
     <h1 id="page-title" class="col-md-7"> {{ organization.name }} </h1>
 
 <div class="action col-md-4">
-    {% if is_granted('NEW', organization) %}
-    <a href="{{ path('project_new', { 'organization' : organization.slug }) }}" class="btn btn-xs btn-primary"><span class="glyphicon glyphicon-plus"></span> {{ 'project.add'|trans({},'TempoProject') }} </a>
-    {% endif %}
     {% if is_granted('EDIT', organization) %}
+    <a href="{{ path('project_new', { 'organization' : organization.slug }) }}" class="btn btn-xs btn-primary"><span class="glyphicon glyphicon-plus"></span> {{ 'project.add'|trans({},'TempoProject') }} </a>
     <a class="btn btn-xs btn btn-info" href="{{ path('organization_edit', { 'slug' : organization.slug }) }}"> <span class="glyphicon glyphicon-edit"></span> Edit</a>
     {% endif %}
     {% if is_granted('DELETE', organization) %}
@@ -58,7 +56,7 @@
     <ul class="list-project">
     {% for project in projects %}
         <li>
-            <img src="{{ icon('/bundles/tempomain/images/default-icon-project.png', 38 ) }}" />
+            <img src="{{ 'bundles/tempomain/images/default-icon-project.png' | imagine_filter('project_thumb') }}" />
             <a href="{{ path('project_show', { 'slug' :  project.slug } ) }}">{{ project.name }} </a>
         </li>
     {% else %}

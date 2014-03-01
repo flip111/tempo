@@ -1,7 +1,14 @@
-tempo_activity_provider_ws:
+activity_provider_ws:
     pattern: /ws/activity/provider/{id}
     defaults:
         _controller: TempoActivityBundle:Activity:provider
+
+activity_list:
+    pattern: /activity/list/{type}/{project}
+    defaults:
+        _controller: TempoActivityBundle:Activity:list
+    options:
+      expose: true
 
 activity_test:
     pattern: /activity/test

@@ -18,14 +18,16 @@ use Symfony\Component\HttpFoundation\Request;
 use FOS\RestBundle\Controller\Annotations\Get;
 use FOS\RestBundle\Controller\Annotations\NamePrefix;
 
-
+/**
+ * @NamePrefix("user_api_")
+ */
 class UserController extends FOSRestController
 {
     /**
      * GET Route annotation.
-     * @Get("/users/search/{username}")
+     * @Get("/users/search/{username}", defaults={"username" = ""})
      */
-    public function autocompleteAction(Request $request, $username)
+    public function autocompleteAction(Request $request, $username = null)
     {
         $username = $request->query->get('term', $username);
 

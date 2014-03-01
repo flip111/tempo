@@ -1,5 +1,5 @@
 <h4>{{ 'organization.team'|trans({},'TempoProject') }} </h4>
-<a data-toggle="modal" data-target="#" data-title="Adding a team member" href="#add_membre" class="float-right btn btn-xs btn-info">Add membre<span></span></a>
+<a data-toggle="modal" data-target="#" data-title="Adding a team member" href="#add_membre" class="btn btn-xs btn-info">Add membre<span></span></a>
 
 <div class="list_membre">
     {% include 'TempoProjectBundle:Team:list.html.twig' with {'users': organization.team } %}

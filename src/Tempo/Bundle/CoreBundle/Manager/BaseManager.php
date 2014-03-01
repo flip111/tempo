@@ -23,7 +23,7 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 abstract class BaseManager
 {
-    protected $repository;
+    public $repository;
     protected $em;
     protected $class;
 
@@ -45,7 +45,7 @@ abstract class BaseManager
      */
     public function find($id)
     {
-        $entity =  $this->getRepository()->find($id);
+        $entity =  $this->repository->find($id);
         return $this->createNotFoundException($entity);
     }
 
@@ -55,7 +55,7 @@ abstract class BaseManager
      */
     public function findOneBySlug($slug)
     {
-        $entity = $this->getRepository()->findOneBySlug($slug);
+        $entity = $this->repository->findOneBySlug($slug);
         return $this->createNotFoundException($entity);
     }
 
@@ -64,7 +64,7 @@ abstract class BaseManager
      */
     public function findAll()
     {
-        return $this->getRepository()->findAll();
+        return $this->repository->findAll();
     }
 
     /**
@@ -72,12 +72,13 @@ abstract class BaseManager
      */
     public function findAllByUser($user)
     {
-        return $this->getRepository()->findAllByUser($user);
+        return $this->repository->findAllByUser($user);
     }
 
     /**
      * persist and flush
      * @param $entity
+     * @deprecated
      */
     public function persistAndFlush($entity)
     {
@@ -88,19 +89,36 @@ abstract class BaseManager
     /**
      * remove and flush
      * @param $entity
+     * @deprecated
      */
     public function removeAndFlush($entity)
     {
-        $this->em->remove($entity);
-        $this->em->flush();
+        $this->remove($entity);
     }
 
+
     /**
-     * @return mixed
+     * Persist the given entity
+     *
+     * @param mixed $entity  An entity instance
+     * @param bool  $doFlush Also flush  entity manager?
      */
-    public function getRepository()
+    public function save($entity, $doFlush = true)
     {
-        return $this->repository;
+        $this->em->persist($entity);
+
+        if ($doFlush) {
+            $this->em->flush();
+        }
+    }
+
+    public function remove($entity, $doFlush = true)
+    {
+        $this->em->remove($entity);
+
+        if ($doFlush) {
+            $this->em->flush();
+        }
     }
 
     /**

@@ -13,6 +13,7 @@
 namespace Tempo\Bundle\ActivityBundle\Manager;
 
 use Tempo\Bundle\CoreBundle\Manager\BaseManager;
+use Tempo\Bundle\ActivityBundle\Entity\Activity;
 
 class ActivityManager extends BaseManager
 {
@@ -38,7 +39,7 @@ class ActivityManager extends BaseManager
             ->setTarget($target)
             ->setTargetType($reflected->getShortName());
 
-        $this->persistAndFlush($event);
+        $this->save($event);
     }
 
     /**
@@ -48,7 +49,7 @@ class ActivityManager extends BaseManager
      */
     public function render($type = null, $user = null)
     {
-        $fin = $this->getRepository()->findLastActivities($type, $user);
+        $fin = $this->repository->findLastActivities($type, $user);
 
         return $fin;
     }

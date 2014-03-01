@@ -20,5 +20,13 @@ use Doctrine\ORM\Query;
 
 class RoomRepository extends EntityRepository
 {
-
+    public function findRoomWithProject($project)
+    {
+        return
+            $this->createQueryBuilder('r')
+                ->where('r.project = :project')
+                ->setParameter('project', $project)
+                ->getQuery()->getSingleResult();
+            ;
+    }
 }

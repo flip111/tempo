@@ -1,4 +1,4 @@
-Tempo.behavior.create('autocomplete', function(config, statics) {
+Tempo.Behavior.create('autocomplete', function(config, statics) {
 
     console.log(config.callback);
     if (!config.options) {
