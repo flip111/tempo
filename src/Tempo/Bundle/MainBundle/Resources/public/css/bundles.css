@@ -213,7 +213,6 @@ table.table-striped tbody .actions .edit {
     margin-left: 25px;
 }
 
-
 #user.login #contenair label {
     margin-bottom: 8px;
     color: #888;
@@ -232,10 +231,9 @@ table.table-striped tbody .actions .edit {
     margin: 0;
     padding: 3px;
     width: 440px;
-    height:35px;
+    height: 35px;
     background-color: #FAFAFA;
     border: 1px solid #EEE;
-
 }
 
 #user.login #contenair .submit {
@@ -304,7 +302,6 @@ table.table-striped tbody .actions .edit {
     list-style: none;
     float: left;
     padding-left: 10px;
-
 }
 .user.list {
 
