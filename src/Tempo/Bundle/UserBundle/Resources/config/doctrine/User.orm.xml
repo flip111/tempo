@@ -12,32 +12,28 @@
             <generator strategy="AUTO" />
         </id>
 
+        <field name="googleId" column="google_id" type="string" nullable="true" />
+
         <field name="firstName" column="first_name" type="string" nullable="true" />
         <field name="lastName" column="last_name" type="string" nullable="true" />
+
+        <field name="gender" column="gender" type="integer" nullable="true" />
+        <field name="company" column="company" type="string" nullable="true" />
         <field name="jobTitle" column="job_title" type="string" nullable="true" />
         <field name="phone" column="phone" type="string" nullable="true" />
-        <field name="mobilePhone" column="phone_mobile" type="string" nullable="true" />
+        <field name="phoneMobile" column="phone_mobile" type="string" nullable="true" />
+        <field name="avatar" column="avatar" type="string" nullable="true" />
         <field name="skype" column="skype" type="string" nullable="true" />
         <field name="viadeo" column="viadeo" type="string" nullable="true" />
         <field name="linkedin" column="linkedin" type="string" nullable="true" />
         <field name="twitter" column="twitter" type="string" nullable="true" />
-        <field name="avatar" column="avatar" type="string" nullable="true" />
-        <field name="company" column="company" type="string" nullable="true" />
-        <field name="gender" column="gender" type="string" nullable="true" />
 
-        <many-to-many field="groups" target-entity="Tempo\Bundle\UserBundle\Entity\Group">
-            <join-table name="tempo_user_group">
-                <join-columns>
-                    <join-column name="user_id" referenced-column-name="id" on-delete="CASCADE"/>
-                </join-columns>
-                <inverse-join-columns>
-                    <join-column name="group_id" referenced-column-name="id" on-delete="CASCADE"/>
-                </inverse-join-columns>
-            </join-table>
-            <cascade>
-                <cascade-all />
-            </cascade>
-        </many-to-many>
+        <field name="createdAt" column="created_at" type="datetime">
+            <gedmo:timestampable on="create"/>
+        </field>
+        <field name="updatedAt" column="updated_at" type="datetime">
+            <gedmo:timestampable on="update"/>
+        </field>
 
     </entity>
 

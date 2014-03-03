@@ -2,15 +2,11 @@
 
 {% block content %}
 
-
 <script type="text/javascript">
-
    window.onload = function(){
-       var element;
-       element = document.getElementById("user");
+       var element = document.getElementById("user");
        element.setAttribute('style', 'background: url("{{ asset('bundles/tempomain/images/bg_login.jpg') }}"); background-position: left top;');
    }
-
 </script>
 
 <h1>Tempo </h1>
@@ -41,13 +37,16 @@
     </div>
     <div class="widget rest clearfix">
 
-
-
          <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
 
     </div>
-    <div id="powered" class="clearfix">
-        <p>Powered by <a href="http://www.ikimea.com">Ikimea</a> </p>
+    <div class="widget pp clearfix">
+        <div id="providers" class="col-md-6">
+            {% render url('hwi_oauth_connect') %}
+        </div>
+        <div id="powered" class="col-md-6">
+            <p>Powered by <a href="http://www.ikimea.com">Ikimea</a> </p>
+        </div>
     </div>
 
 </form>

@@ -9,141 +9,178 @@
 * file that was distributed with this source code.
 */
 
-
 namespace Tempo\Bundle\UserBundle\Model;
 
 use FOS\UserBundle\Model\UserInterface as BaseUserInterface;
 use Sylius\Bundle\ResourceBundle\Model\TimestampableInterface;
 
-
 interface UserInterface extends BaseUserInterface, TimestampableInterface
 {
     /**
-     * Get first name
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId();
+
+    /**
+     * Alias for parent::getUsernameCanonical()
+     * @param $slug
+     * @return string
+     */
+    public function getSlug();
+
+    /**
+     * Get first_name
+     *
+     * @return string
      */
     public function getFirstName();
 
     /**
-     * Set first name
+     * Set firstname.
      *
      * @param string $firstName
      */
     public function setFirstName($firstName);
 
     /**
-     * Get last name
+     * Get last_name
+     *
+     * @return string
      */
     public function getLastName();
 
     /**
-     * Set last name
+     * Set last_name
      *
      * @param string $lastName
      */
     public function setLastName($lastName);
 
     /**
-     * Get company
-     *
-     * @return string
+     * @return mixed
      */
     public function getCompany();
 
     /**
-     * Set currency
-     *
-     * @param string $company
+     * @return mixed
      */
     public function setCompany($company);
 
     /**
-     * Get Job tile.
+     * @return mixed
+     */
+    public function getOrganizations();
+
+    /**
+     * Set job_title
      *
+     * @param string $jobTitle
+     */
+    public function setJobTitle($jobTitle);
+
+    /**
+     * Get job_title
+     *
+     * @return string
      */
     public function getJobTitle();
 
-    /*
-     * Set job title.
-     *
-     * @param string $job
-     */
-    public function setJobTitle($job);
-
     /**
-     * Get Job tile.
-     *
-     */
-    public function getPhone();
-
-    /*
-    * Set phone
-    *
-    * @param string $phone
-    */
-    public function setPhone($phone);
-
-    /**
-     * Get mobile phone.
-     *
-     */
-    public function getMobilePhone();
-
-    /*
-     * Set mobile phone
+     * Set phone
      *
      * @param string $phone
      */
-    public function setMobilePhone($phone);
+    public function setPhone($phone);
 
     /**
-     * get username Skype
-     */
-    public function getSkype();
-
-    /**
-     * set username Skype
+     * Get phone
      *
-     * @param string $skype
+     * @return string
      */
-    public function setSkype($skype);
+    public function getPhone();
 
     /**
-     * get username Linkedin
+     * Set phone_mobile
      *
+     * @param string $phoneMobile
      */
-    public function getLinkedin();
+    public function setPhoneMobile($phoneMobile);
 
     /**
-     * set username Linkedin
+     * Get phone_mobile
      *
-     * @param string $linkedin
+     * @return string
+     */
+    public function getPhoneMobile();
+
+    public function hasAvatar();
+
+    public function hasLocalAvatar();
+
+    public function hasGravatar();
+
+
+    public function getAvatar($size = 80, $default = 'mm');
+
+    /**
+     * @param string $avatar
+     */
+    public function setAvatar($avatar);
+
+    public function getGravatarUrl();
+
+    /**
+     * @param mixed $googleId
+     */
+    public function setGoogleId($googleId);
+
+    /**
+     * @return mixed
+     */
+    public function getGoogleId();
+
+    /**
+     * @param mixed $linkedin
      */
     public function setLinkedin($linkedin);
 
     /**
-     * get username Twitter
-     *
+     * @return mixed
      */
-    public function getTwitter();
+    public function getLinkedin();
+    /**
+     * @param mixed $skype
+     */
+    public function setSkype($skype);
 
     /**
-     * set username Twitter
-     *
-     * @param string $twitter
+     * @return mixed
+     */
+    public function getSkype();
+
+    /**
+     * @param mixed $twitter
      */
     public function setTwitter($twitter);
 
     /**
-     * get username Viadeo
-     *
+     * @return mixed
+     */
+    public function getTwitter();
+
+    /**
+     * @param mixed $viadeo
+     */
+    public function setViadeo($viadeo);
+
+    /**
+     * @return mixed
      */
     public function getViadeo();
 
-    /**
-     * set username Viadeo
-     *
-     * @param string $viadeo
-     */
-    public function setViadeo($viadeo);
+
+    public function getGender();
 
 }

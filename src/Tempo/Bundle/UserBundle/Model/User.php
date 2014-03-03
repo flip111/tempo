@@ -9,32 +9,35 @@
 * file that was distributed with this source code.
 */
 
-
 namespace Tempo\Bundle\UserBundle\Model;
 
 use FOS\UserBundle\Model\User as BaseUser;
-
+use Doctrine\Common\Collections\ArrayCollection;
 
 class User extends BaseUser implements UserInterface
 {
     protected $id;
-    protected $createdAt;
+    protected $googleId;
     protected $firstName;
     protected $lastName;
+    protected $createdAt;
+    protected $updatedAt;
     protected $gender;
     protected $company;
     protected $jobTitle;
     protected $phone;
-    protected $mobilePhone;
+    protected $phoneMobile;
     protected $avatar;
     protected $skype;
+    protected $viadeo;
     protected $linkedin;
     protected $twitter;
-    protected $viadeo;
-    protected $organization;
+    protected $organizations;
 
     public function __construct()
     {
+        $this->createdAt = new \DateTime();
+
         parent::__construct();
     }
 
@@ -59,7 +62,7 @@ class User extends BaseUser implements UserInterface
     }
 
     /**
-     * {@inheritdoc}
+     * @return string
      */
     public function getCompany()
     {
@@ -67,7 +70,7 @@ class User extends BaseUser implements UserInterface
     }
 
     /**
-     * {@inheritdoc}
+     * @return string
      */
     public function setCompany($company)
     {
@@ -75,15 +78,17 @@ class User extends BaseUser implements UserInterface
     }
 
     /**
-     * {@inheritdoc}
+     * @return ArrayCollection
      */
     public function getOrganizations()
     {
-        return $this->organization;
+        return $this->organizations;
     }
 
     /**
-     * {@inheritdoc}
+     * Set firstName
+     *
+     * @param string $firstName
      */
     public function setFirstName($firstName)
     {
@@ -91,7 +96,9 @@ class User extends BaseUser implements UserInterface
     }
 
     /**
-     * {@inheritdoc}
+     * Get firstName
+     *
+     * @return string
      */
     public function getFirstName()
     {
@@ -99,7 +106,9 @@ class User extends BaseUser implements UserInterface
     }
 
     /**
-     * {@inheritdoc}
+     * Set last_name
+     *
+     * @param string $lastName
      */
     public function setLastName($lastName)
     {
@@ -107,7 +116,9 @@ class User extends BaseUser implements UserInterface
     }
 
     /**
-     * {@inheritdoc}
+     * Get last_name
+     *
+     * @return string
      */
     public function getLastName()
     {
@@ -115,63 +126,9 @@ class User extends BaseUser implements UserInterface
     }
 
     /**
-     * {@inheritdoc}
-     */
-    public function getCreatedAt()
-    {
-        return $this->createdAt;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function setCreatedAt(\DateTime $createdAt)
-    {
-        $this->createdAt = $createdAt;
-
-        return $this;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getUpdatedAt()
-    {
-        return $this->createdAt;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function setUpdatedAt(\DateTime $updatedAt)
-    {
-        $this->updatedAt = $updatedAt;
-
-        return $this;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function setEmail($email)
-    {
-        parent::setEmail($email);
-
-        return $this;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function setEmailCanonical($emailCanonical)
-    {
-        parent::setEmailCanonical($emailCanonical);
-
-        return $this;
-    }
-
-    /**
-     * {@inheritdoc}
+     * Set job_title
+     *
+     * @param string $jobTitle
      */
     public function setJobTitle($jobTitle)
     {
@@ -179,7 +136,9 @@ class User extends BaseUser implements UserInterface
     }
 
     /**
-     * {@inheritdoc}
+     * Get job_title
+     *
+     * @return string
      */
     public function getJobTitle()
     {
@@ -187,7 +146,9 @@ class User extends BaseUser implements UserInterface
     }
 
     /**
-     * {@inheritdoc}
+     * Set phone
+     *
+     * @param string $phone
      */
     public function setPhone($phone)
     {
@@ -205,83 +166,23 @@ class User extends BaseUser implements UserInterface
     }
 
     /**
-     * {@inheritdoc}
+     * Set phone_mobile
+     *
+     * @param string $phoneMobile
      */
-    public function setMobilePhone($phone)
+    public function setPhoneMobile($phoneMobile)
     {
-        $this->mobilePhone = $phone;
+        $this->phoneMobile = $phoneMobile;
     }
 
     /**
-     * {@inheritdoc}
+     * Get phone_mobile
+     *
+     * @return string
      */
-    public function getMobilePhone()
+    public function getPhoneMobile()
     {
-        return $this->mobilePhone;
-    }
-
-   /**
-    * {@inheritdoc}
-    */
-    public function setSkype($skype)
-    {
-        $this->skype = $skype;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getSkype()
-    {
-        return $this->skype;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function setLinkedin($linkedin)
-    {
-        $this->linkedin = $linkedin;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getLinkedin()
-    {
-        return $this->linkedin;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function setTwitter($twitter)
-    {
-        $this->twitter = $twitter;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getTwitter()
-    {
-        return $this->twitter;
-    }
-
-   /**
-    * {@inheritdoc}
-    */
-    public function setViadeo($viadeo)
-    {
-        $this->viadeo = $viadeo;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getViadeo()
-    {
-        return $this->viadeo;
+        return $this->phoneMobile;
     }
 
     public function hasAvatar()
@@ -298,7 +199,6 @@ class User extends BaseUser implements UserInterface
     {
         return (boolean)@fopen($this->getGravatarUrl() . '?d=404', 'r');
     }
-
 
     public function getAvatar($size = 80, $default = 'mm')
     {
@@ -317,13 +217,125 @@ class User extends BaseUser implements UserInterface
         $this->avatar = $avatar;
     }
 
-    protected function getGravatarUrl()
+    public function getGravatarUrl()
     {
         return 'http://www.gravatar.com/avatar/' . md5(strtolower(trim($this->email)));
+    }
+
+    /**
+     * @param mixed $googleId
+     */
+    public function setGoogleId($googleId)
+    {
+        $this->googleId = $googleId;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getGoogleId()
+    {
+        return $this->googleId;
+    }
+
+    /**
+     * @param mixed $linkedin
+     */
+    public function setLinkedin($linkedin)
+    {
+        $this->linkedin = $linkedin;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getLinkedin()
+    {
+        return $this->linkedin;
+    }
+
+    /**
+     * @param mixed $skype
+     */
+    public function setSkype($skype)
+    {
+        $this->skype = $skype;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSkype()
+    {
+        return $this->skype;
+    }
+
+    /**
+     * @param mixed $twitter
+     */
+    public function setTwitter($twitter)
+    {
+        $this->twitter = $twitter;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTwitter()
+    {
+        return $this->twitter;
+    }
+
+    /**
+     * @param mixed $viadeo
+     */
+    public function setViadeo($viadeo)
+    {
+        $this->viadeo = $viadeo;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getViadeo()
+    {
+        return $this->viadeo;
     }
 
     public function getGender()
     {
         return $this->gender;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getCreatedAt()
+    {
+        return $this->createdAt;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setCreatedAt(\DateTime $createdAt)
+    {
+        $this->createdAt = $createdAt;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getUpdatedAt()
+    {
+        return $this->createdAt;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setUpdatedAt(\DateTime $updatedAt)
+    {
+        $this->updatedAt = $updatedAt;
     }
 }
