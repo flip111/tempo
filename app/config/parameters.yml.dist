@@ -16,3 +16,7 @@ parameters:
 
   oauth.google.clientid:     <google_client_id>
   oauth.google.clientsecret: <google_client_secret>
+  socket_io.client: localhost:8000
+
+  knp_snappy.pdf.binary: /usr/bin/wkhtmltopdf
+  knp_snappy.image.binary: /usr/bin/wkhtmltopdf

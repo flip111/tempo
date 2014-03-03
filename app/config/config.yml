@@ -139,11 +139,11 @@ tempo_project:
 knp_snappy:
     pdf:
         enabled:    true
-        binary:     /usr/bin/wkhtmltopdf
+        binary:     %knp_snappy.pdf.binary%
         options:    []
     image:
         enabled:    true
-        binary:     /usr/bin/wkhtmltoimage
+        binary:     %knp_snappy.image.binary%
         options:    []
 
 mopa_bootstrap:
@@ -154,7 +154,7 @@ mopa_bootstrap:
         render_optional_text: false
 
 tempo_js_configuration:
-  config_to_expose: [mopa_bootstrap.form.show_legend]
+  config_to_expose: [locale]
 
 jms_serializer:
     metadata:
