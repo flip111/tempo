@@ -77,14 +77,9 @@ class ProjectController extends Controller
      */
     public function showAction($slug)
     {
-        $project  = $this->getManager()->getProject($slug);
         $csrfToken = $this->get('form.csrf_provider')->generateCsrfToken('delete-project');
 
-        if (false === $this->get('security.context')->isGranted('VIEW', $project) &&
-            false === $this->get('security.context')->isGranted('ROLE_ADMIN')
-        ) {
-            throw new AccessDeniedException();
-        }
+        $project  = $this->getProject($slug, 'VIEW');
 
         $teamForm = $this->createForm(new TeamType());
 
@@ -157,13 +152,8 @@ class ProjectController extends Controller
      */
     public function editAction($slug)
     {
-        $project = $this->getManager()->getProject($slug);
+        $project = $this->getManager()->getProject($slug, 'EDIT');
         $editForm = $this->createForm(new ProjectType(), $project);
-
-        if (false === $this->get('security.context')->isGranted('EDIT', $project) &&
-            false === $this->get('security.context')->isGranted('ROLE_ADMIN')) {
-            throw new AccessDeniedException();
-        }
 
         return $this->render('TempoProjectBundle:Project:edit.html.twig', array(
             'project'      => $project,
@@ -178,12 +168,8 @@ class ProjectController extends Controller
      */
     public function updateAction(Request $request, $slug)
     {
-        $project = $this->getManager()->getProject($slug);
+        $project = $this-->getProject($slug, 'EDIT');
         $editForm   = $this->createForm(new ProjectType(), $project);
-
-        if (false === $this->get('security.context')->isGranted('ROLE_ADMIN', $project)) {
-            throw new AccessDeniedException();
-        }
 
         if ($request->isMethod('POST') && $editForm->submit($request)->isValid()) {
             $event = new ProjectEvent($project, $request);
@@ -214,11 +200,7 @@ class ProjectController extends Controller
             throw new AccessDeniedHttpException('Invalid CSRF token.');
         }
 
-        $project = $this->getManager()->getProject($slug);
-
-        if (false === $this->get('security.context')->isGranted('DELETE', $project)) {
-            throw new AccessDeniedException();
-        }
+        $project = $this->getProject($slug, 'DELETE');
 
         $this->getManager()->removeAndFlush($project);
         $event = new ProjectEvent($project, $request);
@@ -234,6 +216,21 @@ class ProjectController extends Controller
     private function getManager()
     {
         return $this->get('tempo_project.manager.project');
+    }
+
+    public function getProject($key, $right = 'VIEW')
+    {
+        $project = $this->getManager()->getProject($key);
+
+        if(!$project) {
+            $this->createNotFoundException();
+        }
+
+        if (false === $this->get('security.context')->isGranted($right, $project)) {
+            throw new AccessDeniedException();
+        }
+
+        return $project;
     }
 
     /**
