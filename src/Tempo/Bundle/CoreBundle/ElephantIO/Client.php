@@ -9,7 +9,7 @@
 * file that was distributed with this source code.
 */
 
-namespace Tempo\Bundle\CoreBundle\Elephant;
+namespace Tempo\Bundle\CoreBundle\ElephantIO;
 
 use ElephantIO\Client as Elephant;
 

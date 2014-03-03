@@ -6,11 +6,12 @@
     <parameters>
         <parameter key="tempo_core.eventlister.class">Tempo\Bundle\CoreBundle\EventListener\ControllerListener</parameter>
         <parameter key="tempo_core.twig.extension.class">Tempo\Bundle\CoreBundle\Twig\Extension\CoreExtension</parameter>
-        <parameter key="tempo_core.elephantio.client.class">Tempo\Bundle\CoreBundle\Elephant\Client</parameter>
+        <parameter key="tempo_core.elephantio.client.class">Tempo\Bundle\CoreBundle\ElephantIO\Client</parameter>
         <parameter key="tempo.form.type.autocomplete.class">Tempo\Bundle\CoreBundle\Form\Type\AutocompleteType</parameter>
         <parameter key="tempo.form.type.list.class">Tempo\Bundle\CoreBundle\Form\Type\ListType</parameter>
     </parameters>
     <services>
+
         <service id="tempo.core.entity_manager" factory-service="doctrine" factory-method="getManager" class="Doctrine\ORM\EntityManager" public="false" />
 
         <service id="tempo_core.listener.controller" class="%tempo_core.eventlister.class%">
@@ -28,7 +29,6 @@
             <tag name="twig.extension" />
         </service>
 
-
         <service id="tempo.form.type.autocomplete" class="%tempo.form.type.autocomplete.class%">
             <argument type="service" id="tempo_main.behavior" />
             <tag name="form.type" alias="autocomplete" />
@@ -37,7 +37,6 @@
         <service id="tempo.form.type.list" class="%tempo.form.type.list.class%">
             <tag name="form.type" alias="list" />
         </service>
-
 
     </services>
 </container>
