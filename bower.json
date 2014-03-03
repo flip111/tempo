@@ -10,6 +10,7 @@
         "tinycon": "latest",
         "backbone": "latest",
         "lodash": "latest",
-        "marionette": "latest"
+        "marionette": "latest",
+        "eonasdan-bootstrap-datetimepicker": "latest"
     }
 }
