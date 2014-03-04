@@ -14,9 +14,12 @@ parameters:
   locale:            en
   secret:            cb8f190153190ebe8598ac49e86ebf37
 
+  socket_io.client: localhost:8000
+
   oauth.google.clientid:     <google_client_id>
   oauth.google.clientsecret: <google_client_secret>
-  socket_io.client: localhost:8000
+  oauth.github.clientid:     <github_client_id>
+  oauth.github.clientsecret: <github_client_secret>
 
   knp_snappy.pdf.binary: /usr/bin/wkhtmltopdf
   knp_snappy.image.binary: /usr/bin/wkhtmltopdf

@@ -14,14 +14,10 @@ security:
         dev:
             pattern:  ^/(_(profiler|wdt)|css|images|js)/
             security: false
-        login:
-            pattern:  ^/login$
-            security: false
         main:
             pattern: ^/
             switch_user: false
             context:     user
-            pattern:     /.*
             form_login:
                 provider: fos_userbundle
                 login_path: /login
@@ -39,6 +35,7 @@ security:
             oauth:
                 resource_owners:
                   google: "/login/check-google"
+                  github: "/login/check-github"
                 login_path: /login
                 failure_path: /login
                 oauth_user_provider:
@@ -49,7 +46,7 @@ security:
     access_control:
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/admin/, role: ROLE_ADMIN }
-        - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/login, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/connect.*, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/ws, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/*, role: ROLE_USER }

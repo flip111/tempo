@@ -106,6 +106,12 @@ hwi_oauth:
             client_secret: %oauth.google.clientsecret%
             scope:         "https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile"
 
+        github:
+            type: github
+            client_id:     %oauth.github.clientid%
+            client_secret: %oauth.github.clientsecret%
+
+
 ivory_ck_editor:
   configs:
     default:
