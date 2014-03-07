@@ -168,14 +168,14 @@ class ProjectController extends Controller
      */
     public function updateAction(Request $request, $slug)
     {
-        $project = $this-->getProject($slug, 'EDIT');
+        $project = $this->getProject($slug, 'EDIT');
         $editForm   = $this->createForm(new ProjectType(), $project);
 
         if ($request->isMethod('POST') && $editForm->submit($request)->isValid()) {
             $event = new ProjectEvent($project, $request);
             $this->get('event_dispatcher')->dispatch(TempoProjectEvents::PROJECT_EDIT_INITIALIZE, $event);
 
-            $this->getManager()->persistAndFlush($project);
+            $this->getManager()->save($project);
             $this->get('event_dispatcher')->dispatch(TempoProjectEvents::PROJECT_EDIT_SUCCESS, $event);
 
             return $this->redirect($this->generateUrl('project_edit', array('slug' => $project->getSlug() )));
@@ -202,7 +202,7 @@ class ProjectController extends Controller
 
         $project = $this->getProject($slug, 'DELETE');
 
-        $this->getManager()->removeAndFlush($project);
+        $this->getManager()->remove($project);
         $event = new ProjectEvent($project, $request);
         $this->get('event_dispatcher')->dispatch(TempoProjectEvents::PROJECT_DELETE_COMPLETED, $event);
 
@@ -226,7 +226,8 @@ class ProjectController extends Controller
             $this->createNotFoundException();
         }
 
-        if (false === $this->get('security.context')->isGranted($right, $project)) {
+        if ( false === $this->get('security.context')->isGranted($right, $project) && !$this->get('security.context')->isGranted('ROLE_ADMIN', $project)
+        ) {
             throw new AccessDeniedException();
         }
 
