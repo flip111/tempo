@@ -10,11 +10,13 @@
 Tempo.Controller.Timesheet = Backbone.Marionette.Controller.extend({
 
     collection: new Tempo.Collection.Timesheet(),
-    view : new Tempo.View.Timesheet(this.collection),
+    //view : new Tempo.View.Timesheet(),
 
     initialize: function() {
 
-        this.collection.fetch();
+        //this.collection.fetch();
+
+        this.view  = new Tempo.View.Timesheet();
 
         $('.cra_load').on('click', function(e) {
             e.preventDefault();

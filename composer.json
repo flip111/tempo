@@ -56,7 +56,7 @@
         "nelmio/api-doc-bundle": "dev-master",
         "willdurand/js-translation-bundle": "v2.0.0",
         "sylius/settings-bundle": "1.0.*@dev",
-        "wisembly/excelant": "*",
+        "phpoffice/phpexcel": "1.8.0",
         "jms/twig-js-bundle": "dev-master"
     },
     "require-dev": {

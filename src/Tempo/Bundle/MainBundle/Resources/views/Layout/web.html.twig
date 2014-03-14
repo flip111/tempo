@@ -5,6 +5,7 @@
     {% stylesheets
         'vendor/bootstrap/dist/css/bootstrap.min.css'
         'bundles/tempomain/css/jquery-ui-1.10.0.custom.css'
+        'vendor/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.css'
         'bundles/tempomain/css/application.css'
         'bundles/tempomain/css/bundles.css'
         filter='?cssrewrite'
@@ -46,11 +47,6 @@
                 <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
                     {{ knp_menu_render('main') }}
                     <ul id="user-menu" class="nav navbar-nav navbar-right">
-                        <li class="notification dropdown togglable dropdown-notifications">
-                            <a href="#"><span class="glyphicon glyphicon-bell"></span></a>
-                            <div class="notifications dropdown-menu">
-                            </div>
-                        </li>
                         <li class="avatar">
                             <a href="#" data-toggle="dropdown" class="dropdown-toggle">
                                 <img src=" {{ app.user.avatar(30) }}" alt="Avatar" />
@@ -70,7 +66,7 @@
         <div id="content">
             <div class="row">
                 {% block body %}
-                <div id="child-content" class="col-md-{{ sidebar is defined ? '8' : '12' }}">
+                <div id="child-content" class="col-md-{{ sidebar is defined ? '10' : '12' }}">
                     {% block breadcrumb %}
                         {{ knp_menu_render('breadcrumb') }}
                     {% endblock breadcrumb %}
@@ -123,18 +119,21 @@
             'vendor/tinycon/tinycon.min.js'
             'vendor/moment/moment.js'
             'vendor/modernizr/modernizr.js'
-            'vendor/underscore/underscore.js'
+            'vendor/lodash/dist/lodash.underscore.min.js'
             'http://www.myersdaily.org/joseph/javascript/md5.js'
             'vendor/backbone/backbone.js'
             'vendor/marionette/lib/backbone.marionette.js'
             'bundles/tempomain/js/pimple.js'
             'bundles/bazingajstranslation/js/translator.min.js'
             'bundles/fosjsrouting/js/router.js'
+            'vendor/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js'
             'bundles/tempojsconfiguration/js/configuration.js'
             'js/tempo_configuration.js'
             'bundles/tempomain/js/routerManager.js'
             'bundles/tempomain/js/app.js'
             'bundles/tempomain/js/behavior.js'
+            '../vendor/jms/twig-js/twig.js'
+
         %}
         <script src="{{ asset_url }}"></script>
         {% endjavascripts %}

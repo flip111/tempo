@@ -1,23 +1,24 @@
-Tempo.View.Timesheet = Backbone.Marionette.ItemView.extend({
+Tempo.View.Timesheet = Backbone.View.extend({
 
-    triggers: {
-        'keyup :input': 'logKey'
-        ,'keypress :input': 'logKey'
+    el: $("#content"),
+    events: {
+        'click .filter': 'filterClick'
     },
     logKey: function(e) {
         console.log(e.type, e.keyCode);
     },
 
     initialize: function() {
-
-        //this.listenTo(this.collection, 'add', this.addOne);
-        //this.listenTo(this.collection, 'all', this.render);
+        _.bindAll(this, "render","filterClick");
     },
     modelAdded: function(model) {
         console.log(model);
     },
 
-    render: function() {
+    filterClick: function(e) {
+        $('.filter-content').toggle('slow');
+    },
 
+    render: function() {
     }
 });

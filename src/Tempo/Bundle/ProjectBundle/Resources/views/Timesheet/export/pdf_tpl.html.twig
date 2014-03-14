@@ -1,0 +1,35 @@
+<style>
+    table thead tr th {
+        background: #005782;
+        color: #fff;
+        padding: 5px;
+    }
+    table tbody tr td {
+        padding: 5px;
+    }
+
+</style>
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Date</th>
+            <th>État</th>
+            <th>Action</th>
+            <th>Durée</th>
+            <th>Coût</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for item in list %}
+        <tr>
+            <td>{{ item.id }}</td>
+            <td>{{ item.period|date("m/d/Y") }}</td>
+            <td>{{ item.billable|date("m/d/Y")  }}</td>
+            <td>{{ item.description }}</td>
+            <td style="text-align: center">{{ item.time }}H</td>
+            <td></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>

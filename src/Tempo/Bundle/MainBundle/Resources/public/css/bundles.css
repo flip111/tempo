@@ -441,6 +441,7 @@ table.table-striped tbody .actions .edit {
     float: left;
     font-weight: bold;
     margin-right: 1em;
+    text-align: left;
 }
 .dashboard h3.homeTitle {
     font-size: 15px;
@@ -491,6 +492,15 @@ table.table-striped tbody .actions .edit {
     text-align: center;
 }
 
+#choose-organization .first span:before {
+    content: "↓";
+}
+@media (min-width: 992px) {
+    #choose-organization .first span:before {
+        content: " ⟶ ";
+    }
+}
+
 /* Settings */
 .records_list {
     width: 90%;
@@ -533,11 +543,6 @@ table.table-striped tbody .actions .edit {
     margin-top: 35px;
     margin-bottom: 35px;
     text-align: center;
-}
-
-.organization #sidebar a.btn, .project #sidebar a.btn {
-    margin-bottom: 5px;
-    display: block;
 }
 
 .organization.show #sidebar .list_membre, .project #sidebar .list_membre {
@@ -876,7 +881,7 @@ table.table-striped tbody .actions .edit {
     float: left;
     list-style: none;
 }
-.timesheet.dashboard .actions li {
+.timesheet.dashboard .actions  > li {
     float: left;
     padding: 8px 15px 0 15px;
 
@@ -884,8 +889,17 @@ table.table-striped tbody .actions .edit {
 .timesheet.dashboard .actions li.actions{
     padding-top: 0px;
 }
-.timesheet.dashboard .actions li.actions a{
+.timesheet.dashboard .actions li.actions a.filter {
     background: #f6f6f6;
+}
+
+.timesheet.dashboard .actions .filter-content {
+    position: relative;
+    display: none;
+    width: 400px;
+    left: 0;
+}
+.timesheet.dashboard .actions .filter-content form {
 }
 
 .timesheet.dashboard .week-pagination{
