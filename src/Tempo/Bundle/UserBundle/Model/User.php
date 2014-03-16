@@ -26,7 +26,7 @@ class User extends BaseUser implements UserInterface
     protected $company;
     protected $jobTitle;
     protected $phone;
-    protected $phoneMobile;
+    protected $mobilePhone;
     protected $avatar;
     protected $skype;
     protected $viadeo;
@@ -168,21 +168,21 @@ class User extends BaseUser implements UserInterface
     /**
      * Set phone_mobile
      *
-     * @param string $phoneMobile
+     * @param string $mobilePhone
      */
-    public function setPhoneMobile($phoneMobile)
+    public function setMobilePhone($mobilePhone)
     {
-        $this->phoneMobile = $phoneMobile;
+        $this->mobilePhone = $mobilePhone;
     }
 
     /**
-     * Get phone_mobile
+     * Get mobile Phone
      *
      * @return string
      */
-    public function getPhoneMobile()
+    public function getMobilePhone()
     {
-        return $this->phoneMobile;
+        return $this->mobilePhone;
     }
 
     public function hasAvatar()
