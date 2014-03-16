@@ -225,8 +225,10 @@ class ProjectController extends Controller
         if(!$project) {
             $this->createNotFoundException();
         }
-
-        if (false === $this->get('security.context')->isGranted($right, $project)) {
+        if (
+            false === $this->get('security.context')->isGranted($right, $project) &&
+            !$this->get('security.context')->isGranted('ROLE_ADMIN', $project)
+        ) {
             throw new AccessDeniedException();
         }
 

@@ -2,7 +2,7 @@
 Feature: dashboard project
 
   Background:
-    Given I am connected as "john.doe"
+    Given I am connected as "admin"
 
   Scenario: Viewing the dashboard project
     When I am on route "project_home"
