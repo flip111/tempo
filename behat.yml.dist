@@ -1,10 +1,9 @@
 default:
     context:
         class: Tempo\Bundle\MainBundle\Behat\FeatureContext
-        parameters:
-            base_url: "http://localhost:8000/app_test.php"
     extensions:
         Behat\MinkExtension\Extension:
+            base_url: "http://localhost:8000/app_test.php"
             default_session: symfony2
             browser_name: firefox
             selenium2: ~
