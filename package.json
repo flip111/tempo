@@ -24,6 +24,7 @@
         "grunt-contrib-concat": "~0.3",
         "grunt-contrib-watch": "~0.5",
         "grunt-backbone-routes": "latest",
-        "socket.io": "~0.9"
+        "socket.io": "~0.9",
+        "less": "~1.7"
     }
 }

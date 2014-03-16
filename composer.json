@@ -21,8 +21,9 @@
         "php": ">=5.4.0",
         "symfony/symfony": "2.4.*@stable",
         "doctrine/orm": "~2.4",
-        "doctrine/doctrine-bundle": "1.3.*",
+        "doctrine/doctrine-bundle": "1.3.*@dev",
         "doctrine/doctrine-migrations-bundle": "2.1.*@dev",
+        "doctrine/migrations": "~1.0@dev",
         "symfony/assetic-bundle": "2.3.*",
         "symfony/swiftmailer-bundle": "2.3.*",
         "symfony/monolog-bundle": "~2.4",
@@ -44,7 +45,8 @@
         "ikimea/browser": "dev-master",
         "yohang/calendr": "1.*",
         "egeloen/ckeditor-bundle": "2.2.*@dev",
-        "knplabs/knp-menu-bundle": "dev-master",
+        "knplabs/knp-menu-bundle": "~2.0@dev",
+        "knplabs/knp-menu": "~2.0@dev",
         "knplabs/knp-time-bundle": "dev-master",
         "stof/doctrine-extensions-bundle": "1.1.0",
         "problematic/acl-manager-bundle": "dev-master",
@@ -57,7 +59,7 @@
         "willdurand/js-translation-bundle": "v2.0.0",
         "sylius/settings-bundle": "1.0.*@dev",
         "wisembly/excelant": "*",
-        "jms/twig-js-bundle": "dev-master"
+        "yohang/dependency-tools": "dev-master"
     },
     "require-dev": {
         "behat/behat": "2.5.*@stable",
@@ -69,8 +71,15 @@
         "willdurand/faker-bundle": "dev-master",
         "elao/web-profiler-extra-bundle": "dev-master"
     },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/Nek-/dependency-tools"
+        }
+    ],
     "scripts": {
         "post-install-cmd": [
+            "Yohang\\DependencyTools::installDeps",
             "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache",
@@ -78,6 +87,7 @@
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile"
         ],
         "post-update-cmd": [
+            "Yohang\\DependencyTools::updateDeps",
             "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache",
@@ -98,7 +108,12 @@
         "symfony-web-dir": "web",
         "incenteev-parameters": {
            "file": "app/config/parameters.yml"
+        },
+        "dependency-tools": {
+            "npm":   true,
+            "bower": {
+                "path": "node_modules/.bin/bower"
+            }
         }
-    },
-    "minimum-stability": "dev"
+    }
 }
