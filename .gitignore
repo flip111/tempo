@@ -5,10 +5,10 @@ app/bootstrap*
 vendor/*
 */logs/*
 */cache/*
-bin/behat
+bin/behat*
 bin/doctrine*
 bin/phpspec
-bin/webunit
+bin/webunit*
 app/config/deploy/*
 app/data/*
 web/uploads/*

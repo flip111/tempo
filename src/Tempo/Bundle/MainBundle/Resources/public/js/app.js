@@ -15,7 +15,7 @@ container.set('router', function (c) {
     return new RouterManager();
 });
 
-var App = {
+var Tempo = {
     'Settings' : {},
     'Notification' : {},
     'Behavior' : {},
@@ -24,8 +24,6 @@ var App = {
     'Model':{},
     'Collection':{}
 };
-Tempo = $.extend(true, Tempo, App);
-
 
 /**
  *

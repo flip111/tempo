@@ -1,7 +1,7 @@
 var RouterManager = Backbone.Router.extend({
     routes: {
         "": "home",
-        "*timesheet": "timesheet",
+        "timesheet*": "timesheet",
         "*path": "root"
     },
     root: function() {

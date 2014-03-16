@@ -11,6 +11,8 @@
         "backbone": "latest",
         "lodash": "latest",
         "marionette": "latest",
-        "eonasdan-bootstrap-datetimepicker": "latest"
+        "eonasdan-bootstrap-datetimepicker": "latest",
+        "blueimp-md5": "latest",
+        "socket.io-client": "latest"
     }
 }
