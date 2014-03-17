@@ -3,11 +3,8 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     {% stylesheets
-        'vendor/bootstrap/dist/css/bootstrap.min.css'
-        '@TempoMainBundle/Resources/public/css/jquery-ui-1.10.0.custom.css'
-        '@TempoMainBundle/Resources/public/css/application.css'
-        '@TempoMainBundle/Resources/public/css/bundles.css'
-        filter='?cssrewrite'
+        '@TempoMainBundle/Resources/less/style.less'
+        filter='less, ?cssrewrite'
     %}
     <link rel="stylesheet" href="{{ asset_url }}" />
     {% endstylesheets %}
@@ -46,11 +43,6 @@
                 <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
                     {{ knp_menu_render('main') }}
                     <ul id="user-menu" class="nav navbar-nav navbar-right">
-                        <li class="notification dropdown togglable dropdown-notifications">
-                            <a href="#"><span class="glyphicon glyphicon-bell"></span></a>
-                            <div class="notifications dropdown-menu">
-                            </div>
-                        </li>
                         <li class="avatar">
                             <a href="#" data-toggle="dropdown" class="dropdown-toggle">
                                 <img src=" {{ app.user.avatar(30) }}" alt="Avatar" />

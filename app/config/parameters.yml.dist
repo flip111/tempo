@@ -14,6 +14,10 @@ parameters:
   locale:            en
   secret:            cb8f190153190ebe8598ac49e86ebf37
 
+  node_bin:       /usr/bin/node
+  node_modules:   /usr/lib/node_modules
+  java_bin:       /usr/bin/java
+
   oauth.google.clientid:     <google_client_id>
   oauth.google.clientsecret: <google_client_secret>
   socket_io.client: localhost:8000
