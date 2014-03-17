@@ -7,6 +7,9 @@
         'vendor/bootstrap/dist/css/bootstrap.min.css'
         filter='less, ?cssrewrite'
         %}
+        <link rel="stylesheet" href="{{ asset_url }}" />
+        {% endstylesheets %}
+        {% block stylesheets %}{% endblock %}
         <title>{% block title %} Project Management Software {% endblock %}</title>
         <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
     </head>
