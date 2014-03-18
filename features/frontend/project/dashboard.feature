@@ -2,10 +2,13 @@
 Feature: dashboard project
 
   Background:
-    Given I am connected as "john.doe"
+    Given I am connected as "admin"
 
   Scenario: Viewing the dashboard project
     When I am on route "project_home"
 
     And I should see "Select the organization"
-    Then I should see 5 "#organizations ul.list li" elements
+    And I should see "Ikimea"
+    And I should see "Apple"
+    And I should see "Microsoft"
+    And I should see "Pinterest"

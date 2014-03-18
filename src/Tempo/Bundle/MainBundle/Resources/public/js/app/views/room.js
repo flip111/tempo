@@ -15,7 +15,6 @@ Tempo.View.Room = Backbone.View.extend({
     },
 
     OnFeedChange: function(param) {
-        console.log(param.room);
         var room = JSON.parse(param.room);
         var project = JSON.parse(param.project);
         $.ajax({

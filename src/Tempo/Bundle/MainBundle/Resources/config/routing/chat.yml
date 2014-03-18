@@ -1,8 +1,12 @@
 chatRoom_rooms:
     type:     rest
     resource: Tempo\Bundle\MainBundle\Controller\Frontend\RoomController
+    options:
+        expose: true
 
 chatRoom_messages:
     type:     rest
     parent: chatRoom_rooms
     resource: Tempo\Bundle\MainBundle\Controller\Frontend\MessagesController
+    options:
+        expose: true

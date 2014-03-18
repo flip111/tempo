@@ -5,35 +5,34 @@ php:
   - 5.5
 
 before_script:
-  - echo "Starting install" > install.log
+    - echo "Starting install" > install.log
 
-  # Setup Database
-  - cp app/config/parameters.yml.dist app/config/parameters.yml
-  - sh -c "if [ '$DB' = 'mysql' ]; then mysql -e 'CREATE DATABASE IF NOT EXISTS tempo_demo;'; fi" >> install.log
+    - cp behat.yml.dist behat.yml
 
-  # Setup code
-  - echo '' > ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/xdebug.ini
-  - ulimit -n 10000
-  - sudo apt-get update
-  - sudo apt-get install -y --force-yes apache2 libapache2-mod-php5 php5-mysql php5-curl wkhtmltopdf
-  - sudo sed -i -e "s,/var/www,$(pwd)/web,g" /etc/apache2/sites-available/default
-  - echo "127.0.0.1 tempo.local" | sudo tee -a /etc/hosts
-  - sudo a2enmod rewrite
-  - sudo a2enmod php5
-  - sudo /etc/init.d/apache2 restart
-  - export MINK_EXTENSION_PARAMS='base_url=http://tempo.local/app_test.php'
-  - composer self-update
-  - composer install --dev --prefer-source --no-interaction
-  - app/console doctrine:database:create --env=test > /dev/null
-  - app/console doctrine:schema:create --env=test > /dev/null
-  - app/console cache:warmup --env=test > /dev/null
-  - sh -e /etc/init.d/xvfb start
-  - export DISPLAY=:99
-  - wget http://selenium.googlecode.com/files/selenium-server-standalone-2.37.0.jar
-  - java -jar selenium-server-standalone-2.37.0.jar > /dev/null &
-  - sleep 5
+    # Composer
+    - composer self-update
+    - composer config --global process-timeout 2000
+    - composer install --prefer-source
+
+    # For KnpSnappy
+    - wget https://wkhtmltopdf.googlecode.com/files/wkhtmltopdf-0.11.0_rc1-static-amd64.tar.bz2 --output-document=wkhtmltopdf.tar.bz2
+    - tar -jxvf wkhtmltopdf.tar.bz2
+    - sudo mv wkhtmltopdf-amd64 /usr/bin/wkhtmltopdf
+
+    # Selenium
+    - sh -e /etc/init.d/xvfb start && export DISPLAY=:99 && wget http://selenium.googlecode.com/files/selenium-server-standalone-2.33.0.jar
+    - java -jar selenium-server-standalone-2.33.0.jar > /dev/null &
+    - sleep 5
+
+    # Install database
+    - php app/console do:da:cr -e=test > /dev/null
+    - php app/console do:sc:cr -e=test > /dev/null
+    - php app/console do:fi:lo --no-interaction -e=test > /dev/null
+
+    # Loading web server for selenium
+    - php app/console server:run > error.log &
 
 
 script:
     - phpunit -c app/
-    - ./bin/behat
+    - ./bin/behat -fprogress --verbose

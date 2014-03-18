@@ -1,6 +1,9 @@
 liip_imagine:
-    data_root: %kernel.root_dir%/web/uploads/
+    resolvers:
+        default:
+        web_path: ~
     filter_sets:
+        #cache: default
         project_thumb:
             quality: 75
             filters:

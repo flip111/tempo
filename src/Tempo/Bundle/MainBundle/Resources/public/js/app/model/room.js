@@ -2,7 +2,7 @@
  * Model for Boards
  */
 Tempo.Model.Room = Backbone.Model.extend({
-    urlRoot: '/rooms',
+    urlRoot: Routing.generate('get_rooms'),
 
     defaults: {
         stories: null,
@@ -19,7 +19,7 @@ Tempo.Model.Room = Backbone.Model.extend({
      */
     parse: function(response) {
         response.chat_messages = new Tempo.Collection.ChatMessages(response.chat_messages);
-        response.chat_messages.url = this.urlRoot + '/' + response.id + '/messages';
+        response.chat_messages.url = Routing.generate('get_room_messages', {room: response.id});
         response.chat_messages.fetch();
         return response;
     }

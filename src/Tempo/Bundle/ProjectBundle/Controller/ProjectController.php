@@ -175,7 +175,7 @@ class ProjectController extends Controller
             $event = new ProjectEvent($project, $request);
             $this->get('event_dispatcher')->dispatch(TempoProjectEvents::PROJECT_EDIT_INITIALIZE, $event);
 
-            $this->getManager()->save($project);
+            $this->getManager()->persistAndFlush($project);
             $this->get('event_dispatcher')->dispatch(TempoProjectEvents::PROJECT_EDIT_SUCCESS, $event);
 
             return $this->redirect($this->generateUrl('project_edit', array('slug' => $project->getSlug() )));
@@ -202,7 +202,7 @@ class ProjectController extends Controller
 
         $project = $this->getProject($slug, 'DELETE');
 
-        $this->getManager()->remove($project);
+        $this->getManager()->removeAndFlush($project);
         $event = new ProjectEvent($project, $request);
         $this->get('event_dispatcher')->dispatch(TempoProjectEvents::PROJECT_DELETE_COMPLETED, $event);
 
@@ -225,8 +225,9 @@ class ProjectController extends Controller
         if(!$project) {
             $this->createNotFoundException();
         }
-
-        if ( false === $this->get('security.context')->isGranted($right, $project) && !$this->get('security.context')->isGranted('ROLE_ADMIN', $project)
+        if (
+            false === $this->get('security.context')->isGranted($right, $project) &&
+            !$this->get('security.context')->isGranted('ROLE_ADMIN', $project)
         ) {
             throw new AccessDeniedException();
         }

@@ -89,9 +89,10 @@ class MainExtension extends \Twig_Extension
 
     public function dateTimeDiff($since = null, $to = null)
     {
-        if ($since !== null && !$since instanceof \DateTimeInterface) {
+        if ($since !== null && !$since instanceof \DateTime) {
+
             $date = new \DateTime();
-            $date->setTimestamp($since);
+            $date->setTimestamp((int)$since);
             $since = $date;
         }
 

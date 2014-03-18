@@ -3,12 +3,8 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     {% stylesheets
-        'vendor/bootstrap/dist/css/bootstrap.min.css'
-        'bundles/tempomain/css/jquery-ui-1.10.0.custom.css'
-        'vendor/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.css'
-        'bundles/tempomain/css/application.css'
-        'bundles/tempomain/css/bundles.css'
-        filter='?cssrewrite'
+        '@TempoMainBundle/Resources/less/style.less'
+        filter='less, ?cssrewrite'
     %}
     <link rel="stylesheet" href="{{ asset_url }}" />
     {% endstylesheets %}
@@ -113,27 +109,24 @@
     </div>
     {% block javascripts %}
         {% javascripts
-            'vendor/jquery/jquery.js'
+            'vendor/jquery/dist/jquery.js'
             'vendor/jquery-ui/ui/jquery-ui.js'
             'vendor/bootstrap/dist/js/bootstrap.min.js'
             'vendor/tinycon/tinycon.min.js'
             'vendor/moment/moment.js'
             'vendor/modernizr/modernizr.js'
-            'vendor/lodash/dist/lodash.underscore.min.js'
-            'http://www.myersdaily.org/joseph/javascript/md5.js'
+            'vendor/underscore/underscore.js'
+            'vendor/blueimp-md5/js/md5.js'
             'vendor/backbone/backbone.js'
             'vendor/marionette/lib/backbone.marionette.js'
-            'bundles/tempomain/js/pimple.js'
-            'bundles/bazingajstranslation/js/translator.min.js'
-            'bundles/fosjsrouting/js/router.js'
+            '@TempoMainBundle/Resources/public/js/pimple.js'
+            '@BazingaJsTranslationBundle/Resources/js/translator.js'
+            '@FOSJsRoutingBundle/Resources/public/js/router.js'
             'vendor/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js'
-            'bundles/tempojsconfiguration/js/configuration.js'
-            'js/tempo_configuration.js'
-            'bundles/tempomain/js/routerManager.js'
-            'bundles/tempomain/js/app.js'
-            'bundles/tempomain/js/behavior.js'
-            '../vendor/jms/twig-js/twig.js'
-
+            '@TempoMainBundle/Resources/public/js/routerManager.js'
+            '@TempoMainBundle/Resources/public/js/app.js'
+            '@TempoMainBundle/Resources/public/js/behavior.js'
+            output="main.js"
         %}
         <script src="{{ asset_url }}"></script>
         {% endjavascripts %}

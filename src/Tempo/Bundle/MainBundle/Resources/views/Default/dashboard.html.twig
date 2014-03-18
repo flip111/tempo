@@ -1,16 +1,21 @@
 {% extends 'TempoMainBundle::Layout/web.html.twig' %}
 {% block javascripts %}
-    <script type="text/javascript" src="{{ asset('bundles/tempomain/js/socket.io.min.js') }}"></script>
 
     {{ parent() }}
-    <script type="text/javascript" src="{{ asset('bundles/tempomain/js/app/model/chatMessage.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('bundles/tempomain/js/app/model/room.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('bundles/tempomain/js/app/collection/chatMessage.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('bundles/tempomain/js/app/views/chatBox.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('bundles/tempomain/js/app/views/ChatMessage.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('bundles/tempomain/js/app/views/connectedUsers.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('bundles/tempomain/js/app/views/room.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('bundles/tempomain/js/app/controllers/dashboard.js') }}"></script>
+    {% javascripts
+        '@TempoMainBundle/Resources/public/js/app/model/chatMessage.js'
+        '@TempoMainBundle/Resources/public/js/app/model/room.js'
+        '@TempoMainBundle/Resources/public/js/app/collection/chatMessage.js'
+        '@TempoMainBundle/Resources/public/js/app/views/chatBox.js'
+        '@TempoMainBundle/Resources/public/js/app/views/chatMessage.js'
+        '@TempoMainBundle/Resources/public/js/app/views/connectedUsers.js'
+        '@TempoMainBundle/Resources/public/js/app/views/room.js'
+        '@TempoMainBundle/Resources/public/js/app/controllers/dashboard.js'
+        'vendor/socket.io-client/dist/socket.io.js'
+        output="dashboard.js"
+    %}
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
     <script type="application/javascript">
     {% autoescape false %}
         Tempo.Controller.Dashboard.room = new Tempo.Model.Room({{ currentRoom| serialize | raw }}, {parse:true});

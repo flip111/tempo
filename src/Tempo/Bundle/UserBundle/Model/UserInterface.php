@@ -102,18 +102,18 @@ interface UserInterface extends BaseUserInterface, TimestampableInterface
     public function getPhone();
 
     /**
-     * Set phone_mobile
+     * Set mobile Phone
      *
-     * @param string $phoneMobile
+     * @param string $mobilePhone
      */
-    public function setPhoneMobile($phoneMobile);
+    public function setMobilePhone($mobilePhone);
 
     /**
-     * Get phone_mobile
+     * Get mobile Phone
      *
      * @return string
      */
-    public function getPhoneMobile();
+    public function getMobilePhone();
 
     public function hasAvatar();
 
