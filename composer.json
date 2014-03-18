@@ -1,7 +1,8 @@
 {
     "name": "tempo-project/tempo",
     "type":        "project",
-    "description": "Symfony2 Project Management Software",
+    "description": "Modern Project Management Software",
+    "homepage": "http://tempo-project.com",
     "license":     "MIT",
     "authors": [
         {
