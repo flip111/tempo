@@ -2,11 +2,10 @@
 submit: Send
 
 organization:
-  select_first: Select the organization
-  select_second: Display Projects
+  select: Select an organization to view its projects
   not_found_orga: No organization has been found
   not_found_project: No projects found for this organization
-  add:  Add new organization
+  add:  New organization
   edit: Edit organization
   team: Team
   list:

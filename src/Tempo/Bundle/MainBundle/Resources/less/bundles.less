@@ -152,6 +152,13 @@ table.table-striped tbody .actions .edit {
     padding: 0;
 }
 
+.app-panel {
+  background: #fff;
+  padding: 30px;
+  border-radius: 3px;
+  border: 1px solid #eaeaea;
+}
+
 
 /* User */
 #user.login {
@@ -486,20 +493,6 @@ table.table-striped tbody .actions .edit {
     list-style: none;
 }
 
-#choose-organization {
-    padding: 20px;
-    background: none repeat scroll 0 0 #F1F5FA;
-    text-align: center;
-}
-
-#choose-organization .first span:before {
-    content: "↓";
-}
-@media (min-width: 992px) {
-    #choose-organization .first span:before {
-        content: " ⟶ ";
-    }
-}
 
 /* Settings */
 .records_list {
@@ -677,6 +670,61 @@ table.table-striped tbody .actions .edit {
     float: right;
     margin-top: 30px;
 }
+
+.project.dashboard .head {
+    padding: 10px 0;
+    background: #FFF;
+    border-color: #D5D5D5;
+    box-shadow: 0 1px 0 #ffffff inset, 0 1px 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 3px;
+
+  #breadcrumb {
+    float: left;
+  }
+
+}
+.project.dashboard .list-organizations {
+  margin: 0 50px;
+  #choose-organization {
+    padding: 10px;
+    margin-bottom: 10px;
+    background: none repeat scroll 0 0 #F1F5FA;
+    border-radius: 5px;
+
+    p {
+        text-align: center;
+    }
+  }
+  .app-panel {
+    margin-top: 10px;
+  }
+}
+.project.dashboard .list-organizations ul li {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #eee;
+    position: relative;
+    padding-left: 35px;
+    list-style: none;
+}
+.project.dashboard .list-organizations ul li .avatar {
+    float: left;
+}
+.project.dashboard .list-organizations ul li .avatar img {
+    width: 48px;
+    height: 48px;
+}
+.project.dashboard .list-organizations ul li .board {
+    float: left;
+    margin-left: 18px;
+    min-height: 48px;
+}
+.project.dashboard .list-organizations ul li .board h2 {
+   margin: 0;
+   font-size: 18px;
+   font-weight: normal;
+}
+
 
 .project.dashboard .list li span {
     font-size: 10px;
