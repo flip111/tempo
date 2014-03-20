@@ -537,6 +537,10 @@ table.table-striped tbody .actions .edit {
     margin-bottom: 35px;
     text-align: center;
 }
+.organization.show #content .row {
+  margin-right: 15px;
+  margin-left: 15px;
+}
 
 .organization.show #sidebar .list_membre, .project #sidebar .list_membre {
     clear: both;
@@ -605,43 +609,59 @@ table.table-striped tbody .actions .edit {
     margin-bottom: 10px;
 }
 
-.organization.show #sidebar .list-project {
-    clear: both;
+.organization.show .member-box h4 {
+	float: left;
 }
 
-.organization.show #sidebar .suite {
-    font-style: italic;
-    margin-left: 60px;
-    margin-top: 30px;;
+.organization.show .member-box .add-member {
+	float: right;
+}
+.organization.show .member-box .list{
+	clear: both;
+	background: #fff;
+	padding: 30px;
+	border-radius: 3px;
+	border: 1px solid #eaeaea;
+	list-style: none;
+}
+.organization.show .member-box .list li {
+	margin-top: 5px;
 }
 
-.organization.show #sidebar .suite a {
-    color: #484848;
+.organization.show #organization-list-project {
+	clear: both;
+	margin-top: 20px;
 }
 
 .organization.show #organization-list-project h3 {
-    margin: 35px 50px 60px 50px;
-    height: 0;
-    text-align: center;
-    font-size: 20px;
-    font-weight: normal;
-    border-bottom: 1px solid #ddd;
-}
-
-.organization.show #organization-list-project h3 .inner {
-    display: inline-block;
-    position: relative;
-    top: -10px;
-    padding: 0 5px;
-    background: #fff;
+	margin-bottom: 50px;
 }
 
 .organization.show #organization-list-project ul li {
-    float: left;
-    width: 300px;
-    list-style: none;
-    background: #ddd;
-    padding: 45px;
+	list-style: none;
+	border-top: 1px solid #eee;
+}
+
+.organization.show #organization-list-project ul li img.avatar {
+	float: left;
+	padding-top: 10px;
+}
+.organization.show #organization-list-project ul li .board {
+	float: left;
+	margin-left: 20px;
+	padding-top: 5px
+}
+.organization.show #organization-list-project h4 {
+    margin-bottom: 5px;
+    text-align: center;
+    font-size: 20px;
+    font-weight: normal;
+}
+
+.organization.show #organization-list-project p.project-updated {
+	font-size: 12px;
+	margin: 5px 0 0;
+	color: #808080;
 }
 
 .organization.show .modal-body {
