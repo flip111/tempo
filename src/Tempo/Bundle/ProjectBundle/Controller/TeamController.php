@@ -11,11 +11,11 @@
 
 namespace Tempo\Bundle\ProjectBundle\Controller;
 
-use Tempo\Bundle\ProjectBundle\Form\Type\TeamType;
-
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\Security\Acl\Permission\MaskBuilder;
+
+use Tempo\Bundle\ProjectBundle\Form\Type\TeamType;
 
 /*
  * @author Mlanawo Mbechezi <mlanawo.mbechezi@ikimea.com>
@@ -38,7 +38,7 @@ class TeamController extends Controller
         } else {
             $manager = $this->get('tempo_project.manager.organization');
             $category = $manager->findOneBySlug($slug);
-            $routeSuccess = 'organization_edit';
+            $routeSuccess = 'organization_show';
         }
 
         if ($request->isMethod('POST') && $form->submit($request)->isValid()) {

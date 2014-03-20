@@ -7,7 +7,7 @@ organization:
   not_found_project: No projects found for this organization
   add:  New organization
   edit: Edit organization
-  team: Team
+  team: Members
   list:
     title: 'Organization List'
   msg_delete: Once you delete an organization, there is no going back. It will be deleted forever. Please be certain.
