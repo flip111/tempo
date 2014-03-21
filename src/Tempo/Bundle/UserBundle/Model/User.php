@@ -52,6 +52,22 @@ class User extends BaseUser implements UserInterface
     }
 
     /**
+     * {@inheritdoc}
+     */
+    public function getLocale()
+    {
+        return $this->locale;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setLocale($locale)
+    {
+        $this->locale = $locale;
+    }
+
+    /**
      * Alias for parent::getUsernameCanonical()
      * @param $slug
      * @return string

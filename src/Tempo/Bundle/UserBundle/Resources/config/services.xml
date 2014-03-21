@@ -7,6 +7,7 @@
         <parameter key="tempo_user.profile.form.type.avatar.class">Tempo\Bundle\UserBundle\Form\Type\AvatarType</parameter>
         <parameter key="tempo_user.profile.form.handler.avatar.class">Tempo\Bundle\UserBundle\Form\Handler\AvatarHandler</parameter>
         <parameter key="tempo_user.oauth.user_provider.class">Tempo\Bundle\UserBundle\OAuth\UserProvider</parameter>
+        <parameter key="tempo_user.security.interactive_login_listener.class">Tempo\Bundle\UserBundle\OAuth\UserProvider</parameter>
     </parameters>
 
     <services>
@@ -33,6 +34,7 @@
         <service id="tempo_user.profile.form.avatar.factory" class="Symfony\Component\Form\Form"  factory-service="form.factory" factory-method="create">
             <argument type="service" id="tempo_user.profile.form.type.avatar"></argument>
         </service>
+
         <service id="tempo_user.profile.handler.avatar" class="%tempo_user.profile.form.handler.avatar.class%" scope="request">
             <argument type="service" id="request"/>
             <argument type="service" id="tempo_user.profile.form.avatar.factory"/>
@@ -42,5 +44,14 @@
                 <argument type="string">%kernel.root_dir%/../web/uploads/</argument>
             </call>
         </service>
+
+        <service id="tempo_user.security.interactive_login_listener" class="%tempo_user.security.interactive_login_listener.class%" scope="request">
+            <tag name="kernel.event_listener" event="security.interactive_login" method="setLocaleForAuthenticatedUser" />
+        </service>
+
+        <service id="tempo_user.security.interactive_login_listener" class="%tempo_user.security.interactive_login_listener.class%" scope="request">
+            <tag name="kernel.event_listener" event="kernel.request" method="setLocaleForAuthenticatedUser" />
+        </service>
+
     </services>
 </container>
