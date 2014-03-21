@@ -33,3 +33,11 @@ timesheet_delete:
     pattern:  /{id}/delete
     defaults: { _controller: "TempoProjectBundle:Timesheet:delete" }
     requirements: { _method: POST }
+
+timesheet_export_pdf:
+    pattern:  /export/pdf
+    defaults: { _controller: "TempoProjectBundle:Timesheet:exportPDF" }
+
+timesheet_export_csv:
+    pattern:  /export/csv
+    defaults: { _controller: "TempoProjectBundle:Timesheet:exportCSV" }
