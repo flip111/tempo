@@ -1,7 +1,7 @@
 <?php
 
 /*
-* This file is part of the Tempo-project package http://tempo-project.org/>.
+* This file is part of the Tempo-project package http://tempo.ikimea.com/>.
 *
 * (c) Mlanawo Mbechezi  <mlanawo.mbechezi@ikimea.com>
 *
@@ -12,7 +12,6 @@
 namespace Tempo\Bundle\ProjectBundle\Manager;
 
 use Tempo\Bundle\CoreBundle\Manager\BaseManager;
-use Tempo\Bundle\MainBundle\Entity\Timesheet;
 
 /**
  * @author Mbechezi Mlanawo <mlanawo.mbechezi@ikimea.com>
@@ -28,7 +27,7 @@ class TimesheetManager extends BaseManager
      * @param  null  $weekend
      * @return array
      */
-     public function getTimeForPeriod($curentWeek, $weekLang, $userId)
+     public function getTimeForPeriod($filter, $curentWeek, $weekLang, $userId)
      {
         $data = array(
             'date' => array(),
@@ -50,9 +49,19 @@ class TimesheetManager extends BaseManager
         }
 
         $projectsList = $this->em->getRepository('TempoProjectBundle:Project')->findAllByUser($userId);
-        $projectsTracList = $this->em->getRepository('TempoProjectBundle:Project')->findTimeEntry(
-            $userId, $curentWeek->getBegin()->format('Y-m-j'), $curentWeek->getEnd()->format('Y-m-j')
-        );
+
+
+        if(!empty($filter)) {
+            $projectsTracList = $this->em->getRepository('TempoProjectBundle:Project')->findTimeEntry(
+                $userId, $filter['from']->format('Y-m-j'), $filter['from']->format('Y-m-j')
+            );
+        }else {
+             $projectsTracList = $this->em->getRepository('TempoProjectBundle:Project')->findTimeEntry(
+                 $userId, $curentWeek->getBegin()->format('Y-m-j'), $curentWeek->getEnd()->format('Y-m-j')
+             );
+         }
+
+
 
         foreach($projectsList as $project) {
             $projectName = $project->getName();
