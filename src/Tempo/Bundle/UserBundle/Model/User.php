@@ -17,6 +17,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 class User extends BaseUser implements UserInterface
 {
     protected $id;
+    protected $locale;
     protected $googleId;
     protected $firstName;
     protected $lastName;
