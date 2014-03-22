@@ -7,7 +7,7 @@
         <parameter key="tempo_user.profile.form.type.avatar.class">Tempo\Bundle\UserBundle\Form\Type\AvatarType</parameter>
         <parameter key="tempo_user.profile.form.handler.avatar.class">Tempo\Bundle\UserBundle\Form\Handler\AvatarHandler</parameter>
         <parameter key="tempo_user.oauth.user_provider.class">Tempo\Bundle\UserBundle\OAuth\UserProvider</parameter>
-        <parameter key="tempo_user.security.interactive_login_listener.class">Tempo\Bundle\UserBundle\OAuth\UserProvider</parameter>
+        <parameter key="tempo_user.security.interactive_login_listener.class">Tempo\Bundle\UserBundle\EventListener\UserListener</parameter>
     </parameters>
 
     <services>
@@ -50,7 +50,7 @@
         </service>
 
         <service id="tempo_user.security.interactive_login_listener" class="%tempo_user.security.interactive_login_listener.class%" scope="request">
-            <tag name="kernel.event_listener" event="kernel.request" method="setLocaleForAuthenticatedUser" />
+            <tag name="kernel.event_listener" event="kernel.request" method="setLocaleForUnauthenticatedUser" />
         </service>
 
     </services>
