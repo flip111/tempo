@@ -20,7 +20,7 @@ class SettingsType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('lang', 'text', array());
+        $builder->add('lang', 'language');
     }
 
     public function getName()
