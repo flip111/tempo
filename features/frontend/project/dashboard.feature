@@ -1,4 +1,3 @@
-@dashboard
 Feature: dashboard project
 
   Background:
