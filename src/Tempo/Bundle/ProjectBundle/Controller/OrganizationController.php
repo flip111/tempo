@@ -130,7 +130,7 @@ class OrganizationController extends Controller
             $event = new OrganizationEvent($organization, $request);
             $this->get('event_dispatcher')->dispatch(TempoProjectEvents::ORGANIZATION_EDIT_INITIALIZE, $event);
 
-            $manager->persistAndFlush($organization);
+            $manager->save($organization);
             $this->get('event_dispatcher')->dispatch(TempoProjectEvents::ORGANIZATION_EDIT_SUCCESS, $event);
 
             $request->getSession()->getFlashBag()->set('success', $this->getTranslator()->trans('organization.success_deleted', array(), 'TempoProject'));
