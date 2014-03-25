@@ -4,8 +4,8 @@
 Tempo.View.ChatBox = Backbone.View.extend({
     tagName: 'div',
     template: '<div id="chat-handle" class="live-box-heading"></div>' +
-        '<div id="chat-window"><div id="chat-messages"></div>' +
-        '<form name="chat-input"><div id="message-input-area" class="clearfix"><input name="chat[content]" required="required" id="message-input" class="form-control" value=""/><input id="message-submit" type="submit" value="&gt;" class="btn btn-sm btn-primary"/></div></form>',
+        '<div id="chat-window"><div class="chat-content"> <div id="chat-messages"></div></div>' +
+        '<form name="chat-input"><a  class="js-avatar"><img height="30" src="<%= avatar %>" width="30"></a><div id="message-input-area" class="clearfix"><input name="chat[content]" required="required" id="message-input" class="form-control" value=""/><button id="message-submit" type="submit" value="" class="btn btn-sm btn-primary"><span class="glyphicon glyphicon-send"></button></div></form>',
     id: 'chat',
 
     events: {
@@ -19,16 +19,21 @@ Tempo.View.ChatBox = Backbone.View.extend({
      * Initialize params and bind on collection events
      */
     initialize: function(options) {
+
+        this.isLoading = false;
         this.room = options.room;
         this.messages = options.messages;
         this.messages.bind('add', this.renderNewMessage, this);
+
     },
 
     /**
      * Render the chat box, and render any messages using the sub view
      **/
     render: function() {
-        this.$el.html(_.template(this.template));
+        this.$el.html(_.template(this.template, {
+            'avatar' : Tempo.Controller.Dashboard.user.avatar
+        }));
 
         var messageList = $('#chat-messages', this.$el);
         messageList.html('');
@@ -47,9 +52,8 @@ Tempo.View.ChatBox = Backbone.View.extend({
      * Bind to events coming in from the socket connection
      */
     bindSocketEvents: function() {
-        var socket = Tempo.socket;
-        if (typeof socket !== 'undefined') {
-            socket.on('chatMessage:create', _.bind(this.remoteCreate, this));
+        if (typeof Tempo.socket !== 'undefined') {
+            Tempo.socket.on('chatMessage:create', _.bind(this.remoteCreate, this));
         }
     },
 

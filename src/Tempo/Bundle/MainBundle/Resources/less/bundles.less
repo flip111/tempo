@@ -351,14 +351,17 @@ table.table-striped tbody .actions .edit {
 .dashboard #activity-box ul {
     list-style: none;
 }
-.dashboard #activity-box .img.avatar{
+.dashboard #activity-box .img.avatar {
     margin-right: 15px;
     float: left;
 }
-.dashboard #chat-box{
+.dashboard #chat-box {
     padding-left: 10px;
     height: 100%;
     position: relative;
+  .loader {
+      text-align: center;
+  }
 }
 
 .dashboard #connected-users {
@@ -378,6 +381,7 @@ table.table-striped tbody .actions .edit {
 }
 .dashboard #connected-users .toolbar-btn {
     float: right;
+    padding-top: 12px;
 }
 
 .dashboard #connected-users #users-list {
@@ -393,16 +397,18 @@ table.table-striped tbody .actions .edit {
 }
 
 .dashboard #chat #chat-messages{
-    overflow-x: hidden;
-    overflow-y: scroll;
+    /**overflow-x: hidden;
+    overflow-y: scroll; **/
+    overflow: scroll;
     top: 5em;
-    bottom: 0;
+    bottom: 150px;
     width: 100%;
     position: absolute;
     border-color: #D5D5D5;
     box-shadow: 0 1px 0 #FFFFFF inset, 0 1px 5px rgba(0, 0, 0, 0.1);
     background: #FFF;
     padding: 10px 25px;
+    margin-top: 10px;
 }
 
 .dashboard #chat form {
@@ -418,7 +424,6 @@ table.table-striped tbody .actions .edit {
 .dashboard #chat .form-control {
     width: 100%;
     float: left;
-
 }
 .dashboard #chat #message-input-area {
     padding: 0px 0 75px 0;
@@ -426,6 +431,8 @@ table.table-striped tbody .actions .edit {
 .dashboard #chat #message-submit {
     float: left;
     margin-top: 5px;
+    height: 30px;
+    border-radius: 0;
 }
 .dashboard #chat form #message-input {
     border-radius: 0;
@@ -437,12 +444,24 @@ table.table-striped tbody .actions .edit {
 .dashboard #chat .chat-message {
     font-size: 13px;
 }
+.dashboard #chat .js-avatar {
+  float: left;
+  margin-right: 10px;
+  padding-top: 6px;
+}
 .dashboard #chat .message-head {
     float: left;
     font-weight: bold;
     margin-right: 1em;
     text-align: left;
+    width: 10%;
+    color: #000;
 }
+.dashboard #chat .message-head a {
+  color: #000;
+  text-align: right;
+}
+
 .dashboard h3.homeTitle {
     font-size: 15px;
     margin-left: 30px;

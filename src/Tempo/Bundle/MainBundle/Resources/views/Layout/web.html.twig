@@ -4,7 +4,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     {% stylesheets
         '@TempoMainBundle/Resources/less/style.less'
-        filter='less, ?cssrewrite'
+        filter='less, ?cssrewrite,?yui_css' debug=true
     %}
     <link rel="stylesheet" href="{{ asset_url }}" />
     {% endstylesheets %}
@@ -109,6 +109,7 @@
     </div>
     {% block javascripts %}
         {% javascripts
+            'vendor/socket.io-client/dist/socket.io.js'
             'vendor/jquery/dist/jquery.js'
             'vendor/jquery-ui/ui/jquery-ui.js'
             'vendor/bootstrap/dist/js/bootstrap.min.js'
@@ -123,9 +124,11 @@
             '@BazingaJsTranslationBundle/Resources/js/translator.js'
             '@FOSJsRoutingBundle/Resources/public/js/router.js'
             'vendor/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js'
+            'vendor/infiniscroll/lib/infiniScroll.js'
             '@TempoMainBundle/Resources/public/js/routerManager.js'
             '@TempoMainBundle/Resources/public/js/app.js'
             '@TempoMainBundle/Resources/public/js/behavior.js'
+            filter="?yui_js"
             output="main.js"
         %}
         <script src="{{ asset_url }}"></script>

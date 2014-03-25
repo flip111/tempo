@@ -1,5 +1,5 @@
 /**
- * Model for Boards
+ * Model for Room
  */
 Tempo.Model.Room = Backbone.Model.extend({
     urlRoot: Routing.generate('get_rooms'),
@@ -14,12 +14,14 @@ Tempo.Model.Room = Backbone.Model.extend({
     },
 
     /**
-     * When we get a response from the server, that contains tickets and stories
+     * When we get a response from the server, that contains messages
      * Put those into collections
      */
     parse: function(response) {
         response.chat_messages = new Tempo.Collection.ChatMessages(response.chat_messages);
-        response.chat_messages.url = Routing.generate('get_room_messages', {room: response.id});
+        response.chat_messages.url = Routing.generate('get_room_messages', {
+            room: response.id
+        });
         response.chat_messages.fetch();
         return response;
     }

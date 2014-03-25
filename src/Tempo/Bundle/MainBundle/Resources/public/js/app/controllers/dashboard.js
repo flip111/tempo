@@ -18,7 +18,7 @@ Tempo.Controller.Dashboard = Tempo.baseObject.extend({
         this.connectedUsersView = new Tempo.View.ConnectedUsers();
         this.messagesView = new Tempo.View.ChatBox({messages: this.room.get('chat_messages'), room: this.room});
 
-        chatbox.innerHTML = '';
+        chatbox.html(''); //Remove loader
         chatbox.append(this.connectedUsersView.render().el);
         chatbox.append(this.messagesView.render().el);
 

@@ -11,12 +11,19 @@
 
 namespace Tempo\Bundle\MainBundle\Controller\Frontend;
 
+use Symfony\Component\HttpFoundation\Request;
 use FOS\RestBundle\Controller\FOSRestController;
+use FOS\RestBundle\Request\ParamFetcherInterface;
+use FOS\RestBundle\Controller\Annotations;
+use FOS\RestBundle\View\View;
+use FOS\RestBundle\Controller\Annotations\View As AnnotView;
+
+use Nelmio\ApiDocBundle\Annotation\ApiDoc;
+
 use Tempo\Bundle\MainBundle\Entity\ChatMessage;
 use Tempo\Bundle\MainBundle\Entity\Room;
-use Symfony\Component\HttpFoundation\Request;
-use FOS\RestBundle\Controller\Annotations\View;
 use Tempo\Bundle\MainBundle\Form\Type\ChatMessageType;
+
 
 /**
  * Rest controller for stories
@@ -43,11 +50,24 @@ class MessagesController extends FOSRestController
      * 
      * @param Room $room
      * @param string $chatMessageId
+     * @ApiDoc(
+     *   resource = true,
+     *   statusCodes = {
+     *     200 = "Returned when successful"
+     *   }
+     * )
+     *
+     * @Annotations\QueryParam(name="offset", requirements="\d+", nullable=true, description="Offset from which to start listing pages.")
+     * @Annotations\QueryParam(name="limit", requirements="\d+", default="10", description="How many pages to return.")
+     *
      */
-    public function getMessagesAction(Room $room)
+    public function getMessagesAction(Room $room, ParamFetcherInterface $paramFetcher)
     {
+        $offset = $paramFetcher->get('offset');
+        $offset = null == $offset ? 0 : $offset;
+        $limit = $paramFetcher->get('limit');
 
-        return $room->getChatMessages();
+        return $this->get('tempo_main.manager.room.message')->all($room , $limit, $offset, array());
     }
 
     /**
@@ -55,21 +75,22 @@ class MessagesController extends FOSRestController
      */
     public function postMessagesAction(Room $room, Request $request)
     {
-        $view = \FOS\RestBundle\View\View::create();
+        $view = View::create();
 
         $message = new ChatMessage();
         $message->setRoom($room);
         $message->setUser($this->getUser());
 
+        $room->addChatMessage($message);
+
+
         $form = $this->createForm(new ChatMessageType(), $message);
 
         if ($form->submit($request) && $form->isValid()) {
             $dm = $this->getDoctrine()->getManager();
-            $room->addChatMessage($message);
             $dm->persist($room);
             $dm->flush();
-            $view->setStatusCode(201);
-            $view->setData($message);
+            $view->setStatusCode(201)->setData($message);
         } else {
             $view->setData($form);
         }

@@ -11,8 +11,7 @@
         '@TempoMainBundle/Resources/public/js/app/views/connectedUsers.js'
         '@TempoMainBundle/Resources/public/js/app/views/room.js'
         '@TempoMainBundle/Resources/public/js/app/controllers/dashboard.js'
-        'vendor/socket.io-client/dist/socket.io.js'
-        output="dashboard.js"
+        output="dashboard.js" filter="?yui_js"
     %}
     <script src="{{ asset_url }}"></script>
     {% endjavascripts %}
@@ -20,6 +19,7 @@
     {% autoescape false %}
         Tempo.Controller.Dashboard.room = new Tempo.Model.Room({{ currentRoom| serialize | raw }}, {parse:true});
         Tempo.Controller.Dashboard.user = {{ app.user| serialize | raw }};
+        Tempo.Controller.Dashboard.user.avatar = "{{ app.user.avatar | raw }}";
         Tempo.Controller.Dashboard.load();
     {% endautoescape %}
     </script>
@@ -48,11 +48,8 @@
 
         </div>
         <div class="col-md-6" id="chat-box">
-            <div id="progressbar">
-                <h3>Loading ...</h3>
-                <div class="progress progress-striped active">
-                    <div class="bar" style="width: 90%;"></div>
-                </div>
+            <div class="loader">
+                <img src="{{ asset('bundles/tempomain/images/loading-bubbles.svg') }}" width="64" height="64">
             </div>
         </div>
     </div>

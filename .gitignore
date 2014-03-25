@@ -9,6 +9,7 @@ bin/behat*
 bin/doctrine*
 bin/phpspec
 bin/webunit*
+bin/selenium-server-standalone-*
 app/config/deploy/*
 app/data/*
 web/uploads/*
