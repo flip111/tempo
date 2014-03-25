@@ -23,6 +23,19 @@ interface UserInterface extends BaseUserInterface, TimestampableInterface
      */
     public function getId();
 
+
+    /**
+     * get local
+     *
+     * @return string $locale
+     */
+    public function getLocale();
+
+    /**
+     * @param string $locale
+     */
+    public function setLocale($locale);
+
     /**
      * Alias for parent::getUsernameCanonical()
      * @param $slug
