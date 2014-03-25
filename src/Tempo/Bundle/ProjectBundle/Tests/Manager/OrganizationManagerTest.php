@@ -66,6 +66,6 @@ class OrganizationManagerTest extends \PHPUnit_Framework_TestCase
             ->with($this->equalTo($project));
         $this->em->expects($this->once())->method('flush');
 
-        $this->organizationManager->removeAndFlush($project);
+        $this->organizationManager->remove($project);
     }
 }
