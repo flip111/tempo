@@ -76,28 +76,6 @@ abstract class BaseManager
     }
 
     /**
-     * persist and flush
-     * @param $entity
-     * @deprecated
-     */
-    public function persistAndFlush($entity)
-    {
-        $this->em->persist($entity);
-        $this->em->flush();
-    }
-
-    /**
-     * remove and flush
-     * @param $entity
-     * @deprecated
-     */
-    public function removeAndFlush($entity)
-    {
-        $this->remove($entity);
-    }
-
-
-    /**
      * Persist the given entity
      *
      * @param mixed $entity  An entity instance
