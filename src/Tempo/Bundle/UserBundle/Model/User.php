@@ -17,6 +17,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 class User extends BaseUser implements UserInterface
 {
     protected $id;
+    protected $locale;
     protected $googleId;
     protected $firstName;
     protected $lastName;
@@ -49,6 +50,22 @@ class User extends BaseUser implements UserInterface
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getLocale()
+    {
+        return $this->locale;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setLocale($locale)
+    {
+        $this->locale = $locale;
     }
 
     /**
