@@ -163,7 +163,7 @@ class OrganizationController extends Controller
             $event = new OrganizationEvent($organization, $request);
             $this->get('event_dispatcher')->dispatch(TempoProjectEvents::ORGANIZATION_CREATE_INITIALIZE, $event);
 
-            $this->getManager()->persistAndFlush($organization);
+            $this->getManager()->save($organization);
             $this->get('event_dispatcher')->dispatch(TempoProjectEvents::ORGANIZATION_CREATE_SUCCESS, $event);
 
             $this->getAclManager()->addObjectPermission($organization, MaskBuilder::MASK_OWNER); //set Permission
@@ -194,7 +194,7 @@ class OrganizationController extends Controller
 
         try {
 
-            $this->getManager()->removeAndFlush($organization);
+            $this->getManager()->remove($organization);
             $event = new ProjectEvent($organization, $request);
             $this->get('event_dispatcher')->dispatch(TempoProjectEvents::ORGANIZATION_DELETE_COMPLETED, $event);
             $request->getSession()->getFlashBag()->set('success', $this->getTranslator()->trans('organization.success_delete', array(), 'TempoProject'));
