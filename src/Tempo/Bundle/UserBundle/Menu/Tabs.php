@@ -27,7 +27,7 @@ class Tabs
     public function tabMenu()
     {
         $menu = $this->factory->createItem('root');
-        $menu->setChildrenAttribute('class', 'nav nav-tabs');
+        $menu->setChildrenAttribute('class', 'nav nav-pills nav-stacked');
 
         $edit = $this->translator->trans('profile.tabs.profil', array(), 'TempoUser');
         $profile = $this->translator->trans('profile.tabs.avatar', array(), 'TempoUser');

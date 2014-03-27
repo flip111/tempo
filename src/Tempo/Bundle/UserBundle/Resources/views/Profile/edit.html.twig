@@ -1,44 +1,55 @@
 {% extends "TempoMainBundle::Layout/web.html.twig" %}
-{% block breadcrumb %}
-     <ol id="breadcrumb" class="clearfix">
-         <li class="first"> <a href="{{ path('project_home') }}">Accueil</a> </li>
-         <li class="first last"> <a href="{{ path('user_profile_edit') }}">Profile</a> </li>
-         <li class="first last"> Edit profile </li>
-     </ol>
-{% endblock breadcrumb %}
-{% block content %}
+{% block bodyClass %}user profile edit{% endblock %}
 
-<h1 id="page-title" class="col-md-3">Edit profile</h1>
-{% include "TempoUserBundle:Profile:_tabs.html.twig" %}
+{% block body %}
 
+    <div class="head">
+        {% block breadcrumb %}
+            <ol id="breadcrumb" class="clearfix">
+                <li class="first"> <a href="{{ path('project_home') }}">Accueil</a> </li>
+                <li> <a href="{{ path('user_profile_edit') }}">Profile</a> </li>
+                <li class="last"> Edit profile </li>
+            </ol>
+        {% endblock breadcrumb %}
+    </div>
 
-   <form action="{{ path('user_profile_update') }}" {{ form_enctype(form) }} method="POST" class="user_profile_edit">
+    <div class="container-panel">
 
-       <div class="form-block clearbox">
-           <fieldset>
-                <div class="formtextField">{{ form_row(form.email) }}</div>
-           </fieldset>
-
-           <fieldset>
-            <div class="formtextField">{{ form_row(form.firstName) }}</div>
-            <div class="formtextField">{{ form_row(form.lastName) }}</div>
-           </fieldset>
-
-           <fieldset>
-            <div class="formtextField">{{ form_row(form.phone) }}</div>
-            <div class="formtextField">{{ form_row(form.mobilePhone) }}</div>
-           </fieldset>
-
-           <fieldset>
-               <div class="formtextField">{{ form_row(form.company) }}</div>
-               <div class="formtextField">{{ form_row(form.jobTitle) }}</div>
-           </fieldset>
-       </div>
-       <div class="form-actions">
-           {{ form_rest(form) }}
-            <input type="submit" class="btn btn-primary" />
+        <div class="col-md-3 app-panel tab-nav">
+            {% include "TempoUserBundle:Profile:_tabs.html.twig" %}
         </div>
-    </form>
+
+        <div class="col-md-8 app-panel">
+            <h1 id="page-title" style="font-size: 22px;">Edit profile</h1>
+            <form action="{{ path('user_profile_update') }}" {{ form_enctype(form) }} method="POST" class="user_profile_edit">
+
+               <div class="form-block clearbox">
+                   <fieldset>
+                        {{ form_row(form.email) }}
+                   </fieldset>
+
+                   <fieldset>
+                    {{ form_row(form.firstName) }}
+                    {{ form_row(form.lastName) }}
+                   </fieldset>
+
+                   <fieldset>
+                    {{ form_row(form.phone) }}
+                    {{ form_row(form.mobilePhone) }}
+                   </fieldset>
+
+                   <fieldset>
+                       {{ form_row(form.company) }}
+                       {{ form_row(form.jobTitle) }}
+                   </fieldset>
+               </div>
+               <div class="form-rest">
+                   {{ form_rest(form) }}
+                    <input type="submit" class="btn btn-primary" value="{{ 'form.save_changes'|trans }}" />
+                </div>
+            </form>
+        </div>
+    </div>
 
 
 {% endblock %}

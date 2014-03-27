@@ -12,14 +12,14 @@
 
 namespace Tempo\Bundle\MainBundle\Behat;
 
-use Behat\MinkExtension\Context\MinkContext;
+use Behat\MinkExtension\Context\RawMinkContext;
 use Symfony\Component\HttpKernel\KernelInterface;
 use Behat\Symfony2Extension\Context\KernelAwareInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Behat\Mink\Driver\Selenium2Driver;
 use Behat\Behat\Exception\BehaviorException;
 
-abstract class BaseContext extends MinkContext implements KernelAwareInterface
+abstract class BaseContext extends RawMinkContext implements KernelAwareInterface
 {
 
     /**
@@ -116,84 +116,5 @@ abstract class BaseContext extends MinkContext implements KernelAwareInterface
     }
 
 
-    /**
-     * Wait
-     *
-     * @param integer $time
-     * @param string  $condition
-     *
-     * @throws BehaviorException If timeout is reached
-     */
-    public function wait($time = 10000, $condition = null)
-    {
-        if (!$this->getSession()->getDriver() instanceof Selenium2Driver) {
-            return;
-        }
-
-        $start = microtime(true);
-        $end = $start + $time / 1000.0;
-
-        $condition = $condition !== null ? $condition : <<<JS
-        document.readyState == 'complete'                  // Page is ready
-            && typeof $ != 'undefined'                     // jQuery is loaded
-            && !$.active                                   // No ajax request is active
-            && $('#page').css('display') == 'block'        // Page is displayed (no progress bar)
-            && $('.loading-mask').css('display') == 'none' // Page is not loading (no black mask loading page)
-            && $('.jstree-loading').length == 0;           // Jstree has finished loading
-JS;
-
-        // Make sure the AJAX calls are fired up before checking the condition
-        $this->getSession()->wait(100, false);
-
-        $this->getSession()->wait($time, $condition);
-
-        // Check if we reached the timeout unless the condition is false to explicitly wait the specified time
-        if ($condition !== false && microtime(true) > $end) {
-            throw new BehaviorException(sprintf('Timeout of %d reached when checking on %s', $time, $condition));
-        }
-    }
-    /**
-     * Click on the element with the provided xpath query
-     *
-     * @When /^I click on the element with xpath "([^"]*)"$/
-     */
-    public function iClickOnTheElementWithXPath($xpath)
-    {
-        $session = $this->getSession(); // get the mink session
-        $element = $session->getPage()->find(
-            'xpath',
-            $session->getSelectorsHandler()->selectorToXpath('xpath', $xpath)
-        ); // runs the actual query and returns the element
-
-        // errors must not pass silently
-        if (null === $element) {
-            throw new \InvalidArgumentException(sprintf('Could not evaluate XPath: "%s"', $xpath));
-        }
-
-        // ok, let's click on it
-        $element->click();
-
-    }
-
-
-    /**
-     * Click on the element with the provided CSS Selector
-     *
-     * @When /^I click on the element with css selector "([^"]*)"$/
-     */
-    public function iClickOnTheElementWithCSSSelector($cssSelector)
-    {
-        $session = $this->getSession();
-        $element = $session->getPage()->find(
-            'xpath',
-            $session->getSelectorsHandler()->selectorToXpath('css', $cssSelector) // just changed xpath to css
-        );
-        if (null === $element) {
-            throw new \InvalidArgumentException(sprintf('Could not evaluate CSS Selector: "%s"', $cssSelector));
-        }
-
-        $element->click();
-
-    }
 
 }

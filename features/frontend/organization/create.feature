@@ -5,7 +5,7 @@ Feature: Create Organisation
 
   Scenario: Create a organisation
     Given I am on route "project_home"
-    When I follow "Add new organization"
+    When I follow "New organization"
     And I should see the modal "Add new organization"
     And I fill in "Name" with "Toto"
     And I press "Save"
