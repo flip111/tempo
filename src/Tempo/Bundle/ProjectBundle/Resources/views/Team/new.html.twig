@@ -1,7 +1,7 @@
-<form action="{{ path(route_category, { 'slug' : category.slug } ) }}" method="post" {#{ form_enctype(form) }#} class="clearfix">
+<form action="{{ path(route_category, { 'slug' : category.slug } ) }}" method="post" class="clearfix">
     {{ form_widget(form) }}
 
     <div class="rest">
-            <input type="submit" class="submit btn btn-sm btn-primary" />
+        <input type="submit" class="fantomas submit btn btn-sm btn-primary" />
     </div>
 </form>

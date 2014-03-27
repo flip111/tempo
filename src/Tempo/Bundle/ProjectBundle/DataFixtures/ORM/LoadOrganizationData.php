@@ -62,6 +62,7 @@ class LoadOrganizationData extends AbstractFixture implements OrderedFixtureInte
             $organization->setContact('support@'.$name.'.com');
             $organization->getWebSite('http://'.$name.'.com');
             $organization->addTeam($userEntity);
+            $organization->addTeam($this->getReference('olivia.pace'));
 
             $manager->persist($organization);
             $manager->flush();

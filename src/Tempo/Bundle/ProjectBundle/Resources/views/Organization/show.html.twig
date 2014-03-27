@@ -1,63 +1,73 @@
 {% extends "TempoMainBundle::Layout/web.html.twig" %}
 {% block bodyClass %}organization show{% endblock %}
-{% set sidebar = true %}
 {% block javascripts %}
     {{ parent() }}
-    <script type="text/javascript" src="{{ asset('bundles/tempoproject/js/organization.js')}}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/tempoproject/js/views/organizationView.js')}}"></script>
 {% endblock %}
 
-{% block content %}
+{% block body %}
 
+<div class="col-md-8 app-panel">
     <h1 id="page-title" class="col-md-7"> {{ organization.name }} </h1>
 
-<div class="action col-md-4">
-    {% if is_granted('EDIT', organization) %}
-    <a href="{{ path('project_new', { 'organization' : organization.slug }) }}" class="btn btn-xs btn-primary"><span class="glyphicon glyphicon-plus"></span> {{ 'project.add'|trans({},'TempoProject') }} </a>
-    <a class="btn btn-xs btn btn-info" href="{{ path('organization_edit', { 'slug' : organization.slug }) }}"> <span class="glyphicon glyphicon-edit"></span> Edit</a>
-    {% endif %}
-    {% if is_granted('DELETE', organization) %}
-    <a class="btn btn-xs btn-danger" role="dialog" data-toggle="modal" data-target="#" data-title="Delete project" href="#delete-organization" data-redirect="{{ path('organization_delete', { 'slug': organization.slug, 'token' : csrfToken }) }}"> <span class="glyphicon glyphicon-trash"></span> Delete</a>
-    {% endif %}
-</div>
+    <div class="action col-md-4">
+        {% if is_granted('EDIT', organization) %}
+        <a href="{{ path('project_new', { 'organization' : organization.slug }) }}" class="btn btn-xs btn-primary"><span class="glyphicon glyphicon-plus"></span> {{ 'project.add'|trans({},'TempoProject') }} </a>
+        <a class="btn btn-xs btn btn-info" href="{{ path('organization_edit', { 'slug' : organization.slug }) }}"> <span class="glyphicon glyphicon-edit"></span> Edit</a>
+        {% endif %}
+        {% if is_granted('DELETE', organization) %}
+        <a class="btn btn-xs btn-danger" role="dialog" data-toggle="modal" data-target="#" data-title="Delete project" href="#delete-organization" data-redirect="{{ path('organization_delete', { 'slug': organization.slug, 'token' : csrfToken }) }}"> <span class="glyphicon glyphicon-trash"></span> Delete</a>
+        {% endif %}
+    </div>
 
-<div class="infos clearfix">
-    <ul class="col-md-6">
-        <li> <strong>{{ 'organization.email_contact'|trans({},'TempoProject') }}</strong>
-            {% if organization.contact is empty %}
+    <div class="infos clearfix">
+        <ul class="col-md-6">
+            <li> <strong>{{ 'organization.email_contact'|trans({},'TempoProject') }}</strong>
+                {% if organization.contact is empty %}
+                    {{ 'organization.undefined_info'|trans({},'TempoProject') }}
+                {% else %}
+                <a href="mailto:{{ organization.contact }}">{{ organization.contact }}</a>
+                {% endif %}
+            </li>
+            <li> <strong>{{ 'organization.web_site'|trans({},'TempoProject') }}</strong>
+            {% if organization.website is empty %}
                 {{ 'organization.undefined_info'|trans({},'TempoProject') }}
             {% else %}
-            <a href="mailto:{{ organization.contact }}">{{ organization.contact }}</a>
-            {% endif %}
-        </li>
-        <li> <strong>{{ 'organization.web_site'|trans({},'TempoProject') }}</strong>
-        {% if organization.website is empty %}
-            {{ 'organization.undefined_info'|trans({},'TempoProject') }}
-        {% else %}
-            <a href="{{ organization.website }}">{{ organization.website }}</a>
-        {% endif %}<li>
-    </ul>
-    <ul class="col-md-6">
-        <li>
-            <strong class="nbr-project">{{ 'project.nbr_project' |trans({},'TempoProject') }}</strong>
-            <div style="height: 30px; margin-top: 10px">
-                <span class="label label-success">{{ counter.open }} {{ 'project.open'|trans({},'TempoProject') }} </span> <br />
-            </div>
-            <div style="height: 30px;">
-                <span class="label label-default">{{ counter.close }} {{ 'project.close'|trans({},'TempoProject') }}   </span>
-            </div>
-        </li>
-    </ul>
+                <a href="{{ organization.website }}">{{ organization.website }}</a>
+            {% endif %}<li>
+        </ul>
+        <ul class="col-md-6">
+            <li>
+                <strong class="nbr-project">{{ 'project.nbr_project' |trans({},'TempoProject') }}</strong>
+                <div style="height: 30px; margin-top: 10px">
+                    <span class="label label-success">{{ counter.open }} {{ 'project.open'|trans({},'TempoProject') }} </span> <br />
+                </div>
+                <div style="height: 30px;">
+                    <span class="label label-default">{{ counter.close }} {{ 'project.close'|trans({},'TempoProject') }}   </span>
+                </div>
+            </li>
+        </ul>
 
-
+    </div>
 </div>
-<div id="organization-list-project">
-    <h3><div class="inner">{{ 'project.label_list'|trans({},'TempoProject') }}</div></h3>
+<div class="col-md-4 member-box">
+    {%  include 'TempoProjectBundle::Organization/_sidebar.html.twig' with { 'teamForm': teamForm, 'organization': organization } %}
+</div>
+
+
+<div id="organization-list-project" class="app-panel clearfix col-md-8">
+    <h3>{{ 'project.label_list'|trans({},'TempoProject') }}</h3>
 
     <ul class="list-project">
     {% for project in projects %}
         <li>
-            <img src="{{ 'bundles/tempomain/images/default-icon-project.png' | imagine_filter('project_thumb') }}" />
-            <a href="{{ path('project_show', { 'slug' :  project.slug } ) }}">{{ project.name }} </a>
+            <img class="avatar" src="{{ 'bundles/tempomain/images/default-icon-project.png' | imagine_filter('project_thumb') }}" />
+            <div class="board">
+                <h4><a href="{{ path('project_show', { 'slug' :  project.slug } ) }}">{{ project.name }} </a></h4>
+                <p class="project-updated">
+                    Updated <time data-title-format="YYYY-MM-DD HH:mm:ss" datetime="{{ project.updated.format('YYYY-MM-DD') }}" title="{{ project.updated.format('YYYY-MM-DD') }}">{{ datetime_diff(project.updated) }}</time>
+                </p>
+            </div>
         </li>
     {% else %}
         <p>{{ 'organization.not_found_project'|trans({},'TempoProject') }}.</p>
@@ -70,7 +80,4 @@
     {{ 'organization.msg_delete'|trans([], 'TempoProject') }}
 </div>
 
-{% endblock %}
-{% block right %}
-    {%  include 'TempoProjectBundle::Organization/_sidebar.html.twig' with { 'teamForm': teamForm, 'organization': organization } %}
 {% endblock %}

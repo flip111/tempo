@@ -13,15 +13,13 @@
 namespace Tempo\Bundle\MainBundle\Behat;
 
 use Behat\Behat\Context\Step\When;
+use Behat\Mink\Driver\Selenium2Driver;
+use Behat\MinkExtension\Context\RawMinkContext;
 
-class WebUser extends BaseContext
+
+
+class WebUser extends RawMinkContext
 {
-
-    public function __construct()
-    {
-        $this->useContext('data', new DataContext());
-    }
-
     /**
      * @Given /^I logout$/
      */
@@ -39,12 +37,12 @@ class WebUser extends BaseContext
     {
         $password = $password ?: $username;
 
-        $this->getSession()->visit($this->generateUrl('fos_user_security_login'));
+        $this->getSession()->visit($this->getMainContext()->generateUrl('fos_user_security_login'));
 
-        $this->fillField('Username', $username);
-        $this->fillField('Password', $password);
-        $this->pressButton('login');
-        $this->assertPageContainsText('logout');
+        $this->getMainContext()->fillField('Username', $username);
+        $this->getMainContext()->fillField('Password', $password);
+        $this->getMainContext()->pressButton('login');
+        $this->getMainContext()->assertPageContainsText('logout');
     }
 
     /**
@@ -52,7 +50,7 @@ class WebUser extends BaseContext
      */
     public function iShouldStillBeOnMyAccountPasswordPage()
     {
-        $this->assertSession()->addressEquals($this->generateUrl('user_profile_password'));
+        $this->assertSession()->addressEquals($this->getMainContext()->generateUrl('user_profile_password'));
     }
 
     /**
@@ -60,7 +58,7 @@ class WebUser extends BaseContext
      */
     public function iAmOnMyAccountPasswordPage()
     {
-        $this->getSession()->visit($this->generatePageUrl('user_profile_password'));
+        $this->getSession()->visit($this->getMainContext()->generatePageUrl('user_profile_password'));
     }
 
     /**
@@ -68,7 +66,7 @@ class WebUser extends BaseContext
      */
     public function iShouldBeOnLoginPage()
     {
-        $this->assertSession()->addressEquals($this->generateUrl('fos_user_security_login'));
+        $this->assertSession()->addressEquals($this->getMainContext()->generateUrl('fos_user_security_login'));
         $this->assertStatusCodeEquals(200);
     }
 

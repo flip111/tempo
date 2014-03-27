@@ -132,7 +132,7 @@ class ProjectController extends Controller
             $event = new ProjectEvent($project, $request);
             $this->get('event_dispatcher')->dispatch(TempoProjectEvents::PROJECT_CREATE_INITIALIZE, $event);
 
-            $this->getManager()->persistAndFlush($project);
+            $this->getManager()->save($project);
             $this->getAclManager()->addObjectPermission($project, MaskBuilder::MASK_OWNER); //set Permission
             $this->get('event_dispatcher')->dispatch(TempoProjectEvents::PROJECT_CREATE_SUCCESS, $event);
 
@@ -175,7 +175,7 @@ class ProjectController extends Controller
             $event = new ProjectEvent($project, $request);
             $this->get('event_dispatcher')->dispatch(TempoProjectEvents::PROJECT_EDIT_INITIALIZE, $event);
 
-            $this->getManager()->persistAndFlush($project);
+            $this->getManager()->save($project);
             $this->get('event_dispatcher')->dispatch(TempoProjectEvents::PROJECT_EDIT_SUCCESS, $event);
 
             return $this->redirect($this->generateUrl('project_edit', array('slug' => $project->getSlug() )));
@@ -202,7 +202,7 @@ class ProjectController extends Controller
 
         $project = $this->getProject($slug, 'DELETE');
 
-        $this->getManager()->removeAndFlush($project);
+        $this->getManager()->remove($project);
         $event = new ProjectEvent($project, $request);
         $this->get('event_dispatcher')->dispatch(TempoProjectEvents::PROJECT_DELETE_COMPLETED, $event);
 

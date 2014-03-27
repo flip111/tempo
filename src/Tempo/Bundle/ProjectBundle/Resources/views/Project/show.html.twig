@@ -1,14 +1,16 @@
 {% extends "TempoMainBundle::Layout/web.html.twig" %}
 {% block bodyClass %}project show{% endblock %}
-{% block breadcrumb %}
-    <ol id="breadcrumb" class="clearfix">
-        <li class="first"> <a href="{{ path('project_home') }}">Accueil</a> </li>
-        <li class="first last"> <a href="{{ path('project_home') }}">{{ 'Project'|trans  }}</a> </li>
-        <li class="first last"> {{ project.name }} </li>
-    </ol>
-{% endblock breadcrumb %}
-{% set sidebar = true %}
-{% block content %}
+{% block body %}
+
+<div class="app-panel col-md-8">
+    {% block breadcrumb %}
+        <ol id="breadcrumb" class="clearfix">
+            <li class="first"> <a href="{{ path('project_home') }}">Accueil</a> </li>
+            <li> <a href="{{ path('project_home') }}">{{ 'Project'|trans  }}</a> </li>
+            <li> <a href="{{ path('organization_show', {'slug' : project.organization.slug }) }}">{{ project.organization }}</a> </li>
+            <li class="last"> {{ project.name }} </li>
+        </ol>
+    {% endblock breadcrumb %}
 
     <h1 id="page-title" class="col-md-6">{{ project.name }}</h1>
 
@@ -43,21 +45,28 @@
             </div>
         </div>
     </div>
-{% endblock %}
+</div>
+<div class="col-md-4">
+    <div class="record_actions">
 
-{% block right %}
-<ul class="record_actions">
+        <h4 class="pull-left">{{ 'organization.team'|trans({},'TempoProject') }} </h4>
 
-    <h4>{{ 'organization.team'|trans({},'TempoProject') }} </h4>
+        <a data-toggle="modal" data-target="#" data-title="Adding a team member" href="#add_membre" class="add-member pull-right btn btn-xs btn-info"> <span class="glyphicon glyphicon-plus"></span> {{ 'project.add_membre'|trans([], 'TempoProject') }}</a>
 
-    <a data-toggle="modal" data-target="#" data-title="Adding a team member" href="#add_membre" class="float-right btn btn-xs btn-info"> <span class="glyphicon glyphicon-plus"></span> {{ 'project.add_membre'|trans([], 'TempoProject') }}</a>
+        <div id="add_membre" style="display: none;">
+            {% include 'TempoProjectBundle:Team:new.html.twig' with {'form': teamForm, 'category': project, 'route_category' : 'project_team_add' } %}
+        </div>
+        <div class="app-panel clearbox">
+            <div class="list_membre">
+                {% include 'TempoProjectBundle:Team:list.html.twig' with { 'users': project.team } %}
+            </div>
+        </div>
 
-    <div id="add_membre" style="display: none;">
-        {% include 'TempoProjectBundle:Team:new.html.twig' with {'form': teamForm, 'category': project, 'route_category' : 'project_team_add' } %}
+        <h4 class="pull-left">{{ 'Activity'|trans({},'TempoProject') }} </h4>
+
+        <div class="app-panel clearbox">
+            {% include (tabProvidersRegistry.providers[2]).content %}
+        </div>
     </div>
-
-    <div class="list_membre">
-        {% include 'TempoProjectBundle:Team:list.html.twig' with { 'users': project.team } %}
-    </div>
-</ul>
+</div>
 {% endblock %}
